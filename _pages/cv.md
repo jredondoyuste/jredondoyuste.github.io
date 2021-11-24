@@ -44,12 +44,12 @@ Publications
 Skills
 ======
 * Coding
-    *Mathematica
-    *Matlab
-    *Fortran
-    *Python
-*Languages
-  *Spanish (native)
+    * Mathematica
+    * Matlab
+    * Fortran
+    * Python
+* Languages
+  * Spanish (native)
   * English (fluent)
   * French, German, Italian (intermediate)
 

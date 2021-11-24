@@ -7,8 +7,6 @@ redirect_from:
   - /research
 ---
 
-## Research Interests
-
 ### Quantum Gravity Phenomenology
 
 General Relativity predicts its own doom in the form of singularities in the interior of the most compact objects that can exist in our Universe: Black Holes. One possible way to avoid the formation of those singularities is that quantum effects (existence of a minimal length or vacuum polarization, for example) modify the predictions of GR in those regimes. At the same time, we expect that a quantum theory of gravity will modify some of the assumptions that we make about spacetime (discreteness of space and time, Lorentz violations, non-locality, emergence,...). I am very interested in exploring the observable predictions of quantum gravity effects as well as on how can we use Gravitational Waves data from coalescences or collapses to constraint quantum gravity models. 

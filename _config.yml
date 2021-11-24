@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Jaime Redondo-Yuste"
   avatar           : "profile.png"
-  bio              : ""
+  bio              : # "biography"
   location         : "Waterloo, CA"
   employer         :
   pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"

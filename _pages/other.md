@@ -15,6 +15,3 @@ I've always enjoyed swimming. Right now, I am a Master's swimmer at Club Nataci√
 
 
 
-
-
-

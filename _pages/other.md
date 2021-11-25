@@ -13,5 +13,9 @@ I've always enjoyed swimming. Right now, I am a Master's swimmer at Club Nataci√
 
 <iframe width="200" height="100" src="https://www.youtube.com/embed/IEU-PM9lktA?start=10173" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### Music
 
+If you are scrolling endlessly through this website, why don't you turn this playlist on and enjoy some of my favourite songs? 
+
+<iframe src="https://open.spotify.com/playlist/5dL26InduBLHMqPrGylveM?si=367314e24e6a4b7f" width="200" height="150" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 

@@ -5,6 +5,6 @@ permalink: /photos/
 description: "An example photo gallery."
 
 photos:
-    set: photos
+    set: gallery
     size: 5
 ---

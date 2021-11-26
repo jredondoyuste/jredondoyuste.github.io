@@ -1,24 +1,32 @@
 ---
 layout: archive
-title: "Writings"
-permalink: /writings/
+title: "Misc"
+permalink: /misc/
 author_profile: true
 redirect_from:
   - /other
 ---
 
-Here are some things (most of them are in spanish) that I have written that someone might find interesting:
+### Swimming
 
-* [Here](http://jredondoyuste.github.io/files/GTA.jar) you can download a very cool simulator on ethical decision making on autonomous cars, that I did with [Diego](https://www.linkedin.com/in/diego-jose-sanchez-martin/) and [Carlos](https://www.linkedin.com/in/carlos-gandiaga/). You can choose an "ethical package" out of 5 options: Asimov's robotic laws, Tilden's robotic laws, Kant philosphy, humanism and utilitarianism. It needs Java-SE10 to work. 
+I've always enjoyed swimming. Right now, I am a Master's swimmer at Club Natación Leganés, the club of my hometown. In this video you can see me (Lane 2) getting two tenths short of the bronze medal on the last Masters National Championship (Valencia, 2021). 
+<center>
+<iframe width="120" height="60" src="https://www.youtube.com/embed/IEU-PM9lktA?start=10173" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
 
-* [Physics bachelor thesis, on linear perturbations around Black Hole and collapsing spacetimes](http://jredondoyuste.github.io/files/physthesis.pdf)
+### Music
 
-* [A very short essay relating Rawls paper on The Laws of People and the Greece-EU crisis.](http://jredondoyuste.github.io/files/Rawls.pdf)
+If you are scrolling endlessly through this website, why don't you turn [this playlist](https://open.spotify.com/playlist/5dL26InduBLHMqPrGylveM?si=367314e24e6a4b7f) on and enjoy some of my favourite songs? 
+<center>
+<iframe src="https://open.spotify.com/embed/playlist/5dL26InduBLHMqPrGylveM" width="300" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</center>
 
-* [Math bachelor thesis, on gauge theory and the Utiyama theorem](http://jredondoyuste.github.io/files/maththesis.pdf)
+### Friends
 
-* [Short notes on classical string theory](http://jredondoyuste.github.io/files/strings.pdf)
+You should definitely go and check these webpages! 
 
-* [A nice proof of the Classification Theorem for SurfacesR](http://jredondoyuste.github.io/files/surfaces.pdf)
 
-* [Some notes on axion production in supernovae](http://jredondoyuste.github.io/files/axions.pdf)
+[Anna B. ](https://abrandenberger.github.io)   | [Anna K. ](https://atomyka.com)  | [Sofía G. ](http://sofiagonga.github.io) 
+[Mathew B. ](https://mwbub.github.io/#)    | [Luis G.](https://sites.google.com/site/luisjgaray/home)   | [Diego S.](https://www.linkedin.com/in/diego-jose-sanchez-martin/)
+[Carlos G.](https://www.linkedin.com/in/carlos-gandiaga/)     | [Matthew F.](matthewforxphysics.com)   |                        
+

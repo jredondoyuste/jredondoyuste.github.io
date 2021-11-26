@@ -11,8 +11,6 @@ Here are some things (most of them are in spanish) that I have written that some
 
 * [Here](http://jredondoyuste.github.io/files/GTA.jar) you can download a very cool simulator on ethical decision making on autonomous cars, that I did with [Diego](https://www.linkedin.com/in/diego-jose-sanchez-martin/) and [Carlos](https://www.linkedin.com/in/carlos-gandiaga/). You can choose an "ethical package" out of 5 options: Asimov's robotic laws, Tilden's robotic laws, Kant philosphy, humanism and utilitarianism. It needs Java-SE10 to work. 
 
-* [Physics bachelor thesis, on linear perturbations around Black Hole and collapsing spacetimes](http://jredondoyuste.github.io/files/physthesis.pdf)
-
 * [A very short essay relating Rawls paper on The Laws of People and the Greece-EU crisis.](http://jredondoyuste.github.io/files/Rawls.pdf)
 
 * [Math bachelor thesis, on gauge theory and the Utiyama theorem](http://jredondoyuste.github.io/files/maththesis.pdf)

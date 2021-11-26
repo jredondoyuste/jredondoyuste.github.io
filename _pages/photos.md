@@ -1,10 +1,10 @@
 ---
 layout: photo_set
-title: Berlin
-permalink: /berlin/
+title: Photos
+permalink: /photos/
 description: "An example photo gallery."
 
 photos:
-    set: berlin
-    size: 3
+    set: photos
+    size: 5
 ---

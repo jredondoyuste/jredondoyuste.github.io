@@ -23,11 +23,11 @@ If you are scrolling endlessly through this website, why don't you turn [this pl
 
 You should definitely go and check these webpages! 
 
-* [Anna B. ] (https://abrandenberger.github.io)
+* [Anna B. ](https://abrandenberger.github.io)
 * [Anna K. ](https://atomyka.com)
 * [Sofía G. ](http://sofiagonga.github.io)
 * [Mathew B. ](https://mwbub.github.io/#)
 * [Luis G.](https://sites.google.com/site/luisjgaray/home)
-* [Diego S.] (https://www.linkedin.com/in/diego-jose-sanchez-martin/)
+* [Diego S.](https://www.linkedin.com/in/diego-jose-sanchez-martin/)
 * [Carlos G.](https://www.linkedin.com/in/carlos-gandiaga/)
 

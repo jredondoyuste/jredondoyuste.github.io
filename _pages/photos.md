@@ -1,11 +1,10 @@
 ---
-layout: archive
+layout: gallery
 title: "Photos"
 permalink: /photos/
 author_profile: true
 redirect_from:
-  - /other
+  - /photos
 ---
 
-#### Toronto
-![foto1](/images/toronto.jpg)
+

@@ -7,5 +7,5 @@ redirect_from:
   - /other
 ---
 
-#### Quebec
-![foto1](/images/editing-talk.png)
+#### Toronto
+![foto1](/images/toronto.jpg)

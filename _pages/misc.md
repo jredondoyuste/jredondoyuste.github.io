@@ -55,6 +55,7 @@ Here's some lists of things that I enjoy, in no particular order.
 <li>Endymion (J. Keats)</li>
 </ul>
 </details>
+</details>
 
 <details>
 <summary> Movies </summary>
@@ -83,10 +84,6 @@ Here's some lists of things that I enjoy, in no particular order.
 <li>Los Serrano</li>
 </ul>
 </details>
-
-
-
-
 
 
 ### Friends

@@ -78,12 +78,12 @@ If you are scrolling endlessly through this website, why don't you turn [this pl
 <iframe src="https://open.spotify.com/embed/playlist/6bEryETSJJNOSiaIbLD54O" width="300" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </center>
 
-### Swimming
+<!-- ### Swimming
 
 I've always enjoyed swimming. I used to be a Master's swimmer at Club Natación Leganés, the club of my hometown. In this video you can see me (Lane 2) getting two tenths short of the bronze medal on the last Masters National Championship (Valencia, 2021). 
 <center>
 <iframe width="120" height="60" src="https://www.youtube.com/embed/IEU-PM9lktA?start=10173" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
+</center> -->
 
 ### Friends
 

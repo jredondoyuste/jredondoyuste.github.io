@@ -9,14 +9,14 @@ author_profile: true
 Education
 ======
 
+* M.Sc. in Theoretical Physics, Perimeter Institute and University of Waterloo, 2022.
 * B.S. in Physics and Mathematics, Universidad Complutense de Madrid, 2021
-* M.S. in Theoretical Physics, Perimeter Institute and University of Waterloo, Ongoing
 * Minor in Liberal Arts, Universidad Francisco de Vitoria, 2020
 
 Research experience
 ======
-* Ongoing: Master's thesis with [Luis Lehner](https://perimeterinstitute.ca/people/luis-lehner). 
-    * Membrane paradigm, carrollian fluids, quasinormal modes. 
+* 2022: Master's thesis with [Luis Lehner](https://perimeterinstitute.ca/people/luis-lehner). 
+    * Dynamics of black hole horizons and Carrollian fluids.  
 
 * 2021: Bachelor's thesis with [Luis J. Garay](https://sites.google.com/site/luisjgaray/home) and Carlos Barceló
     * Gravitational waves emission during classical and modified stellar collapses. 
@@ -49,5 +49,3 @@ Skills
   * Spanish (native)
   * English (fluent)
   * French, German, Italian (intermediate)
-
-

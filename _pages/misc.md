@@ -19,7 +19,7 @@ Here's some lists of things that I enjoy, in no particular order.
 <summary> Sci-Fi & Fantasy </summary>
 <ul style="margin-left:4%">
 <li>The Lord of the Rings, (J.R.R.Tolkien)</li>
-<li>The Kingskiller Chronicles, (P. Rothfuss)</li>
+<li>The Kingkiller Chronicles, (P. Rothfuss)</li>
 <li>The Dispossessed (U. K. Le Guin)</li>
 <li>The First Law Trilogy (J. Abercrombie) </li>
 <li>The Cosmere books (B. Sanderson)</li>
@@ -80,7 +80,7 @@ If you are scrolling endlessly through this website, why don't you turn [this pl
 
 ### Swimming
 
-I've always enjoyed swimming. Right now, I am a Master's swimmer at Club Natación Leganés, the club of my hometown. In this video you can see me (Lane 2) getting two tenths short of the bronze medal on the last Masters National Championship (Valencia, 2021). 
+I've always enjoyed swimming. I used to be a Master's swimmer at Club Natación Leganés, the club of my hometown. In this video you can see me (Lane 2) getting two tenths short of the bronze medal on the last Masters National Championship (Valencia, 2021). 
 <center>
 <iframe width="120" height="60" src="https://www.youtube.com/embed/IEU-PM9lktA?start=10173" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>

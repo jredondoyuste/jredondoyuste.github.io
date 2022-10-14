@@ -7,18 +7,16 @@ redirect_from:
   - /research
 ---
 
-### Quantum Gravity Phenomenology
+### Non-linear effects in gravity
 
-General Relativity predicts the existence of curvature singularities in the interior of black holes. Quantum theories of gravity generally provide mechanisms to avoid the formation of such singularities during collapse scenarios. I am very interested in studying whether gravitational wave signals of supernovae can detect deviations from the classical picture originating from these QG effects, and my [Bachelor's thesis](http://jredondoyuste.github.io/files/physthesis.pdf) was intended to be a warm-up exercise to tackle that problem. 
+<img align="right" src="images/gw.png">
 
-There are many other phenomenological consequences that we can look for, though. One such example are the physics of exotic compact objects and the GWs that they emit during coalescenses. On the other hand, quantum gravity tipically modifies some assumptions on spacetime (discreteness, Lorentz violations, non-locality...) and I am very interested in exploring what are the physical consequences of those assumptions.  
+Einstein's theory of gravity is a very non-linear theory. However, the objects in the Universe with the strongest gravitational field, black holes, appear to be very simple. Even the noise that they emit when two of them collide seems to be described by a simple ''chirp'' noise, followed by a ringing composed of several notes, with different intensities. Why does the merger process look so apparently simple? What decides with which notes does the resulting black hole ring? I want to understand this and several other questions better. This requires a combination of analytical and perturbation theory techniques with computational methods to solve Einstein equations numerically. 
 
-### Gravity as an emergent theory?
+### Tests of General Relativity
 
-There are some hints pointing towards spacetime being an effective description of some, more fundamental, degrees of freedom. One such example is the interpretation of the laws of BH mechanics as thermodynamics laws. Another example is the membrane paradigm, in which the Einstein's equation of a timelike (null) surface are reduced to the Navier-Stokes equation (Carrollian-fluid equation) of a fluid living on that surface. I would like to understand how fundamental this mapping is and, in particular, if there is a one-to-one interpretation of all of the degrees of freedom of Einstein's gravity with fluid variables living on the boundary. 
+General Relativity is the best theory of gravity so far: it has been used to succesfully predict gravitational waves, the abundance of elements in the Universe or the formation of the Sun and other stars. However in the innermost part of black holes, it is doomed to fail. There are several proposals for modified gravity theories, as well as theories that attempt to reconcile gravitation with quantum mechanics. All of these models must be tested against our current and future observations. I work on understanding better how compact objects and gravitational waves would interact in some of these modified theories. 
 
-### Other topics that I find interesting
+### Singularities and Cauchy horizons
 
-I am very interested in the foundations of quantum mechanics and the implications that these have for gravity, in particular, whether we can design table-top experiments to test gravitational physics in the quantum regime. I am also curious about the possibilites of analogue systems to explore some aspects of strong gravity. I believe that quantum optical systems could eventually become a very interesting tool to simulate complicated problems (in [this paper](https://iopscience.iop.org/article/10.1088/1367-2630/ac27e0/meta) with [Alex](https://sites.google.com/view/gonzaleztudela) we should that we can tune interactions very much), among which kinematical aspects of gravity might be included. Finally, I would like to understand better why gravity (and geometry) in 4 dimensions is so special. 
-
-
+Astrophysical black holes are rotating: some of them do it very fast, and some of them do it slowly. However, they share a very weird inner structure: their classical description has a surface called a Cauchy horizon. This means that even if we had all the information about the location and trajectory of each particle one milisecond after the Big Bang, we would not be able to predict what happens inside that surface. We know that this picture is not stable, and that in the process that forms these objects something will prevent a Cauchy horizon from forming (this conjecture is known as the Strong Cosmic Censorship). I am interested in using numerical methods to simulate the process of the formation of a rotating black hole all the way up to the singularity itself. 

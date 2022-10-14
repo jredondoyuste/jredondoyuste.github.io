@@ -8,14 +8,8 @@ main:
     
   - title: "CV"
     url: /cv/
-  
-  - title: "Writings"
-    url: /writings/
     
   - title: "Do not click here"
     url: /misc/
-    
-  - title: "Photos"
-    url: /photos/
     
     

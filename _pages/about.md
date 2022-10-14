@@ -7,13 +7,8 @@ redirect_from:
   - /about/
   - /about.html
 ---
-My name is Jaime, and I am originally from Madrid (Spain). I am a PSI master's student at the [Perimeter Institute for Theoretical Physics](https://perimeterinstitute.ca/psi-masters-program). Previously, I studied Physics and Mathematics at Universidad Complutense de Madrid, with a one-year exchange at the University of Manchester. 
+Hi! I'm Jaime, and I am a theoretical physicst. I am doing my PhD at the [Strong](https://strong-gr.com) group in the Niels Bohr Institute, under the supervision of Prof. [Vitor Cardoso](https://pages.centra.tecnico.ulisboa.pt/vcardoso/). I want to understand better how matter and the spacetime itself behaves in the regimes where gravity is extremely intense: I use analytical and computational methods to study non-linear aspects of black hole and gravitational waves. You can read more about my research on the [Research](https://jredondoyuste.github.io/research/) page. 
 
-Early on in my degree I started asking myself many questions, mainly about gravity. So far I have found lots of more cool questions, but not so many satisfying answers. Some people like to call that doing science, so I decided to try to pursue a career doing what brings me fun! 
+Before moving to Denmark, I have lived in many places. I grew up in [Leganes](https://madrilanea.com/2013/02/01/tierra-de-pintorescas-rotondas/), a town in the outskirts of Madrid, ''famous'' for its roundabouts. My family comes from Monreal del Campo: a small village in Teruel, where my grandparents used to grow saffron. I completed my undergrad at Complutense University in Madrid, after spending one year at the University of Manchester. In 2021 I moved to Canada to get my master's degree at the [Perimeter Institute for Theoretical Physics](https://perimeterinstitute.ca/psi-masters-program). 
 
-During that time, I had the chance to work with [Luis](https://sites.google.com/site/luisjgaray/home), Carlos and [some others](https://sites.google.com/view/qfg-group/members?authuser=0) on semiclassical gravity and a bunch of other related topics (see the [Research](https://jredondoyuste.github.io/research/) tab for more info). Right now, I have becomed even more interested in quantum gravity phenomenology and how can we use gravitational waves to constraint theories of gravity.
-
-I also had some time to study philosophy and humanities at [ELU](https://elufv.com), so I am always up for a philosophical discussion, especially if coffee is involved. When I am not doing that or physics, you can find me on a swimming pool. I am also a Dallas Mavericks and Real Madrid fan, and I just started into climbing, so probably will talk about that a lot.
-
-Welcome to my webpage! 
-
+When I am not doing physics, you can find me on a swimming pool or at a climbing gym. If you want to get to know me a bit better, click [here](https://jredondoyuste.github.io/misc/).

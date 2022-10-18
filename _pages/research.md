@@ -9,7 +9,7 @@ redirect_from:
 
 ### Non-linear effects in gravity
 
-<img align="right" src="/images/gw.png">
+<img align="right" src="/images/HorizonEvo.gif", alt="Embedding of the event horizon of a non-rotating black hole as it absorbs a gravitational wave.">
 
 Einstein's theory of gravity is a very non-linear theory. However, the objects in the Universe with the strongest gravitational field, black holes, appear to be very simple. Even the noise that they emit when two of them collide seems to be described by a simple ''chirp'' noise, followed by a ringing composed of several notes, with different intensities. Why does the merger process look so apparently simple? What decides with which notes does the resulting black hole ring? I want to understand this and several other questions better. This requires a combination of analytical and perturbation theory techniques with computational methods to solve Einstein equations numerically. 
 

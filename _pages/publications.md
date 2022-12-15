@@ -5,11 +5,8 @@ permalink: /publications/
 author_profile: true
 ---
 
-* Dynamics of black hole horizons
-    * JRY and Luis Lehner. (In preparation)
-
-* Diverging black hole entropy from quantum infrared non-localities
-    * Alessia Platania and JRY. (In preparation)
+* [Non-linear black hole dynamics and Carrollian fluids](https://arxiv.org/abs/2212.06175)
+    * JRY and Luis Lehner, arXiv preprint arXiv:2212.06175
 
 * [Carrollian motion in magnetized black hole horizons](https://arxiv.org/abs/2211.13695)
     * Finnian Gray, David Kubiznak, T Rick Perche, JRY, arXiv preprint arXiv:2211.13695 (2022)

@@ -37,6 +37,13 @@ font-weight: 300;
 font-feature-settings: "onum" 1;
 }
 
+.date {
+    font-size: 8pt;
+    font-style: italic;
+    margin-top: 10px;
+    font-weight: 100;
+}
+
 #returntocard {
     position: fixed;
     right: 10px;
@@ -76,6 +83,7 @@ font-feature-settings: "onum" 1;
 }
 
 .blog-text {
+    position: relative;
     flex: 1;
     margin-right: 20px;
 }
@@ -95,4 +103,48 @@ font-feature-settings: "onum" 1;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
+}
+
+.tags {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tag {
+    display: inline-block;
+    vertical-align: top;
+    padding: 2px 5px;
+    margin: 5px;
+    font-size: 0.8em;
+    color: white;
+    border-radius: 5px;
+}
+
+.tag-science {
+    background-color: #419c44; /* Green */
+}
+
+.tag-personal {
+    background-color: #4ba1e8; /* Blue */
+}
+
+.tag-news {
+    background-color: #ee3d37; 
+}
+
+#filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}
+
+.filter-btn:hover {
+    background-color: orange;
 }

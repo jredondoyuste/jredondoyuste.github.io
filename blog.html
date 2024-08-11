@@ -41,15 +41,26 @@
         <p >
             Here is a random recollection of personal and scientific stories and news. Read with discretion! 
         </p>
+        <div id="filter-buttons">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="personal">Personal</button>
+            <button class="filter-btn" data-filter="news">News</button>
+            <button class="filter-btn" data-filter="science">Science</button>
+        </div>
         <div class="blog-preview">
-            <a href="blog_entries/entry_1.html" class="blog-card">
+            <a href="blog_entries/entry_1.html" class="blog-card" data-category="personal">
                 <div class="blog-text">
-                    <h3>Blog Entry Title 1</h3>
+                    <h3>On the road again </h3>
+                    <div class="tags">
+                        <span class="tag tag-personal">Personal</span>
+                    </div>
                     <p>This is a short abstract of the first blog entry. It should be concise and to the point.</p>
+                    <div class="date">August 10, 2024</div>
                 </div>
-                <img src="path/to/image1.jpg" alt="Blog Entry 1 Image">
+                <img src="MyPhotos/capitol_reef.jpg" alt="Matt overlooking Capitol Reef">
             </a>
             <!-- Add more blog cards as needed -->
         </div>
     </div>
+    <script src="filter.js"></script>
 </body>

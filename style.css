@@ -97,137 +97,138 @@ h3 {
 }
 
   
-  .Penrose-schwarzschild {
-    position: relative;
-    width: 85vw;
-    height: 100vh;
-    background: url('figs/penrose_schwarzschild.png') no-repeat center center;
-    background-size: contain;
-  }
-  
-  .custom-text {
-    position: absolute;
-    color: #000000; /* Customize text color */    
-  }
-  
-  /* Custom positions for text elements */
-  #name {
-    position: absolute;
-    font-family: Didot; /* "Computer Modern Serif"; */
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-size: 22px;
-    top: 25%;
-    left: 41%;
-    /* transform: translate(0%, 400%); */
-  }
-  
-  #position {
-    position: absolute;
-    font-family: "Playfair", "Computer Modern Serif Upright Italic";
-    font-style: italic;
-    text-align: center;
-    /* letter-spacing: 1px; */
-    font-size: 20px;
-    top: 67%;
-    left: 46%;
-  }
+.Penrose-schwarzschild {
+  position: relative;
+  width: 85vw;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: url('figs/penrose_schwarzschild.png') no-repeat center center;
+  background-size: contain;
+}
 
-  #affiliation {
-    position: absolute;
-    text-transform: uppercase;
-    /* padding-top: 8px; */
-    text-align: center;
-    font-size: 18px;
-    top: 71%;
-    left: 38%;
-  }
-  
-  .affiliationtext {
-    font-family: "Saira", "Computer Modern Bright", serif;
-    font-size: 16px;
-  }
+.custom-text {
+  position: absolute;
+  color: #000000; /* Customize text color */    
+}
 
-  .links {
-    position: absolute;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    top: 71%;
-    left: 36%;
-    transform: translate(50%, 150%) 
-  }
-  
-  .links a {
-    color: #000000;
-    text-decoration: none;
-    letter-spacing: normal;
-  }
-  
-  .links a:hover {
-    color: #aa0000;
-    /* f0b1b1 */
-  }
-  
-  .contact i {
-    font-size: larger;
-    padding-right: 3px;
-  }
-  
+/* Custom positions for text elements */
+#name {
+  position: relative;
+  font-family: Didot; /* "Computer Modern Serif"; */
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2vw;
+  top: 15%;
+  left: 0%;
+  /* transform: translate(0%, 400%); */
+}
+
+#position {
+  position: relative;
+  font-family: "Playfair", "Computer Modern Serif Upright Italic";
+  font-style: italic;
+  text-align: center;
+  /* letter-spacing: 1px; */
+  font-size: 1.75vw;
+  top: 63%;
+  left: 0%;
+}
+
+#affiliation {
+  position: relative;
+  text-transform: uppercase;
+  /* padding-top: 8px; */
+  text-align: center;
+  font-size: 1.5vw;
+  top: 64%;
+  left: 0%;
+}
+
+.affiliationtext {
+  font-family: "Saira", "Computer Modern Bright", serif;
+  font-size: 16px;
+}
+
+.links {
+  position: relative;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  top: 66%;
+  left: 40%;
+  /* transform: translate(50%, 150%)  */
+}
+
+.links a {
+  color: #000000;
+  text-decoration: none;
+  letter-spacing: normal;
+}
+
+.links a:hover {
+  color: #aa0000;
+  /* f0b1b1 */
+}
+
+.contact i {
+  font-size: larger;
+  padding-right: 3px;
+}
+
+
  
-   
-  /* Style for links */
-  .Penrose-schwarzschild a {
-    color: black; /* Default link color */
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .Penrose-schwarzschild a:hover {
-    color: red; /* Change color on hover */
-  }
-  
-  /* Custom positions for link elements */
-  .secI {
-    position: absolute;
-    font-family: Didot; /* "Computer Modern Serif"; */
-    font-style: italic;
-    font-size: 24px;
-    top: 37%; /* Adjust the percentage to move up or down */
-    left: 25%;
-    transform: translateX(-50%); /* Center horizontally */
-  }
-  
-  .secII {
-    position: absolute;
-    font-family: Didot; /* "Computer Modern Serif"; */
-    font-style: italic;
-    font-size: 24px;
-    top: 37%; /* Adjust the percentage to move up or down */
-    left: 75%;
-    transform: translateX(-50%); /* Center horizontally */
-  }
-  
-  .secIII {
-    position: absolute;
-    font-family: Didot; /* "Computer Modern Serif"; */
-    font-style: italic;
-    font-size: 24px;
-    top: 58%; /* Adjust the percentage to move up or down */
-    left: 25%;
-    transform: translateX(-50%); /* Center horizontally */
-  }
-  
-  .secIV {
-    position: absolute;
-    font-family: Didot; /* "Computer Modern Serif"; */
-    font-style: italic;
-    font-size: 24px;
-    top: 58%; /* Adjust the percentage to move up or down */
-    left: 75%;
-    transform: translateX(-50%); /* Center horizontally */
-  }
+/* Style for links */
+.Penrose-schwarzschild a {
+  color: black; /* Default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.Penrose-schwarzschild a:hover {
+  color: red; /* Change color on hover */
+}
+
+/* Custom positions for link elements */
+.secI {
+  position: relative;
+  font-family: Didot; /* "Computer Modern Serif" ;*/
+  font-style: italic;
+  font-size: 2.5vw;
+  top:5%; /* Adjust the percentage to move up or down */
+  left: 18%;
+  /* transform: translateX(-50%); /* Center horizontally */
+}
+
+.secII {
+  position: relative;
+  font-family: Didot; /* "Computer Modern Serif";*/
+  font-style: italic;
+  font-size: 2.5vw;
+  top: 5%; /* Adjust the percentage to move up or down */
+  left: 57%;
+  /*transform: translateX(-50%); /* Center horizontally */
+}
+
+.secIII {
+  position: relative;
+  font-family: Didot; /* "Computer Modern Serif"; */
+  font-style: italic;
+  font-size: 2.5vw;
+  top: 33%; /* Adjust the percentage to move up or down */
+  left: -3%;
+  /*transform: translateX(-50%); /* Center horizontally */
+}
+
+.secIV {
+  position: relative;
+  font-family: Didot; /* "Computer Modern Serif"; */
+  font-style: italic;
+  font-size: 2.5vw;
+  top: 33%; /* Adjust the percentage to move up or down */
+  left: 30%;
+  /* transform: translateX(-50%); /* Center horizontally */
+}
 
 
   .main {

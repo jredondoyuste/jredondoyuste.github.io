@@ -1,34 +1,14 @@
 <!DOCTYPE html>
-
-<html>
-
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>jaime</title>
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- font awesome icons: https://fontawesome.com/v4.7.0/icons/  -->
-    <!-- line awesome icons: https://icons8.com/line-awesome -->
+    <title>jaime redondo-yuste</title>
+    <link rel="shortcut icon" href="files/favicon.png">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-    <!-- computer modern font -->
-    <link rel="stylesheet" href="fonts/Serif/cmun-serif.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Sans/cmun-sans.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Bright/cmun-bright.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Slanted/cmun-serif-slanted.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Upright-Italic/cmun-upright-italic.css">
-    </link>
     <!-- google fonts  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&family=Saira:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
         integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
@@ -43,43 +23,66 @@
         onload="renderMathInElement(document.body);"></script>
     <!-- Add telescopic text features -->
     <script src="https://unpkg.com/telescopic-text/lib/index.js"></script>
-    <link href="https://unpkg.com/telescopic-text/lib/index.css" rel="stylesheet"/>
+    <link
+        href="https://unpkg.com/telescopic-text/lib/index.css"
+        rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js"></script>
+    <script src="ringdown.js"></script>
+    <script src="telescopic_text.js"></script>
 </head>
 
 <body>
-    <div class="Penrose-schwarzschild">
-        <div id='name'> Jaime <br> Redondo-Yuste</div>
-        <div id='position'> PhD Student </div>
-        <div id='affiliation' class='affiliation text'> strong <i class="fa fa-at"></i> Niels Bohr Institute</div>
-        <div class="links affiliationtext">
-            <div class="contact">
-                <!-- CONTACT -->
-                <!-- CV -->
-                <a href="CV_Jaime_Redondo.pdf" disp-title="CV"><i 
-                    class="fa fa-file-pdf " aria-hidden="true"></i></a>
+    <div class="box">
+        <nav class="header">
+            <svg class="ringdown" preserveAspectRatio="none"></svg>
+            <a href="index.html">[home]</a> 
+            <a href="about.html">[about]</a> 
+            <a href="research.html">[research]</a>
+            <a href="random.html">[random]</a>
+        </nav>
+        <img src="files/sjoerd_photo.jpg" alt="two physicsist stare at a blackboard" class="main-image">
+        <div class="small">Photography by Sjoerd Knibbeler</div>
+        <div class="rant">
+         <p>
+            hey, i'm Jaime! I am also... 
+            <ul>
+                <li>a PhD candidate at the <a href="https://the-center-of-gravity.com/">Center of Gravity</a>, Copenhagen.</li>
+                <li>a black hole enthusiast, a perturbation theorist</li>
+                <li>a former swimmer, present-day climber, and future runner</li>
+                <li>a lover of all things Ravel</li>
+                <li>a believer in the supremacy of (spanish) olive oil</li>
+                <li>a theatre kid</li>
+            </ul>
+        </p>
+        <p>
+            and many other things. 
+            If anything catches your eye, <a href="mailto:jaime.redondo.yuste@nbi.ku.dk">say hi!</a>.
+            <br>
+            If you need a break, <a href="https://coruscating-panda-143743.netlify.app/" target="_blank">take a stroll in my garden</a>. 
+        </p>
+        </div>
+        <footer id="footer">
+            <div class="links">
                 <!-- email -->
-                <a href="mailto:jaime.redondo.yuste@nbi.ku.dk" disp-title="Email Me"><i
+                <a href="mailto:jaime.redondo.yuste@nbi.ku.dk" disp-title="Email Me" target="_blank"><i
                     class="fa fa-fw fa-envelope "></i></a>
                 <!-- linkedin -->
-                <a href="https://www.linkedin.com/in/jredondoyuste" disp-title="LinkedIn"><i
+                <a href="https://www.linkedin.com/in/jredondoyuste" disp-title="LinkedIn" target="_blank"><i
                     class="fab fa-fw fa-linkedin"></i></a>
                 <!-- curius page -->
-                <a href="https://curius.app/jaime-redondo-yuste2" disp-title="Curius"><i 
+                <a href="https://curius.app/jaime-redondo-yuste2" disp-title="Curius" target="_blank"><i 
                     class="fa fa-fw fa-chevron-circle-up"></i></a>
                 <!-- github -->
-                <a href="https://github.com/jredondoyuste" disp-title="GitHub"><i
+                <a href="https://github.com/jredondoyuste" disp-title="GitHub" target="_blank"><i
                     class="fab fa-fw fa-github"></i></a>
                 <!-- spires -->
                 <a href="https://inspirehep.net/authors/1797177"
-                    disp-title="Inspire"><i class="fa fa-fw fa-graduation-cap"></i></i></a>
+                    disp-title="Inspire" target="_blank"><i class="fa fa-fw fa-graduation-cap"></i></i></a>
             </div>
-        </div>
-        <a href="about.html" class='secI'> About Me </a>
-        <a href="research.html" class='secII'> Research </a>
-        <a href="blog.html" class='secIII'> Blog</a>
-        <a href="teaching.html" class='secIV'> Teaching & Outreach</a>
+            <br>
+            &copy; 2025 Jaime Redondo-Yuste 
+        </footer>
     </div>
 </body>
 

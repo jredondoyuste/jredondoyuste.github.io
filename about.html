@@ -4,28 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>jaime redondo-yuste</title>
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- font awesome icons: https://fontawesome.com/v4.7.0/icons/  -->
-    <!-- line awesome icons: https://icons8.com/line-awesome -->
+    <link rel="shortcut icon" href="files/favicon.png">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-    <!-- computer modern font -->
-    <link rel="stylesheet" href="fonts/Serif/cmun-serif.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Sans/cmun-sans.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Bright/cmun-bright.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Slanted/cmun-serif-slanted.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Upright-Italic/cmun-upright-italic.css">
-    </link>
     <!-- google fonts  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&family=Saira:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
         integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
@@ -45,100 +28,82 @@
         rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js"></script>
+    <script src="ringdown.js"></script>
+    <script src="telescopic_text.js"></script>
 </head>
 
 <body>
-    <a id="returntocard" href="index.html" class="button"><i class='fa fa-fw fa-chevron-down'></i></a>
-    <div id="content" class="main" style="padding-top: 10vh; padding-bottom: 10vh;">
-        <div id="header">
-            <h2> Jaime Redondo-Yuste
-                <!-- <span style="font-size: smaller;"> <i class="fa fa-leaf"></i></span> -->
-            </h2>
-            <div style="display: inline-block;">
-                <a href="mailto:jaime.redondo.yuste@nbi.ku.dk"><i class="fa fa-fw fa-envelope "></i></a>
+    <div class="box">
+        <nav class="header">
+            <svg class="ringdown" preserveAspectRatio="none"></svg>
+            <a href="index.html">[home]</a> 
+            <a href="about.html">[about]</a> 
+            <a href="research.html">[research]</a>
+            <a href="random.html">[random]</a>
+        </nav>
+        <div class="myname">
+            <div class="myname-text">
+                <div class="myname-name">jaime redondo-yuste</div>
+                <div class="myname-brief">
+                    <p>
+                        I research black hole physics and gravitational waves at the <a href="https://the-center-of-gravity.com/">Center of Gravity</a>, in Copenhagen,
+                        advised by <a href="https://vitorcardoso.strong-gr.com/">Vitor Cardoso</a>.
+                        <br> 
+                        <br>
+                        You can read my CV <a href="files/cv_jaime_redondo.pdf" target="_blank">here</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="myname-img">
+                <img src="files/me.jpg" alt="Photo of Jaime Redondo-Yuste" />
+                <div class="small">Photography by AB</div>
             </div>
         </div>
-        <div style="text-align: center; position: relative;">
-            <img src="MyPhotos/thomas_jaime_nbi_about_image_crop.jpg" alt="Two physicists discussing in a blackboard" style="width: 60%; height: auto; border-radius: 10px; padding-top: 2vw;">
-            <div style="font-size: 0.8em; color: #888; margin-top: 5px;">Photography by Sjoerd Knibbeler, 2024</div>
-        </div>
-        <p>
-            I am a PhD student studying black hole physics through perturbation theory. I am drawn towards turbulent phenomena. 
-            <br>
-            When I'm not working, I enjoy climbing, running, dancing salsa, watching the newest art exhibition, or most likely at some bakery. Check out the <a href="gallery.html">the Gallery</a> for some photos I took!
-            <br>
-            I am currently based at the Niels Bohr Institute, in Copenhagen. Before that I escaped from canadian geese in Waterloo, I sang Wonderwall one too many times (twice) in Manchester, and I grew up in Madrid, which I pronounce Madriz. 
-        </p>
 
-        <div style="height:10px"></div>
-
-        <div class="collapsible-wrapper">
-            <h3 class="collapsible">Music</h3>
-            <h3 class="collapsible">Books</h3>
-            <h3 class="collapsible">Movies</h3>
-        </div>
-
-        <div class="collapsible-content">
-            <p class="partopmargin">
-            Here are some albums that I enjoy lately:
+        <div class="rant">
+            <p>
+                My office is in the old Niels Bohr Institute, built in 1920. 
+                When I need to unwind, I take a stroll in Fælledparken, or <a href="https://sinnegasbageri.dk/" target="_blank">grab a pastry</a>. 
             </p>
-            <ul class="projectlist">
-                <li>
-                    <i>Canciones en mi</i>, by delightful Pablo Pablo. 
-                </li>
-                <li>
-                    <i>Piano Concerto in G Major, Gaspard de la Nuite, Sonatine</i>, by Ravel, played by Martha Argerich and conducted by Claudio Abbado. 
-                </li>
-                <li>
-                    <i>Sacromonte</i>, by Enrique Morente. It's not so often that I find so much joy in a flamenco album. 
-                <li>
-                <li>
-                    <i>Marianne Faithfull: the Montreaux Years</i>, really is there anything better this woman's raspy voice? 
-                </li>
-            </ul>
-        </div>
-
-        <div class="collapsible-content">
-            <p class='partopmargin'>
-                Here are some books that I've read recently:
+            <p>
+                I am (slowly) studying Art History at UNED. I studied physics, mathematics, and philosophy in Madrid and Manchester. 
+                <!-- I also acted in TeatruKo and the <a href="https://uompanto.wordpress.com/" target="_blank">Pantomime Society</a>.  -->
+                I am a member of the Diversity, Equity, and Inclusion committee of the <a href="https://www.lisamission.org/" target="_blank">LISA Consortium</a>.
             </p>
-            <ul class='projectlist'>
-            <li>
-                <i> 1Q84</i> (H. Murakami) - Currently devouring this series. Stay tuned!
-            </li>
-            <li>
-                <i>The vegetarian</i> (H. Kang) - I was somewhat disappointed. The first third was disturbing in a marvelous way, the remaining two thirds was just disturbing. 
-            </li>
-            <li>
-                <i>Viaje a la Alcarria</i> (C.J. Cela) - Boredom as a virtue, nothing happening as the biggest adventure. 
-            </li>
-            <li>
-                <i>What do I talk about when I talk about running</i> (H. Murakami) - Yes, I am getting into long-distance running. And into Murakami. Independently?
-            </li>
-            <li>
-                <i>Hitchcock/Truffaut</i> (F.Truffaut) - Made me look at movies in a different way. 
-            </li>
+            <p>
+                Art, I suspect, is gradually becoming humanity’s last true language. 
+                I have failed at it in every medium I’ve ever tried, yet art remains central to my life. 
+                Lately, I think about how science may open new frontiers for art. 
+                My dream is to build an instrument based on the <a href="https://www.youtube.com/watch?v=MB7ZOdp__gQ&list=PLFjonLo8gYHIXC35K4Ujrbu6XHchNDCv9&ab_channel=ShawnBray" target="_blank">harmonic series</a> of a black hole. 
+                If this resonates with you, let’s connect.
+            <p>
+                Before, I evaded geese in Waterloo, I sang Wonderwall one too many times (twice) in Manchester, and I grew up in Madrid, which I pronounce Madriz. My family comes from Monreal del Campo, along with the best saffron. 
+            </p>
+            <p id="vibes-container"></p>
         </div>
 
-        <div class="collapsible-content">
-          <p class="partopmargin">
-            Here are a some of the last movies I have watched. Find me on Letterboxd for up to date information! 
-          </p>
-          <ul class='projectlist'>
-            <li>
-                <i> El bosque animado</i> (J. Luis Cuerda) - Evocative, suggestive, poetic, tragi-comedy at its best. 
-            </li>
-            <li>
-                <i> Materialists</i> (C. Song) - I was quite disappointed by this one, not gonna lie. 
-            </li>
-            <li>
-                <i>My dinner with Andre</i> (L. Malle) - So interesting that I literally could not sleep after watching it.
-            </li>
-            <li>
-                <i> Z</i> (A. Costa-Gavras) - Masterful story-telling. Also I know nothing about Greece. 
-            </li>
-          </ul>
-        </div>
+        <footer id="footer">
+            <div class="links">
+                <!-- email -->
+                <a href="mailto:jaime.redondo.yuste@nbi.ku.dk" disp-title="Email Me" target="_blank"><i
+                    class="fa fa-fw fa-envelope "></i></a>
+                <!-- linkedin -->
+                <a href="https://www.linkedin.com/in/jredondoyuste" disp-title="LinkedIn" target="_blank"><i
+                    class="fab fa-fw fa-linkedin"></i></a>
+                <!-- curius page -->
+                <a href="https://curius.app/jaime-redondo-yuste2" disp-title="Curius" target="_blank"><i 
+                    class="fa fa-fw fa-chevron-circle-up"></i></a>
+                <!-- github -->
+                <a href="https://github.com/jredondoyuste" disp-title="GitHub" target="_blank"><i
+                    class="fab fa-fw fa-github"></i></a>
+                <!-- spires -->
+                <a href="https://inspirehep.net/authors/1797177"
+                    disp-title="Inspire" target="_blank"><i class="fa fa-fw fa-graduation-cap"></i></i></a>
+            </div>
+            <br>
+            &copy; 2025 Jaime Redondo-Yuste 
+        </footer>
+
+    </div>
+
 </body>
-</html>

@@ -4,28 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>jaime redondo-yuste</title>
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- font awesome icons: https://fontawesome.com/v4.7.0/icons/  -->
-    <!-- line awesome icons: https://icons8.com/line-awesome -->
+    <link rel="shortcut icon" href="files/favicon.png">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-    <!-- computer modern font -->
-    <link rel="stylesheet" href="fonts/Serif/cmun-serif.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Sans/cmun-sans.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Bright/cmun-bright.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Slanted/cmun-serif-slanted.css">
-    </link>
-    <link rel="stylesheet" href="fonts/Serif-Upright-Italic/cmun-upright-italic.css">
-    </link>
     <!-- google fonts  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&family=Saira:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
         integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
@@ -45,119 +28,82 @@
         rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js"></script>
+    <script src="ringdown.js"></script>
+    <script src="telescopic_text.js"></script>
 </head>
 
 <body>
-    <a id="returntocard" href="index.html" class="button"><i class='fa fa-fw fa-chevron-down'></i></a>
-    <div id="content" class="main">
-        <div id="header">
-            <h2> Research
-                <!-- <span style="font-size: smaller;"> <i class="fa fa-leaf"></i></span> -->
-            </h2>
+    <div class="box">
+        <nav class="header">
+            <svg class="ringdown" preserveAspectRatio="none"></svg>
+            <a href="index.html">[home]</a> 
+            <a href="about.html">[about]</a> 
+            <a href="research.html">[research]</a>
+            <a href="random.html">[random]</a>
+        </nav>
+        <div class="minititle">
+            black hole perturber
         </div>
-        
-        <p>
-            I am fascinated by the dynamics of nonlinear systems. The dynamics of fluids such as air or water is described by nonlinear equations. These predict incredible phenomena such as <it>rogue waves</it>, or explain why hurricanes <it>never</it> split in two. 
-            <br>
-            Black holes and gravitational waves are also described by nonlinear equations, the equations of General Relativity. 
-            <br>
-            In my work, I focus on understanding better the nonlinear dynamics of the relaxation of black holes (BHs) to equilibrium, the dynamics of strongly gravitating fluids, and the connection between hydrodynamics and gravitational physics.  
-        </p>
-
-        <div class="collapsible-wrapper">
-            <h3 class="collapsible">BH Ringdown</h3>
-            <h3 class="collapsible">Viscous Stars</h3>
-            <h3 class="collapsible">Crazy Ideas</h3>
-        </div>
-
-        <div class="collapsible-content">
-            <p class="partopmargin">
-                Black holes relax to equilibrium emitting gravitational waves. This happens, for example, after two black holes merge, in the miliseconds after the remnant black hole first forms. This stage is called the <it>ringdown</it>.
-                <br>
-                BHs ringdown by emitting waves with particular <it>tones</it>. These tones only depend on the BH mass and its spin, which is incredibly useful, for example, to test General Relativity.
-                <br>
-                However the ringdown also contains higher harmonics, obtained by combining several tones. These are much weaker, but nonetheless will be detectable in the future. 
-                <br>
-                The ratio between the children higher harmonic, and their parent tones, is a very interesting quantity. In <a href="https://arxiv.org/pdf/2308.14796" target="_blank">2308.14796</a>, we computed for the first time this ratio for black holes at all spins, showing that this quantity does (mostly) not depend on the initial conditions of the merger. 
-                <br>
-                The upcoming LISA mission will be able to detect these higher harmonics - so we have a novel way to test General Relativity!
-                <br>
-                Recently I have been interested in the high-frequency limit of this nonlinear behavior. We showed some interesting features in <a href="https://arxiv.org/pdf/2501.17950" target="_blank">2501.17950</a>. Stay tuned for more results on this!
-                <br>
-                There are many more interesting aspects of black hole ringdown and nonlinear dynamics. Check <a href="https://arxiv.org/pdf/2505.23895" target="_blank">our recent review</a> on black hole spectroscopy!
+        <div class="rant">
+            <p>
+                Gravity fascinates me, especially when it is highly nonlinear. 
+                My work explores nonlinear effects in the relaxation of black holes. 
+                I’m also intrigued by how astrophysical environments might absorb, reflect, trap, or amplify gravitational waves.
+                When I have more fun is when mathematics, numerics, and approximations come together to reveal new insights. 
             </p>
-        </div>
-
-        <div class="collapsible-content">
-            <p class="partopmargin">
-                Real stars are not perfect fluids. They have viscosity, which is a measure of how do they react against deformations. A very viscous material would resist deformation so much that it could be a mirror of gravitational waves, much like a conductive material can reflect light. 
-                <br>
-                W. Press baptized this material <it>Respondium</it>. Intrigued by this idea, <a href="https://arxiv.org/pdf/2411.16861" target="_blank">last year</a> we showed that this <it>could</it> occur, indeed! But the viscosity would need to be so large that a first order theory of hydrodynamics would break causality. 
-                <br>
-                However in the process we learned how to perturb viscous stars. They can absorb gravitational waves, and acquire new oscillation modes. 
-                <br>
-               <a href="https://arxiv.org/pdf/2506.13850" target="_blank">More recently</a> we showed that if an object is viscous and rotating, it will amplify low-frequency gravitational waves. This is a phenomenon known as superradiance, but in this case without requiring event horizons or ergoregions. 
-                <br>
-                This means that by studying perfect fluids we are missing out on most of the fun interactions that can occur whenever gravitational waves are emitted or propagate through astrophysical media! 
-                <br>
-                How do accretion disks heat up when two black holes merge? Do they emit bright counterparts? How are gravitational waves affected by this? What are the dynamical tides of stars with large bulk viscosities? All these are questions I find exciting!
+            <p>
+                Below are some of my favorite recent papers. 
+                For the full list, see my profile in <a href="https://inspirehep.net/authors/1797177?ui-citation-summary=true" target="_blank">Spires</a> 
+                or <a href="https://scholar.google.com/citations?user=owdU7m0AAAAJ&hl=en" target="_blank">Google Scholar</a>.
+                <details class="collapsible">
+                    <summary>Favorite Papers</summary>
+                    <ul>
+                        <li><a href="https://arxiv.org/abs/2506.13850"><i>Superradiant amplification by rotating viscous compact objects</i></a>, <b>JRY</b> & V. Cardoso, pre-print. </li>
+                        <li><a href="https://arxiv.org/abs/2502.18643"><i>Perturbative and nonlinear analyses of gravitational turbulence in spacetimes with stable light rings</i></a>, <b>JRY</b> & A. Cardenas-Avendaño, Phys. Rev. D 111 (2025) 12, 124009.</li>
+                        <li><a href="https://arxiv.org/abs/2411.16861"><i>The dynamical response of viscous objects to gravitational waves</i></a>, V. Boyanov, V. Cardoso, K. Kokkotas & <b>JRY</b>, Phys. Rev. Lett. <i>to appear</i>.</li>
+                        <li><a href="https://arxiv.org/abs/2312.04633"><i>Ringdown of a dynamical spacetime</i></a>, <b>JRY</b>, D.Pereñiguez & V. Cardoso, Phys. Rev. D 109 (2024) 4, 044048.</li>
+                        <li><a href="https://arxiv.org/abs/2308.14796"><i>Spin dependence of black hole ringdown nonlinearities</i></a>, <b>JRY</b>, G. Carullo, J. Ripley, E. Berti & V. Cardoso, Phys. Rev. D 109 (2024) 10, L101503.</li>
+                    </ul>
+                </details>
             </p>
-        </div>
-
-        <div class="collapsible-content">
-            <p class="partopmargin">
-                I am always on the lookout for new ideas. These are some things I find exciting!
-                <ul class="projectlist">
-                    <li>
-                        <i>Nonlinearities in the early universe</i>: I would like to learn more about scalar induced gravitational waves, and the impliciations this has for early universe cosmology. 
-                    </li>
-                    <li>
-                        <i>Turbulence of gravitational waves</i>: Gravitational waves can behave turbulently if they are trapped sufficiently long. Can they be described by a kinetic wave equation? How far can the realm of wave turbulence extend to gravitational waves? Some early explorations on this can be found <a href="https://arxiv.org/pdf/2502.18643" target="_blank">here</a>.
-                    </li>
-                    <li>
-                        <i>How can you emit gravitational waves on the lab?</i> How can you trap them? What happens when you focus them?
-                    </li>
-                    <li>
-                        <i>Higher order perturbation theory</i>: Can we study gravitational perturbations beyond second order, in a sufficiently simple background? Do we understand gauge and frame invariance there?
-                    </li>
-                    <li>
-                        <i>Near-extremal black holes</i>: perturbations only decay slowly in the near extremal limit. Do black holes ever reach zero temperature, then? 
-                    </li>           
+            <p>
+                <details class="collapsible">
+                    <summary>Recent Talks & Seminars</summary>
+                    <ul>
+                        <li>2025.05.28 - <a href="files/talks/IBS.pdf"><i>Nonlinear effects in perturbation theory</i></a> @ QNM Workshop, IBS, Daejeon</li>
+                        <li>2025.05.14 - <a href="files/talks/nordic.pdf"><i>The sound of black holes</i></a> @ Nordic GW Meeting, Copenhagen</li>
+                        <li>2025.04.22 - <a href="files/talks/AEI.pdf"><i>Nonlinear gravitational waves</i></a> @ ACR Division Seminar, Albert Einstein Institute, Berlin</li>
+                        <li>2025.03.12 - <a href="files/talks/LANL.pdf"><i>Turbulence of gravitational waves</i></a> @ Distinguished Astrophysic Seminar, Los Alamos, NM</li>
+                    </ul>
+                </details>
             </p>
-        </div>
-
-        <h3 class="sectionhead collapsible">Publications</h3>
-
-        <div class="collapsible-content">
-            <p class="partopmargin lighter">
-                Here are some of my favourite papers. You can find a full list of my publications in <a href="https://inspirehep.net/authors/1797177?ui-citation-summary=true" target="_blank">Spires</a> or in <a href="https://scholar.google.com/citations?user=owdU7m0AAAAJ&hl=en" target="_blank">Google Scholar</a>.
-                <ul class="lighter">
-                    <li>
-                        <i>Ringdown of a dynamical spacetime</i>, JRY, D. Pereñiguez, and V. Cardoso, Phys.Rev.D 109 (2024) 4, 044048
-                    </li>
-                    <li>
-                        <i>Spin-dependence of black hole ringdown nonlinearities</i>, JRY, G. Carullo, J. Ripley, E. Berti, and V. Cardoso, Phys.Rev.D 109 (2024) 10, L101503
-                    </li>
-                    <li>
-                        <i>Non-linear black hole dynamics and Carrollian fluids</i>, JRY and L. Lehner, JHEP 02 (2023) 240
-                    </li>
-                        </ul>
-            </p>
-        </div>
-
-        <h3 class="sectionhead collapsible">Codes</h3>
-
-        <div class="collapsible-content">
-            Together with G. Carullo and M. De Amicis we developed the Python package  <a href="https://github.com/GCArullo/bayRing", target="_blank"><i>bayRing</i></a>, 
-            which allows for simple Bayesian inference of ringdown numerical waveforms using several templates, including nonlinear modes. 
-
-            See more resources in the <a href="https://the-center-of-gravity.com/data-and-routines/", target="_blank">Center of Gravity website</a>, some of which I have contributed to.
-
-            I am a big fan and user of <a href="http://www.xact.es", target="_blank"><i>XAct</i></a>, for analytical calculations, and <a href="https://www.grchombo.org/", target="_blank"><i>GRChombo</i></a>, for numerical relativity works.
             
+            <button class="cute-button" onclick="updateLine()">These are questions that keep me up at night...</button>
+            <p id="random-line" class="fade-text"></p>
+            <script src="crazy_idea.js"></script>
         </div>
+        <footer id ="footer">
+            <div class="links">
+                <!-- email -->
+                <a href="mailto:jaime.redondo.yuste@nbi.ku.dk" disp-title="Email Me" target="_blank"><i
+                    class="fa fa-fw fa-envelope "></i></a>
+                <!-- linkedin -->
+                <a href="https://www.linkedin.com/in/jredondoyuste" disp-title="LinkedIn" target="_blank"><i
+                    class="fab fa-fw fa-linkedin"></i></a>
+                <!-- curius page -->
+                <a href="https://curius.app/jaime-redondo-yuste2" disp-title="Curius" target="_blank"><i 
+                    class="fa fa-fw fa-chevron-circle-up"></i></a>
+                <!-- github -->
+                <a href="https://github.com/jredondoyuste" disp-title="GitHub" target="_blank"><i
+                    class="fab fa-fw fa-github"></i></a>
+                <!-- spires -->
+                <a href="https://inspirehep.net/authors/1797177"
+                    disp-title="Inspire" target="_blank"><i class="fa fa-fw fa-graduation-cap"></i></i></a>
+            </div>
+            <br>
+            &copy; 2025 Jaime Redondo-Yuste 
+        </footer>
 
+    </div>
 
 </body>
-</html>

@@ -20,5 +20,9 @@ function drawWigglyLine() {
   svg.innerHTML = `<path d="${path}" stroke="#6E6E73" fill="none" stroke-width="1"/>`;
 }
 
+// window.addEventListener('resize', drawWigglyLine);
+// window.addEventListener('load', drawWigglyLine);
+window.addEventListener('load', function() {
+  setTimeout(drawWigglyLine, 50); // slight delay to ensure layout is ready
+});
 window.addEventListener('resize', drawWigglyLine);
-window.addEventListener('load', drawWigglyLine);

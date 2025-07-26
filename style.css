@@ -133,7 +133,7 @@ button {
 .ringdown {
   flex-shrink: 0;
   height: 15px;
-  width: auto;
+  width: 100%;
   flex-grow: 1;
   margin-right: 1em;
   transform: translateY(30%);

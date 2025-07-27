@@ -275,7 +275,7 @@ hr {
 
 .myname-name {
   font-weight: 600;
-  font-size: 14pt;
+  font-size: 16pt;
   font-variant: small-caps;
 }
 
@@ -301,6 +301,23 @@ hr {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   object-fit: cover;
 }
+
+@media (max-width: 600px) {
+  .myname {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 1em;
+  }
+  .myname-brief {
+    padding-left: 0;
+    padding-top: 1em;
+  }
+  .myname-img img {
+    height: 28vw;
+    width: 28vw;
+  }
+}
+
 .progress-bar-row {
   display: flex;
   align-items: center;

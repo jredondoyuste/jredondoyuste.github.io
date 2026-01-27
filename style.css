@@ -71,6 +71,8 @@ h3 {
   font-size: 11pt;
   padding-top:0.5em;
   padding-left: 2em;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
 }
   
 #footer {
@@ -112,7 +114,7 @@ button {
     text-align: right; 
     color: #6E6E73;
     padding: 0.5em 0em 0em 0em;
-    font-size: 10pt;
+    font-size: 8pt;
     font-weight: 300;
     font-style: italic;
     }
@@ -529,7 +531,9 @@ hr {
   }
 
   .minititle {
-    font-size: 13pt;
+    font-weight: 600;
+    font-size: 16pt;
+    font-variant: small-caps;
     padding-top: 0.8em;
   }
 
@@ -547,13 +551,13 @@ hr {
     padding: 1em 0;
     border-left: 3px solid #ddd;
     padding-left: 1em;
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; */
   }
 
-  .timeline-milestone:last-child {
+  /* .timeline-milestone:last-child {
     height: auto;
     margin-bottom: 1.5em;
-  }
+  } */
 
   .timeline-segment::before {
     display: none;
@@ -671,14 +675,14 @@ hr {
   font-family: "Exo";
   gap: 1.5em;
   padding-left: 0;
-  margin-bottom: 2em;
+  /* margin-bottom: 2em; */
   margin-top: 2em;
 }
 
 .timeline-line {
   position: relative;
   width: 8px;
-  min-height: 500px;
+  min-height: auto;
   margin-top: 0.25em;
 }
 

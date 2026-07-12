@@ -1,19 +1,5 @@
 /* Pantry page — 001 */
 
-a:link,
-a:visited {
-    color: #121214;
-    text-decoration: underline;
-}
-
-a:hover {
-    text-decoration: none;
-    background: #b90202;
-    color: #ffffff;
-    padding: 3px 0.5px;
-    border-radius: 2px;
-}
-
 .pantry-controls {
     display: flex;
     justify-content: space-between;
@@ -25,12 +11,10 @@ a:hover {
 /* Edit / Done button */
 .edit-btn {
     background: none;
-    border: 1px solid #ddd;
-    font-family: "Exo", "Saira", sans-serif;
-    font-size: 10pt;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: #6E6E73;
+    border: 1px solid var(--hair);
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--muted);
     cursor: pointer;
     padding: 4px 14px;
     border-radius: 12px;
@@ -39,35 +23,34 @@ a:hover {
 
 .edit-btn:hover,
 .edit-btn.active {
-    border-color: #b90202;
-    color: #b90202;
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* Recipe button overrides */
 .recipe-btn {
-    font-size: 10pt;
+    font-size: 0.9rem;
     padding: 6px 16px;
     margin-top: 0;
-    letter-spacing: 0.05em;
 }
 
 .recipe-btn:disabled {
-    background-color: #ccc;
-    box-shadow: none;
+    border-color: var(--hair);
+    color: var(--muted);
+    background: none;
     cursor: not-allowed;
-    transform: none;
 }
 
 /* Checked item */
 .list-section li.checked::before {
     content: "✓";
-    font-size: 10pt;
-    line-height: 1.3;
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
 .list-section li.checked .pantry-item {
-    color: #b90202;
-    font-weight: 400;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 /* Edit mode: suppress hover on items */
@@ -83,9 +66,9 @@ a:hover {
 .delete-btn {
     background: none;
     border: none;
-    color: #b90202;
+    color: var(--accent);
     cursor: pointer;
-    font-size: 13pt;
+    font-size: 1.1rem;
     line-height: 1;
     padding: 0 0 0 0.5em;
     opacity: 0.45;
@@ -108,14 +91,12 @@ a:hover {
 }
 
 .add-item-input {
-    font-family: "Exo", "Saira", sans-serif;
-    font-size: 10pt;
-    font-weight: 300;
-    letter-spacing: 0.05em;
+    font: inherit;
+    font-size: 0.9rem;
     background: none;
     border: none;
-    border-bottom: 1px solid #ddd;
-    color: #121214;
+    border-bottom: 1px solid var(--hair);
+    color: var(--ink);
     padding: 2px 4px;
     width: 130px;
     outline: none;
@@ -123,19 +104,19 @@ a:hover {
 }
 
 .add-item-input::placeholder {
-    color: #aaa;
+    color: var(--muted);
 }
 
 .add-item-input:focus {
-    border-bottom-color: #b90202;
+    border-bottom-color: var(--accent);
 }
 
 .add-item-btn {
     background: none;
     border: none;
-    color: #b90202;
+    color: var(--accent);
     cursor: pointer;
-    font-size: 14pt;
+    font-size: 1.2rem;
     line-height: 1;
     padding: 0 0 0 0.3em;
     opacity: 0.7;
@@ -151,7 +132,7 @@ a:hover {
 /* Mobile */
 @media (max-width: 480px) {
     .recipe-btn {
-        font-size: 9pt;
+        font-size: 0.85rem;
         padding: 5px 12px;
     }
 }

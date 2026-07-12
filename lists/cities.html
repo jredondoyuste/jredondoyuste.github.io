@@ -10,6 +10,7 @@
     <!-- google fonts  -->
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700;800;900&family=Saira:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="../style.css" rel="stylesheet" type="text/css" />
+    <link href="lists.css" rel="stylesheet" type="text/css" />
     <script src="../js/ringdown.js"></script>
 </head>
 
@@ -24,30 +25,37 @@
         </nav>
 
         <h2>cities</h2>
-        <p style="padding-top: 0.5em; font-style: italic; color: #666;">## europe</p>
 
-        <div style="margin-top: 1.5em;">
-        <h3>europe</h3>
-        <ul>
-            <li>madrid*</li>
-            <li>manchester*</li>
-            <li>copenhagen*</li>
-            <li>barcelona</li>
-            <li>berlin</li>
-            <li>vienna</li>
-        </ul>
-        <h3>asia</h3>
-        <ul>
-            <li>daejeon</li>
-            <li>seoul</li>
-        </ul>
-        <h3>america</h3>
-        <ul>
-            <li>new york city</li>
-            <li>boston</li>
-            <li>baltimore</li>
-            <li>san francisco</li>
-        </ul>
+        <div class="list-container">
+            <div class="list-section">
+                <div class="list-section-title">Europe</div>
+                <ul>
+                    <li><span class="list-item" onclick="openModal('madrid')">madrid*</span></li>
+                    <li><span class="list-item" onclick="openModal('manchester')">manchester*</span></li>
+                    <li><span class="list-item" onclick="openModal('copenhagen')">copenhagen*</span></li>
+                    <li><span class="list-item" onclick="openModal('barcelona')">barcelona</span></li>
+                    <li><span class="list-item" onclick="openModal('berlin')">berlin</span></li>
+                    <li><span class="list-item" onclick="openModal('vienna')">vienna</span></li>
+                </ul>
+            </div>
+
+            <div class="list-section">
+                <div class="list-section-title">Asia</div>
+                <ul>
+                    <li><span class="list-item" onclick="openModal('daejeon')">daejeon</span></li>
+                    <li><span class="list-item" onclick="openModal('seoul')">seoul</span></li>
+                </ul>
+            </div>
+
+            <div class="list-section">
+                <div class="list-section-title">America</div>
+                <ul>
+                    <li><span class="list-item" onclick="openModal('new york city')">new york city</span></li>
+                    <li><span class="list-item" onclick="openModal('boston')">boston</span></li>
+                    <li><span class="list-item" onclick="openModal('baltimore')">baltimore</span></li>
+                    <li><span class="list-item" onclick="openModal('san francisco')">san francisco</span></li>
+                </ul>
+            </div>
         </div>
 
         <footer id="footer">
@@ -67,6 +75,17 @@
             &copy; 2026 Jaime Redondo-Yuste 
         </footer>
     </div>
+
+    <!-- Modal -->
+    <div id="city-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-text" class="modal-text"></p>
+        </div>
+    </div>
+
+    <script src="js/cities-modal.js"></script>
 </body>
 
 </html>

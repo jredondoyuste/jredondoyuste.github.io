@@ -83,7 +83,7 @@ body {
   max-width: var(--measure);
   margin-left: clamp(1.25rem, 10vw, 8rem);
   margin-right: auto;
-  padding: 0 1.25rem 4rem;
+  padding: 0 1.25rem 2.5rem;
 }
 
 h1 {
@@ -168,7 +168,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.25rem 0 2rem;
+  padding: 1.25rem 0 1.5rem;
   color: var(--muted);
   font-size: 0.95rem;
   font-variant-caps: small-caps;
@@ -216,11 +216,11 @@ details.reveal {
   border-top: 1px solid var(--hair);
   border-bottom: 1px solid var(--hair);
   padding: 0.6rem 0;
-  margin: 1.75rem 0;
+  margin: 1.4rem 0;
 }
 
 details.reveal + details.reveal {
-  margin-top: -1.75rem;
+  margin-top: -1.4rem;
   border-top: none;
 }
 
@@ -455,7 +455,7 @@ figure img {
   letter-spacing: 0.02em;
   font-size: 0.9rem;
   padding: 0.4em 1em;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-radius: 4px;
   transition: background-color 150ms;
 }
@@ -469,7 +469,7 @@ figure img {
   color: var(--muted);
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
-  min-height: 2em;
+  margin: 0.5em 0 0;
 }
 
 /* ----- collapsible details ------------------------------------------- */
@@ -651,7 +651,7 @@ body.modal-open {
 /* ----- footer ---------------------------------------------------------- */
 
 #footer {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
   border-top: 1px solid var(--hair);
   padding-top: 1rem;
   font-size: 0.85rem;
@@ -735,11 +735,8 @@ body.modal-open {
     align-items: start;
   }
 
-  .with-stage .header,
-  .with-stage #footer {
-    grid-column: 1 / -1;
-  }
-
+  /* nav + footer live INSIDE the spine, so the header never stretches
+     beyond the default content */
   .with-stage .spine {
     grid-column: 1;
     min-width: 0;
@@ -750,6 +747,30 @@ body.modal-open {
     grid-column: 2;
     min-width: 0;
   }
+}
+
+/* a reveal disguised as a plain line of text (e.g. the research photo) */
+details.reveal-quiet {
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+details.reveal-quiet summary {
+  font-variant-caps: normal;
+  letter-spacing: normal;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--accent);
+  padding-right: 0;
+  display: inline-block;
+}
+
+details.reveal-quiet summary::after {
+  content: " ▸";
+  position: static;
+  display: inline;
+  margin-left: 0.2em;
 }
 
 /* ----- vault --------------------------------------------------------------- */
@@ -792,9 +813,9 @@ body.modal-open {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.1rem 0;
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+  row-gap: 1.4rem;
+  margin-top: 2.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .vault-item {
@@ -805,13 +826,26 @@ body.modal-open {
   border: 1px solid var(--hair);
   border-radius: 6px;
   padding: 0.3em 0.75em;
-  margin-right: var(--mx, 0.6em);
+  margin: var(--my, 0) var(--mx, 0.6em) 0 0;
   transform: rotate(var(--rot, 0deg)) translateY(var(--dy, 0px));
   font-size: 0.95rem;
   line-height: 1.35;
   text-decoration: none;
   color: var(--ink);
   transition: transform 0.2s ease, border-color 0.2s, background-color 0.2s;
+}
+
+/* photo tiles: prints pinned among the tags */
+.vault-item.vault-photo {
+  padding: 0.35em;
+  background: #FFFDF6;
+}
+
+.vault-photo img {
+  display: block;
+  height: 7.5rem;
+  width: auto;
+  border-radius: 3px;
 }
 
 .vault-item[hidden] {

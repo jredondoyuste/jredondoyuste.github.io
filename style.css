@@ -314,8 +314,45 @@ details.reveal summary:hover {
   margin: 0 0 1.25rem;
 }
 
+.pronounce {
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0 0 0.75rem;
+}
+
 .contact-row {
-  margin: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.contact-row a {
+  text-decoration: none;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 0.18em 0.85em;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: color 150ms, border-color 150ms, background-color 150ms;
+}
+
+.contact-row a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
+}
+
+/* camouflaged link (the edible easter egg in the colophon) */
+.hidden-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hidden-link:hover {
+  color: var(--accent);
 }
 
 .fn-ref {
@@ -749,28 +786,32 @@ body.modal-open {
   }
 }
 
-/* a reveal disguised as a plain line of text (e.g. the research photo) */
-details.reveal-quiet {
+/* inline reveal triggers: accent words in prose that open on the stage */
+.stage-link {
+  background: none;
   border: none;
   padding: 0;
-  margin: 1rem 0;
-}
-
-details.reveal-quiet summary {
-  font-variant-caps: normal;
-  letter-spacing: normal;
-  font-size: 1rem;
-  font-style: italic;
+  font: inherit;
   color: var(--accent);
-  padding-right: 0;
-  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--accent-underline);
+  transition: text-decoration-color 150ms, background-color 150ms;
 }
 
-details.reveal-quiet summary::after {
-  content: " ▸";
-  position: static;
-  display: inline;
-  margin-left: 0.2em;
+.stage-link:hover,
+.stage-link.on-stage {
+  text-decoration-color: var(--accent);
+  background: var(--accent-wash);
+}
+
+/* hidden source for an inline reveal; shown inline only on narrow screens */
+.reveal-source {
+  border-left: 2px solid var(--hair);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
 }
 
 /* ----- vault --------------------------------------------------------------- */

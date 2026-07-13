@@ -9,10 +9,11 @@
     <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/stage.js" defer></script>
 </head>
 
 <body>
-<div class="page">
+<div class="page with-stage">
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
@@ -20,6 +21,7 @@
         <a href="/vault.html">[vault]</a>
     </nav>
 
+    <div class="spine">
     <h1>Research</h1>
     <p class="muted">
         <a href="#publications">publications</a> ·
@@ -37,15 +39,33 @@
         such as when two black holes or neutron stars merge.
         My work combines analytical techniques with numerical simulations, keeping an eye on
         improving our tools for gravitational wave data analysis.
-        <!-- EDIT-ME(jaime): the old page linked to black-holes.html / neutron-stars.html stubs here;
-             those pages are gone. Expand this overview instead if you like. -->
-        <span class="todo">[jaime: optionally, a paragraph per theme — ringdown &amp; nonlinearities, viscous stars, GW data analysis]</span>
     </p>
     <p>
         I am always eager to collaborate on projects related to strong-field gravity and
         gravitational waves. If you are also excited about these topics, and especially if
         you are a student, please reach out!
     </p>
+
+    <!-- Themes: each opens on the right-hand stage (inline on narrow screens).
+         EDIT-ME(jaime): develop each theme body; add or remove themes freely. -->
+    <details class="reveal">
+        <summary>nonlinear black hole dynamics</summary>
+        <div class="reveal-body">
+            <p><span class="todo">[jaime: develop this theme — ringdown of dynamical spacetimes, quadratic quasinormal modes, spin dependence of nonlinearities…]</span></p>
+        </div>
+    </details>
+    <details class="reveal">
+        <summary>viscous neutron stars</summary>
+        <div class="reveal-body">
+            <p><span class="todo">[jaime: develop this theme — the dynamical response of viscous objects to gravitational waves, gravitational mirrors…]</span></p>
+        </div>
+    </details>
+    <details class="reveal">
+        <summary>gravitational turbulence</summary>
+        <div class="reveal-body">
+            <p><span class="todo">[jaime: develop this theme — spacetimes with stable light rings, turbulent cascades of gravitational waves…]</span></p>
+        </div>
+    </details>
 
     <h2 id="publications">Selected publications</h2>
     <ul class="pub-list">
@@ -101,6 +121,13 @@
     <button class="ask-button" onclick="updateLine()">These are some questions that keep me up at night&hellip;</button>
     <p id="random-line" class="fade-text"></p>
     <script src="/js/crazy_idea.js" defer></script>
+    </div><!-- /spine -->
+
+    <aside class="stage" aria-live="polite">
+        <div class="stage-inner">
+            <div class="stage-body"></div>
+        </div>
+    </aside>
 
     <footer id="footer">
         <p>

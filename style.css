@@ -204,7 +204,93 @@ button {
   color: var(--accent);
 }
 
-/* ----- home: intro grid, contact ------------------------------------ */
+/* ----- spine + stage ------------------------------------------------- */
+/* Wide screens: a minimal left spine; reveals (trajectory, research
+   themes) appear on the right stage. Narrow screens: native <details>. */
+
+.stage {
+  display: none;
+}
+
+details.reveal {
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  padding: 0.6rem 0;
+  margin: 1.75rem 0;
+}
+
+details.reveal + details.reveal {
+  margin-top: -1.75rem;
+  border-top: none;
+}
+
+details.reveal summary {
+  list-style: none;
+  cursor: pointer;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  position: relative;
+  padding-right: 1.5em;
+}
+
+details.reveal summary::-webkit-details-marker {
+  display: none;
+}
+
+details.reveal summary::after {
+  content: "▸";
+  position: absolute;
+  right: 0;
+  color: var(--muted);
+  transition: transform 0.3s ease, color 0.2s;
+}
+
+details.reveal[open] summary::after,
+details.reveal.on-stage summary::after {
+  transform: rotate(90deg);
+}
+
+details.reveal.on-stage summary,
+details.reveal.on-stage summary::after {
+  color: var(--accent);
+}
+
+details.reveal summary:hover {
+  color: var(--accent);
+}
+
+.reveal-body {
+  padding: 0.75rem 0 0.25rem;
+}
+
+.stage-inner {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.stage-entry {
+  animation: stage-in 0.4s ease both;
+}
+
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-entry {
+    animation: none;
+  }
+}
+
+/* ----- home: intro grid --------------------------------------------- */
 
 .intro-grid {
   display: grid;
@@ -636,6 +722,117 @@ body.modal-open {
     padding: 1.5em;
     width: 95%;
   }
+}
+
+/* ----- wide screens: spine + stage grid ----------------------------------- */
+
+@media (min-width: 1100px) {
+  .page.with-stage {
+    max-width: 78rem;
+    display: grid;
+    grid-template-columns: minmax(0, var(--measure)) minmax(16rem, 28rem);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .with-stage .header,
+  .with-stage #footer {
+    grid-column: 1 / -1;
+  }
+
+  .with-stage .spine {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .with-stage .stage {
+    display: block;
+    grid-column: 2;
+    min-width: 0;
+  }
+}
+
+/* ----- vault --------------------------------------------------------------- */
+
+.page.vault-wide {
+  max-width: 72rem;
+}
+
+.vault-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.vault-filter {
+  background: transparent;
+  border: 1px solid var(--hair);
+  color: var(--muted);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  padding: 0.25em 0.9em;
+  border-radius: 999px;
+  transition: color 150ms, border-color 150ms, background-color 150ms;
+}
+
+.vault-filter:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.vault-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.vault-floor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem 0;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.vault-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  padding: 0.3em 0.75em;
+  margin-right: var(--mx, 0.6em);
+  transform: rotate(var(--rot, 0deg)) translateY(var(--dy, 0px));
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.2s ease, border-color 0.2s, background-color 0.2s;
+}
+
+.vault-item[hidden] {
+  display: none;
+}
+
+a.vault-item:hover {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  transform: rotate(0deg) translateY(0) scale(1.04);
+}
+
+.vault-item .la-icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  fill: var(--accent);
+}
+
+.vault-item .muted {
+  font-size: 0.85em;
 }
 
 /* ----- print ------------------------------------------------------------- */

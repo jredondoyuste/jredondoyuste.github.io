@@ -9,10 +9,11 @@
     <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/stage.js" defer></script>
 </head>
 
 <body>
-<div class="page">
+<div class="page with-stage">
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/" aria-current="page">[home]</a>
@@ -20,6 +21,7 @@
         <a href="/vault.html">[vault]</a>
     </nav>
 
+    <div class="spine">
     <div class="intro-grid">
         <div>
             <h1>Jaime Redondo-Yuste<a class="fn-ref" href="#fn-surname" aria-label="a footnote about the surname">*</a></h1>
@@ -52,7 +54,9 @@
         </figure>
     </div>
 
-    <h2>Trajectory</h2>
+    <details class="reveal">
+        <summary>Trajectory</summary>
+        <div class="reveal-body">
     <!-- EDIT-ME(jaime): check the dates on the segments below. -->
     <div class="timeline-container">
         <div class="timeline-line">
@@ -85,6 +89,8 @@
             </div>
         </div>
     </div>
+        </div>
+    </details>
 
     <p style="margin-top: 2rem;">
         Away from the blackboard I am a <a href="/soup.html">soup</a> enthusiast, a lover of
@@ -96,6 +102,13 @@
         * About my surname: both my parents get billing; the hyphen's there to stop anyone
         demoting them to middle names.
     </p>
+    </div><!-- /spine -->
+
+    <aside class="stage" aria-live="polite">
+        <div class="stage-inner">
+            <div class="stage-body"></div>
+        </div>
+    </aside>
 
     <footer id="footer">
         <p>

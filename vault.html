@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vault — Jaime Redondo-Yuste</title>
-    <meta name="description" content="The non-refereed section: links, friends, shelves, photos, places, and a colophon.">
+    <meta name="description" content="The non-refereed section: links, friends, books, records, photos, and places, scattered like an actual vault.">
     <link rel="icon" href="/files/favicon.png">
     <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/vault.js" defer></script>
 </head>
 
 <body>
-<div class="page">
+<div class="page vault-wide">
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
@@ -22,136 +23,107 @@
 
     <h1>Vault</h1>
     <p>
-        The non-refereed section of this website.
+        The non-refereed section of this website. It reshuffles itself on every visit.
         <!-- EDIT-ME(jaime): your one-line welcome to the vault. -->
         <span class="todo">[jaime: adjust this intro line to taste]</span>
     </p>
 
-    <h2 id="links">Links</h2>
-    <ul class="link-list">
-        <li>here's a video (excuse the low quality) of a <a href="https://youtu.be/BSINnJt7dM0" target="_blank">black hole ballad</a> i wrote. It's not in perfect iambic. Perhaps that's why it was only good for second prize at the Nordic Science Slam.</li>
-        <li>if you want to read all my bad opinions about cinema, check my <a href="https://letterboxd.com/jaime_redon/" target="_blank">Letterboxd</a> profile</li>
-        <li>take a look at my <a href="https://coruscating-panda-143743.netlify.app/" target="_blank">personal garden</a> for some random thoughts [perpetually under construction]</li>
-        <li>things I read and liked end up on <a href="https://curius.app/jaime-redondo-yuste2" target="_blank">Curius</a></li>
-        <li>these are some useful <a href="https://lisa.pages.in2p3.fr/consortium-userguide/com_diversity.html" target="_blank">resources</a> on DEI from the LISA Consortium</li>
-        <li>in <a href="https://the-center-of-gravity.com/resources/" target="_blank">this page</a> you can find useful resources and codes, some of which I wrote</li>
+    <div class="vault-controls" role="group" aria-label="Filter the vault">
+        <button class="vault-filter active" data-kind="all">everything</button>
+        <button class="vault-filter" data-kind="links">links</button>
+        <button class="vault-filter" data-kind="friends">friends</button>
+        <button class="vault-filter" data-kind="books">books</button>
+        <button class="vault-filter" data-kind="records">records</button>
+        <button class="vault-filter" data-kind="photos">photos</button>
+        <button class="vault-filter" data-kind="places">places</button>
+    </div>
+
+    <div class="vault-floor">
+        <!-- links -->
+        <a class="vault-item" data-kind="links" href="https://youtu.be/BSINnJt7dM0" target="_blank" title="second prize at the Nordic Science Slam — it's not in perfect iambic"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>black hole ballad</a>
+        <a class="vault-item" data-kind="links" href="https://letterboxd.com/jaime_redon/" target="_blank" title="all my bad opinions about cinema"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-film"/></svg>Letterboxd</a>
+        <a class="vault-item" data-kind="links" href="https://coruscating-panda-143743.netlify.app/" target="_blank" title="random thoughts, perpetually under construction"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-seedling"/></svg>personal garden</a>
+        <a class="vault-item" data-kind="links" href="https://curius.app/jaime-redondo-yuste2" target="_blank" title="things I read and liked"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bookmark"/></svg>Curius</a>
+        <a class="vault-item" data-kind="links" href="https://lisa.pages.in2p3.fr/consortium-userguide/com_diversity.html" target="_blank" title="useful resources on DEI from the LISA Consortium"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-hands-helping"/></svg>LISA DEI resources</a>
+        <a class="vault-item" data-kind="links" href="https://the-center-of-gravity.com/resources/" target="_blank" title="useful resources and codes, some of which I wrote"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Center of Gravity resources</a>
         <!-- EDIT-ME(jaime): add more links here. Placeholder for a future Substack:
-        <li>I write occasionally at <a href="">…</a></li>
+        <a class="vault-item" data-kind="links" href=""><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bookmark"/></svg>Substack</a>
         -->
-    </ul>
 
-    <h2 id="friends">Friends with websites</h2>
-    <p class="friends-inline">
-        <a href="https://abrandenberger.github.io/#home" target="_blank">Anna</a> ·
-        <a href="https://ezquiaga.github.io/" target="_blank">Jose</a> ·
-        <a href="https://www.kaihendriks.com/" target="_blank">Kai</a> ·
-        <a href="https://lennoxkeeble.github.io/" target="_blank">Lennox</a> ·
-        <a href="https://lorenzzwick96.github.io/" target="_blank">Lorenz</a> ·
-        <a href="https://www.matthewfoxphysics.com/" target="_blank">Matthew</a> ·
-        <a href="https://www.pedrosalesrodriguez.com/" target="_blank">Pedro</a> ·
-        <a href="https://ricokaloklo.github.io/" target="_blank">Rico</a> ·
-        <a href="https://skeltonse.github.io/" target="_blank">Shawn</a> ·
-        <a href="https://www.stephaniedorval.com/" target="_blank">Stéphanie</a> ·
-        <a href="https://www.zhengzhou.page/" target="_blank">Zheng</a>
-    </p>
+        <!-- friends (each keeps their icon from the old random page) -->
+        <a class="vault-item" data-kind="friends" href="https://abrandenberger.github.io/#home" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>Anna</a>
+        <a class="vault-item" data-kind="friends" href="https://ezquiaga.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bicycle"/></svg>Jose</a>
+        <a class="vault-item" data-kind="friends" href="https://www.kaihendriks.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-table-tennis"/></svg>Kai</a>
+        <a class="vault-item" data-kind="friends" href="https://lennoxkeeble.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-sun"/></svg>Lennox</a>
+        <a class="vault-item" data-kind="friends" href="https://lorenzzwick96.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-dungeon"/></svg>Lorenz</a>
+        <a class="vault-item" data-kind="friends" href="https://www.matthewfoxphysics.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-mountain"/></svg>Matthew</a>
+        <a class="vault-item" data-kind="friends" href="https://www.pedrosalesrodriguez.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-water"/></svg>Pedro</a>
+        <a class="vault-item" data-kind="friends" href="https://ricokaloklo.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-car-side"/></svg>Rico</a>
+        <a class="vault-item" data-kind="friends" href="https://skeltonse.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-skull"/></svg>Shawn</a>
+        <a class="vault-item" data-kind="friends" href="https://www.stephaniedorval.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-birthday-cake"/></svg>Stéphanie</a>
+        <a class="vault-item" data-kind="friends" href="https://www.zhengzhou.page/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-wine-bottle"/></svg>Zheng</a>
 
-    <h2 id="shelves">Shelves</h2>
-    <p class="muted">Books and records I own and love. A perpetual work in progress.</p>
+        <!-- books: fiction -->
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The left hand of darkness <span class="muted">(Ursula K. Le Guin)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The happening <span class="muted">(Annie Ernaux)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>My brilliant friend <span class="muted">(Elena Ferrante)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>A wise man's fear <span class="muted">(Patrick Rothfuss)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Las ratas <span class="muted">(Miguel Delibes)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>San Manuel Bueno, mártir <span class="muted">(Miguel de Unamuno)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Nada <span class="muted">(Carmen Laforet)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>For whom the bell tolls <span class="muted">(Ernest Hemingway)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Ficciones <span class="muted">(Jorge Luis Borges)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Pedro Páramo <span class="muted">(Juan Rulfo)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Blindness <span class="muted">(Jose Saramago)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Stranger <span class="muted">(Albert Camus)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Cosmere novels <span class="muted">(Brandon Sanderson)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Klara and the Sun <span class="muted">(Kazuo Ishiguro)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Cuentos Telúricos <span class="muted">(Rodrigo Cortés)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>(almost) anything by Joe Abercrombie</span>
+        <!-- books: poetry -->
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Romancero Gitano <span class="muted">(Federico García Lorca)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Time is a Mother <span class="muted">(Ocean Vuong)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Marinero en Tierra <span class="muted">(Rafael Alberti)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Lamia, Isabella, The Eve of St. Agnes <span class="muted">(John Keats)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Old Possum's Book of Practical Cats <span class="muted">(T.S. Eliot)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Complete Works <span class="muted">(Jaime Gil de Biedma)</span></span>
+        <!-- books: theatre -->
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Complete Works <span class="muted">(Sarah Kane)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Waiting for Godot <span class="muted">(Samuel Beckett)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Six Characters in the Search for an Author <span class="muted">(Luigi Pirandello)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>An Enemy of the People <span class="muted">(Henrik Ibsen)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>La Casa de Bernarda Alba <span class="muted">(Federico García Lorca)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Persona <span class="muted">(Ingmar Bergman)</span></span>
+        <!-- books: non-fiction -->
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Niels Bohr's Times <span class="muted">(Abraham Pais)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>On Photography <span class="muted">(Susan Sontag)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Sculpting on Time <span class="muted">(Andrei Tarkovsky)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Persians, the age of the great kings <span class="muted">(Lloyd Llewellyn-Jones)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Fear and Trembling <span class="muted">(Søren Kierkegård)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>What I talk about when I talk about running <span class="muted">(Haruki Murakami)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>One-dimensional man <span class="muted">(Herbert Marcuse)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>A room of one's own <span class="muted">(Virginia Woolf)</span></span>
 
-    <h3>Books</h3>
-    <div class="list-container">
-        <div class="list-section">
-            <div class="list-section-title">fiction</div>
-            <ul>
-                <li>The left hand of darkness <span class="muted">(Ursula K. Le Guin)</span></li>
-                <li>The happening <span class="muted">(Annie Ernaux)</span></li>
-                <li>My brilliant friend <span class="muted">(Elena Ferrante)</span></li>
-                <li>A wise man's fear <span class="muted">(Patrick Rothfuss)</span></li>
-                <li>Las ratas <span class="muted">(Miguel Delibes)</span></li>
-                <li>San Manuel Bueno, mártir <span class="muted">(Miguel de Unamuno)</span></li>
-                <li>Nada <span class="muted">(Carmen Laforet)</span></li>
-                <li>For whom the bell tolls <span class="muted">(Ernest Hemingway)</span></li>
-                <li>Ficciones <span class="muted">(Jorge Luis Borges)</span></li>
-                <li>Pedro Páramo <span class="muted">(Juan Rulfo)</span></li>
-                <li>Blindness <span class="muted">(Jose Saramago)</span></li>
-                <li>The Stranger <span class="muted">(Albert Camus)</span></li>
-                <li>Cosmere novels <span class="muted">(Brandon Sanderson)</span></li>
-                <li>Klara and the Sun <span class="muted">(Kazuo Ishiguro)</span></li>
-                <li>Cuentos Telúricos <span class="muted">(Rodrigo Cortés)</span></li>
-                <li>(almost) anything by Joe Abercrombie</li>
-            </ul>
-        </div>
-        <div class="list-section">
-            <div class="list-section-title">poetry</div>
-            <ul>
-                <li>Romancero Gitano <span class="muted">(Federico García Lorca)</span></li>
-                <li>Time is a Mother <span class="muted">(Ocean Vuong)</span></li>
-                <li>Marinero en Tierra <span class="muted">(Rafael Alberti)</span></li>
-                <li>Lamia, Isabella, The Eve of St. Agnes, and Other Poems <span class="muted">(John Keats)</span></li>
-                <li>Old Possum's Book of Practical Cats <span class="muted">(T.S. Eliot)</span></li>
-                <li>Complete Works <span class="muted">(Jaime Gil de Biedma)</span></li>
-            </ul>
-        </div>
-        <div class="list-section">
-            <div class="list-section-title">theatre</div>
-            <ul>
-                <li>Complete Works <span class="muted">(Sarah Kane)</span></li>
-                <li>Waiting for Godot <span class="muted">(Samuel Beckett)</span></li>
-                <li>Six Characters in the Search for an Author <span class="muted">(Luigi Pirandello)</span></li>
-                <li>An Enemy of the People <span class="muted">(Henrik Ibsen)</span></li>
-                <li>La Casa de Bernarda Alba <span class="muted">(Federico García Lorca)</span></li>
-                <li>Persona <span class="muted">(Ingmar Bergman)</span></li>
-            </ul>
-        </div>
-        <div class="list-section">
-            <div class="list-section-title">non-fiction</div>
-            <ul>
-                <li>Niels Bohr's Times in Physics, Philosophy and Polity <span class="muted">(Abraham Pais)</span></li>
-                <li>On Photography <span class="muted">(Susan Sontag)</span></li>
-                <li>Sculpting on Time <span class="muted">(Andrei Tarkovsky)</span></li>
-                <li>Persians, the age of the great kings <span class="muted">(Lloyd Llewellyn-Jones)</span></li>
-                <li>Fear and Trembling <span class="muted">(Søren Kierkegård)</span></li>
-                <li>What I talk about when I talk about running <span class="muted">(Haruki Murakami)</span></li>
-                <li>One-dimensional man <span class="muted">(Herbert Marcuse)</span></li>
-                <li>A room of one's own <span class="muted">(Virginia Woolf)</span></li>
-            </ul>
-        </div>
+        <!-- records -->
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg><span class="todo">[jaime: records go here]</span></span>
+
+        <!-- photos -->
+        <span class="vault-item" data-kind="photos"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-camera-retro"/></svg>darkroom under construction</span>
+
+        <!-- places -->
+        <a class="vault-item" data-kind="places" href="/lists/cities.html" title="cities I've lived in and visited, with vignettes"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-map-marker"/></svg>cities, with vignettes</a>
     </div>
-
-    <h3>Records</h3>
-    <p class="muted">
-        The shelf exists; the catalogue doesn't yet.
-        <span class="todo">[jaime: records go here]</span>
-    </p>
-    <!-- Note: your old concerts list (2025–2026, classical) is also recoverable:
-         git show 103a4e6~1:lists/concerts.md — add a "Concerts" h3 here if you want it back. -->
-
-    <h2 id="photos">Photos</h2>
-    <p class="muted">
-        A darkroom under construction — film scans will hang here.
-        <span class="todo">[jaime: drop film photos into files/photos/ and uncomment the grid below]</span>
-    </p>
-    <!--
-    <div class="list-container">
-        <figure><img src="/files/photos/roll01_01.jpg" alt="" loading="lazy"><figcaption class="small">caption</figcaption></figure>
-        <figure><img src="/files/photos/roll01_02.jpg" alt="" loading="lazy"><figcaption class="small">caption</figcaption></figure>
-    </div>
-    -->
-
-    <h2 id="places">Places</h2>
-    <p>
-        I've grown fond of documenting things I love — like the
-        <a href="/lists/cities.html">cities</a> I've lived in and visited, with vignettes.
-    </p>
 
     <h2 id="colophon">Colophon</h2>
     <p class="muted">
         This site is hand-written HTML and CSS — no frameworks, no trackers, no cookies.
         It is set in <a href="https://ctan.org/pkg/etbb" target="_blank">ETbb</a>, Michael Sharpe's
-        extension of the ET&nbsp;Book family; the colors come from my talk slides.
+        extension of the ET&nbsp;Book family; the colors come from my talk slides; the icons
+        are <a href="https://icons8.com/line-awesome" target="_blank">Line Awesome</a>, self-hosted.
         The squiggle in the navigation is a damped sinusoid — a black hole's
         <i>ringdown</i> — and it doesn't like being poked.
         The favicon is a Penrose diagram that spells my initials.
+        The vault reshuffles itself every time you walk in.
         Something edible is hidden on this site.
     </p>
 

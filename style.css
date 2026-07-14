@@ -315,7 +315,7 @@ details.reveal summary:hover {
 }
 
 .pronounce {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-style: italic;
   margin: 0 0 0.75rem;
 }
@@ -562,7 +562,7 @@ figure img {
   margin: 1em 0;
 }
 
-/* ----- lists (cities, shelves, soup) + modal --------------------------- */
+/* ----- lists (cities, shelves) + modal --------------------------------- */
 
 .list-container {
   margin-top: 1.5em;

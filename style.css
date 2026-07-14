@@ -382,22 +382,25 @@ figure img {
 
 /* ----- timeline ------------------------------------------------------ */
 
+/* Each stop is a row: an 8px bar beside the text. The bar stretches to its own
+   row, so a milestone can run as long as it needs to. */
 .timeline-container {
   display: flex;
-  gap: 1.5em;
+  flex-direction: column;
+  gap: 5px;
   margin-top: 1.5rem;
 }
 
-.timeline-line {
-  position: relative;
-  width: 8px;
-  margin-top: 0.25em;
+.timeline-row {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  gap: 1.5em;
+  align-items: stretch;
+  min-height: 70px;
 }
 
 .timeline-segment {
-  position: absolute;
-  left: 0;
-  width: 100%;
+  position: relative;
   border-radius: 2px;
 }
 
@@ -414,21 +417,18 @@ figure img {
 }
 
 /* monochrome accent ramp — follows --accent automatically */
-.timeline-segment-1 { top: 0;     height: 70px; background: var(--accent); }
-.timeline-segment-2 { top: 75px;  height: 70px; background: color-mix(in srgb, var(--accent) 80%, var(--bg)); }
-.timeline-segment-3 { top: 150px; height: 70px; background: color-mix(in srgb, var(--accent) 60%, var(--bg)); }
-.timeline-segment-4 { top: 225px; height: 70px; background: color-mix(in srgb, var(--accent) 42%, var(--bg)); }
-.timeline-segment-5 { top: 300px; height: 70px; background: color-mix(in srgb, var(--accent) 28%, var(--bg)); }
-
-.timeline-content {
-  flex: 1;
-}
+.timeline-segment-1 { background: var(--accent); }
+.timeline-segment-2 { background: color-mix(in srgb, var(--accent) 80%, var(--bg)); }
+.timeline-segment-3 { background: color-mix(in srgb, var(--accent) 60%, var(--bg)); }
+.timeline-segment-4 { background: color-mix(in srgb, var(--accent) 42%, var(--bg)); }
+.timeline-segment-5 { background: color-mix(in srgb, var(--accent) 28%, var(--bg)); }
 
 .timeline-milestone {
-  height: 75px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0.35em 0;
+  min-width: 0;
 }
 
 .timeline-milestone-title {
@@ -720,18 +720,23 @@ body.modal-open {
 }
 
 @media (max-width: 768px) {
-  .timeline-line {
+  /* no room for the rotated date labels: drop the bars, put the date in the
+     title, and keep a hairline rule down the left */
+  .timeline-segment {
     display: none;
   }
 
   .timeline-container {
-    flex-direction: column;
     gap: 0;
     margin-left: 0;
   }
 
+  .timeline-row {
+    display: block;
+    min-height: 0;
+  }
+
   .timeline-milestone {
-    height: auto;
     padding: 0.8em 0 0.8em 1em;
     border-left: 3px solid var(--hair);
   }
@@ -807,6 +812,30 @@ body.modal-open {
   background: var(--accent-wash);
 }
 
+/* one-at-a-time list; reads as a dotted-underlined word, clicks to the next */
+.cycler {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--accent-underline);
+  transition: text-decoration-color 150ms, background-color 150ms;
+}
+
+.cycler:hover {
+  text-decoration-color: var(--accent);
+  background: var(--accent-wash);
+}
+
+.cycle-item[hidden] {
+  display: none;
+}
+
 /* hidden source for an inline reveal; shown inline only on narrow screens */
 .reveal-source {
   border-left: 2px solid var(--hair);
@@ -848,6 +877,20 @@ body.modal-open {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg);
+}
+
+/* per-category note, shown only while that filter is on */
+.vault-note {
+  margin: 1.25rem 0 0;
+  max-width: var(--measure);
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-left: 2px solid var(--hair);
+  padding-left: 0.9rem;
+}
+
+.vault-note[hidden] {
+  display: none;
 }
 
 .vault-floor {
@@ -904,6 +947,17 @@ a.vault-item:hover {
   height: 1.1em;
   flex-shrink: 0;
   fill: var(--accent);
+}
+
+/* favourites: add data-fav to any .vault-item and it gets the star */
+.vault-item[data-fav] {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--hair));
+}
+
+.vault-item .la-fav {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.1em;
 }
 
 .vault-item .muted {

@@ -21,8 +21,28 @@
     }
   }
 
+  // Items marked data-fav get the star; adding the attribute is the whole API.
+  function starFavourites(floor) {
+    floor.querySelectorAll('.vault-item[data-fav]').forEach(function (it) {
+      const star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      star.setAttribute('class', 'la-icon la-fav');
+      star.setAttribute('aria-hidden', 'true');
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttribute('href', '/files/la-sprite.svg#la-star');
+      star.appendChild(use);
+      it.appendChild(star);
+    });
+  }
+
+  function notes(kind) {
+    document.querySelectorAll('.vault-note').forEach(function (n) {
+      n.hidden = n.dataset.kind !== kind;
+    });
+  }
+
   function apply(floor, kind) {
     const items = floor.querySelectorAll('.vault-item');
+    notes(kind);
     if (kind === 'all') {
       shuffle(floor);
       floor.querySelectorAll('.vault-item').forEach(function (it) {
@@ -41,6 +61,7 @@
     const floor = document.querySelector('.vault-floor');
     if (!floor) return;
 
+    starFavourites(floor);
     apply(floor, 'all');
 
     const filters = document.querySelectorAll('.vault-filter');

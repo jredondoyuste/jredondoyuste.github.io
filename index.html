@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/js/ringdown.js" defer></script>
     <script src="/js/stage.js" defer></script>
+    <script src="/js/cycler.js" defer></script>
 </head>
 
 <body>
@@ -35,11 +36,24 @@
                 and what lurks inside Neutron Stars.
             </p>
             <p>
-                I grew up in Spain, and I had the joy of living in many different places. 
-                This means I've acquired a variety of interests including 
-                film photography, old movies, rock climbing, cooking soup, light-roasted coffee, 
-                running, funk/disco/techno/classical music, eating pastries, dungeons and dragons,
-                swimming, drinking (natural) wine.  
+                I grew up in Spain, and I had the joy of living in many different places.
+                This means I've acquired a variety of interests, such as
+                <!-- EDIT-ME(jaime): one hobby shows at a time; clicking swaps in another
+                     at random. Add or remove <span class="cycle-item"> lines freely — the
+                     order is shuffled on every visit, so nothing is "first". -->
+                <button class="cycler" data-cycler aria-label="Show another interest">
+                    <span class="cycle-item">film photography</span>
+                    <span class="cycle-item">old movies</span>
+                    <span class="cycle-item">rock climbing</span>
+                    <span class="cycle-item">cooking soup</span>
+                    <span class="cycle-item">light-roasted coffee</span>
+                    <span class="cycle-item">running</span>
+                    <span class="cycle-item">funk/disco/techno/classical music</span>
+                    <span class="cycle-item">eating pastries</span>
+                    <span class="cycle-item">dungeons and dragons</span>
+                    <span class="cycle-item">swimming</span>
+                    <span class="cycle-item">drinking (natural) wine</span>
+                </button>.
             </p>
             <p>
                 If you are a student and/or any of this peeks your curiosity, please reach out at jredondo [at] princeton [dot] edu.
@@ -61,32 +75,41 @@
     <details class="reveal">
         <summary>Trajectory</summary>
         <div class="reveal-body">
-    <!-- EDIT-ME(jaime): check the dates on the segments below. -->
+    <!-- EDIT-ME(jaime): check the dates on the segments below.
+         Each stop is one .timeline-row = a coloured bar + the text. Rows grow to
+         fit however much you write, so subtitles can run long. To add a stop,
+         copy a row and give its bar the next timeline-segment-N class. -->
     <div class="timeline-container">
-        <div class="timeline-line">
+        <div class="timeline-row">
             <div class="timeline-segment timeline-segment-1" data-date="2026 –"></div>
-            <div class="timeline-segment timeline-segment-2" data-date="2026"></div>
-            <div class="timeline-segment timeline-segment-3" data-date="2022–2026"></div>
-            <div class="timeline-segment timeline-segment-4" data-date="2021–2022"></div>
-            <div class="timeline-segment timeline-segment-5" data-date="1999–2021"></div>
-        </div>
-        <div class="timeline-content">
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2026 –">Princeton (US)</div>
                 <div class="timeline-milestone-subtitle"><span class="todo">I will join Princeton in Sep 26', and I'm very excited to see what's up next!</span></div>
             </div>
+        </div>
+        <div class="timeline-row">
+            <div class="timeline-segment timeline-segment-2" data-date="2026"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2026">Baltimore (US) ~ Kyoto (JP)</div>
                 <div class="timeline-milestone-subtitle">After defending my PhD, I spent some time at Emanuele Berti's group in Baltimore; and at the Yukawa Institute for Theoretical Physics, as a Short-Term JSPS Fellow. The food in Japan beats the Baltimore crabs. Go O's!</div>
             </div>
+        </div>
+        <div class="timeline-row">
+            <div class="timeline-segment timeline-segment-3" data-date="2022–2026"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2022–2026">Copenhagen (DK)</div>
                 <div class="timeline-milestone-subtitle">I completed my PhD at the Niels Bohr Institute, advised by Vitor Cardoso. During that time, I ate 100+ boller med ost (the best ones are found in Sinne Gas, before 9am), worked a bar inside a shipping container, cycled through sun, rain, hail, and snow, and fell in love with sauna.</div>
             </div>
+        </div>
+        <div class="timeline-row">
+            <div class="timeline-segment timeline-segment-4" data-date="2021–2022"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2021–2022">Waterloo (CA)</div>
                 <div class="timeline-milestone-subtitle">Perimeter Institute gave me a brilliant opportunity to study my masteres there. They did not warn me (enough) about the wild geese and the freezing temperatures, which I survived with the help of many brilliant friends. </div>
             </div>
+        </div>
+        <div class="timeline-row">
+            <div class="timeline-segment timeline-segment-5" data-date="1999–2021"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="1999–2021">Madrid (ES)</div>
                 <div class="timeline-milestone-subtitle">I grew up in Leganés, a suburb south of Madrid. I spent my summers in Monreal del Campo (Teruel), where the best saffron in the world grows. I came second to a future swimming World Champion, acted in a couple theatre plays, and moved to Manchester for a year (which made me sick of Oasis for a lifetime).</div>

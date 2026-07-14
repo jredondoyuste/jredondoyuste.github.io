@@ -45,10 +45,16 @@ Top to bottom: your **name**, the **pronunciation** line, your **title**
 chips** (email / CV / INSPIRE / …), the **Trajectory** timeline, and the
 **surname footnote** at the very bottom. All plain text — edit in place.
 
-- **Timeline entries** are the `timeline-milestone` blocks. Each has a
-  title, a `data-date`, and a subtitle. The coloured bars on the left are
-  the `timeline-segment` blocks — if you add or remove a milestone, add or
-  remove a matching segment so the colours line up.
+- **Timeline entries** are the `timeline-row` blocks — one per stop. Each
+  row holds its own coloured bar (`timeline-segment`) plus the title,
+  `data-date`, and subtitle. Rows grow to fit whatever you write, so a
+  subtitle can run as long as you like. To add a stop, copy a whole
+  `timeline-row` and give its bar the next `timeline-segment-N` class
+  (that's just which shade of the accent it gets).
+- **The interests list** is the `cycler` button: one interest shows at a
+  time, and clicking swaps in another. Add or remove
+  `<span class="cycle-item">…</span>` lines freely — the order is reshuffled
+  on every visit, so nothing is permanently "first".
 
 ### `research.html` — the Research page
 - The **intro paragraph** contains the three research themes as coloured,
@@ -73,10 +79,69 @@ existing line and change the text. Two things matter on each item:
 Use `<a …>` for items that link somewhere, `<span>` for ones that don't
 (like books). The **colophon** paragraph at the bottom is plain text.
 
-- **Adding film photos:** drop image files into `files/photos/` (keep each
-  under ~200 KB) and copy the commented `vault-photo` template already in
-  `vault.html` — one block per photo. They scatter and filter like
-  everything else.
+- **Marking a favourite:** add `data-fav` to any item — that's the whole
+  thing. It gets a star and an accent-tinted border. Works on any category,
+  as many as you like:
+  `<span class="vault-item" data-kind="books" data-fav>…</span>`
+  (One book is starred right now purely as an example — move it.)
+- **A note for one category:** the `vault-note` paragraph above the floor
+  shows *only* while its category is selected (the books one explains
+  borrowing, and shouts out the bookstores). To write one for another
+  category, copy the paragraph and change its `data-kind`.
+
+- **Adding film photos:** see the section below — don't copy scans in by hand.
+
+---
+
+## Adding film photos
+
+**Keep your originals outside this folder.** They're the negatives; the repo
+only holds the prints. This matters more than it sounds: git keeps every
+version of every file forever, so a 30 MB scan committed once stays in the
+repo's history even if you delete it afterwards. (`.gitignore` blocks the
+usual scan formats as a safety net.)
+
+1. Run the script on your scans — point it at a whole folder, at specific
+   files, or any mix. Folders are searched recursively, and formats can be
+   mixed freely (TIFF, PNG, JPEG, RAW, HEIC…):
+
+       tools/add-photos.sh ~/Pictures/scans
+       tools/add-photos.sh ~/Pictures/scans/*.tif
+       tools/add-photos.sh ~/scans/roll01.tif ~/scans/more-rolls
+
+   Anything that isn't an image is skipped with a note, so a stray `.txt` or
+   a Finder file in the folder won't stop the run. It prints a
+   `converted / skipped / failed` tally at the end — worth a glance.
+
+   For each one it writes two JPEGs and leaves your original untouched:
+
+   | file | size | used for |
+   |---|---|---|
+   | `files/photos/NAME.jpg` | 2000px long edge, ~200–400 KB | opens when clicked |
+   | `files/photos/thumbs/NAME.jpg` | 400px long edge, ~15–40 KB | the tile on the vault floor |
+
+   It also strips EXIF, so camera and GPS data don't ship with the photo.
+
+   The output name comes from the file name, lowercased
+   (`Roll01 Frame 02.TIF` → `roll01-frame-02.jpg`). If two scans would end up
+   with the same name — common when every roll folder has an `01.tif` — the
+   folder name gets folded in (`roll02-01.jpg`) so neither is lost. Running
+   the script again on the same folder updates those files rather than piling
+   up copies.
+
+2. Copy the commented `vault-photo` template in `vault.html`, once per
+   photo, replacing `NAME` and writing a caption. The tiles scatter, rotate,
+   and filter like everything else.
+
+3. Before committing, sanity-check the total: `du -sh files/photos`.
+   A whole roll should be a couple of MB, not a couple of hundred.
+
+**On formats:** always JPEG. Chrome and Firefox can't display TIFF at all,
+and PNG is lossless — for a photograph that means several times the size for
+no visible difference. The script handles this; it takes TIFF/RAW/PNG input
+and always writes JPEG.
+
+---
 
 ### `lists/cities.html` — the Cities list
 The city names are in this file. **The vignette text that pops up when you
@@ -88,6 +153,8 @@ JS file.
 - `cv_jaime_redondo.pdf` — your CV (replace the file, keep the name).
 - `myself.jpg`, `sjoerd_photo.jpg` — the portrait and blackboard photos.
 - `talks/*.pdf` — slide decks linked from Research.
+- `photos/` — web-sized film scans (see "Adding film photos"). Originals
+  don't belong here.
 - `fonts/`, `favicon.png`, `la-sprite.svg` — leave these alone.
 
 ---
@@ -104,6 +171,10 @@ JS file.
   `data-kind` and icon.
 - **Add a book/record:** copy a `vault-item` `<span>` with
   `data-kind="books"` (or `records`).
+- **Star a favourite:** add `data-fav` to that item.
+- **Add an interest to the rotating list:** add a `cycle-item` span in
+  `index.html`.
+- **Add a timeline stop:** copy a `timeline-row` in `index.html`.
 - **Try a different accent colour:** change `--accent` in `style.css`.
 
 ---
@@ -124,6 +195,11 @@ is fine; changing the tags/attributes themselves will break things.
   nesting for Publications/Talks/Code. Put your content inside `reveal-body`.
 - Every vault item needs `class="vault-item"` and a `data-kind`, or it
   won't filter.
+- In a timeline row, keep the `timeline-segment` and the
+  `timeline-milestone` as the row's two children — that pairing is what
+  makes the bar match the height of the text beside it.
+- In the interests list, keep the `cycle-item` spans directly inside the
+  `cycler` button.
 - The **`ringdown` SVG** in the nav, and all the **`.js` files** — no need
   to edit for content (except `crazy_idea.js` for the questions list, and
   `cities-modal.js` for city vignettes).
@@ -144,7 +220,7 @@ tag, a `class`, a `data-…`, or an `id`, pause.
   `music`, `bicycle`, `table-tennis`, `sun`, `dungeon`, `mountain`,
   `water`, `car-side`, `skull`, `birthday-cake`, `wine-bottle`, `video`,
   `film`, `seedling`, `bookmark`, `hands-helping`, `tools`, `book`,
-  `compact-disc`, `camera-retro`, `map-marker`. (Adding a new icon means
+  `compact-disc`, `camera-retro`, `map-marker`, `star`. (Adding a new icon means
   regenerating the sprite — ask for help with that.)
 - **Hidden pages** that aren't in the menu: the pantry at `/001/`. It's
   marked "noindex" so search engines ignore it.

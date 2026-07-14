@@ -1,3 +1,23 @@
 _site/
 .DS_Store
 
+# Photo originals must never land in the repo: git keeps every version of every
+# file forever, so a committed 30MB scan stays in history even if you delete it
+# later. Run tools/add-photos.sh instead — it writes the web-sized .jpg files
+# into files/photos/, and those DO get committed.
+*.tif
+*.tiff
+*.TIF
+*.TIFF
+*.raw
+*.RAW
+*.arw
+*.ARW
+*.cr2
+*.CR2
+*.nef
+*.NEF
+*.dng
+*.DNG
+*.psd
+*.PSD

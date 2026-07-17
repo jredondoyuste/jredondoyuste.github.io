@@ -8,8 +8,10 @@
     <link rel="icon" href="/files/favicon.png">
     <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
+    <script src="/js/theme.js"></script>
     <script src="/js/ringdown.js" defer></script>
     <script src="/js/vault.js" defer></script>
+    <script src="/js/lightbox.js" defer></script>
 </head>
 
 <body>
@@ -19,6 +21,7 @@
         <a href="/">[home]</a>
         <a href="/research.html">[research]</a>
         <a href="/vault.html" aria-current="page">[vault]</a>
+        <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>
 
     <h1>Vault</h1>
@@ -40,51 +43,72 @@
     <p class="vault-note" data-kind="books" hidden>
         These are the books I have in Baltimore, right now.
         If you want to borrow one, just send me an email! Shout-out to my favourite bookstores:
-        Bryn Mawr (Cambridge), Atomic Books (Baltimore), William Dams (Denmark), La Central (Madrid).
+        Labyrinth (Princeton), Bryn Mawr and Rodney's (Cambridge), Atomic Books (Baltimore), William Dam (Denmark), La Central (Madrid). 
+        Remember to support your local bookstores and check your local library!
+    </p>
+
+    <p class="vault-note" data-kind="friends" hidden>
+        Some of my friends and collaborators have websites. Go check them out! 
+    </p>
+
+    <p class="vault-note" data-kind="records" hidden>
+        This is an incomplete list of records I own. 
+        I claim no coherence nor expertise in music. However, I am always happy to receive recommendations or playlists! 
+    </p>
+
+    <p class="vault-note" data-kind="photos" hidden>
+        Shot on Ilford HP5, Kodak Portra 400, Kodak Gold, and Fujifilm 400; on a Minolta zoom 1X0c. 
+        Developed and scanned at One of Many Cameras (Copenhagen), and Maruphoto (Kyoto). 
     </p>
 
     <!-- EDIT-ME(jaime): mark a favourite by adding data-fav to any item below —
          nothing else needed, it gets a star and an accent border. -->
     <div class="vault-floor">
         <!-- links -->
-        <a class="vault-item" data-kind="links" href="https://youtu.be/BSINnJt7dM0" target="_blank" title="second prize at the Nordic Science Slam — it's not in perfect iambic"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>black hole ballad</a>
-        <a class="vault-item" data-kind="links" href="https://letterboxd.com/jaime_redon/" target="_blank" title="all my bad opinions about cinema"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-film"/></svg>Letterboxd</a>
-        <a class="vault-item" data-kind="links" href="https://curius.app/jaime-redondo-yuste2" target="_blank" title="things I read and liked"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bookmark"/></svg>Curius</a>
-        <a class="vault-item" data-kind="links" href="https://lisa.pages.in2p3.fr/consortium-userguide/com_diversity.html" target="_blank" title="useful resources on DEI from the LISA Consortium"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-hands-helping"/></svg>LISA DEI resources</a>
-        <a class="vault-item" data-kind="links" href="https://the-center-of-gravity.com/resources/" target="_blank" title="useful resources and codes, some of which I wrote"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Center of Gravity resources</a>
-        <a class="vault-item" data-kind="links" href="https://communityofwriters.org/wp-content/uploads/2024/01/The-Carrier-Bag-Theory-of-Fiction.pdf?curius=1503" target="_blank" title="a great essay about fiction and gender, by U.K. Le Guin"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>The Carrier Bag Theory of Fiction</a>
-        <a class="vault-item" data-kind="links" href="https://web.archive.org/web/20230113015511/https://blog.jaibot.com/the-copenhagen-interpretation-of-ethics/" target="_blank" title="interesting essay on ethics"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>The Copenhagen Interpretation of Ethics</a>
-        <a class="vault-item" data-kind="links" href="http://www.aaronsw.com/weblog/" target="_blank" title="Aaron Swartz's blog is a well of interesting thoughts"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Raw Thought</a>
-        <a class="vault-item" data-kind="links" href="https://aliciaguo.com/pages/explorations/woven-poem.html" target="_blank" title="I got to interact with this piece while in SF and was impressed by it"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Woven Poem</a>
-        <a class="vault-item" data-kind="links" href="https://louisiana.dk/" target="_blank" title="Possibly the best contemporary art museum?"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Louisiana Museum</a>
-        <a class="vault-item" data-kind="links" href="https://fictionalaether.substack.com/" target="_blank" title="Mark Hannam's substack is always a joy to read"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>The Fictional Aether</a>
-        <a class="vault-item" data-kind="links" href="https://www.youtube.com/watch?v=MB7ZOdp__gQ" target="_blank" title="Bernstein's Norton Lectures at Harvard"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>The Unanswered Question</a>
-        <a class="vault-item" data-kind="links" href="https://www.nytimes.com/crosswords/game/daily/" target="_blank" title="The NYT crossword or my daily entertainment"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>NYT Crossword</a>
-        <a class="vault-item" data-kind="links" href="https://luc.devroye.org/fonts.html" target="_blank" title="A brilliant bank of fonts and resources by Luc Devroye"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Fonts</a>
-        <a class="vault-item" data-kind="links" href="https://pangrampangram.com/" target="_blank" title="I really like these fonts, too"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Fonts II</a>
-        <a class="vault-item" data-kind="links" href="http://kimublo.blog104.fc2.com/" target="_blank" title="These are the best food recs and log"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-tools"/></svg>Masashi's food-log</a>
+        <a class="vault-item" data-kind="links" href="https://youtu.be/BSINnJt7dM0" target="_blank" title="second prize at the Nordic Science Slam — it's not in perfect iambic"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>black hole ballad</a>
+        <a class="vault-item" data-kind="links" href="https://letterboxd.com/jaime_redon/" target="_blank" title="all my bad opinions about cinema"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Letterboxd</a>
+        <a class="vault-item" data-kind="links" href="https://curius.app/jaime-redondo-yuste2" target="_blank" title="things I read and liked"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Curius</a>
+        <a class="vault-item" data-kind="links" href="https://lisa.pages.in2p3.fr/consortium-userguide/com_diversity.html" target="_blank" title="useful resources on DEI from the LISA Consortium"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>LISA DEI resources</a>
+        <a class="vault-item" data-kind="links" href="https://the-center-of-gravity.com/resources/" target="_blank" title="useful resources and codes, some of which I wrote"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Center of Gravity resources</a>
+        <a class="vault-item" data-kind="links" href="https://communityofwriters.org/wp-content/uploads/2024/01/The-Carrier-Bag-Theory-of-Fiction.pdf?curius=1503" target="_blank" title="a great essay about fiction and gender, by U.K. Le Guin"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>The Carrier Bag Theory of Fiction</a>
+        <a class="vault-item" data-kind="links" href="https://web.archive.org/web/20230113015511/https://blog.jaibot.com/the-copenhagen-interpretation-of-ethics/" target="_blank" title="interesting essay on ethics"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>The Copenhagen Interpretation of Ethics</a>
+        <a class="vault-item" data-kind="links" href="http://www.aaronsw.com/weblog/" target="_blank" title="Aaron Swartz's blog is a well of interesting thoughts"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Raw Thought</a>
+        <a class="vault-item" data-kind="links" href="https://aliciaguo.com/pages/explorations/woven-poem.html" target="_blank" title="I got to interact with this piece while in SF and was impressed by it"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Woven Poem</a>
+        <a class="vault-item" data-kind="links" href="https://louisiana.dk/" target="_blank" title="Possibly the best contemporary art museum?"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Louisiana Museum</a>
+        <a class="vault-item" data-kind="links" href="https://fictionalaether.substack.com/" target="_blank" title="Mark Hannam's substack is always a joy to read"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>The Fictional Aether</a>
+        <a class="vault-item" data-kind="links" href="https://www.youtube.com/watch?v=MB7ZOdp__gQ" target="_blank" title="Bernstein's Norton Lectures at Harvard"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>The Unanswered Question</a>
+        <a class="vault-item" data-kind="links" href="https://www.nytimes.com/crosswords/game/daily/" target="_blank" title="The NYT crossword or my daily entertainment"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>NYT Crossword</a>
+        <a class="vault-item" data-kind="links" href="https://luc.devroye.org/fonts.html" target="_blank" title="A brilliant bank of fonts and resources by Luc Devroye"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Fonts</a>
+        <a class="vault-item" data-kind="links" href="https://pangrampangram.com/" target="_blank" title="I really like these fonts, too"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Fonts II</a>
+        <a class="vault-item" data-kind="links" href="http://kimublo.blog104.fc2.com/" target="_blank" title="These are the best food recs and log"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Masashi's food-log</a>
 
         <!-- friends (each keeps their icon from the old random page) -->
-        <a class="vault-item" data-kind="friends" href="https://abrandenberger.github.io/#home" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>Anna Brandenberger</a>
-        <a class="vault-item" data-kind="friends" href="https://ezquiaga.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bicycle"/></svg>Jose Ezquiaga</a>
-        <a class="vault-item" data-kind="friends" href="https://www.kaihendriks.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-table-tennis"/></svg>Kai Hendriks</a>
-        <a class="vault-item" data-kind="friends" href="https://lennoxkeeble.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-sun"/></svg>Lennox Keeble</a>
-        <a class="vault-item" data-kind="friends" href="https://lorenzzwick96.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-dungeon"/></svg>Lorenz Zwick</a>
-        <a class="vault-item" data-kind="friends" href="https://www.matthewfoxphysics.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-mountain"/></svg>Matthew Fox</a>
-        <a class="vault-item" data-kind="friends" href="https://ricokaloklo.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-car-side"/></svg>Rico Lo</a>
-        <a class="vault-item" data-kind="friends" href="https://skeltonse.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-skull"/></svg>Shawn Skelton</a>
-        <a class="vault-item" data-kind="friends" href="https://www.stephaniedorval.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-birthday-cake"/></svg>Stéphanie Dorval</a>
-        <a class="vault-item" data-kind="friends" href="https://www.zhengzhou.page/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-wine-bottle"/></svg>Zheng Zhou</a>
-        <a class="vault-item" data-kind="friends" href="https://sites.google.com/site/grmkimura/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-utensils"/></svg>Masashi Kimura</a>
-        <a class="vault-item" data-kind="friends" href="https://mhycheung.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-hat-wizard"/></svg>Mark Ho-Yeuk Cheung</a>
-        <a class="vault-item" data-kind="friends" href="https://www.physics.ox.ac.uk/our-people/spieksma" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-record-vinyl"/></svg>Thomas Spieksma</a>
-        <a class="vault-item" data-kind="friends" href="https://www.birmingham.ac.uk/staff/profiles/physics/carullo-gregorio" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-glass-whiskey"/></svg>Gregorio Carullo</a>
-        <a class="vault-item" data-kind="friends" href="https://www.cardenas.sites.wfu.edu/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-car-alt"/></svg>Alejandro Cárdenas-Avendaño</a>
-        <a class="vault-item" data-kind="friends" href="https://jannzosso.ch/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-podcast"/></svg>Jann Zosso</a>
+        <a class="vault-item" data-kind="friends" href="https://abrandenberger.github.io/#home" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>Anna</a>
+        <a class="vault-item" data-kind="friends" href="https://ezquiaga.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bicycle"/></svg>Jose</a>
+        <a class="vault-item" data-kind="friends" href="https://www.kaihendriks.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-table-tennis"/></svg>Kai</a>
+        <a class="vault-item" data-kind="friends" href="https://lennoxkeeble.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-sun"/></svg>Lennox</a>
+        <a class="vault-item" data-kind="friends" href="https://lorenzzwick96.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-dungeon"/></svg>Lorenz</a>
+        <a class="vault-item" data-kind="friends" href="https://www.matthewfoxphysics.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-mountain"/></svg>Matthew</a>
+        <a class="vault-item" data-kind="friends" href="https://ricokaloklo.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-car-side"/></svg>Rico</a>
+        <a class="vault-item" data-kind="friends" href="https://skeltonse.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-skull"/></svg>Shawn</a>
+        <a class="vault-item" data-kind="friends" href="https://www.stephaniedorval.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-birthday-cake"/></svg>Stéphanie</a>
+        <a class="vault-item" data-kind="friends" href="https://www.zhengzhou.page/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-wine-bottle"/></svg>Zheng</a>
+        <a class="vault-item" data-kind="friends" href="https://sites.google.com/site/grmkimura/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-utensils"/></svg>Masashi</a>
+        <a class="vault-item" data-kind="friends" href="https://mhycheung.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-hat-wizard"/></svg>Mark</a>
+        <a class="vault-item" data-kind="friends" href="https://www.physics.ox.ac.uk/our-people/spieksma" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-record-vinyl"/></svg>Thomas</a>
+        <a class="vault-item" data-kind="friends" href="https://www.birmingham.ac.uk/staff/profiles/physics/carullo-gregorio" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-glass-whiskey"/></svg>Gregorio</a>
+        <a class="vault-item" data-kind="friends" href="https://www.cardenas.sites.wfu.edu/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-car-alt"/></svg>Alejandro</a>
+        <a class="vault-item" data-kind="friends" href="https://jannzosso.ch/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-podcast"/></svg>Jann</a>
+        <a class="vault-item" data-kind="friends" href="https://zgelles.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-baseball-ball"/></svg>Zack</a>
+        <a class="vault-item" data-kind="friends" href="https://francescoiacovelli.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-drum"/></svg>Francesco</a>
+        <a class="vault-item" data-kind="friends" href="https://caiomacedo.weebly.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-dumbbell"/></svg>Caio</a>
+        <a class="vault-item" data-kind="friends" href="https://maradan.me/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-paw"/></svg>Mara</a>
+        <a class="vault-item" data-kind="friends" href="https://vitorcardoso.strong-gr.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-cog"/></svg>Vitor</a>
+        <a class="vault-item" data-kind="friends" href="https://sites.google.com/view/konstantinoskritos" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-ship"/></svg>Kostas</a>
+        <a class="vault-item" data-kind="friends" href="https://pages.jh.edu/eberti2/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-guitar"/></svg>Emanuele</a>
+        <a class="vault-item" data-kind="friends" href="https://mvdmeent.wordpress.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-wikipedia-w"/></svg>Maarten</a>
 
         <!-- books: fiction -->
-        <!-- EDIT-ME(jaime): data-fav on the next line is just an EXAMPLE of the marker —
-             move it to whatever you actually want starred, and add it to as many as you like. -->
         <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The left hand of darkness <span class="muted">(Ursula K. Le Guin)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Napolitan Quartet (1,2,4) <span class="muted">(Elena Ferrante)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Project Hail Mary <span class="muted">(Andy Weir)</span></span>
@@ -148,23 +172,140 @@
         <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>The Queen is Dead  <span class="muted">(The Smiths, 1974)</span></span>
 
         <!-- photos -->
-        <span class="vault-item" data-kind="photos"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-camera-retro"/></svg>darkroom under construction</span>
         <!-- EDIT-ME(jaime): film scans become photo tiles pinned among the tags — small prints
              (~7.5rem tall) that scatter and rotate like everything else.
 
              First run the scans through the script (it makes both sizes for you):
-                 tools/add-photos.sh ~/wherever/your/scans/*.tif
+                 tools/add-photos.sh ~/wherever/your/scans
              Then copy this template once per photo, changing NAME and the caption.
              The thumb is what loads on the floor; the full one opens on click.
+             Set width/height to the THUMB's real size (`magick identify` prints it) —
+             it reserves the right box so the floor doesn't jump as photos load.
 
         <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/NAME.jpg" target="_blank" title="caption, place, year">
             <img src="/files/photos/thumbs/NAME.jpg" alt="caption" width="400" height="267" loading="lazy">
         </a>
         -->
+        <!-- EDIT-ME(jaime): captions are place + year. The YEARS ARE A GUESS — see below.
+             Japan (2026) and the three film scans (2024) are dated from an export/scan
+             timestamp, not from when the shutter fired, so check those especially. -->
         <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/alps-01.jpg" target="_blank" title="Switzerland, 2025">
             <img src="/files/photos/thumbs/alps-01.jpg" alt="Switzerland, 2025" width="400" height="267" loading="lazy">
         </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/arches-01.jpg" target="_blank" title="Arches, Utah, 2024">
+            <img src="/files/photos/thumbs/arches-01.jpg" alt="Arches, Utah, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/bryce-01.jpg" target="_blank" title="Bryce Canyon, Utah, 2024">
+            <img src="/files/photos/thumbs/bryce-01.jpg" alt="Bryce Canyon, Utah, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/bryce-02.jpg" target="_blank" title="Bryce Canyon, Utah, 2024">
+            <img src="/files/photos/thumbs/bryce-02.jpg" alt="Bryce Canyon, Utah, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/elcap.jpg" target="_blank" title="El Capitan, Yosemite, 2024">
+            <img src="/files/photos/thumbs/elcap.jpg" alt="El Capitan, Yosemite, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/sf-01.jpg" target="_blank" title="San Francisco, 2024">
+            <img src="/files/photos/thumbs/sf-01.jpg" alt="San Francisco, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/sf-02.jpg" target="_blank" title="San Francisco, 2024">
+            <img src="/files/photos/thumbs/sf-02.jpg" alt="San Francisco, 2024" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/rome-01.jpg" target="_blank" title="Rome, 2024">
+            <img src="/files/photos/thumbs/rome-01.jpg" alt="Rome, 2024" width="267" height="400" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/rome-02.jpg" target="_blank" title="Rome, 2024">
+            <img src="/files/photos/thumbs/rome-02.jpg" alt="Rome, 2024" width="400" height="267" loading="lazy">
+        </a>
 
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/cph-01.jpg" target="_blank" title="Copenhagen, 2025">
+            <img src="/files/photos/thumbs/cph-01.jpg" alt="Copenhagen, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/hojby-01.jpg" target="_blank" title="Højby, Denmark, 2025">
+            <img src="/files/photos/thumbs/hojby-01.jpg" alt="Højby, Denmark, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/hojby-02.jpg" target="_blank" title="Højby, Denmark, 2025">
+            <img src="/files/photos/thumbs/hojby-02.jpg" alt="Højby, Denmark, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/hojby-03.jpg" target="_blank" title="Højby, Denmark, 2025">
+            <img src="/files/photos/thumbs/hojby-03.jpg" alt="Højby, Denmark, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/locarno-01.jpg" target="_blank" title="Locarno, Switzerland, 2025">
+            <img src="/files/photos/thumbs/locarno-01.jpg" alt="Locarno, Switzerland, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/bornholm-01.jpg" target="_blank" title="Bornholm, Denmark, 2024">
+            <img src="/files/photos/thumbs/bornholm-01.jpg" alt="Bornholm, Denmark, 2024" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/bornholm-02.jpg" target="_blank" title="Bornholm, Denmark, 2024">
+            <img src="/files/photos/thumbs/bornholm-02.jpg" alt="Bornholm, Denmark, 2024" width="267" height="400" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kjugekull-01.jpg" target="_blank" title="Kjugekull, Sweden, 2024">
+            <img src="/files/photos/thumbs/kjugekull-01.jpg" alt="Kjugekull, Sweden, 2024" width="400" height="267" loading="lazy">
+        </a>
+
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-01.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-01.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-02.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-02.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-03.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-03.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-04.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-04.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-05.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-05.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/faroe-06.jpg" target="_blank" title="Faroe Islands, 2025">
+            <img src="/files/photos/thumbs/faroe-06.jpg" alt="Faroe Islands, 2025" width="400" height="265" loading="lazy">
+        </a>
+
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-01.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-01.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-02.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-02.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-03.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-03.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-04.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-04.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-05.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-05.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-06.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-06.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/kyoto-07.jpg" target="_blank" title="Kyoto, 2026">
+            <img src="/files/photos/thumbs/kyoto-07.jpg" alt="Kyoto, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/biwa-01.jpg" target="_blank" title="Lake Biwa, Japan, 2026">
+            <img src="/files/photos/thumbs/biwa-01.jpg" alt="Lake Biwa, Japan, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/tokyo-01.jpg" target="_blank" title="Tokyo, 2026">
+            <img src="/files/photos/thumbs/tokyo-01.jpg" alt="Tokyo, 2026" width="275" height="400" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/tokyo-02.jpg" target="_blank" title="Tokyo, 2026">
+            <img src="/files/photos/thumbs/tokyo-02.jpg" alt="Tokyo, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/tokyo-03.jpg" target="_blank" title="Tokyo, 2026">
+            <img src="/files/photos/thumbs/tokyo-03.jpg" alt="Tokyo, 2026" width="400" height="275" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/tokyo-04.jpg" target="_blank" title="Tokyo, 2026">
+            <img src="/files/photos/thumbs/tokyo-04.jpg" alt="Tokyo, 2026" width="275" height="400" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/seoul-01.jpg" target="_blank" title="Seoul, 2025">
+            <img src="/files/photos/thumbs/seoul-01.jpg" alt="Seoul, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/seoul-02.jpg" target="_blank" title="Seoul, 2025">
+            <img src="/files/photos/thumbs/seoul-02.jpg" alt="Seoul, 2025" width="400" height="267" loading="lazy">
+        </a>
+        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/seoul-03.jpg" target="_blank" title="Seoul, 2025">
+            <img src="/files/photos/thumbs/seoul-03.jpg" alt="Seoul, 2025" width="267" height="400" loading="lazy">
+        </a>
 
         <!-- places -->
         <a class="vault-item" data-kind="places" href="/lists/cities.html" title="cities I've lived in and visited, with vignettes"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-map-marker"/></svg>cities, with vignettes</a>
@@ -174,8 +315,16 @@
     <p class="muted">
         Hand-written and vibe-coded in HTML and CSS.
         It is set in <a href="https://ctan.org/pkg/etbb" target="_blank">ETbb</a>, Michael Sharpe's
-        extension of the ET&nbsp;Book family. The colors come from my talk slides; the icons
-        are <a href="https://icons8.com/line-awesome" target="_blank">Line Awesome</a>.
+        extension of the ET&nbsp;Book family.
+        <!-- easter egg: these five are buttons — they swap the site's palette -->
+        The colors are borrowed from
+        <button class="palette-pick" data-palette-pick="baez" title="Fruta fina, fruta extraña (Lee Monument), 2022 — it hangs in Louisiana">Firelei Báez</button>,
+        though some days they come from
+        <button class="palette-pick" data-palette-pick="maelstrom" title="the maelstrom talk theme">my talk slides</button>,
+        <button class="palette-pick" data-palette-pick="okeeffe" title="Red Poppy, 1927">Georgia O'Keeffe</button>,
+        <button class="palette-pick" data-palette-pick="sorolla" title="El pescador, 1904 — painted on the Cabañal beach">Joaquín Sorolla</button>, or
+        <button class="palette-pick" data-palette-pick="hammershoi" title="Interior from Strandgade with Sunlight on the Floor, 1901">Vilhelm Hammershøi</button>;
+        the icons are <a href="https://icons8.com/line-awesome" target="_blank">Line Awesome</a>.
         The squiggle in the navigation is the <i>ringdown</i> of a black hole, and it doesn't like being poked.
         The favicon is the Penrose diagram of a black hole, spelling my initials.
     </p>

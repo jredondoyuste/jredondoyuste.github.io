@@ -32,15 +32,22 @@
 }
 
 /* ----- tokens ------------------------------------------------------- */
+/* Three palettes × light/dark. Everything on the site derives from the
+   seven colours below, so a palette is just seven lines. The picker lives
+   in the vault colophon; the light/dark toggle in the nav (js/theme.js). */
 
 :root {
-  --bg: #F7F1E3;
-  --panel: #EFE7D4;
-  --ink: #2B2622;
-  --muted: #6F665B;
-  --accent: #1F5765;   /* the swap point — e.g. #B90202 for the old red */
-  --accent-2: #2E7C8A;
-  --hair: #C9BFA8;
+  /* "baez" — Firelei Báez, Fruta fina, fruta extraña (Lee Monument), 2022.
+     THE DEFAULT. Oxblood and crimson over the cream of the printed diagram. */
+  --bg: #F2EBDF;
+  --panel: #E7DECF;
+  --ink: #2E1717;
+  --muted: #77605A;
+  --accent: #98242B;
+  --accent-2: #BB3E51;
+  --hair: #CCBCAB;
+  --print: #FFFDF6;    /* the white border of photo "prints" */
+  color-scheme: light;
 
   --accent-wash: color-mix(in srgb, var(--accent) 10%, var(--bg));
   --accent-underline: color-mix(in srgb, var(--accent) 45%, transparent);
@@ -52,6 +59,106 @@
   --fs-3: 1.9rem;      /* h1 */
 
   --measure: 44rem;
+}
+
+/* dark baez (the default dark) */
+:root[data-theme="dark"] {
+  --bg: #241416;
+  --panel: #2F1C1E;
+  --ink: #EFE2D6;
+  --muted: #B49B92;
+  --accent: #D4606B;
+  --accent-2: #E08A93;
+  --hair: #4C3134;
+  --print: #EFE9DC;
+  color-scheme: dark;
+}
+
+/* "maelstrom" — my talk slides (the old default; petrol teal on paper) */
+:root[data-palette="maelstrom"] {
+  --bg: #F7F1E3;
+  --panel: #EFE7D4;
+  --ink: #2B2622;
+  --muted: #6F665B;
+  --accent: #1F5765;
+  --accent-2: #2E7C8A;
+  --hair: #C9BFA8;
+}
+
+:root[data-theme="dark"][data-palette="maelstrom"] {
+  --bg: #211D18;
+  --panel: #2B261F;
+  --ink: #EDE4D1;
+  --muted: #A69A86;
+  --accent: #6FAEC0;
+  --accent-2: #8CC5D4;
+  --hair: #453D32;
+}
+
+/* "okeeffe" — Georgia O'Keeffe, Red Poppy, 1927.
+   Flame orange and scarlet; the turquoise sky behind the petals. */
+:root[data-palette="okeeffe"] {
+  --bg: #E2EDEA;
+  --panel: #D2E4E0;
+  --ink: #2A1B16;
+  --muted: #5F6E6B;
+  --accent: #C23A0E;
+  --accent-2: #E07B28;
+  --hair: #B7CCC8;
+}
+
+:root[data-theme="dark"][data-palette="okeeffe"] {
+  --bg: #1D1512;
+  --panel: #291C17;
+  --ink: #F2E7D8;
+  --muted: #B3A08F;
+  --accent: #F27C3A;
+  --accent-2: #7FC4C6;
+  --hair: #47362C;
+}
+
+/* "sorolla" — Joaquín Sorolla, El pescador, 1904 (Cabañal beach, Valencia).
+   Sun-bleached sand, cerulean water, straw gold. */
+:root[data-palette="sorolla"] {
+  --bg: #F6EFDF;
+  --panel: #EBE2CC;
+  --ink: #2A3038;
+  --muted: #5C6B77;
+  --accent: #15618A;
+  --accent-2: #C08A3E;
+  --hair: #CDC5AE;
+}
+
+:root[data-theme="dark"][data-palette="sorolla"] {
+  --bg: #13222C;
+  --panel: #1C2F3B;
+  --ink: #EDEEE4;
+  --muted: #93A6B0;
+  --accent: #6EC4E0;
+  --accent-2: #E3BC66;
+  --hair: #30434F;
+}
+
+/* "hammershoi" — Vilhelm Hammershøi, Interior from Strandgade with
+   Sunlight on the Floor, 1901. Warm greys, rosy umber, quiet light. */
+:root[data-palette="hammershoi"] {
+  --bg: #E9E5DF;
+  --panel: #DCD6CE;
+  --ink: #2A2321;
+  --muted: #6B5F59;
+  --accent: #7A4B44;
+  --accent-2: #4E5E6B;
+  --hair: #C4BCB0;
+}
+
+:root[data-theme="dark"][data-palette="hammershoi"] {
+  --bg: #211E1C;
+  --panel: #2B2724;
+  --ink: #E5DED2;
+  --muted: #A2988C;
+  --accent: #C69B84;
+  --accent-2: #8FA3B2;
+  --hair: #423C36;
 }
 
 /* ----- base --------------------------------------------------------- */
@@ -190,6 +297,43 @@ button {
   background: none;
 }
 
+/* the light/dark switch, dressed as a nav link */
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+
+/* palette easter egg in the colophon: reads as plain text, acts on click */
+.palette-pick {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.palette-pick:hover {
+  color: var(--accent);
+}
+
+.palette-pick.is-current {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 .ringdown {
   flex: 1 1 auto;
   height: 15px;
@@ -264,9 +408,20 @@ details.reveal summary:hover {
   padding: 0.75rem 0 0.25rem;
 }
 
+/* the stage scrolls with the page (it can be many screens tall — the full
+   publication list); it's the SPINE that stays put, see the media query */
 .stage-inner {
-  position: sticky;
-  top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.stage-title {
+  font-size: var(--fs-2);
+  font-weight: 400;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 0.3rem;
+  margin: 0 0 1rem;
 }
 
 .stage-entry {
@@ -460,6 +615,100 @@ figure img {
 .pub-meta {
   color: var(--muted);
   font-size: 0.92em;
+}
+
+/* each paper folds open: abstract + optional director's-cut note */
+.pub summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.pub summary::-webkit-details-marker {
+  display: none;
+}
+
+.pub summary::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  color: var(--muted);
+  transition: transform 0.25s ease, color 0.2s;
+}
+
+.pub[open] summary::before {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+
+.pub summary:hover .pub-title {
+  color: var(--accent);
+}
+
+.pub-title {
+  font-style: italic;
+}
+
+.pub-abstract {
+  font-size: 0.92em;
+  margin: 0.5rem 0 0.4rem;
+  padding-left: 1.1em;
+}
+
+.pub-note {
+  font-size: 0.92em;
+  font-style: italic;
+  margin: 0.5rem 0 0.4rem 1.1em;
+  padding: 0.4em 0.8em;
+  border-left: 2px solid var(--accent);
+  background: var(--accent-wash);
+}
+
+.pub-note-label {
+  font-style: normal;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin-right: 0.5em;
+}
+
+.pub-links {
+  font-size: 0.85em;
+  margin: 0 0 0.2rem;
+  padding-left: 1.1em;
+}
+
+/* talks: ◆ invited, ◇ contributed */
+.talk-list li {
+  position: relative;
+  padding-left: 1.3em;
+}
+
+.talk-list li::before {
+  position: absolute;
+  left: 0;
+}
+
+li.talk-invited::before {
+  content: "◆";
+  color: var(--accent);
+}
+
+li.talk-contributed::before {
+  content: "◇";
+  color: var(--muted);
+}
+
+.talk-legend {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin: 0.3rem 0 0.9rem;
+}
+
+.talk-legend .talk-invited-mark {
+  color: var(--accent);
 }
 
 .link-list {
@@ -778,10 +1027,16 @@ body.modal-open {
   }
 
   /* nav + footer live INSIDE the spine, so the header never stretches
-     beyond the default content */
+     beyond the default content. The spine is sticky: when the stage grows
+     taller than the screen (all publications open), scrolling moves the
+     stage while the spine stays put. Relies on the spine fitting in one
+     viewport — the design goal anyway. */
   .with-stage .spine {
     grid-column: 1;
     min-width: 0;
+    position: sticky;
+    top: 0;
+    align-self: start;
   }
 
   .with-stage .stage {
@@ -922,7 +1177,7 @@ body.modal-open {
 /* photo tiles: prints pinned among the tags */
 .vault-item.vault-photo {
   padding: 0.35em;
-  background: #FFFDF6;
+  background: var(--print);
 }
 
 .vault-photo img {
@@ -934,6 +1189,22 @@ body.modal-open {
 
 .vault-item[hidden] {
   display: none;
+}
+
+/* "everything": js/vault.js packs items absolutely so photos and chips
+   interlock instead of stranding whitespace in flex rows */
+.vault-floor.packed {
+  display: block;
+  position: relative;   /* the packed items position against the FLOOR */
+}
+
+.vault-floor.packed .vault-item {
+  position: absolute;
+  margin: 0;
+}
+
+.vault-item:hover {
+  z-index: 3;
 }
 
 a.vault-item:hover {
@@ -962,6 +1233,143 @@ a.vault-item:hover {
 
 .vault-item .muted {
   font-size: 0.85em;
+}
+
+/* ----- tooltip ----------------------------------------------------------- */
+/* our own, because the browser's title tooltip is slow and unstyleable */
+
+.tip {
+  position: fixed;
+  z-index: 1200;
+  left: 0;
+  top: 0;
+  max-width: 24rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  padding: 0.35em 0.6em;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(43, 38, 34, 0.18);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.tip.is-on {
+  opacity: 1;
+}
+
+/* ----- lightbox ---------------------------------------------------------- */
+
+.lb {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  /* fixed dark scrim: in dark mode --ink is light, so deriving from it
+     would produce a white backdrop */
+  background: rgba(24, 20, 16, 0.86);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.lb.is-on {
+  display: flex;
+}
+
+body.lb-open {
+  overflow: hidden;
+}
+
+.lb-stage {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.lb-img {
+  display: block;
+  max-width: min(88vw, 1100px);
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  border-radius: 3px;
+  background: var(--bg);
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* the scrim is a fixed dark, so its text is a fixed light — not tokens */
+.lb-cap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75em;
+  color: #F2EDE2;
+  font-size: 0.9rem;
+}
+
+.lb-count {
+  color: rgba(242, 237, 226, 0.55);
+  font-size: 0.8rem;
+}
+
+.lb-close,
+.lb-nav {
+  background: none;
+  border: none;
+  color: #F2EDE2;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  opacity: 0.65;
+  transition: opacity 150ms, background-color 150ms;
+}
+
+.lb-close:hover,
+.lb-nav:hover,
+.lb-close:focus-visible,
+.lb-nav:focus-visible {
+  opacity: 1;
+  background: rgba(242, 237, 226, 0.15);
+}
+
+.lb-nav {
+  font-size: clamp(2rem, 5vw, 3rem);
+  flex-shrink: 0;
+}
+
+.lb-close {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.25rem);
+  right: clamp(0.5rem, 2vw, 1.25rem);
+  font-size: 2rem;
+}
+
+@media (max-width: 700px) {
+  .lb-img {
+    max-width: 92vw;
+    max-height: 68vh;
+  }
+
+  /* thumbs are too small to flank on a phone: park the arrows underneath */
+  .lb {
+    flex-wrap: wrap;
+  }
+
+  .lb-nav {
+    order: 2;
+  }
+
+  .lb-stage {
+    order: 1;
+    flex-basis: 100%;
+  }
 }
 
 /* ----- print ------------------------------------------------------------- */

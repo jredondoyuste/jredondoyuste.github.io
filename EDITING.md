@@ -14,8 +14,9 @@ refresh the browser.
   **`[jaime: …]`** placeholder. Search the project for `jaime:` (or
   `EDIT-ME`) to find them all. When you replace one, delete the whole
   `<span class="todo">[jaime: …]</span>` wrapper, leaving just your text.
-- **To change the accent colour** (teal → anything), edit **one line** in
-  `style.css`: `--accent: #1F5765;`. Everything follows automatically.
+- **Colours** live in small token blocks at the top of `style.css` — three
+  palettes (talk slides / Báez / O'Keeffe), each with a light and a dark
+  variant. See "Colours: palettes and dark mode" below.
 - **Don't rename files** — the menu links point to `index.html`,
   `research.html`, `vault.html` by name.
 
@@ -30,6 +31,12 @@ Two options:
 2. **Run the tiny local server** (recommended). In a terminal, from this
    folder: `python3 -m http.server 8787`, then open
    `http://localhost:8787`. Refresh after each save.
+
+> **If a change doesn't show up, hard-refresh: Cmd+Shift+R.**
+> Browsers cache `.css`, `.js` and `la-sprite.svg` aggressively, and a normal
+> reload will happily keep running the old copy. This is the single most
+> confusing thing about editing the site — if something you *know* you fixed
+> looks broken, hard-refresh before believing it.
 
 When you're happy, **commit and push with git** — GitHub Pages redeploys
 the live site automatically. Fill in every `[jaime: …]` placeholder before
@@ -62,15 +69,30 @@ chips** (email / CV / INSPIRE / …), the **Trajectory** timeline, and the
   lower in the file — `<div class="reveal-source" id="src-theme-1">` etc.
   **Write the theme content inside those `reveal-source` blocks.** The word
   "blackboard" reveals the photo the same way (`id="src-photo"`).
-- **Publications**, **Talks**, and **Code** are the three expandable
-  sections. To add a paper, copy one `<li>…</li>` inside `<ul class="pub-list">`
-  and edit it. Same for talks inside `<ul class="talk-list">`.
+- **Publications** is the full list from INSPIRE (July 2026), newest first.
+  Each paper is a `<details class="pub">`: the summary line (title +
+  authors + journal), then the abstract, then an **optional "director's
+  cut" note** — a commented template sits inside every paper; uncomment it
+  and write. To add a new paper, copy a whole `<li>…</li>` block.
+- **Talks**: each `<li>` carries `class="talk-invited"` (◆, accent) or
+  `class="talk-contributed"` (◇, muted). I guessed seminars = invited and
+  the IBS workshop = contributed — check them.
+- When a section opens on the right, it gets a **title** from its
+  `<summary>` text. To show a different title there (say the left bar says
+  "Publications" but the stage should say "Selected publications"), add
+  `data-stage-title="Selected publications"` to that `<details>`.
+- On wide screens the **left column is sticky**: if the right side grows
+  taller than the screen (all those abstracts), scrolling moves only the
+  right. This relies on the left column fitting one screen — keep it lean.
 - The "questions that keep me up at night" list lives in
   `js/crazy_idea.js` — add or edit lines in the array there.
 
 ### `vault.html` — the Vault
 Everything on the vault floor is a `vault-item`. To add one, copy an
-existing line and change the text. Two things matter on each item:
+existing line and change the text. On "everything", `js/vault.js` packs the
+items densely (each drops to the highest free spot, with a small gap and a
+tilt) — new items just join the heap, nothing to configure. Picking a
+category tidies them into a grid. Two things matter on each item:
 - `data-kind="links"` (or `friends`, `books`, `records`, `photos`,
   `places`) — this is what the filter buttons use.
 - the icon: `<use href="/files/la-sprite.svg#la-book"/>` — swap `la-book`
@@ -84,6 +106,14 @@ Use `<a …>` for items that link somewhere, `<span>` for ones that don't
   as many as you like:
   `<span class="vault-item" data-kind="books" data-fav>…</span>`
   (One book is starred right now purely as an example — move it.)
+- **Hover text:** whatever you put in `title="…"` shows as a small dark
+  tooltip on hover — the photo captions and the one-line notes on the links
+  all come from there. Items with no `title` show nothing, so add one to any
+  item you want to annotate.
+- **Photos** open in a viewer rather than loading the raw file: arrows (or
+  the ← → keys) move through the roll, the cross or Esc closes it, and the
+  caption underneath is the item's `title`. That's `js/lightbox.js`; it picks
+  up every `.vault-photo` automatically, so new photos need nothing extra.
 - **A note for one category:** the `vault-note` paragraph above the floor
   shows *only* while its category is selected (the books one explains
   borrowing, and shouts out the bookstores). To write one for another
@@ -140,6 +170,43 @@ usual scan formats as a safety net.)
 and PNG is lossless — for a photograph that means several times the size for
 no visible difference. The script handles this; it takes TIFF/RAW/PNG input
 and always writes JPEG.
+
+---
+
+## Colours: palettes and dark mode
+
+Every colour on the site derives from **seven tokens** (`--bg`, `--panel`,
+`--ink`, `--muted`, `--accent`, `--accent-2`, `--hair`) defined at the top of
+`style.css`. A palette is just those seven lines, so there are ten small
+blocks: five palettes × light/dark.
+
+- **baez** — **the default** (it lives directly in `:root`, no attribute).
+  Firelei Báez, *Fruta fina, fruta extraña (Lee Monument)*, 2022
+  (crimson and oxblood on diagram-cream; the painting hangs in Louisiana).
+- **maelstrom** — your talk slides (the petrol-teal original).
+- **okeeffe** — Georgia O'Keeffe, *Red Poppy*, 1927 (flame orange and
+  scarlet; turquoise sneaks in as `--accent-2` in dark mode).
+- **sorolla** — Joaquín Sorolla, *El pescador*, 1904 (sun-bleached sand,
+  cerulean water, straw gold — painted on the Cabañal beach).
+- **hammershoi** — Vilhelm Hammershøi, *Interior from Strandgade with
+  Sunlight on the Floor*, 1901 (warm greys and rosy umber; the quiet one).
+
+**The visitor picks:** the `[dark]`/`[light]` button in the nav toggles the
+theme, and the palette switcher hides in the vault colophon — the five
+artist/slide names in the colours sentence are secretly buttons. Both
+choices persist in the visitor's browser (localStorage) and first-time
+visitors get Báez, light/dark from their system preference.
+
+**To tweak a palette:** edit its seven lines in `style.css` — the blocks are
+labelled. **To add a palette:** copy a pair of blocks
+(`:root[data-palette="NAME"]` and the matching `dark` one), then add one
+button in the vault colophon:
+`<button class="palette-pick" data-palette-pick="NAME">…</button>`.
+The machinery (`js/theme.js`) needs no changes.
+
+If you tweak colours, keep an eye on contrast: accent-on-bg should stay
+above ~4.5:1 so links remain readable. When in doubt, darken the accent in
+the light variant and lighten it in the dark one.
 
 ---
 
@@ -203,6 +270,12 @@ is fine; changing the tags/attributes themselves will break things.
 - The **`ringdown` SVG** in the nav, and all the **`.js` files** — no need
   to edit for content (except `crazy_idea.js` for the questions list, and
   `cities-modal.js` for city vignettes).
+- The `theme.js` script tag in each page's `<head>` loads **without
+  `defer`** on purpose — it applies the saved theme before the page paints.
+  Moving it or adding `defer` brings back a flash of the wrong colours.
+- A `palette-pick` button's `data-palette-pick="…"` must match a
+  `:root[data-palette="…"]` block in `style.css` — same pairing idea as the
+  stage links.
 - **File names** of the three pages, and anything in `files/fonts/`.
 
 If you're unsure whether an edit is "content" or "structure": if you're
@@ -216,11 +289,25 @@ tag, a `class`, a `data-…`, or an `id`, pause.
 - **A camouflaged (hidden) link**, for a future easter egg: wrap a word in
   `<a class="hidden-link" href="…">word</a>`. It looks like normal text and
   only reveals itself (turns accent-coloured) on hover.
+- **Hover text:** anything with a `title="…"` gets a styled tooltip on hover
+  (the site draws its own — the browser's native one waits a second and can't
+  be themed). Add `title="…"` to any vault item and it just works. Items
+  without a `title` simply show nothing.
+- **Adding an icon:** only names that are in the sprite render. A name that
+  isn't there fails **silently** — no error, just an invisible icon. So don't
+  hand-write a new `#la-name`; run:
+
+      tools/add-icon.sh globe utensils     # fetches and adds them
+      tools/add-icon.sh --list             # what you already have
+
+  Then **hard-refresh** (Cmd+Shift+R) — see the caching note below.
 - **Icons available** in `files/la-sprite.svg` (use as `#la-NAME`):
-  `music`, `bicycle`, `table-tennis`, `sun`, `dungeon`, `mountain`,
-  `water`, `car-side`, `skull`, `birthday-cake`, `wine-bottle`, `video`,
-  `film`, `seedling`, `bookmark`, `hands-helping`, `tools`, `book`,
-  `compact-disc`, `camera-retro`, `map-marker`, `star`. (Adding a new icon means
-  regenerating the sprite — ask for help with that.)
+  `baseball-ball`, `bicycle`, `birthday-cake`, `book`, `bookmark`,
+  `camera-retro`, `car-alt`, `car-side`, `compact-disc`, `dungeon`,
+  `film`, `glass-whiskey`, `globe`, `hands-helping`, `hat-wizard`,
+  `map-marker`, `mountain`, `music`, `podcast`, `record-vinyl`,
+  `seedling`, `skull`, `star`, `sun`, `table-tennis`, `tools`,
+  `utensils`, `video`, `water`, `wine-bottle`
+  Add more with `tools/add-icon.sh` (above) rather than by hand.
 - **Hidden pages** that aren't in the menu: the pantry at `/001/`. It's
   marked "noindex" so search engines ignore it.

@@ -18,7 +18,7 @@
     active = null;
   }
 
-  function showContent(html, trigger) {
+  function showContent(html, trigger, title) {
     const body = stageBody();
     if (!body) return;
     if (active) active.classList.remove('on-stage');
@@ -26,6 +26,12 @@
     const entry = document.createElement('div');
     entry.className = 'stage-entry';
     entry.innerHTML = html;
+    if (title) {
+      const h = document.createElement('h2');
+      h.className = 'stage-title';
+      h.textContent = title;
+      entry.prepend(h);
+    }
     body.appendChild(entry);
     trigger.classList.add('on-stage');
     active = trigger;
@@ -46,7 +52,11 @@
         if (active === d) {
           clearStage();
         } else {
-          showContent(content ? content.innerHTML : '', d);
+          // title on the stage: data-stage-title wins (e.g. left bar says
+          // "Publications" but the stage says "Selected publications"),
+          // otherwise the summary text
+          showContent(content ? content.innerHTML : '', d,
+                      d.dataset.stageTitle || summary.textContent.trim());
         }
       });
     });
@@ -64,7 +74,9 @@
         if (active === btn) {
           clearStage();
         } else {
-          showContent(src.innerHTML, btn);
+          // inline reveals usually carry their own heading; a title only
+          // if the trigger asks for one explicitly
+          showContent(src.innerHTML, btn, btn.dataset.stageTitle || '');
         }
       });
     });

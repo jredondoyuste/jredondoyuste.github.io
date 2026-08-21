@@ -37,6 +37,34 @@
     active = trigger;
   }
 
+  // Figure carousels (.fig-carousel) live inside reveal content, which gets
+  // CLONED onto the stage — cloned nodes lose their listeners, so the arrows
+  // are handled by delegation: one document-level listener, state kept in
+  // the DOM (.is-on). Works identically inline and on the stage.
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.fig-nav');
+    if (!btn) return;
+    const frames = btn.closest('.fig-carousel').querySelectorAll('.fig-frame');
+    if (frames.length < 2) return;
+    let at = 0;
+    frames.forEach(function (f, i) { if (f.classList.contains('is-on')) at = i; });
+    const d = btn.classList.contains('fig-prev') ? -1 : 1;
+    frames[at].classList.remove('is-on');
+    frames[(at + d + frames.length) % frames.length].classList.add('is-on');
+  });
+
+  // Links inside a <summary> (the journal / arXiv / INSPIRE line of a paper,
+  // the slides behind a talk title) would otherwise fold the entry open or
+  // shut on their way to the destination. Cancel the click and follow it
+  // ourselves — again by delegation, since the stage works on clones.
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('summary a[href]');
+    if (!a) return;
+    e.preventDefault();
+    if (a.target === '_blank') window.open(a.href, '_blank', 'noopener');
+    else window.location.href = a.href;
+  });
+
   document.addEventListener('DOMContentLoaded', function () {
     if (!stageBody()) return;
 
@@ -60,6 +88,17 @@
         }
       });
     });
+
+    // /research.html#nonlinear-dynamics opens that theme straight away — this
+    // is what the fold-down menu under [research] in the nav links to
+    function openFromHash() {
+      const h = location.hash.slice(1);
+      if (!h) return;
+      const btn = document.querySelector('.stage-link[data-hash="' + h + '"]');
+      if (btn && !btn.classList.contains('on-stage')) btn.click();
+    }
+    window.addEventListener('hashchange', openFromHash);
+    setTimeout(openFromHash, 0); // after the triggers below are wired
 
     // inline accent-word triggers
     document.querySelectorAll('.stage-link').forEach(function (btn) {

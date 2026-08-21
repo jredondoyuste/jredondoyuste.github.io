@@ -10,16 +10,25 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/js/theme.js"></script>
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/starfield.js" defer></script>
     <script src="/js/vault.js" defer></script>
     <script src="/js/lightbox.js" defer></script>
 </head>
 
-<body>
-<div class="page vault-wide">
+<body class="is-vault">
+<div class="page page-vault">
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
-        <a href="/research.html">[research]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <!-- EDIT-ME(jaime): the fold-down menu under [research]. One <a> per theme;
+                 the hash must match the data-hash on the matching button in research.html. -->
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
         <a href="/vault.html" aria-current="page">[vault]</a>
         <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>
@@ -82,7 +91,7 @@
         <a class="vault-item" data-kind="links" href="https://pangrampangram.com/" target="_blank" title="I really like these fonts, too"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Fonts II</a>
         <a class="vault-item" data-kind="links" href="http://kimublo.blog104.fc2.com/" target="_blank" title="These are the best food recs and log"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-globe"/></svg>Masashi's food-log</a>
 
-        <!-- friends (each keeps their icon from the old random page) -->
+        <!-- friends -->
         <a class="vault-item" data-kind="friends" href="https://abrandenberger.github.io/#home" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-music"/></svg>Anna</a>
         <a class="vault-item" data-kind="friends" href="https://ezquiaga.github.io/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-bicycle"/></svg>Jose</a>
         <a class="vault-item" data-kind="friends" href="https://www.kaihendriks.com/" target="_blank"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-table-tennis"/></svg>Kai</a>
@@ -110,25 +119,25 @@
 
         <!-- books: fiction -->
         <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The left hand of darkness <span class="muted">(Ursula K. Le Guin)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Napolitan Quartet (1,2,4) <span class="muted">(Elena Ferrante)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Napolitan Quartet (1,2,4) <span class="muted">(Elena Ferrante)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Project Hail Mary <span class="muted">(Andy Weir)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The God of Small TThings <span class="muted">(Arundhati Roy)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The God of Small Things <span class="muted">(Arundhati Roy)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Alchemized <span class="muted">(SenLin Yu)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Devils <span class="muted">(Joe Abercrombie)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Princess Bride <span class="muted">(William Goldman)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Princess Bride <span class="muted">(William Goldman)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Poppy War Trilogy <span class="muted">(R. F. Kuang)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Yellowface <span class="muted">(R. F. Kuang)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Katabasis <span class="muted">(R. F. Kuang)</span></span> 
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>1Q84 Trilogy <span class="muted">(Haruki Murakami)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Night Circus <span class="muted">(Erin Morgenstern)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Night Circus <span class="muted">(Erin Morgenstern)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Silmarillion <span class="muted">(J.R.R. Tolkien)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Vegetarian <span class="muted">(Han Kang)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Emperor of Gladness <span class="muted">(Ocean Vuong)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Jazz <span class="muted">(Toni Morrison)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Jazz <span class="muted">(Toni Morrison)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Kafka on the Shore <span class="muted">(Haruki Murakami)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Jane Eyre <span class="muted">(Charlotte Brontë)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Atonement <span class="muted">(Ian McEwan)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>La Piedra Blanda <span class="muted">(Rodrigo Cortes)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>La Piedra Blanda <span class="muted">(Rodrigo Cortes)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>El Mesias de Dune <span class="muted">(Frank Herbert)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Articulos <span class="muted">(Mariano Jose de Larra)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Father and Sons <span class="muted">(Ivan Turgenev)</span></span>
@@ -137,16 +146,21 @@
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Paradise <span class="muted">(Toni Morrison)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Bluest Eye <span class="muted">(Toni Morrison)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>The Goldfinch <span class="muted">(Donna Tartt)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Farewell to Arms <span class="muted">(Ernest Hemingway)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Farewell to Arms <span class="muted">(Ernest Hemingway)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Out There <span class="muted">(Kate Folk)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Worlds of Exile and Ilussion (Hainish Cycle 1-3) <span class="muted">(Ursula K. Le Guin)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Fragile Things <span class="muted">(Neil Gaiman)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Interpreter of Maladies <span class="muted">(Jhumpa Lahiri)</span></span>
-
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>El Laberinto de las Aceitunas <span class="muted">(Eduardo Mendoza)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Sin Noticias de Gurb <span class="muted">(Eduardo Mendoza)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Los Ingratos <span class="muted">(Pedro Simon)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>El loco de dios en el fin del mundo <span class="muted">(Javier Cercas)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Normal People <span class="muted">(Sally Rooney)</span></span>
+        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Piranesi <span class="muted">(Susanna Clarke)</span></span>
 
 
         <!-- books: poetry -->
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Romancero Gitano <span class="muted">(Federico García Lorca)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Romancero Gitano <span class="muted">(Federico García Lorca)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Time is a Mother <span class="muted">(Ocean Vuong)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Marinero en Tierra <span class="muted">(Rafael Alberti)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Complete Works <span class="muted">(Jaime Gil de Biedma)</span></span>
@@ -158,37 +172,38 @@
         <!-- books: other -->
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>El Cine segun François Truffaut <span class="muted">(François Truffaut)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>On Photography <span class="muted">(Susan Sontag)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Sculpting on Time <span class="muted">(Andrei Tarkovsky)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Sculpting on Time <span class="muted">(Andrei Tarkovsky)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Persians, the age of the great kings <span class="muted">(Lloyd Llewellyn-Jones)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>What I talk about when I talk about running <span class="muted">(Haruki Murakami)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Persona <span class="muted">(Ingmar Bergman)</span></span>
-        <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Waiting for Godot <span class="muted">(Samuel Beckett)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Persona <span class="muted">(Ingmar Bergman)</span></span>
+        <span class="vault-item" data-kind="books" data-fav><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Waiting for Godot <span class="muted">(Samuel Beckett)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Meditations <span class="muted">(Marcus Auerlius)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>80 Fairy Tales <span class="muted">(H. C. Andersen)</span></span>
         <span class="vault-item" data-kind="books"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-book"/></svg>Selected Poems <span class="muted">(Derek Walcott)</span></span>
 
 
         <!-- records -->
-        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>The Queen is Dead  <span class="muted">(The Smiths, 1974)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>The rainbow goblins  <span class="muted">(Masayoshi Takanaka, 1981)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>T-Wave  <span class="muted">(Masayoshi Takanaka, 1980)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Jungle Jane  <span class="muted">(Masayoshi Takanaka, 1986)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>El Mal Querer  <span class="muted">(Rosalia, 2018)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>La Leyenda del Tiempo  <span class="muted">(Camaron De La Isla, 1979)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Buena Vista Social Club  <span class="muted">(Buena Vista Social Club, 1997)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Gaia  <span class="muted">(Mago de Oz, 2003)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Blue  <span class="muted">(Joni Mitchell, 1971)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Sketches of Spain  <span class="muted">(Miles Davis, 1960)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>OK Computer  <span class="muted">(Radiohead, 1997)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Kid A Mnesia  <span class="muted">(Radiohead, 2021)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Djesse vol. 4  <span class="muted">(Jacob Collier, 2024)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Debi Tirar Mas Fotos  <span class="muted">(Bad Bunny, 2025)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Wish You Were Here  <span class="muted">(Pink Floyd, 1975)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>2112  <span class="muted">(Rush, 1976)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>The Queen is Dead  <span class="muted">(The Smiths, 1986)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>(What's the Story) Morning Glory?  <span class="muted">(Oasis, 1995)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>The Doors  <span class="muted">(The Doors, 1967)</span></span>
+        <span class="vault-item" data-kind="records"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-compact-disc"/></svg>Brothers in Arms  <span class="muted">(Dire Straits, 1985)</span></span>
 
         <!-- photos -->
-        <!-- EDIT-ME(jaime): film scans become photo tiles pinned among the tags — small prints
-             (~7.5rem tall) that scatter and rotate like everything else.
-
-             First run the scans through the script (it makes both sizes for you):
-                 tools/add-photos.sh ~/wherever/your/scans
-             Then copy this template once per photo, changing NAME and the caption.
-             The thumb is what loads on the floor; the full one opens on click.
-             Set width/height to the THUMB's real size (`magick identify` prints it) —
-             it reserves the right box so the floor doesn't jump as photos load.
-
-        <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/NAME.jpg" target="_blank" title="caption, place, year">
-            <img src="/files/photos/thumbs/NAME.jpg" alt="caption" width="400" height="267" loading="lazy">
-        </a>
-        -->
-        <!-- EDIT-ME(jaime): captions are place + year. The YEARS ARE A GUESS — see below.
-             Japan (2026) and the three film scans (2024) are dated from an export/scan
-             timestamp, not from when the shutter fired, so check those especially. -->
         <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/alps-01.jpg" target="_blank" title="Switzerland, 2025">
             <img src="/files/photos/thumbs/alps-01.jpg" alt="Switzerland, 2025" width="400" height="267" loading="lazy">
         </a>
@@ -306,38 +321,22 @@
         <a class="vault-item vault-photo" data-kind="photos" href="/files/photos/seoul-03.jpg" target="_blank" title="Seoul, 2025">
             <img src="/files/photos/thumbs/seoul-03.jpg" alt="Seoul, 2025" width="267" height="400" loading="lazy">
         </a>
-
-        <!-- places -->
-        <a class="vault-item" data-kind="places" href="/lists/cities.html" title="cities I've lived in and visited, with vignettes"><svg class="la-icon" aria-hidden="true"><use href="/files/la-sprite.svg#la-map-marker"/></svg>cities, with vignettes</a>
     </div>
 
     <h2 id="colophon">Colophon</h2>
     <p class="muted">
         Hand-written and vibe-coded in HTML and CSS.
-        It is set in <a href="https://ctan.org/pkg/etbb" target="_blank">ETbb</a>, Michael Sharpe's
-        extension of the ET&nbsp;Book family.
-        <!-- easter egg: these five are buttons — they swap the site's palette -->
-        The colors are borrowed from
-        <button class="palette-pick" data-palette-pick="baez" title="Fruta fina, fruta extraña (Lee Monument), 2022 — it hangs in Louisiana">Firelei Báez</button>,
-        though some days they come from
-        <button class="palette-pick" data-palette-pick="maelstrom" title="the maelstrom talk theme">my talk slides</button>,
-        <button class="palette-pick" data-palette-pick="okeeffe" title="Red Poppy, 1927">Georgia O'Keeffe</button>,
-        <button class="palette-pick" data-palette-pick="sorolla" title="El pescador, 1904 — painted on the Cabañal beach">Joaquín Sorolla</button>, or
-        <button class="palette-pick" data-palette-pick="hammershoi" title="Interior from Strandgade with Sunlight on the Floor, 1901">Vilhelm Hammershøi</button>;
-        the icons are <a href="https://icons8.com/line-awesome" target="_blank">Line Awesome</a>.
-        The squiggle in the navigation is the <i>ringdown</i> of a black hole, and it doesn't like being poked.
+        The font is <a href="https://ctan.org/pkg/etbb" target="_blank">ETbb</a>.
+        The background color is Cosmic Latte, the average colour of all the light in the universe.
+        The dark version is the average colour of the night sky.
+        The icons are from <a href="https://icons8.com/line-awesome" target="_blank">Line Awesome</a>.
+        The squiggle in the navigation bar is the <i>ringdown</i> signal of a black hole.
         The favicon is the Penrose diagram of a black hole, spelling my initials.
     </p>
 
     <footer id="footer">
         <p>
-            <a href="mailto:jredondo@princeton.edu">email</a> ·
-            <a href="/files/cv_jaime_redondo.pdf">CV</a> ·
-            <a href="https://inspirehep.net/authors/1797177" target="_blank">INSPIRE</a> ·
-            <a href="https://scholar.google.com/citations?user=owdU7m0AAAAJ&hl=en" target="_blank">Scholar</a> ·
-            <a href="https://github.com/jredondoyuste" target="_blank">GitHub</a> ·
-            <a href="https://www.linkedin.com/in/jredondoyuste" target="_blank">LinkedIn</a> ·
-            <a href="https://curius.app/jaime-redondo-yuste2" target="_blank">Curius</a>
+            <a href="mailto:jredondo@princeton.edu">say hi!</a> ·
             &nbsp;·&nbsp; &copy; 2026 · <a href="/vault.html#colophon">colophon</a>
         </p>
     </footer>

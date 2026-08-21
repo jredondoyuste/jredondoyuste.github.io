@@ -64,19 +64,42 @@ chips** (email / CV / INSPIRE / …), the **Trajectory** timeline, and the
   on every visit, so nothing is permanently "first".
 
 ### `research.html` — the Research page
-- The **intro paragraph** contains the three research themes as coloured,
-  clickable words (`stage-link` buttons). Each points at a hidden block
-  lower in the file — `<div class="reveal-source" id="src-theme-1">` etc.
-  **Write the theme content inside those `reveal-source` blocks.** The word
-  "blackboard" reveals the photo the same way (`id="src-photo"`).
-- **Publications** is the full list from INSPIRE (July 2026), newest first.
-  Each paper is a `<details class="pub">`: the summary line (title +
-  authors + journal), then the abstract, then an **optional "director's
-  cut" note** — a commented template sits inside every paper; uncomment it
-  and write. To add a new paper, copy a whole `<li>…</li>` block.
-- **Talks**: each `<li>` carries `class="talk-invited"` (◆, accent) or
-  `class="talk-contributed"` (◇, muted). I guessed seminars = invited and
-  the IBS workshop = contributed — check them.
+- The **intro paragraph** contains the research themes as Capitalised,
+  accent-coloured, clickable words (`stage-link` buttons). Each points at a
+  hidden block lower in the file — `<div class="reveal-source" id="src-theme-1">`
+  etc. **Write the theme content inside those `reveal-source` blocks.** The
+  words "staring at a blackboard" reveal the photo the same way
+  (`id="src-photo"`).
+- Each theme button also carries `data-hash="nonlinear-dynamics"`, which is
+  what **the fold-down menu under [research] in the nav** links to:
+  `/research.html#nonlinear-dynamics` opens that theme on arrival. If you add
+  a theme, give its button a `data-hash` and add a line to the `nav-menu`
+  block — which lives in the nav of *every* page, so change all four.
+- **Publications** is the full list from INSPIRE (August 2026), newest
+  first, in an `<ol reversed>` — so the numbers count *down* and adding a
+  paper at the top renumbers everything by itself. Each paper reads as three
+  lines: title, authors (yours in bold ink), and where it appeared. That
+  third line — journal (linked to its DOI), arXiv, INSPIRE — stays clickable
+  whether or not the paper is folded open; `js/stage.js` catches clicks on
+  links inside a `<summary>` so they don't fold the entry instead. Inside sits
+  the abstract and an **optional "director's cut" note** (a commented template
+  in every paper: uncomment and write). To add a paper, copy a whole
+  `<li>…</li>` block.
+- **Talks, Code and Teaching** follow the same shape: a first line naming
+  the thing, a quieter second line placing it. On talks, each `<li>` carries
+  `class="talk-invited"` (◆, accent) or `class="talk-contributed"` (◇, muted);
+  the date leads the second line and sits in a fixed column. Link a title to a
+  PDF in `/files/talks/` and it grows a small "slides" chip by itself —
+  **watch the capitalisation of the filename**, GitHub Pages is case-sensitive.
+  On codes, the third line is the arXiv id.
+- **Theme extras** (see theme 1 for a live example; themes 2–3 carry a
+  commented template):
+  - a **figure carousel** (`fig-carousel`): one `<figure class="fig-frame">`
+    per figure, arrows walk them. Drop images in `/files/figures/` (keep
+    them under ~200 KB; `magick in.png -resize '900x900>' -strip out.png`),
+    put `is-on` on exactly one frame, and give each caption an arXiv link.
+  - a **papers list** (`theme-papers`) and a **collaborators line**
+    (`theme-people`) at the end of the reveal.
 - When a section opens on the right, it gets a **title** from its
   `<summary>` text. To show a different title there (say the left bar says
   "Publications" but the stage should say "Selected publications"), add
@@ -84,10 +107,22 @@ chips** (email / CV / INSPIRE / …), the **Trajectory** timeline, and the
 - On wide screens the **left column is sticky**: if the right side grows
   taller than the screen (all those abstracts), scrolling moves only the
   right. This relies on the left column fitting one screen — keep it lean.
-- The "questions that keep me up at night" list lives in
-  `js/crazy_idea.js` — add or edit lines in the array there.
+- **"Questions that keep me up at night"** is the last reveal section, and
+  it opens on the right like the others. Questions then surface on their
+  own, one every five seconds, scattered at random over the panel; bring
+  the cursor near one and it pops (a tap does the same on a phone),
+  leaving room for the next. The questions themselves live in
+  `js/crazy_idea.js` — add or edit lines in the array there. The three
+  numbers at the top of that file set the pace: `SPAWN_MS` (how often a new
+  one appears), `MAX_ON_SCREEN`, and `POP_DIST` (how close the cursor has
+  to get, in pixels).
 
 ### `vault.html` — the Vault
+This page alone runs **wide**: `<div class="page page-vault">` lets the floor
+spread to 82rem, while the nav, title, filters and notes above it keep the
+normal reading measure. `<body class="is-vault">` widens the starfield's quiet
+trough to match.
+
 Everything on the vault floor is a `vault-item`. To add one, copy an
 existing line and change the text. On "everything", `js/vault.js` packs the
 items densely (each drops to the highest free spot, with a small gap and a

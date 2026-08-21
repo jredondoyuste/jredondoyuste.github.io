@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/js/theme.js"></script>
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/starfield.js" defer></script>
     <script src="/js/stage.js" defer></script>
 </head>
 
@@ -19,7 +20,13 @@
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
-        <a href="/research.html" aria-current="page">[research]</a>
+        <span class="nav-drop">
+            <a href="/research.html" aria-current="page">[research]</a>
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
         <a href="/vault.html">[vault]</a>
         <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>
@@ -27,64 +34,124 @@
     <h1>Research</h1>
 
     <p>
-        General Relativity is fascinating: it predicts that 
-        spacetime itself can fold onto itself forming black holes, 
-        which collide shaking the fabric of the Universe. 
-        We have the privilege to live in a Universe where black holes exist,
-        in a time where we can measure these ripples. 
-        My research tries to leverage gravitational wave observations
-        to learn about the gravitational interaction, the nature of black holes, and fundamental properties of matter. 
-        I have worked along a few different themes, including
-        <button class="stage-link" data-reveal="src-theme-1">nonlinear black hole dynamics</button>,
-        <button class="stage-link" data-reveal="src-theme-2">viscosity and neutron stars</button>, and
-        <button class="stage-link" data-reveal="src-theme-3">gravitational turbulence</button>
-        I like to use and learn every tool and technique I can. This means sometimes I do simulations, 
-        sometimes I look at data, and often I am just <button class="stage-link" data-reveal="src-photo">staring at a blackboard</button>.
+        I am fascinated by extreme events that occur in nature, and became a physicist to try to explain them. 
+        On Earth, these are things such as waves breaking, thunderstorms, or auroras. 
+        Out of Earth, these are collisions between extremely dense celestial bodies moving at a fraction of the speed of light.  
+        I research these events using gravitational wave observations. Some topics I have worked on are
+        <button class="stage-link" data-reveal="src-theme-1" data-hash="nonlinear-dynamics">Nonlinear Black Hole Dynamics</button>, and
+        <button class="stage-link" data-reveal="src-theme-2" data-hash="viscous-stars">Viscosity and Neutron Stars</button>. I am also curious about lensing, triple systems, turbulence, and mathematical relativity. 
     </p>
-
     <p>
-        I am always eager to collaborate on projects related to strong-field gravity
-        and gravitational waves. If you are also excited about these topics, and
-        especially if you are a student, please reach out!
+        A Gravitational wave physicist must use different tools, 
+        including numerical simulations, data analysis, and <button class="stage-link" data-reveal="src-photo">staring at blackboards</button>. 
+        The most exciting part, for me, is to meet brilliant people. If any of this sparks your curiosity, and especially if you are a student, please reach out! 
+    </p>
+    <p>
+        I am also passionate about the interplay between art and science. Together with some friends, we wrote a <a href="aquantumofhope.com">theatre play </a>
+        about quantum physics (and physicists), which premiered in Canada in 2025. In Copenhagen, I declamed a Black Hole Ballad that 
+        came second in a Nordic Science Slam. If you are an artist, or otherwise passionate about this, please reach out. 
     </p>
 
     <div class="reveal-source" id="src-theme-1" hidden>
-        <h3>nonlinear black hole dynamics</h3>
+        <h3>Nonlinear Black Hole Dynamics</h3>
         <p>
-            The instant two black holes merge, the spacetime is highly curved, asymmetric, and dynamical. 
-            The resulting peanut-shaped black hole relaxes to equilibrium extremely quickly, shedding away 
-            all this complex structure in miliseconds. This is known as ringdown. 
+            The instant two black holes merge, the spacetime is highly curved, asymmetric, and dynamical.
+            The resulting black hole relaxes to equilibrium extremely quickly, shedding away
+            all this complex structure in milliseconds. This is known as ringdown.
         </p>
         <p>
-            The ringdown of black holes is remarkably simple. Black holes have no hair, that is, 
-            they are fully determined by their mass and spin. The ringdown gravitational waves are, 
-            thus, also determined (almost) entirely by the black hole mass and spin. 
-            By measuring these waves accurately enough, we can directly measure the properties of the 
-            ringing black hole. This means, in particular, we can test whether the ringing object was
-            actually a black hole, or something else. This research direction is known as black hole spectroscopy. 
-            We recently wrote an extensive review on this: check it out! 
+            The ringdown of black holes is remarkably simple. The ringdown gravitational waves are
+            oscillatory modes, whose frequencies are determined entirely by the black hole mass and spin.
+            By measuring these frequencies accurately enough, we can directly measure the properties of the
+            ringing black hole, and test whether it was actually a black hole. 
+            This program is known as black hole spectroscopy. I recently contributed to an extensive review on this:
+            <a href="https://arxiv.org/abs/2505.23895" target="_blank">check it out</a>!
         </p>
         <p>
-            I am interested in every aspect of this story: from the theoretical and mathematical foundations, 
+            I am interested in every aspect of this story: from the theoretical and mathematical foundations,
             to the data analysis challenges that inferring the black hole properties from short-lived ringdown signals entails.
-            But one problem that is particulary dear to me are nonlinearities in the ringdown. 
+            But one problem that is particularly dear to me is nonlinearities in the ringdown.
         </p>
         <p>
-            Einstein's equations are nonlinear. Hence, the ringdown modes interact nonlinearly among themselves, 
-            and excite a whole tower of nonlinear harmonics. If we can measure these modes, we can not 
-            only test more accurately the nature of black holes, but we can directly probe the nonlinear, 
-            dynamical content of Einstein's equations! These effects are non-perturbative in Newton's constant, 
-            which means that gravitational waves are our best hope to probe this.  
+            Einstein's equations are nonlinear. Hence, the ringdown modes interact with themselves,
+            and excite a tower of nonlinear harmonics. If we can measure some of these nonlinear harmonics, 
+            we can directly probe the nonlinear, dynamical content of Einstein's equations!
+        </p>
+
+        <div class="fig-carousel">
+            <button class="fig-nav fig-prev" aria-label="Previous figure">&#8249;</button>
+            <div class="fig-frames">
+                <figure class="fig-frame">
+                    <img src="/files/figures/eikonal-ratio.png" alt="Ratio of quadratic to linear mode amplitudes growing with multipole number" width="829" height="599" loading="lazy">
+                    <figcaption class="small">The quadratic-to-linear amplitude ratio grows with &#8467;, for certain mode couplings - <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/large-d-merger.png" alt="Mass profiles of a head-on black hole merger in the large-D effective theory" width="898" height="700" loading="lazy">
+                    <figcaption class="small">A head-on merger in the large-D limit of gravity — <a href="https://arxiv.org/abs/2606.23804" target="_blank">arXiv:2606.23804</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/plane-wave-coupling.png" alt="Contour maps of the quadratic coupling between gravitational plane waves" width="900" height="453" loading="lazy">
+                    <figcaption class="small">How strongly quasinormal modes couple in the high-frequency limit, for different overtone combinations (using Penrose limits!) — <a href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a></figcaption>
+                </figure>
+            </div>
+            <button class="fig-nav fig-next" aria-label="Next figure">&#8250;</button>
+        </div>
+
+        <p class="theme-more">Papers in this thread</p>
+        <ul class="theme-papers">
+            <li><a href="https://arxiv.org/abs/2606.23804" target="_blank">Black hole ringdown nonlinearities in the large-D limit</a> (2026)</li>
+            <li><a href="https://arxiv.org/abs/2509.03598" target="_blank">Perturbations of plane waves and quadratic quasinormal modes on the lightring</a> (2025)</li>
+            <li><a href="https://arxiv.org/abs/2505.23895" target="_blank">Black hole spectroscopy: from theory to experiment</a> (2025)</li>
+            <li><a href="https://arxiv.org/abs/2501.17950" target="_blank">Ringdown nonlinearities in the eikonal regime</a> (2025)</li>
+            <li><a href="https://arxiv.org/abs/2405.12290" target="_blank">Hushing black holes: tails in dynamical spacetimes</a> (2024)</li>
+            <li><a href="https://arxiv.org/abs/2312.04633" target="_blank">Ringdown of a dynamical spacetime</a> (2024)</li>
+            <li><a href="https://arxiv.org/abs/2308.14796" target="_blank">Spin dependence of black hole ringdown nonlinearities</a> (2023)</li>
+            <li><a href="https://arxiv.org/abs/2212.06175" target="_blank">Non-linear black hole dynamics and Carrollian fluids</a> (2022)</li>
+        </ul>
+        <p class="theme-people">
+            Collaborators: V. Cardoso, D. Pereñiguez, G. Carullo, R. Emparan, K. Fransen,
+            E. Berti, J. Ripley, L. Lehner, B. Bucciotti, A. Kuntz, A. Green-Salinas, S. Yi, R. Felice Rosato, M. Cheung&hellip;
         </p>
     </div>
+
     <div class="reveal-source" id="src-theme-2" hidden>
-        <h3>viscosity and neutron stars</h3>
-        <p><span class="todo">[jaime: the dynamical response of viscous objects to gravitational waves, gravitational mirrors…]</span></p>
+        <h3>Viscosity and Neutron Stars</h3>
+        <p>
+            Neutron stars are really dense stars, that concentrate the mass of the Sun in a sphere the size of the island of Manhattan. 
+            A fundamental question in astrophysics is understanding what are they made of. 
+        </p>
+        <p>
+            The matter at the center of a neutron star is extremely dense, and very cold. This is a regime complementary to what we can probe with particle accelerators on Earth - a kind of cosmic, particle physics laboratory! To understand a neutron star it's necessary to know about all four fundamental interactions: gravity, electromagnetism, and the weak and strong nuclear forces. 
+        </p>
+        <p>
+            Recently I became interested in understanding the impact of viscosity in the gravitational waves emitted by neutron stars. If the matter inside the star contains strange quarks, or hyperons, it may be quite viscous. In my works, I have studied how this viscosity is imprinted in the characteristic frequencies of stars. 
+        </p>
+
+        <div class="fig-carousel">
+            <button class="fig-nav fig-prev" aria-label="Previous figure">&#8249;</button>
+            <div class="fig-frames">
+                <figure class="fig-frame">
+                    <img src="/files/figures/eikonal-ratio.png" alt="Ratio of quadratic to linear mode amplitudes growing with multipole number" width="829" height="599" loading="lazy">
+                    <figcaption class="small">The quadratic-to-linear amplitude ratio grows with &#8467;, for certain mode couplings - <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a></figcaption>
+                </figure>
+            </div>
+            <button class="fig-nav fig-next" aria-label="Next figure">&#8250;</button>
+        </div>
+
+        <p class="theme-more">Papers in this thread</p>
+        <ul class="theme-papers">
+            <li><a href="https://arxiv.org/abs/2604.13208" target="_blank">Axial Oscillations of Viscous Neutron Stars</a> (2026)</li>
+            <li><a href="https://arxiv.org/abs/2603.23622" target="_blank">Radial Oscillations of Viscous Stars</a> (2026)</li>
+            <li><a href="https://arxiv.org/abs/2506.13850" target="_blank">Superradiant Amplification by Rotating Viscous Compact Objects</a> (2025)</li>
+            <li><a href="https://arxiv.org/abs/2411.16841" target="_blank">Perturbations of Relativistic, Dissipative Stars</a> (2024)</li>
+            <li><a href="https://arxiv.org/abs/2411.16861" target="_blank">The Dynamical Response of Viscous Objects to Gravitational Waves</a> (2024)</li>
+        </ul>
+        <p class="theme-people">
+            Collaborators: V. Cardoso, K. Kokkotas, S. Bussieres, L. Keeble, V. Boyanov&hellip;
+        </p>
     </div>
-    <div class="reveal-source" id="src-theme-3" hidden>
-        <h3>gravitational turbulence</h3>
-        <p><span class="todo">[jaime: spacetimes with stable light rings, turbulent cascades of gravitational waves…]</span></p>
-    </div>
+
+
     <div class="reveal-source" id="src-photo" hidden>
         <figure>
             <img src="/files/sjoerd_photo.jpg" alt="Two physicists stare at a blackboard" width="1200" height="800" loading="lazy">
@@ -95,286 +162,258 @@
     <details class="reveal" id="publications">
         <summary>Publications</summary>
         <div class="reveal-body">
-            <ul class="pub-list">
-                <!-- Generated from INSPIRE (author 1797177), July 2026 — newest first.
-                     Each paper is a <details class="pub">: summary line + abstract +
-                     an optional director's-cut note (template commented inside each). -->
+            <ol class="pub-list" reversed>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Black Hole Ringdown Nonlinearities in the Large-D Limit</span>
-                <span class="pub-meta">— R. Emparan, A. Green-Salinas, D. Pereñiguez &amp; <b>JRY</b>, arXiv:2606.23804 (2026).</span></summary>
+            <summary>
+                <span class="pub-title">Nonlinear Dynamics near the Threshold of Gravitational Collapse</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b> &amp; J. C. Aurrekoetxea</span>
+                <span class="pub-where"><span class="pub-preprint">preprint</span> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2607.27343" target="_blank">arXiv:2607.27343</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3184719" target="_blank">INSPIRE</a></span>
+            </summary>
+            <p class="pub-abstract">Perturbation theory is an essential tool to model and interpret gravitational dynamics, for example, binary black hole mergers. Therefore it is also crucial to precisely understand its regimes of validity. The collapse of a scalar field under its own self-gravity provides a clean laboratory to study these questions. By varying the field&#x27;s initial amplitude we can transition smoothly between a perturbative regime, where the field scatters in an approximately flat spacetime; and a nonperturbative regime, where a black hole forms in finite time. In this work, we use numerical relativity simulations of this set-up to investigate the accuracy of a perturbative expansion around flat spacetime, including next-to-next-to-leading order effects. Our simulations show deviations from these perturbative predictions before black hole formation, once the maximum luminosity of the process is sufficiently large, L_peak ~ 10^-2 L_Planck. We characterize these nonlinear effects including a redshift of the driving frequency and a power-law spectral amplitude, which we show is consistent with approximate discrete self-similarity. These results provide a step forward towards understanding the limits of perturbative expansions in more realistic strong-gravity phenomena such as non-spherical collapse and high-velocity black hole mergers.</p>
+        </details>
+                </li>
+                <li>
+        <details class="pub">
+            <summary>
+                <span class="pub-title">Black Hole Ringdown Nonlinearities in the Large-D Limit</span>
+                <span class="pub-authors">R. Emparan, A. Green-Salinas, D. Pereñiguez &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><span class="pub-preprint">preprint</span> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2606.23804" target="_blank">arXiv:2606.23804</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3171511" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">We initiate the study of nonlinear effects in the ringdown phase of black hole mergers using the effective theory of black hole dynamics in the large-D limit. This framework offers several advantages: the quasinormal mode spectrum, including nonlinear corrections, is analytically tractable; numerical simulations of collisions are computationally inexpensive; and the extraction and analysis of the ringdown signal are clean and controlled. As a proof of concept, we derive analytic expressions for the third-order response of a static black hole driven by a single quasinormal mode, and apply them to study the ringdown following head-on collisions of non-spinning black holes across a range of velocities and mass ratios. We find that including nonlinear effects, up to quadratic and cubic order, improves the accuracy of quasinormal-mode modelling of black hole relaxation by several orders of magnitude. The results also show a clear growth in the strength of nonlinear effects as the collision velocity increases.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2606.23804" target="_blank">arXiv:2606.23804</a> · <a href="https://inspirehep.net/literature/3171511" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">The third wheel: ringdown and lensing of triple systems</span>
-                <span class="pub-meta">— V. Cardoso, G. Ficarra, <b>JRY</b> &amp; J. S. d. Santos, arXiv:2605.20320 (2026).</span></summary>
+            <summary>
+                <span class="pub-title">The third wheel: ringdown and lensing of triple systems</span>
+                <span class="pub-authors">V. Cardoso, G. Ficarra, <b class="pub-me">J. Redondo-Yuste</b> &amp; J. S. dos Santos</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/bwyh-2zc1" target="_blank">Phys. Rev. D 114 (2026) 024065</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2605.20320" target="_blank">arXiv:2605.20320</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3158124" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Triple systems have progressively been recognized as ubiquitous in our universe and provide a good testing ground for wave generation and propagation in nontrivial environments. We study the dynamics of triple systems in a fully nonlinear setting. In particular, we analyze numerical relativity simulations of head-on collisions of black holes in the presence of a companion. We show evidence for Doppler and gravitational redshift in the ringdown, and clear signs of amplification by lensing. In certain cases, we also show the appearance of a second image, with hints of resonant mode excitation. Our results pave the way for the understanding of mergers in the vicinity of massive companions. Even in extreme setups we do not find collapse to black holes from lensed gravitational radiation.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2605.20320" target="_blank">arXiv:2605.20320</a> · <a href="https://inspirehep.net/literature/3158124" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Axial Oscillations of Viscous Neutron Stars</span>
-                <span class="pub-meta">— S. Bussières, <b>JRY</b>, J. J. Ortega Gómez &amp; V. Cardoso, arXiv:2604.13208 (2026).</span></summary>
+            <summary>
+                <span class="pub-title">Axial Oscillations of Viscous Neutron Stars</span>
+                <span class="pub-authors">S. Bussières, <b class="pub-me">J. Redondo-Yuste</b>, J. J. Ortega Gómez &amp; V. Cardoso</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/w9nm-ygnf" target="_blank">Phys. Rev. D 114 (2026) 044012</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2604.13208" target="_blank">arXiv:2604.13208</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3145517" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The oscillation modes of stars play an important role in observations, and on the understanding of stellar stability properties. The role of viscosity in the oscillation modes of compact stars has been so far understood very loosely only, in absence of a well posed framework. We use recent breakthroughs in the formulation of a causal and stable theory of relativistic hydrodynamics, to study oscillation modes of neutron stars. We characterize the axial spectrum of compact stars and uncover new, viscosity-driven families of modes, without a perfect fluid counterpart. Our results show mode avoidance in some of these families, and a spectrum of long-lived modes, whose role in astrophysical, dynamical processes is yet to be understood.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2604.13208" target="_blank">arXiv:2604.13208</a> · <a href="https://inspirehep.net/literature/3145517" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Radial oscillations of viscous stars</span>
-                <span class="pub-meta">— L. S. Keeble &amp; <b>JRY</b>, Phys. Rev. D 113 (2026) 124058.</span></summary>
-            <p class="pub-abstract">Oscillation modes of neutron stars, a key target for third-generation gravitational wave detectors, encode key information about their constituent nuclear matter. In this work, we study the effect of viscosity on oscillations of cold, polytropic, spherically symmetric neutron stars. We focus on purely radial oscillations and work perturbatively to linear order within two hydrodynamic frameworks: the acausal covariant generalization of the Navier-Stokes equations proposed by Eckart, and the causal generalization formulated by Bemfica, Disconzi, Noronha, and Kovtun (BDNK). We find that viscosity damps the radial modes on millisecond timescales and induces fractional shifts in the oscillation frequency which increase both with the compactness and viscosity of the star, reaching up to the percent level for the fundamental mode with bulk viscosities &lt;math display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;ζ&lt;/mi&gt;&lt;mo&gt;∼&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;30&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mtext&gt; &lt;/mtext&gt;&lt;mtext&gt; &lt;/mtext&gt;&lt;mi mathvariant="normal"&gt;g&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mi&gt;cm&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mi mathvariant="normal"&gt;s&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;. For more viscous stars, the oscillation frequency decreases, becoming zero (i.e., an overdamped mode) for &lt;math display="inline"&gt;&lt;mrow&gt;&lt;mi&gt;ζ&lt;/mi&gt;&lt;mo&gt;≳&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;31&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mtext&gt; &lt;/mtext&gt;&lt;mtext&gt; &lt;/mtext&gt;&lt;mi mathvariant="normal"&gt;g&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mi&gt;cm&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mi mathvariant="normal"&gt;s&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;. We also study the linear threshold of gravitational collapse. Consistent with recent analytic results in the zero heat conductivity limit, we find that viscosity in Eckart theory cannot stabilize an unstable inviscid star. We provide numerical evidence that viscosity in BDNK theory is similarly unable to prevent gravitational collapse, but it slightly modifies the threshold of collapse. Overall, our results advance our understanding of the impact of viscosity on the oscillation modes of neutron stars, a key component of viscous asteroseismology with next-generation gravitational wave detectors.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2603.23622" target="_blank">arXiv:2603.23622</a> · <a href="https://inspirehep.net/literature/3134152" target="_blank">INSPIRE</a></p>
+            <summary>
+                <span class="pub-title">Radial Oscillations of Viscous Stars</span>
+                <span class="pub-authors">L. S. Keeble &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/41kq-fj3h" target="_blank">Phys. Rev. D 113 (2026) 124058</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2603.23622" target="_blank">arXiv:2603.23622</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3134152" target="_blank">INSPIRE</a></span>
+            </summary>
+            <p class="pub-abstract">Oscillation modes of neutron stars, a key target for third-generation gravitational wave detectors, encode key information about their constituent nuclear matter. In this work, we study the effect of viscosity on oscillations of cold, polytropic, spherically symmetric neutron stars. We focus on purely radial oscillations and work perturbatively to linear order within two hydrodynamic frameworks: the acausal covariant generalization of the Navier-Stokes equations proposed by Eckart, and the causal generalization formulated by Bemfica, Disconzi, Noronha, and Kovtun (BDNK). We find that viscosity damps the radial modes on millisecond timescales and induces fractional shifts in the oscillation frequency which increase both with the compactness and viscosity of the star, reaching up to the percent level for the fundamental mode with bulk viscosities ζ~10^30 g/cm/s. For more viscous stars, the oscillation frequency decreases, becoming zero (i.e., an overdamped mode) for ζ≳10^31 g/cm/s. We also study the linear threshold of gravitational collapse. Consistent with recent analytic results in the zero heat conductivity limit, we find that viscosity in Eckart theory cannot stabilize an unstable inviscid star. We provide numerical evidence that viscosity in BDNK theory is similarly unable to prevent gravitational collapse, but it slightly modifies the threshold of collapse. Overall, our results advance our understanding of the impact of viscosity on the oscillation modes of neutron stars, a key component of viscous asteroseismology with next-generation gravitational wave detectors.</p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Nonlinear Dynamics in General Relativity</span>
-                <span class="pub-meta">— V. Cardoso, <b>JRY</b>, U. Sperhake &amp; F. Tuncer, arXiv:2603.04501 (2026).</span></summary>
+            <summary>
+                <span class="pub-title">Nonlinear Dynamics in General Relativity</span>
+                <span class="pub-authors">V. Cardoso, <b class="pub-me">J. Redondo-Yuste</b>, U. Sperhake &amp; F. Tuncer</span>
+                <span class="pub-where"><span class="pub-preprint">preprint</span> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2603.04501" target="_blank">arXiv:2603.04501</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/3126837" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Black holes and gravitational waves are consequences of the nonlinear character of the Einstein equations. Yet, the remarkable properties of General Relativity point to the existence of other effects. Here we uncover new nonlinear facets of gravity. We establish higher harmonic generation, spectral broadening and focusing in the Einstein Klein-Gordon system. In vacuum, we show that scattering of monochromatic waves at quadratic order is weakly sensitive to frequency, at large wavelengths. These aspects can both explain the seemingly smooth behavior of mergers, but also caution us against too simplistic an interpretation of waveforms.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2603.04501" target="_blank">arXiv:2603.04501</a> · <a href="https://inspirehep.net/literature/3126837" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">A Quantum of Hope</span>
-                <span class="pub-meta">— S. E. S. Skelton, A. Knörr, <b>JRY</b>, M. Srivastava &amp; A. Brandenberger, arXiv:2509.14361 (2025).</span></summary>
-            <p class="pub-abstract">Public outreach in quantum science and technologies has many goals, ranging from generating interest and dampening hype to making the fascinating and complex topic more accessible. In this work, we present a play on quantum science and technologies aimed at a science-curious audience, which aims to lift the curtains on different researchers' perspectives on this rapidly evolving field. These notes expand on the ideas presented in the play and provide additional sources that may be useful for educators and directors in future productions. In "A Quantum of Hope", the end of the world has never looked so bureaucratic. When an alien civilization announces that Earth will be demolished to make way for a research station, humanity is given five years to prove its value. The evaluation criteria? Randomly chosen to be quantum science and technologies. Five experts, sampled from quantum academia and industry, are locked in a room to select a single project proposal to unite global efforts. Douglas Adams meets 12 Angry Men in a galactic-grade grant review committee, where scientific ideas, moral convictions, and unruly egos clash.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2509.14361" target="_blank">arXiv:2509.14361</a> · <a href="https://inspirehep.net/literature/2971115" target="_blank">INSPIRE</a></p>
-        </details>
-                </li>
-                <li>
-        <details class="pub">
-            <summary><span class="pub-title">Perturbations of plane waves and quadratic quasinormal modes on the lightring</span>
-                <span class="pub-meta">— K. Fransen, D. Pereñiguez &amp; <b>JRY</b>, JHEP 12 (2025) 148.</span></summary>
+            <summary>
+                <span class="pub-title">Perturbations of Plane Waves and Quadratic Quasinormal Modes on the Lightring</span>
+                <span class="pub-authors">K. Fransen, D. Pereñiguez &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1007/JHEP12(2025)148" target="_blank">JHEP 12 (2025) 148</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2966632" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">We study second order gravitational perturbations on plane wave spacetimes from both the metric and curvature perturbation points of view. For the former, we explicitly use the isometries of the background to introduce tensor oscillator harmonics, which render Einstein’s equations algebraic around symmetric plane waves. For the latter, we formulate the first and second order Teukolsky equations in a Geroch-Held-Penrose covariant way. Both approaches are useful in their own right, and together with our discussion on gauge freedom, they provide a foundation for the study of higher-order gravitational dynamics around plane wave spacetimes. Taking the perspective that these plane wave spacetimes arise from Penrose limits, we subsequently use these results to explore the nonlinear gravitational dynamics close to black hole lightrings. Specifically, we define and discuss quadratic quasinormal mode ratios, observe that they satisfy emergent selection rules, and make publicly available a code to compute them.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a> · <a href="https://inspirehep.net/literature/2966632" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Superradiant amplification by rotating viscous compact objects</span>
-                <span class="pub-meta">— <b>JRY</b> &amp; V. Cardoso, Phys. Rev. D 112 (2025) L061501.</span></summary>
+            <summary>
+                <span class="pub-title">Superradiant amplification by rotating viscous compact objects</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b> &amp; V. Cardoso</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/gvd3-lqkv" target="_blank">Phys. Rev. D 112 (2025) L061501</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2506.13850" target="_blank">arXiv:2506.13850</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2935604" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">We study fluctuations of rotating viscous stars, using the causal relativistic hydrodynamics of Bemfica, Disconzi, Kovtun, and Noronha. We derive, in a slow-rotation approximation, a coupled system of equations describing the propagation of axial gravitational waves through the star, which couple to internal viscous modes. We show that rotating viscous stars amplify incoming low-frequency gravitational waves, a phenomenon which we argue to be universal. Superradiant amplification does not seem to trigger an instability for uniformly rotating stars, even if the object is compact enough to have light rings.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2506.13850" target="_blank">arXiv:2506.13850</a> · <a href="https://inspirehep.net/literature/2935604" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Black hole spectroscopy: from theory to experiment</span>
-                <span class="pub-meta">— E. Berti <i>et al.</i> (incl. <b>JRY</b>), Class. Quant. Grav. 43 (2026) 123001.</span></summary>
+            <summary>
+                <span class="pub-title">Black hole spectroscopy: from theory to experiment</span>
+                <span class="pub-authors">E. Berti <i>et al.</i> (incl. <b class="pub-me">J. Redondo-Yuste</b>)</span>
+                <span class="pub-where"><a href="https://doi.org/10.1088/1361-6382/ae59e2" target="_blank">Class. Quant. Grav. 43 (2026) 123001</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2505.23895" target="_blank">arXiv:2505.23895</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2927078" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The ‘ringdown’ radiation emitted by oscillating black holes has great scientific potential. By carefully predicting the frequencies and amplitudes of black hole quasinormal modes and comparing them with gravitational-wave (GW) data from compact binary mergers we can advance our understanding of the two-body problem in general relativity, verify the predictions of the theory in the regime of strong and dynamical gravitational fields, and search for physics beyond the Standard Model or new gravitational degrees of freedom. We summarize the state of the art in our understanding of black hole quasinormal modes in general relativity and modified gravity, their excitation, and the modeling of ringdown waveforms. We also review the status of LIGO-Virgo-KAGRA ringdown observations, data analysis techniques, and the bright prospects of the field in the era of LISA and next-generation ground-based GW detectors.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2505.23895" target="_blank">arXiv:2505.23895</a> · <a href="https://inspirehep.net/literature/2927078" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Perturbative and nonlinear analyses of gravitational turbulence in spacetimes with stable light rings</span>
-                <span class="pub-meta">— <b>JRY</b> &amp; A. Cárdenas-Avendaño, Phys. Rev. D 111 (2025) 124009.</span></summary>
+            <summary>
+                <span class="pub-title">Perturbative and non-linear analyses of gravitational turbulence in spacetimes with stable light rings</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b> &amp; A. Cárdenas-Avendaño</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/hy3r-ww3w" target="_blank">Phys. Rev. D 111 (2025) 124009</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2502.18643" target="_blank">arXiv:2502.18643</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2894920" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Some black hole mimickers, as well as black strings and other higher-dimensional spacetimes, exhibit stable light rings-regions where light or high-frequency gravitational waves can be trapped. In these regions, linear perturbations decay slowly, raising the possibility of nonlinear instability mechanisms. In this work, we study the cubic nonlinear wave equation as a proxy for Einstein’s equations, using a four-dimensional model geometry that allows stable trapping. By employing a perturbative approach, and neglecting the backreaction onto the spacetime, we show that the nonlinear wave equation on the sphere with dissipative terms captures several features of the full nonlinear problem. This framework allows us to confirm a previous conjecture: all higher-order energy norms grow for arbitrarily small initial fluctuation amplitudes. Additionally, we analyze the system’s mode spectrum at late times, revealing an inertial range dominated by a direct energy cascade. These findings further support the notion that spacetimes with stable light rings develop weak, high-frequency radiation hair, which will not generically lead to instabilities.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2502.18643" target="_blank">arXiv:2502.18643</a> · <a href="https://inspirehep.net/literature/2894920" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Lensing and wave optics in the strong field of a black hole</span>
-                <span class="pub-meta">— J. C. L. Chan, C. Dyson, M. Garcia, <b>JRY</b> &amp; L. Vujeva, Phys. Rev. D 112 (2025) 064009.</span></summary>
+            <summary>
+                <span class="pub-title">Lensing and wave optics in the strong field of a black hole</span>
+                <span class="pub-authors">J. C. L. Chan, C. Dyson, M. Garcia, <b class="pub-me">J. Redondo-Yuste</b> &amp; L. Vujeva</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/6h6r-46cd" target="_blank">Phys. Rev. D 112 (2025) 064009</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2502.14073" target="_blank">arXiv:2502.14073</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2892293" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Gravitational waves (GWs) are lensed by matter, offering a unique probe of both the large-scale structure of the Universe and the fundamental properties of GW propagation. GWs can also be affected by wave optics effects when their wavelength is comparable to the size of the lens. While this regime has been well studied in the Newtonian approximation, the role of strong gravitational fields remains largely unexplored. This is particularly relevant for lensing by intermediate and supermassive black holes (BHs), which can occur near active galactic nuclei or in compact triple systems. In this work, we analyze the lensing of GWs by a non-rotating BH and compare our results to the Newtonian point-mass approximation. We construct frequency-dependent amplification factors that incorporate strong-field effects, revealing explicit polarization mixing and absorption by the event horizon. Using a fiducial GW event, we explore key phenomenological signatures of BH lensing, highlighting new observational opportunities to probe strong gravitational fields through GW lensing.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2502.14073" target="_blank">arXiv:2502.14073</a> · <a href="https://inspirehep.net/literature/2892293" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Ringdown nonlinearities in the eikonal regime</span>
-                <span class="pub-meta">— B. Bucciotti, V. Cardoso, A. Kuntz, D. Pereñiguez &amp; <b>JRY</b>, Phys. Rev. D 111 (2025) L081502.</span></summary>
-            <p class="pub-abstract">The eikonal limit of black hole quasinormal modes (the large multipole limit &lt;math display="inline"&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;mo&gt;≫&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/math&gt;) can be realized geometrically as a next-to-leading order solution to the geometric optics approximation, and also as linear fluctuations about the Penrose limit plane wave adapted to the light ring. Extending this interpretation beyond the linear order in perturbation theory requires a robust understanding of quadratic quasinormal modes for large values of &lt;math display="inline"&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;/math&gt;. We analyze numerically the relative excitation of quadratic to linear quasinormal modes of Schwarzschild black holes, with two independent methods. Our results suggest that the ratio of quadratic to linear amplitudes for the &lt;math display="inline"&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;mo stretchy="false"&gt;→&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;/math&gt; channel converges towards a finite value for large &lt;math display="inline"&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;/math&gt;, in sharp contrast with a recent proposal inspired by the Penrose limit perspective. On the other hand, the &lt;math display="inline"&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;×&lt;/mo&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;mo stretchy="false"&gt;→&lt;/mo&gt;&lt;mo&gt;ℓ&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/math&gt; channel seems to have a linearly growing ratio. Nevertheless, we show that there is no breakdown of black hole perturbation theory for physically realistic initial data.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a> · <a href="https://inspirehep.net/literature/2874168" target="_blank">INSPIRE</a></p>
+            <summary>
+                <span class="pub-title">Ringdown nonlinearities in the eikonal regime</span>
+                <span class="pub-authors">B. Bucciotti, V. Cardoso, A. Kuntz, D. Pereñiguez &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.111.L081502" target="_blank">Phys. Rev. D 111 (2025) L081502</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2874168" target="_blank">INSPIRE</a></span>
+            </summary>
+            <p class="pub-abstract">The eikonal limit of black hole quasinormal modes (the large multipole limit ℓ ≫ 1) can be realized geometrically as a next-to-leading order solution to the geometric optics approximation, and also as linear fluctuations about the Penrose limit plane wave adapted to the lightring. Extending this interpretation beyond the linear order in perturbation theory requires a robust understanding of quadratic quasinormal modes for large values of ℓ. We analyze numerically the relative excitation of quadratic to linear quasinormal modes of Schwarzschild black holes, with two independent methods. Our results suggest that the ratio of quadratic to linear amplitudes for the ℓ × ℓ → 2ℓ channel converges towards a finite value for large ℓ, in sharp contrast with a recent proposal inspired by the Penrose limit perspective. On the other hand, the 2 × ℓ → ℓ + 2 channel seems to have a linearly growing ratio. Nevertheless, we show that there is no breakdown of black hole perturbation theory for physically realistic initial data.</p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Perturbations of relativistic dissipative stars</span>
-                <span class="pub-meta">— <b>JRY</b>, Class. Quant. Grav. 42 (2025) 075012.</span></summary>
+            <summary>
+                <span class="pub-title">Perturbations of relativistic dissipative stars</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1088/1361-6382/adbfef" target="_blank">Class. Quant. Grav. 42 (2025) 075012</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2411.16841" target="_blank">arXiv:2411.16841</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2852185" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Viscous fluids can dissipate and alter the propagation of gravitational waves (GWs), as well as modify the relaxation and stability properties of self-gravitating fluids. This is particularly relevant in order to understand the relaxation to equilibrium of neutron stars, and their GW emission. Here we study the linearized theory of perturbations of spherically symmetric self-gravitating fluids, treating only the radiative modes. Dissipative effects are included through the hydrodynamics theory of Bemfica, Disconzi, Noronha and Kovtun (BDNK). This theory has been shown to be causal and stable, despite involving only first order gradients. We show how the problem reduces to two coupled wave equations in the axial sector, one of them associated to a novel viscous mode, and including explicitly dissipative terms. In the polar sector we reduce the problem to five coupled wave equations and one additional constraint. We comment on their causal structure, and recover the causality bounds of the BDNK theory.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2411.16841" target="_blank">arXiv:2411.16841</a> · <a href="https://inspirehep.net/literature/2852185" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Dynamical Response of Viscous Objects to Gravitational Waves</span>
-                <span class="pub-meta">— V. Boyanov, V. Cardoso, K. D. Kokkotas &amp; <b>JRY</b>, Phys. Rev. Lett. 135 (2025) 151402.</span></summary>
+            <summary>
+                <span class="pub-title">The dynamical response of viscous objects to gravitational waves</span>
+                <span class="pub-authors">V. Boyanov, V. Cardoso, K. D. Kokkotas &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/smlr-v7b2" target="_blank">Phys. Rev. Lett. 135 (2025) 151402</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2411.16861" target="_blank">arXiv:2411.16861</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2852198" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">We study the dynamical response of viscous materials to gravitational waves, in the context of a fully relativistic theory of fluid dynamics. For the first time, we calculate oscillation modes and scattering properties of viscous stars. Viscous stars absorb high-frequency radiation, following a dispersion relation introduced by Press. In the extremely large viscosity regime, stars would become reflectors of waves, but this regime appears to be forbidden by causality bounds. In the context of black hole mimickers, we show how maximally viscous stars on the threshold of stability mimic the absorption of a black hole with the same mass. Our results suggest that rotating viscous stars will amplify incoming radiation.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2411.16861" target="_blank">arXiv:2411.16861</a> · <a href="https://inspirehep.net/literature/2852198" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Hushing black holes: Tails in dynamical spacetimes</span>
-                <span class="pub-meta">— V. Cardoso <i>et al.</i> (incl. <b>JRY</b>), Phys. Rev. D 109 (2024) L121502.</span></summary>
+            <summary>
+                <span class="pub-title">Hushing black holes: tails in dynamical spacetimes</span>
+                <span class="pub-authors">V. Cardoso <i>et al.</i> (incl. <b class="pub-me">J. Redondo-Yuste</b>)</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.109.L121502" target="_blank">Phys. Rev. D 109 (2024) L121502</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2405.12290" target="_blank">arXiv:2405.12290</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2788822" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Stationary, asymptotically flat, black hole solutions of the vacuum field equations of general relativity belong to the Kerr family. But how does one approach this state, dynamically? Linearized fluctuations decay at late times, at fixed spatial position, as a Price power law for generic initial conditions. However, little attention was paid to forced and nonlinear spacetimes, where matter and nonlinearities play a role. We uncover a new, source-driven tail governing waves generated by pointlike matter and nonlinearities, which can dominate over Price’s decay.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2405.12290" target="_blank">arXiv:2405.12290</a> · <a href="https://inspirehep.net/literature/2788822" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Relativistic aerodynamics of spinning black holes</span>
-                <span class="pub-meta">— C. Dyson, <b>JRY</b>, M. van de Meent &amp; V. Cardoso, Phys. Rev. D 109 (2024) 104038.</span></summary>
-            <p class="pub-abstract">Astrophysical black holes do not exist in a vacuum, and their motion is affected by the galactic environment. As a black hole moves it attracts stars and matter, creating a wake that, in turn, exerts an effective friction slowing down the black hole. This force is known as dynamical friction and has significant consequences, ranging from the formation of supermassive black hole binaries to modifications in the phase of binary mergers. In this work we explore the motion of spinning black holes on a medium. We find that the classical “drag” along the velocity direction is modified and two novel forces appear: a rotational force, which in the context of fluid dynamics is dubbed the Magnus force, and a lift, orthogonal to the direction of motion. We develop a first-principles fully relativistic treatment of these spin-induced aerodynamic forces in two types of environment: (i) collisionless corpuscular matter and (ii) a light scalar field, exploring the differences between both cases. In both cases we find that the total rotational force acts precisely in the opposite direction as compared to the classical setup of a spinning ball moving through a fluid. Finally, we comment on the consequences of these new effects for astrophysics and gravitational wave observations.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2402.07981" target="_blank">arXiv:2402.07981</a> · <a href="https://inspirehep.net/literature/2758032" target="_blank">INSPIRE</a></p>
+            <summary>
+                <span class="pub-title">Relativistic aerodynamics of spinning black holes</span>
+                <span class="pub-authors">C. Dyson, <b class="pub-me">J. Redondo-Yuste</b>, M. van de Meent &amp; V. Cardoso</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.109.104038" target="_blank">Phys. Rev. D 109 (2024) 104038</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2402.07981" target="_blank">arXiv:2402.07981</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2758032" target="_blank">INSPIRE</a></span>
+            </summary>
+            <p class="pub-abstract">Astrophysical black holes do not exist in a vacuum, and their motion is affected by the galactic environment. As a black hole moves it attracts stars and matter, creating a wake that, in turn, exerts an effective friction slowing down the black hole. This force is known as dynamical friction and has significant consequences, ranging from the formation of supermassive black hole binaries to modifications in the phase of binary mergers. In this work we explore the motion of spinning black holes on a medium. We find that the classical “drag” along the velocity direction is modified and two novel forces appear: a rotational force, which in the context of fluid dynamics is dubbed the Magnus force, and a lift, orthogonal to the direction of motion. We develop a first-principles fully relativistic treatment of these spin-induced aerodynamic forces in two types of environment: (i) collisionless corpuscular matter and (ii) a light scalar field, exploring the differences between both cases. In both cases we find that the total rotational force acts precisely in the opposite direction as compared to the classical setup of a spinning ball moving through a fluid. Finally, we comment on the consequences of these new effects for astrophysics and gravitational wave observations.</p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Ringdown of a dynamical spacetime</span>
-                <span class="pub-meta">— <b>JRY</b>, D. Pereñiguez &amp; V. Cardoso, Phys. Rev. D 109 (2024) 044048.</span></summary>
+            <summary>
+                <span class="pub-title">Ringdown of a dynamical spacetime</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b>, D. Pereñiguez &amp; V. Cardoso</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.109.044048" target="_blank">Phys. Rev. D 109 (2024) 044048</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2312.04633" target="_blank">arXiv:2312.04633</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2734161" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The gravitational waves emitted (some time) after two black holes merge are well described by the theory of linear perturbations on a spacetime characterized by the mass and spin of the remnant. However, in the very early stages right after merger, both the mass and spin are changing. In this work we explore, in a setup based on Vaidya’s spacetime, the dynamical consequences of a change of mass in the spacetime due to the accretion of null matter (for example, gravitational waves). We show that accretion imprints time-dependent frequencies and amplitude to a ringdown waveform, and we show how to model accurately this effect in certain regimes. We also comment on the direct emission of gravitational waves due to perturbations in the infalling matter, which is of relevance for black holes embedded in astrophysical environments.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2312.04633" target="_blank">arXiv:2312.04633</a> · <a href="https://inspirehep.net/literature/2734161" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Twisted Traces on Abelian Quantum Higgs and Coulomb Branches</span>
-                <span class="pub-meta">— D. Gaiotto, J. Hilburn, <b>JRY</b>, B. Webster &amp; Z. Zhou, Commun. Math. Phys. 406 (2025) 202.</span></summary>
-            <p class="pub-abstract">We study twisted traces on the quantum Higgs branches $A_{\operatorname {Higgs}}$ of $3d, \mathcal {N}=4$ gauge theories, that is, the quantum Hamiltonian reductions of Weyl algebras. In theories which are good or ugly, we define a twisted trace that arises naturally from the correlation functions of the gauge theory. We show that this trace induces an inner product and a short star product on $A_{\operatorname {Higgs}}$. We analyze this trace in the case of an abelian gauge group and show that it has a natural expansion in terms of the twisted traces of Verma modules, confirming a conjecture of the first author and Okazaki. This expansion has a natural interpretation in terms of 3-d mirror symmetry, and we predict that it can be interpreted as an Atiyah-Bott fixed-point formula under the quantum Hikita isomorphism.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2308.15198" target="_blank">arXiv:2308.15198</a> · <a href="https://inspirehep.net/literature/2691860" target="_blank">INSPIRE</a></p>
+            <summary>
+                <span class="pub-title">Twisted traces on abelian quantum Higgs and Coulomb branches</span>
+                <span class="pub-authors">D. Gaiotto, J. Hilburn, <b class="pub-me">J. Redondo-Yuste</b>, B. Webster &amp; Z. Zhou</span>
+                <span class="pub-where"><a href="https://doi.org/10.1007/s00220-025-05379-2" target="_blank">Commun. Math. Phys. 406 (2025) 202</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2308.15198" target="_blank">arXiv:2308.15198</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2691860" target="_blank">INSPIRE</a></span>
+            </summary>
+            <p class="pub-abstract">We study twisted traces on the quantum Higgs branches A_ Higgs of 3d, N=4 gauge theories, that is, the quantum Hamiltonian reductions of Weyl algebras. In theories which are good or ugly, we define a twisted trace that arises naturally from the correlation functions of the gauge theory. We show that this trace induces an inner product and a short star product on A_ Higgs. We analyze this trace in the case of an abelian gauge group and show that it has a natural expansion in terms of the twisted traces of Verma modules, confirming a conjecture of the first author and Okazaki. This expansion has a natural interpretation in terms of 3-d mirror symmetry, and we predict that it can be interpreted as an Atiyah-Bott fixed-point formula under the quantum Hikita isomorphism.</p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Spin dependence of black hole ringdown nonlinearities</span>
-                <span class="pub-meta">— <b>JRY</b>, G. Carullo, J. L. Ripley, E. Berti &amp; V. Cardoso, Phys. Rev. D 109 (2024) L101503.</span></summary>
+            <summary>
+                <span class="pub-title">Spin dependence of black hole ringdown nonlinearities</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b>, G. Carullo, J. L. Ripley, E. Berti &amp; V. Cardoso</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.109.L101503" target="_blank">Phys. Rev. D 109 (2024) L101503</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2308.14796" target="_blank">arXiv:2308.14796</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2691869" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The nonlinear character of general relativity leaves its imprint in the coalescence of two black holes, from the inspiral to the final ringdown stage. To quantify the impact of nonlinearities, we work at second order in black hole perturbation theory and we study the excitation of second-order modes relative to the first-order modes that drive them as we vary the black hole spin and the initial data for the perturbations. The relative amplitude of second-order modes is only mildly dependent on the initial data that we consider, but it strongly decreases for large black hole spins. This implies that the extrapolation of calculations based on the Kerr–conformal field theory correspondence to subextremal Kerr black holes should be viewed with caution.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2308.14796" target="_blank">arXiv:2308.14796</a> · <a href="https://inspirehep.net/literature/2691869" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Eternal binaries</span>
-                <span class="pub-meta">— <b>JRY</b>, V. Cardoso, C. F. B. Macedo &amp; M. van de Meent, Phys. Rev. D 107 (2023) 124025.</span></summary>
+            <summary>
+                <span class="pub-title">Eternal binaries</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b>, V. Cardoso, C. F. B. Macedo &amp; M. van de Meent</span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.107.124025" target="_blank">Phys. Rev. D 107 (2023) 124025</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2304.02039" target="_blank">arXiv:2304.02039</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2649301" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The two-body problem is extensively studied in open systems and asymptotically flat spacetimes. However, there are many systems where radiation is trapped: they range from radiating charges in cavities to low-energy excitations of massive degrees of freedom, to anti–de Sitter spacetimes. Here, we study the problem of motion of a pointlike scalar charge orbiting a massive compact object inside a cavity. We first show that—assuming circular motion—there are initial conditions for which the scalar self-force vanishes and the binary is eternal. We then consider the evolution of the system under radiation reaction in a toy model which we argue captures the essentials of orbiting particles. We show that eternal circular binaries may exist. We also show that the presence of cavity modes leads to chaos in regimes of strong coupling or when the system is initialized close enough to a resonance. Our results have implications for physics in anti–de Sitter spacetimes and possibly for binaries evolving within dark matter haloes, if it consists of massive fields.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2304.02039" target="_blank">arXiv:2304.02039</a> · <a href="https://inspirehep.net/literature/2649301" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Diverging black hole entropy from quantum infrared non-localities</span>
-                <span class="pub-meta">— A. Platania &amp; <b>JRY</b>, Phys. Lett. B 857 (2024) 138993.</span></summary>
+            <summary>
+                <span class="pub-title">Diverging black hole entropy from quantum infrared non-localities</span>
+                <span class="pub-authors">A. Platania &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1016/j.physletb.2024.138993" target="_blank">Phys. Lett. B 857 (2024) 138993</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2303.17621" target="_blank">arXiv:2303.17621</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2647724" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">Local higher-derivative corrections to the Einstein-Hilbert action yield sub-leading corrections to the Bekenstein-Hawking area law. Here we show that if the quantum effective action comprises a certain class of infrared non-localities, the entropy of large black holes generally diverges to either positive or negative infinity. In such theories, large spherically symmetric black holes would be either highly chaotic or thermodynamically impossible, respectively. In turn, this puts strong constraints on the Laurent expansion of the form factors in the effective action.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2303.17621" target="_blank">arXiv:2303.17621</a> · <a href="https://inspirehep.net/literature/2647724" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Non-linear black hole dynamics and Carrollian fluids</span>
-                <span class="pub-meta">— <b>JRY</b> &amp; L. Lehner, JHEP 02 (2023) 240.</span></summary>
+            <summary>
+                <span class="pub-title">Non-linear black hole dynamics and Carrollian fluids</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b> &amp; L. Lehner</span>
+                <span class="pub-where"><a href="https://doi.org/10.1007/JHEP02(2023)240" target="_blank">JHEP 02 (2023) 240</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2212.06175" target="_blank">arXiv:2212.06175</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2613877" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">The dynamics of black hole horizons has recently been linked to that of Carrollian fluids. This results in a dictionary between geometrical quantities and those of a fluid with unusual properties due its underlying Carrollian symmetries. In this work we explore this relation in dynamical settings with the interest of shedding light on either side by relevant observations. In particular: we discuss how the null surface where the Carrollian fluid evolves is affected by its behavior; that the fluid’s equilibration properties are tied to teleological considerations; the connection of higher derivative contributions as both source of energy and dissipation for the fluid and the non-linear behavior of black holes. This latter point, connects with discussions of non-linear modes in the relaxation to equilibrium of perturbed black holes.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2212.06175" target="_blank">arXiv:2212.06175</a> · <a href="https://inspirehep.net/literature/2613877" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Carrollian motion in magnetized black hole horizons</span>
-                <span class="pub-meta">— F. Gray, D. Kubiznak, T. R. Perche &amp; <b>JRY</b>, Phys. Rev. D 107 (2023) 064009.</span></summary>
+            <summary>
+                <span class="pub-title">Carrollian Motion in Magnetized Black Hole Horizons</span>
+                <span class="pub-authors">F. Gray, D. Kubiznak, T. R. Perche &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.1103/PhysRevD.107.064009" target="_blank">Phys. Rev. D 107 (2023) 064009</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2211.13695" target="_blank">arXiv:2211.13695</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/2593370" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">We revisit the motion of massless particles with anyonic spin in the horizon of Kerr-Newman geometry. As recently shown, such particles can move within the horizon of the black hole due to the coupling of charges associated with a two-parametric central extension of the two-dimensional Carroll group to the magnetic field generated by the black hole—the so-called “anyonic spin-Hall effect.” We show that the previously computed magnetic field is not invariant under Carroll diffeomorphisms and find another result which respects these symmetries of the horizon. We also consider a more astrophysically relevant case of a (weakly charged) rotating back hole placed in a uniform magnetic field, which could, for instance, be induced by the surrounding plasma. We show that a qualitatively similar magnetic field assisted anyonic spin-Hall effect takes place, even in the absence of black hole rotation. The theoretical possibility of a motion induced by a magnetic monopole is also studied.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2211.13695" target="_blank">arXiv:2211.13695</a> · <a href="https://inspirehep.net/literature/2593370" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Quantum electrodynamics in anisotropic and tilted Dirac photonic lattices</span>
-                <span class="pub-meta">— <b>JRY</b>, M. B. de Paz, P. A. Huidobro &amp; A. González-Tudela, New J. Phys. 23 (2021) 103018.</span></summary>
+            <summary>
+                <span class="pub-title">Quantum electrodynamics in anisotropic and tilted Dirac photonic lattices</span>
+                <span class="pub-authors"><b class="pub-me">J. Redondo-Yuste</b>, M. B. de Paz, P. A. Huidobro &amp; A. González-Tudela</span>
+                <span class="pub-where"><a href="https://doi.org/10.1088/1367-2630/ac27e0" target="_blank">New J. Phys. 23 (2021) 103018</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2106.10743" target="_blank">arXiv:2106.10743</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/1970268" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">One of the most striking predictions of quantum electrodynamics is that vacuum fluctuations of the electromagnetic field can lead to spontaneous emission of atoms as well as photon-mediated interactions among them. Since these processes strongly depend on the nature of the photonic bath, a current burgeoning field is the study of their modification in the presence of photons with non-trivial energy dispersions, e.g. the ones confined in photonic crystals. A remarkable example is the case of isotropic Dirac-photons, which has been recently shown to lead to non-exponential spontaneous emission as well as dissipation-less long-range emitter interactions. In this work, we show how to further tune these processes by considering anisotropic Dirac cone dispersions, which include tilted, semi-Dirac, and the recently discovered type II and III Dirac points. In particular, we show how by changing the anisotropy of the lattice one can change both the spatial shape of the interactions as well as its coherent/incoherent nature. Finally, we theoretically analyze a possible implementation based on subwavelength atomic arrays where these energy dispersions can be engineered and interfaced with quantum emitters.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2106.10743" target="_blank">arXiv:2106.10743</a> · <a href="https://inspirehep.net/literature/1970268" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
                 <li>
         <details class="pub">
-            <summary><span class="pub-title">Interpretations and naturalness in the radiation-reaction problem</span>
-                <span class="pub-meta">— C. Barceló, L. J. Garay &amp; <b>JRY</b>, Symmetry 13 (2021) 658.</span></summary>
+            <summary>
+                <span class="pub-title">Interpretations and naturalness in the radiation-reaction problem</span>
+                <span class="pub-authors">C. Barceló, L. J. Garay &amp; <b class="pub-me">J. Redondo-Yuste</b></span>
+                <span class="pub-where"><a href="https://doi.org/10.3390/sym13040658" target="_blank">Symmetry 13 (2021) 658</a> &nbsp;·&nbsp; <a href="https://arxiv.org/abs/2005.08725" target="_blank">arXiv:2005.08725</a> &nbsp;·&nbsp; <a href="https://inspirehep.net/literature/1796793" target="_blank">INSPIRE</a></span>
+            </summary>
             <p class="pub-abstract">After more than a century of history, the radiation-reaction problem in classical electrodynamics still surprises and puzzles new generations of researchers. Here, we revise and explain some of the paradoxical issues that one faces when approaching the problem, mostly associated with regimes of uniform proper acceleration. The answers we provide can be found in the literature and are a synthesis of a large body of research. We only present them in a personal way that may help in their understanding. Besides, after the presentation of the standard answers, we motivate and present a twist to those ideas. The physics of emission of radiation by extended charges (charges with internal structure) might proceed in a surprising oscillating fashion. This hypothetical process could open up new research paths and a new take on the equivalence principle.</p>
-            <!-- EDIT-ME(jaime): your commentary on this paper — uncomment and write:
-            <p class="pub-note"><span class="pub-note-label">director's cut</span>why this paper exists, what you would do differently, the story behind it…</p>
-            -->
-            <p class="pub-links"><a href="https://arxiv.org/abs/2005.08725" target="_blank">arXiv:2005.08725</a> · <a href="https://inspirehep.net/literature/1796793" target="_blank">INSPIRE</a></p>
         </details>
                 </li>
-            </ul>
+            </ol>
             <p>
                 Also on:
                 <a href="https://inspirehep.net/authors/1797177?ui-citation-summary=true" target="_blank">INSPIRE</a> ·
@@ -388,16 +427,43 @@
         <summary>Talks</summary>
         <div class="reveal-body">
             <p class="talk-legend"><span class="talk-invited-mark">◆</span> invited &nbsp;·&nbsp; <span class="talk-contributed-mark">◇</span> contributed</p>
-            <!-- EDIT-ME(jaime): class="talk-invited" or class="talk-contributed" on each <li>.
-                 I marked the seminars invited (institutional seminars usually are) and the
-                 IBS workshop contributed — PLEASE CHECK, especially the workshop. -->
             <ul class="talk-list">
-                <li class="talk-invited">2025.11.28 — <a href="/files/talks/ICC.pdf"><i>Gravitational Waves from Viscous Stars</i></a> <span class="pub-meta">@ Theory Seminar, ICC-UB, Barcelona, Spain</span></li>
-                <li class="talk-invited">2025.10.23 — <i>Nonlinearities and High-frequency gravitational waves</i> <span class="pub-meta">@ Strong Gravity Seminar, Perimeter Institute, Waterloo, Canada</span></li>
-                <li class="talk-invited">2025.09.23 — <i>Viscous stars and the quest for gravitational mirrors</i> <span class="pub-meta">@ Gravity seminar, Johns Hopkins University, Baltimore, MD</span></li>
-                <li class="talk-contributed">2025.05.28 — <a href="/files/talks/IBS.pdf"><i>Nonlinear effects in perturbation theory</i></a> <span class="pub-meta">@ QNM Workshop, IBS, Daejeon</span></li>
-                <li class="talk-invited">2025.04.22 — <a href="/files/talks/AEI.pdf"><i>Nonlinear gravitational waves</i></a> <span class="pub-meta">@ ACR Division Seminar, Albert Einstein Institute, Berlin</span></li>
-                <li class="talk-invited">2025.03.12 — <a href="/files/talks/LA.pdf"><i>Turbulence of gravitational waves</i></a> <span class="pub-meta">@ Distinguished Astrophysic Seminar, Los Alamos, NM</span></li>
+                <li class="talk-invited">
+                    <span class="talk-title">Quadratic Quasinormal Modes</span>
+                    <span class="talk-where"><span class="talk-date">2026.07.06</span>Astrophysics Seminar, Yukawa Institute for Theoretical Physics, Japan</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title"><a href="/files/talks/tokyo.pdf">Strong Field Gravitational Wave Lensing</a></span>
+                    <span class="talk-where"><span class="talk-date">2026.06.28</span>RESCEU Seminar, Tokyo, Japan</span>
+                </li>
+                <li class="talk-contributed">
+                    <span class="talk-title"><a href="/files/talks/kyoto.pdf">Perturbation Theory is Unreasonably Effective</a></span>
+                    <span class="talk-where"><span class="talk-date">2026.06.16</span>New Developments in GW Physics, Kyoto, Japan</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title"><a href="/files/talks/icc.pdf">Gravitational Waves from Viscous Stars</a></span>
+                    <span class="talk-where"><span class="talk-date">2025.11.28</span>Theory Seminar, ICC-UB, Barcelona, Spain</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title">Nonlinearities and High-frequency Gravitational Waves</span>
+                    <span class="talk-where"><span class="talk-date">2025.10.23</span>Strong Gravity Seminar, Perimeter Institute, Waterloo, Canada</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title">Viscous Stars and the Quest for Gravitational Mirrors</span>
+                    <span class="talk-where"><span class="talk-date">2025.09.23</span>Gravity Seminar, Johns Hopkins University, Baltimore, MD</span>
+                </li>
+                <li class="talk-contributed">
+                    <span class="talk-title"><a href="/files/talks/IBS.pdf">Nonlinear Effects in Perturbation Theory</a></span>
+                    <span class="talk-where"><span class="talk-date">2025.05.28</span>QNM Workshop, IBS, Daejeon, Korea</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title"><a href="/files/talks/AEI.pdf">Nonlinear Gravitational Waves</a></span>
+                    <span class="talk-where"><span class="talk-date">2025.04.22</span>ACR Division Seminar, Albert Einstein Institute, Berlin, Germany</span>
+                </li>
+                <li class="talk-invited">
+                    <span class="talk-title"><a href="/files/talks/LA.pdf">Turbulence of Gravitational Waves</a></span>
+                    <span class="talk-where"><span class="talk-date">2025.03.12</span>Distinguished Astrophysics Seminar, Los Alamos National Laboratory, NM</span>
+                </li>
             </ul>
         </div>
     </details>
@@ -405,18 +471,104 @@
     <details class="reveal" id="code">
         <summary>Code</summary>
         <div class="reveal-body">
-            <p>
-                <!-- EDIT-ME(jaime): name specific repositories here, each with a one-line description. -->
-                <span class="todo">[jaime: list your public codes/repos here]</span>
-                Meanwhile: my <a href="https://github.com/jredondoyuste" target="_blank">GitHub</a>, and the
-                <a href="https://the-center-of-gravity.com/resources/" target="_blank">Center of Gravity resources page</a>,
-                which collects useful codes and tools, some of which I wrote.
+            <p class="section-lede">
+                Public code accompanying some of my research work. Feel free to reach out if you have any questions! 
             </p>
+            <ul class="code-list">
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/BlackHoleNonlinearities.jl" target="_blank">BlackHoleNonlinearities.jl</a><span class="code-lang">Julia · Mathematica</span></span>
+                    <span class="code-what">Excitation of nonlinear higher harmonics when gravitational waves scatter off a black hole.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2603.04501" target="_blank">arXiv:2603.04501</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/StableLR" target="_blank">StableLR</a><span class="code-lang">Julia · Mathematica</span></span>
+                    <span class="code-what">Perturbations and (dimensionally reduced) nonlinear evolutions of nonlinear waves trapped on stable light rings.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2502.18643" target="_blank">arXiv:2502.18643</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/Pert_BDNK_Stars" target="_blank">Pert_BDNK_Stars</a><span class="code-lang">Mathematica</span></span>
+                    <span class="code-what">Perturbation theory equations for viscous stars.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2411.16841" target="_blank">arXiv:2411.16841</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/VaidyaPT.jl" target="_blank">VaidyaPT.jl</a><span class="code-lang">Julia</span></span>
+                    <span class="code-what">Numerical evolution of the ringdown of an accreting black hole (Vaidya spacetime).</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2312.04633" target="_blank">arXiv:2312.04633</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/SURF" target="_blank">SURF</a><span class="code-lang">Python</span></span>
+                    <span class="code-what">Numerical simulations of Carrollian fluids dual to black hole horizons.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2212.06175" target="_blank">arXiv:2212.06175</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://github.com/jredondoyuste/DivergingBHEntropy" target="_blank">DivergingBHEntropy</a><span class="code-lang">Mathematica</span></span>
+                    <span class="code-what">Mathematica notebook detailing calculations in the paper. .</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2303.17621" target="_blank">arXiv:2303.17621</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://the-center-of-gravity.com/documents/361/ratios_public.nb" target="_blank">Quadratic mode ratios on Plane Waves</a><span class="code-lang">Mathematica</span></span>
+                    <span class="code-what">Excitation of quadratic quasinormal modes in the plane wave emerging as the Penrose limit of a Kerr black hole.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://the-center-of-gravity.com/documents/760/modes_viscous_star_Q8u6PkF.nb" target="_blank">Axial modes of viscous stars</a><span class="code-lang">Mathematica</span></span>
+                    <span class="code-what">Also the <a href="https://the-center-of-gravity.com/documents/759/modes_non_viscous_star_OrZua80.nb" target="_blank">perfect-fluid version</a>.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2604.13208" target="_blank">arXiv:2604.13208</a></span>
+                </li>
+                <li>
+                    <span class="code-name"><a href="https://the-center-of-gravity.com/documents/312/rotating_stars_NgiSRQX.nb" target="_blank">Slowly rotating viscous stars</a><span class="code-lang">Mathematica · Julia</span></span>
+                    <span class="code-what">Derivation of perturbation theory equations for rotating viscous stars, and <a href="https://the-center-of-gravity.com/documents/311/jl_rotating_stars_CirruAx.zip" target="_blank">routines</a> to integrate them.</span>
+                    <span class="code-where"><a class="code-ref" href="https://arxiv.org/abs/2411.16861" target="_blank">arXiv:2411.16861</a></span>
+                </li>
+            </ul>
         </div>
     </details>
 
-    <button class="ask-button" onclick="updateLine()">These are some questions that keep me up at night&hellip;</button>
-    <p id="random-line" class="fade-text"></p>
+    <details class="reveal" id="teaching">
+        <summary>Teaching</summary>
+        <div class="reveal-body">
+            <p class="section-lede">
+                Teaching assistant at the Niels Bohr Institute, Københavns Universitet.
+            </p>
+            <ul class="course-list">
+                <li>
+                    <span class="course-name">Analytical Mechanics</span>
+                    <span class="course-where">with Poul Henrik Damgaard <span class="course-year">2023</span></span>
+                </li>
+                <li>
+                    <span class="course-name">Numerical Methods for Physics</span>
+                    <span class="course-where">with Julius Bier Kierkegaard <span class="course-year">2023</span></span>
+                </li>
+                <li>
+                    <span class="course-name">Computational Ocean Dynamics</span>
+                    <span class="course-where">with Markus Jochum <span class="course-year">2023</span></span>
+                </li>
+            </ul>
+
+            <p class="section-more">Students</p>
+            <ul class="course-list">
+                <li>
+                    <span class="course-name">José Ortega Gómez & Sofía Bussieres</span>
+                    <span class="course-where">Master, Erasmus+ internship <span class="course-year">2025</span></span>
+                </li>
+                <li>
+                    <span class="course-name">Lucía Vélez &nbsp;·&nbsp; Sashvat Iyer</span>
+                    <span class="course-where">Master thesis at KU<span class="course-year">2025</span></span>
+                </li>
+                <li>
+                    <span class="course-name">Laura Micheletti &nbsp;·&nbsp; Mathilde Menu</span>
+                    <span class="course-where">Bachelor, summer internship <span class="course-year">2025</span></span>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="reveal" id="questions">
+        <summary>Questions that keep me up at night</summary>
+        <div class="reveal-body">
+            <div class="question-field"></div>
+        </div>
+    </details>
     <script src="/js/crazy_idea.js" defer></script>
 
     <footer id="footer">

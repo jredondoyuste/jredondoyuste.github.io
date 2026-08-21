@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/js/theme.js"></script>
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/starfield.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +19,15 @@
     <nav class="header" aria-label="Site" style="--f: 30; --t: 0.03;">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
-        <a href="/research.html">[research]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <!-- EDIT-ME(jaime): the fold-down menu under [research]. One <a> per theme;
+                 the hash must match the data-hash on the matching button in research.html. -->
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
         <a href="/vault.html">[vault]</a>
         <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>

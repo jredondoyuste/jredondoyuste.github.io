@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style.css">
     <script src="/js/theme.js"></script>
     <script src="/js/ringdown.js" defer></script>
+    <script src="/js/starfield.js" defer></script>
     <script src="/js/stage.js" defer></script>
     <script src="/js/cycler.js" defer></script>
 </head>
@@ -20,7 +21,15 @@
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/" aria-current="page">[home]</a>
-        <a href="/research.html">[research]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <!-- EDIT-ME(jaime): the fold-down menu under [research]. One <a> per theme;
+                 the hash must match the data-hash on the matching button in research.html. -->
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
         <a href="/vault.html">[vault]</a>
         <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>
@@ -32,29 +41,28 @@
                 Associate Research Scholar · Princeton Gravity Initiative 
             </p>
             <p>
-                Hi! I am a scientist trying to understand better the most extreme events in the Universe,
-                and I think gravitational waves are a great tool to do that! 
-                I want to use them to test the nature of Black Holes, the nonlinear nature of gravity, 
-                and what lurks inside Neutron Stars.
+                Hi! I am a scientist using gravitational waves to understand the most extreme events in the Universe.
+                I am interested in the physics of black holes and neutron stars, pushing Einstein's theory of gravity to its limits. Head over to the <a href="/research.html">research</a> page to learn more about my work!
             </p>
             <p>
-                I grew up in Spain, and I had the joy of living in many different places.
+                I grew up in Spain, and I had the privilege of living in many different places.
                 This means I've acquired a variety of interests, such as
-                <!-- EDIT-ME(jaime): one hobby shows at a time; clicking swaps in another
-                     at random. Add or remove <span class="cycle-item"> lines freely — the
-                     order is shuffled on every visit, so nothing is "first". -->
                 <button class="cycler" data-cycler aria-label="Show another interest">
                     <span class="cycle-item">film photography</span>
-                    <span class="cycle-item">old movies</span>
+                    <span class="cycle-item">watching old movies</span>
                     <span class="cycle-item">rock climbing</span>
                     <span class="cycle-item">cooking soup</span>
-                    <span class="cycle-item">light-roasted coffee</span>
+                    <span class="cycle-item">brewing light-roasted coffee</span>
                     <span class="cycle-item">running</span>
-                    <span class="cycle-item">funk/disco/techno/classical music</span>
+                    <span class="cycle-item">raving to funk/disco/techno/classical music</span>
                     <span class="cycle-item">eating pastries</span>
-                    <span class="cycle-item">dungeons and dragons</span>
+                    <span class="cycle-item">playing dungeons and dragons</span>
                     <span class="cycle-item">swimming</span>
                     <span class="cycle-item">drinking (natural) wine</span>
+                    <span class="cycle-item">when will Luka Donçic win a ring</span>
+                    <span class="cycle-item">reading</span>
+                    <span class="cycle-item">long walks in cold air</span>
+                    <span class="cycle-item">sweating in the sauna</span>
                 </button>.
             </p>
             <p>
@@ -77,44 +85,41 @@
     <details class="reveal">
         <summary>Trajectory</summary>
         <div class="reveal-body">
-    <!-- EDIT-ME(jaime): check the dates on the segments below.
-         Each stop is one .timeline-row = a coloured bar + the text. Rows grow to
-         fit however much you write, so subtitles can run long. To add a stop,
-         copy a row and give its bar the next timeline-segment-N class. -->
     <div class="timeline-container">
         <div class="timeline-row">
             <div class="timeline-segment timeline-segment-1" data-date="2026 –"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2026 –">Princeton (US)</div>
-                <div class="timeline-milestone-subtitle"><span class="todo">I will join Princeton in Sep 26', and I'm very excited to see what's up next!</span></div>
+                <div class="timeline-milestone-subtitle">I am joining Princeton in Sep 26', and I'm very excited to see what's up next!</div>
             </div>
         </div>
         <div class="timeline-row">
             <div class="timeline-segment timeline-segment-2" data-date="2026"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2026">Baltimore (US) ~ Kyoto (JP)</div>
-                <div class="timeline-milestone-subtitle">After defending my PhD, I spent some time at Emanuele Berti's group in Baltimore; and at the Yukawa Institute for Theoretical Physics, as a Short-Term JSPS Fellow. The food in Japan beats the Baltimore crabs. Go O's!</div>
+                <div class="timeline-milestone-subtitle">After defending my PhD, I spent some time at Emanuele Berti's group in Baltimore; and at the Yukawa Institute for Theoretical Physics, as a Short-Term JSPS Fellow.</div>
             </div>
         </div>
         <div class="timeline-row">
             <div class="timeline-segment timeline-segment-3" data-date="2022–2026"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2022–2026">Copenhagen (DK)</div>
-                <div class="timeline-milestone-subtitle">I completed my PhD at the Niels Bohr Institute, advised by Vitor Cardoso. During that time, I ate 100+ boller med ost (the best ones are found in Sinne Gas, before 9am), worked a bar inside a shipping container, cycled through sun, rain, hail, and snow, and fell in love with sauna.</div>
+                <div class="timeline-milestone-subtitle">I completed my PhD at the Niels Bohr Institute, advised by Vitor Cardoso. During that time, I ate 100+ boller med ost (the best ones are found in Sinne Gas, before 9am), cycled under rain, hail, and snow, and fell in love with saunas.</div>
             </div>
         </div>
         <div class="timeline-row">
             <div class="timeline-segment timeline-segment-4" data-date="2021–2022"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="2021–2022">Waterloo (CA)</div>
-                <div class="timeline-milestone-subtitle">Perimeter Institute gave me a brilliant opportunity to study my masteres there. They did not warn me (enough) about the wild geese and the freezing temperatures, which I survived with the help of many brilliant friends. </div>
+                <div class="timeline-milestone-subtitle">Perimeter Institute gave me the opportunity to study my masters there. They did not warn me (enough) about the wild geese and the freezing temperatures, which I survived with the help of many brilliant friends. </div>
             </div>
         </div>
         <div class="timeline-row">
             <div class="timeline-segment timeline-segment-5" data-date="1999–2021"></div>
             <div class="timeline-milestone">
                 <div class="timeline-milestone-title" data-date="1999–2021">Madrid (ES)</div>
-                <div class="timeline-milestone-subtitle">I grew up in Leganés, a suburb south of Madrid. I spent my summers in Monreal del Campo (Teruel), where the best saffron in the world grows. I came second to a future swimming World Champion, acted in a couple theatre plays, and moved to Manchester for a year (which made me sick of Oasis for a lifetime).</div>
+                <div class="timeline-milestone-subtitle">I grew up in Leganés, a suburb south of Madrid. I spent my summers in Monreal del Campo (Teruel), where the best saffron in the world grows. I studied Physics and Mathematics at the Universidad Complutense de Madrid, and I spent one year as an Erasmus student in Manchester. During that time I researched quantum optics, acted in some theatre plays, and also minored in Liberal Arts. 
+                </div>
             </div>
         </div>
     </div>

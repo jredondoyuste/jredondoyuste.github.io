@@ -2,26 +2,15 @@
 
 Short list. Tick as you go. Nothing here is code — see `EDITING.md` for how.
 
-## Content
+## Open
 
-- [ ] Three talks have no slide link: *Quadratic Quasinormal Modes*,
-      *Nonlinearities and High-frequency Gravitational Waves*, and *Viscous
-      Stars and the Quest for Gravitational Mirrors*. Add slides or leave them
-      bare on purpose.
-- [ ] `files/talks/nordic.pdf` sits on disk linked from nowhere. Link it to a
-      talk or delete it.
+- [ ] `js/ringdown.js:57` — either build the 5th-click ringdown minigame or
+      remove the dead hook and its comment. The last one left.
 - [ ] Read the vault end to end once — it's the page most likely to have a
       half-finished sentence in it.
-
-## Polish
-
 - [ ] Look at the site on a phone in daylight. The dark background is much
       warmer and darker than the old one, and brightness is the one thing the
       physics does *not* settle.
-- [ ] Watch the sky for a few minutes and decide if a merger every 50–150s is
-      the right rarity — `GAP_MIN` / `GAP_VAR` at the top of `js/starfield.js`.
-- [ ] `js/ringdown.js:57` — either build the 5th-click ringdown minigame or
-      remove the dead hook and its comment. Deliberately left for you.
 
 ## Nice-to-have (won't block)
 
@@ -65,11 +54,19 @@ masked down across the text column, and a rare inspiral-and-chirp every
 50–150s. 1100px and up only, hidden for `prefers-reduced-motion` and in print.
 Type `merger()` in the console to see one.
 
-**CV.** Replaced with `files/cv.pdf`, built from `cv.tex` + `mycv.cls`, and it
-now reads Associate Research Scholar, Princeton Gravity Initiative. The two
+**Talks.** The three blackboard talks carry a `blackboard` chip, the same
+shape as the `slides` chip on the ones with decks behind them, so a talk with
+nothing to click no longer reads as an oversight. `nordic.pdf` deleted.
+
+**The sky.** Merger rarity of 50–150s confirmed as right; left alone.
+
+**CV.** Replaced with `files/cv.pdf`, built from `cv.tex` + `mycv.cls`. The two
 links that still pointed at the old `cv_jaime_redondo.pdf` (Home and the Cities
 colophon) were dead and now point at the new file. LaTeX intermediates are
-gitignored.
+gitignored. "Present Position" became "Positions", with Johns Hopkins moved up
+out of Scientific Visits as a post rather than a visit; still two pages, with
+about six lines of slack at the foot of page two. Dropping Scientific Visits
+altogether would free six more.
 
 **Not the site.** "Loading all the time" was VS Code's Live Server injecting a
 live-reload WebSocket into every page — invisible to

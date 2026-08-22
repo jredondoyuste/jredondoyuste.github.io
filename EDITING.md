@@ -336,3 +336,28 @@ tag, a `class`, a `data-…`, or an `id`, pause.
   Add more with `tools/add-icon.sh` (above) rather than by hand.
 - **Hidden pages** that aren't in the menu: the pantry at `/001/`. It's
   marked "noindex" so search engines ignore it.
+- **The minigame:** click the nav wiggle three times (each click within
+  2.5s of the last) and it escapes into the page as a snake that eats the
+  text. Works on any page. Everything lives in `js/wigglegame.js`, which
+  only loads at that moment. Players are named for the UTC moment they
+  started, in the LVK convention (`GW260822_143512`), and scores ("SNR")
+  keep a shared catalog (below). Scoring: a glyph is worth 0.1, a remnant
+  snake is worth its whole length — but only if you strike its **head**;
+  its body kills you on contact — and every segment a burst cuts off costs
+  a full point. Every merger leaves a remnant, up to `MAX_REMNANTS`, and
+  its burst sweeps a wedge whose half-angle is drawn at random under a
+  ceiling that opens as you score, so a good run has less and less safe
+  page. The knobs at the top of the file: `SNR_SCALE` is the one true
+  difficulty knob — the score at which mergers come twice as often and the
+  wedge is half-open — with `MERGE_T0` and `CONE_MAX` as the two ends it
+  interpolates between; `MAX_REMNANTS` is how many rivals may exist at
+  once; `GLYPH` sets what the page is worth; `CELL` sets scale, and
+  `TICK`/`ETICK` your step and theirs (they must stay slower than you —
+  the gap is what makes catching a head possible at all). `REMOTE` points at the Cloudflare Worker in
+  `tools/scoreboard-worker.js` (deploy steps in that file's header), which
+  is what makes the scoreboard shared between visitors even though the
+  site is static. Set `REMOTE` to `null` to go back to a per-browser
+  catalog. To wipe the scoreboard, delete the `scores` key in the worker's
+  KV namespace from the Cloudflare dashboard. In the console
+  mid-game: `WiggleGame.merge()` forces a merger, `WiggleGame.state()`
+  shows the numbers.

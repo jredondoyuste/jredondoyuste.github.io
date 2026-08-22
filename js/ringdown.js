@@ -2,6 +2,7 @@
 // Clicking it perturbs the black hole — it rings up, then rings down again.
 (function () {
   let clicks = 0;
+  let lastClick = 0;
   let animating = false;
   // Current waveform parameters (start from the header's CSS vars).
   let cf = null;
@@ -49,14 +50,26 @@
     }
   }
 
+  // Third quick click (each within 2.5s of the last) → the wiggle escapes.
+  // The game script only loads at that moment; nobody else pays for it.
+  function summon() {
+    if (window.WiggleGame) { window.WiggleGame.start(); return; }
+    const s = document.createElement('script');
+    s.src = '/js/wigglegame.js';
+    s.onload = function () { if (window.WiggleGame) window.WiggleGame.start(); };
+    document.head.appendChild(s);
+  }
+
   function perturb() {
+    const now = performance.now();
+    if (now - lastClick > 2500) clicks = 0;
+    clicks += 1;
+    lastClick = now;
+    if (clicks >= 3) { clicks = 0; summon(); return; }
     if (animating) return;
     const svg = document.querySelector('.ringdown');
     if (!svg || !svg.clientWidth) return;
     animating = true;
-    clicks += 1;
-    // TODO(jaime): 5th click → ringdown minigame (concept TBD, hook reserved)
-    // if (clicks >= 5) { ... }
     const f = 12 + Math.random() * 40;
     const t = 0.15 + Math.random() * 0.55;
     const start = performance.now();

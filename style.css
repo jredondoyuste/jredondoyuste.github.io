@@ -771,7 +771,8 @@ figure img {
 }
 
 /* every talk title reads the same; the ones with slides behind them carry a
-   small chip instead of a different colour */
+   small chip instead of a different colour, and the ones given at the
+   blackboard carry one saying so — same chip, nothing to click */
 .talk-title a {
   color: inherit;
   text-decoration: none;
@@ -782,8 +783,8 @@ figure img {
   background: none;
 }
 
-.talk-title a::after {
-  content: "slides";
+.talk-title a::after,
+.talk-chip {
   margin-left: 0.55em;
   padding: 0 0.4em;
   border: 1px solid var(--hair);
@@ -794,6 +795,10 @@ figure img {
   color: var(--muted);
   vertical-align: 0.15em;
   white-space: nowrap;
+}
+
+.talk-title a::after {
+  content: "slides";
 }
 
 .talk-title a:hover::after {

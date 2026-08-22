@@ -50,7 +50,7 @@
     \renewcommand{\arraystretch}{1.1} % Adjust row spacing
     \begin{tabular}{@{}p{0.26\textwidth}p{0.6\textwidth} p{0.12\textwidth}@{}}}
     {\end{tabular}
-    \par\vspace{0.75em} % Space between entries
+    \par\vspace{0.5em} % Space between entries
 }
 
 % Command for entries inside content environment

@@ -32,8 +32,8 @@
 }
 
 /* ----- tokens ------------------------------------------------------- */
-/* One paper, several inks.
-   The background is FIXED across every palette and never varies:
+/* One paper, one ink.
+   The background never varies:
 
      light  #FFF8E7  "Cosmic Latte" — the average colour of all light in the
               universe, from ~200,000 galaxy spectra in the 2dF Galaxy Redshift
@@ -51,12 +51,11 @@
 
    Both dark neutrals sit on that same night-sky locus at different exposures
    (bg 0.025, panel 0.042, hair 0.090); the light ones are tints of the latte.
-   So a palette is now just an INK: --accent and --accent-2, two lines.
-   The picker lives in the vault colophon; the light/dark toggle in the nav
-   (js/theme.js). */
+   The ink is two lines, --accent and --accent-2, sampled from El Greco's
+   El Expolio. The light/dark toggle lives in the nav (js/theme.js). */
 
 :root {
-  /* PAPER — identical in every palette. */
+  /* PAPER */
   --bg: #FFF8E7;
   --panel: #F6F0DF;
   --ink: #241C14;
@@ -113,8 +112,7 @@
   --measure: 44rem;
 }
 
-/* THE PAPER IN THE DARK — the night sky, at three exposures.
-   Shared by every palette; only the ink changes below. */
+/* THE PAPER IN THE DARK — the night sky, at three exposures. */
 :root[data-theme="dark"] {
   --bg: #2C211D;
   --panel: #3A2C27;
@@ -135,68 +133,6 @@
   --accent-2: #C23649;
   color-scheme: dark;
 }
-
-/* ----- the other inks (RETIRED) --------------------------------------
-   The site now uses one ink, El Greco, defined above. These were the old
-   swappable palettes; the picker in the vault colophon is commented out to
-   match. Kept here in case you want the easter egg back — uncomment a pair
-   and restore its button in vault.html. All values are already corrected
-   for the Cosmic Latte / night-sky paper, so they will work as-is.
-   (Inner comment delimiters stripped: CSS comments do not nest.)
-
-   "baez" — Firelei Baez, Fruta fina, fruta extrana (Lee Monument), 2022.
-   Oxblood and crimson. The old default.
-     :root[data-palette="baez"] {
-       --accent: #98242B;
-       --accent-2: #BB3E51;
-     }
-     :root[data-theme="dark"][data-palette="baez"] {
-       --accent: #E36773;      lifted from #D4606B, which was only 4.2:1
-       --accent-2: #E08A93;
-     }
-
-   "maelstrom" — my talk slides. Petrol teal.
-     :root[data-palette="maelstrom"] {
-       --accent: #1F5765;
-       --accent-2: #2E7C8A;
-     }
-     :root[data-theme="dark"][data-palette="maelstrom"] {
-       --accent: #6FAEC0;
-       --accent-2: #8CC5D4;
-     }
-
-   "okeeffe" — Georgia O'Keeffe, Red Poppy, 1927. Flame orange and scarlet.
-     :root[data-palette="okeeffe"] {
-       --accent: #B8380D;      both darkened from the mint-green original
-       --accent-2: #A75A18;
-     }
-     :root[data-theme="dark"][data-palette="okeeffe"] {
-       --accent: #F27C3A;
-       --accent-2: #F0A472;
-     }
-
-   "sorolla" — Joaquin Sorolla, El pescador, 1904 (Cabanal beach, Valencia).
-   Cerulean water, straw gold.
-     :root[data-palette="sorolla"] {
-       --accent: #15618A;
-       --accent-2: #8A6520;
-     }
-     :root[data-theme="dark"][data-palette="sorolla"] {
-       --accent: #6EC4E0;
-       --accent-2: #E3BC66;
-     }
-
-   "hammershoi" — Vilhelm Hammershoi, Interior from Strandgade with
-   Sunlight on the Floor, 1901. Rosy umber and a cold window.
-     :root[data-palette="hammershoi"] {
-       --accent: #7A4B44;
-       --accent-2: #4E5E6B;
-     }
-     :root[data-theme="dark"][data-palette="hammershoi"] {
-       --accent: #C69B84;
-       --accent-2: #8FA3B2;
-     }
-   -------------------------------------------------------------------- */
 
 /* ----- base --------------------------------------------------------- */
 
@@ -297,15 +233,6 @@ button {
   margin: 0.35rem 0 0;
 }
 
-/* visible editing placeholder — remove before publishing */
-.todo {
-  background: var(--accent-wash);
-  color: var(--accent-2);
-  font-style: italic;
-  padding: 0 0.25em;
-  border-radius: 2px;
-}
-
 /* ----- nav ---------------------------------------------------------- */
 
 .header {
@@ -397,26 +324,6 @@ button {
 
 .theme-toggle:hover {
   color: var(--accent);
-}
-
-/* palette easter egg in the colophon: reads as plain text, acts on click */
-.palette-pick {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-.palette-pick:hover {
-  color: var(--accent);
-}
-
-.palette-pick.is-current {
-  text-decoration: underline dotted;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
 }
 
 .ringdown {

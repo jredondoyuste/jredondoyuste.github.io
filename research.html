@@ -12,6 +12,18 @@
     <script src="/js/ringdown.js" defer></script>
     <script src="/js/starfield.js" defer></script>
     <script src="/js/stage.js" defer></script>
+
+    <noscript>
+        <!-- The theme write-ups are revealed by js/stage.js. With scripting
+             off, show them inline instead, and stop the reveal buttons from
+             looking like something you can click. -->
+        <style>
+            .reveal-source[hidden] { display: block; }
+            .stage, .fig-nav { display: none; }
+            .stage-link { color: inherit; cursor: text; }
+            .fig-frame { display: block; margin-bottom: 1.5rem; }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -81,17 +93,25 @@
         <div class="fig-carousel">
             <button class="fig-nav fig-prev" aria-label="Previous figure">&#8249;</button>
             <div class="fig-frames">
-                <figure class="fig-frame">
-                    <img src="/files/figures/eikonal-ratio.png" alt="Ratio of quadratic to linear mode amplitudes growing with multipole number" width="829" height="599" loading="lazy">
-                    <figcaption class="small">The quadratic-to-linear amplitude ratio grows with &#8467;, for certain mode couplings - <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a></figcaption>
+                <figure class="fig-frame is-on">
+                    <img src="/files/figures/large-d-ringdown.png" alt="Log-scale plot of ringdown mismatch versus collision velocity for linear, quadratic and cubic quasinormal-mode models" width="1500" height="1035" loading="lazy">
+                    <figcaption class="small">We fit the ringdown of a head-on collision with three templates, containing linear, quadratic and cubic modes, and all with the same number of free parameters. The nonlinear templates are orders of magnitude more accurate, and the gap widens as the collision gets faster. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2606.23804" target="_blank">arXiv:2606.23804</a></figcaption>
                 </figure>
                 <figure class="fig-frame">
-                    <img src="/files/figures/large-d-merger.png" alt="Mass profiles of a head-on black hole merger in the large-D effective theory" width="898" height="700" loading="lazy">
-                    <figcaption class="small">A head-on merger in the large-D limit of gravity — <a href="https://arxiv.org/abs/2606.23804" target="_blank">arXiv:2606.23804</a></figcaption>
+                    <img src="/files/figures/plane-wave-qnm.png" alt="Two logarithmic contour maps of quadratic quasinormal mode coupling over the plane of the two parent mode momenta" width="1600" height="904" loading="lazy">
+                    <figcaption class="small">How strongly two linear modes couple to the quadratic mode they excite, for every pairing, in two channels. Close to the lightring the spacetime looks like a plane wave, and we can compute these couplings analytically. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a></figcaption>
                 </figure>
                 <figure class="fig-frame">
-                    <img src="/files/figures/plane-wave-coupling.png" alt="Contour maps of the quadratic coupling between gravitational plane waves" width="900" height="453" loading="lazy">
-                    <figcaption class="small">How strongly quasinormal modes couple in the high-frequency limit, for different overtone combinations (using Penrose limits!) — <a href="https://arxiv.org/abs/2509.03598" target="_blank">arXiv:2509.03598</a></figcaption>
+                    <img src="/files/figures/eikonal-nonlinearities.png" alt="Scatter plot of quadratic-to-linear ringdown amplitude ratio versus multipole number, with two numerical data sets flat while an analytic prediction rises steeply" width="1600" height="1158" loading="lazy">
+                    <figcaption class="small">The ratio between quadratic and linear amplitudes at large multipole number, computed with two independent methods (red, green) and compared to an analytic prediction (blue). The ratio saturates instead of growing, so the agreement at &#8467;&nbsp;=&nbsp;2 is a coincidence. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/dynamical-spacetime-ringdown.png" alt="Log-scale plot of a black hole ringdown waveform with two model fits, one of which drifts out of phase with the data at late times" width="1600" height="1245" loading="lazy">
+                    <figcaption class="small">A black hole ringing down while it still accretes mass, fitted with a constant frequency template (blue) and with one whose frequency follows the growing mass (red). Only the second stays in phase with the signal until late times. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2312.04633" target="_blank">arXiv:2312.04633</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/spin-nonlinearities.png" alt="Scatter plot of the quadratic-to-linear ringdown amplitude ratio decreasing with black hole spin, with a fitted power-law curve" width="1500" height="1398" loading="lazy">
+                    <figcaption class="small">The amplitude of the quadratic 220&times;220 mode, divided by the square of the linear amplitude that sources it, as a function of spin. The ratio is not universal: it drops by roughly half towards extremality. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2308.14796" target="_blank">arXiv:2308.14796</a></figcaption>
                 </figure>
             </div>
             <button class="fig-nav fig-next" aria-label="Next figure">&#8250;</button>
@@ -130,9 +150,21 @@
         <div class="fig-carousel">
             <button class="fig-nav fig-prev" aria-label="Previous figure">&#8249;</button>
             <div class="fig-frames">
+                <figure class="fig-frame is-on">
+                    <img src="/files/figures/axial-viscous-modes.png" alt="Scatter plot of neutron star oscillation frequency against damping time, showing two families of modes whose tracks approach and then bend away from each other" width="1600" height="1117" loading="lazy">
+                    <figcaption class="small">Quadrupolar modes of a viscous star, coloured by the viscosity at its centre. Viscosity adds a new family of kilohertz modes with no perfect fluid counterpart, and the two families undergo an avoided crossing. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2604.13208" target="_blank">arXiv:2604.13208</a></figcaption>
+                </figure>
                 <figure class="fig-frame">
-                    <img src="/files/figures/eikonal-ratio.png" alt="Ratio of quadratic to linear mode amplitudes growing with multipole number" width="829" height="599" loading="lazy">
-                    <figcaption class="small">The quadratic-to-linear amplitude ratio grows with &#8467;, for certain mode couplings - <a href="https://arxiv.org/abs/2501.17950" target="_blank">arXiv:2501.17950</a></figcaption>
+                    <img src="/files/figures/radial-viscous-modes.png" alt="Plot of damping time against oscillation frequency showing a mode track that bends down and left until the frequency reaches zero" width="1118" height="804" loading="lazy">
+                    <figcaption class="small">The fundamental radial mode of a star, followed in the complex plane as we increase the bulk viscosity. Above a critical viscosity the frequency vanishes: the star no longer oscillates, and only relaxes back to equilibrium. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2603.23622" target="_blank">arXiv:2603.23622</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/viscous-superradiance.png" alt="Log-scale plot of gravitational-wave amplification factor versus frequency for four stellar spin rates, with all curves showing positive gain" width="1600" height="1135" loading="lazy">
+                    <figcaption class="small">Gravitational waves scattered by a spinning viscous star come back out with more energy than they went in with, and the gain grows with the spin of the star. Viscosity and rotation are enough to extract rotational energy, with no horizon and no ergoregion. &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2506.13850" target="_blank">arXiv:2506.13850</a></figcaption>
+                </figure>
+                <figure class="fig-frame">
+                    <img src="/files/figures/viscous-response.png" alt="Line plot of gravitational-wave reflection coefficient against frequency, with the most compact viscous star's curve falling onto the black hole curve" width="1600" height="1240" loading="lazy">
+                    <figcaption class="small">The fraction of an incoming gravitational wave that a viscous star reflects, for stars of increasing compactness. The most compact and most viscous star (yellow) absorbs high frequencies just like a black hole of the same mass (dashed). &nbsp;&middot;&nbsp; <a href="https://arxiv.org/abs/2411.16861" target="_blank">arXiv:2411.16861</a></figcaption>
                 </figure>
             </div>
             <button class="fig-nav fig-next" aria-label="Next figure">&#8250;</button>

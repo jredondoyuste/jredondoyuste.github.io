@@ -10,13 +10,10 @@ refresh the browser.
 ## The 60-second version
 
 - **Text and links live in the `.html` files.** Edit them like a document.
-- Spots that still need your words are marked with a highlighted
-  **`[jaime: …]`** placeholder. Search the project for `jaime:` (or
-  `EDIT-ME`) to find them all. When you replace one, delete the whole
-  `<span class="todo">[jaime: …]</span>` wrapper, leaving just your text.
-- **Colours** live in small token blocks at the top of `style.css` — three
-  palettes (talk slides / Báez / O'Keeffe), each with a light and a dark
-  variant. See "Colours: palettes and dark mode" below.
+- Places where an edit is expected are marked with an **`EDIT-ME`** comment
+  in the HTML. Search the project for `EDIT-ME` to find them all.
+- **Colours** live in two small token blocks at the top of `style.css`, one
+  for light and one for dark. See "Colours and dark mode" below.
 - **Don't rename files** — the menu links point to `index.html`,
   `research.html`, `vault.html` by name.
 
@@ -39,8 +36,7 @@ Two options:
 > looks broken, hard-refresh before believing it.
 
 When you're happy, **commit and push with git** — GitHub Pages redeploys
-the live site automatically. Fill in every `[jaime: …]` placeholder before
-you push.
+the live site automatically.
 
 ---
 
@@ -208,40 +204,35 @@ and always writes JPEG.
 
 ---
 
-## Colours: palettes and dark mode
+## Colours and dark mode
 
 Every colour on the site derives from **seven tokens** (`--bg`, `--panel`,
 `--ink`, `--muted`, `--accent`, `--accent-2`, `--hair`) defined at the top of
-`style.css`. A palette is just those seven lines, so there are ten small
-blocks: five palettes × light/dark.
+`style.css`. There is one paper and one ink, in two variants: a `:root` block
+for light and a `:root[data-theme="dark"]` block for dark.
 
-- **baez** — **the default** (it lives directly in `:root`, no attribute).
-  Firelei Báez, *Fruta fina, fruta extraña (Lee Monument)*, 2022
-  (crimson and oxblood on diagram-cream; the painting hangs in Louisiana).
-- **maelstrom** — your talk slides (the petrol-teal original).
-- **okeeffe** — Georgia O'Keeffe, *Red Poppy*, 1927 (flame orange and
-  scarlet; turquoise sneaks in as `--accent-2` in dark mode).
-- **sorolla** — Joaquín Sorolla, *El pescador*, 1904 (sun-bleached sand,
-  cerulean water, straw gold — painted on the Cabañal beach).
-- **hammershoi** — Vilhelm Hammershøi, *Interior from Strandgade with
-  Sunlight on the Floor*, 1901 (warm greys and rosy umber; the quiet one).
+**The paper** is fixed and never varies with the ink:
+
+- light `#FFF8E7`, "Cosmic Latte" — the average colour of all light in the
+  universe, from ~200,000 galaxy spectra in the 2dF Galaxy Redshift Survey
+  (Glazebrook & Baldry 2002).
+- dark `#2C211D` — the measured average colour of the night sky (Benn &
+  Ellison 1998, La Palma). `--panel` and `--hair` sit on that same locus at
+  brighter exposures, so the dark greys are all the same colour of sky.
+
+**The ink** is El Greco, *El Expolio*, sampled from the painting: crimson
+`#C23649` by day, gold `#EFCC64` at night, with the other of the pair as
+`--accent-2`. The long comment above the tokens in `style.css` records where
+each number came from, and why the night sky is warm rather than blue.
 
 **The visitor picks:** the `[dark]`/`[light]` button in the nav toggles the
-theme, and the palette switcher hides in the vault colophon — the five
-artist/slide names in the colours sentence are secretly buttons. Both
-choices persist in the visitor's browser (localStorage) and first-time
-visitors get Báez, light/dark from their system preference.
+theme, and the choice persists in the browser (localStorage). Dark is the
+default on a first visit, deliberately — not just when the system asks for it.
 
-**To tweak a palette:** edit its seven lines in `style.css` — the blocks are
-labelled. **To add a palette:** copy a pair of blocks
-(`:root[data-palette="NAME"]` and the matching `dark` one), then add one
-button in the vault colophon:
-`<button class="palette-pick" data-palette-pick="NAME">…</button>`.
-The machinery (`js/theme.js`) needs no changes.
-
-If you tweak colours, keep an eye on contrast: accent-on-bg should stay
-above ~4.5:1 so links remain readable. When in doubt, darken the accent in
-the light variant and lighten it in the dark one.
+**To tweak the colours:** edit the token lines in `style.css`; both blocks are
+labelled. Keep an eye on contrast — accent-on-bg should stay above ~4.5:1 so
+links remain readable. When in doubt, darken the accent in the light variant
+and lighten it in the dark one.
 
 ---
 
@@ -252,7 +243,9 @@ To add a city: add a `list-item` line here *and* a matching entry in that
 JS file.
 
 ### `files/` — assets
-- `cv_jaime_redondo.pdf` — your CV (replace the file, keep the name).
+- `cv.pdf` — your CV, built from `cv.tex` + `mycv.cls` in the same folder.
+  Rebuild and commit all three; the `.aux`/`.log`/`.out` intermediates are
+  gitignored.
 - `myself.jpg`, `sjoerd_photo.jpg` — the portrait and blackboard photos.
 - `talks/*.pdf` — slide decks linked from Research.
 - `photos/` — web-sized film scans (see "Adding film photos"). Originals
@@ -308,9 +301,6 @@ is fine; changing the tags/attributes themselves will break things.
 - The `theme.js` script tag in each page's `<head>` loads **without
   `defer`** on purpose — it applies the saved theme before the page paints.
   Moving it or adding `defer` brings back a flash of the wrong colours.
-- A `palette-pick` button's `data-palette-pick="…"` must match a
-  `:root[data-palette="…"]` block in `style.css` — same pairing idea as the
-  stage links.
 - **File names** of the three pages, and anything in `files/fonts/`.
 
 If you're unsure whether an edit is "content" or "structure": if you're

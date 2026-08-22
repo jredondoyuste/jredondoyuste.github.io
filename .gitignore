@@ -21,3 +21,10 @@ _site/
 *.DNG
 *.psd
 *.PSD
+
+# LaTeX build artefacts from files/cv.tex — the .tex, .cls and .pdf are
+# committed, the intermediates are not.
+*.aux
+*.log
+*.out
+*.synctex.gz

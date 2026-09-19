@@ -1983,3 +1983,145 @@ body.lb-open {
     color: #000;
   }
 }
+
+/* ----- kerr.html: the quasinormal-mode lab -------------------------- */
+/* The prose keeps the reading measure; the lab below it takes the width
+   it needs: controls on top, the 3D view large, the sphere, numbers and
+   waveform beside it, and the radial profile and frequency plane under. */
+
+.page-qnm {
+  max-width: 76rem;
+  margin-right: clamp(1.25rem, 6vw, 5rem);
+}
+
+.page-qnm > *:not(.qnm-lab) {
+  max-width: var(--measure);
+}
+
+.qnm-lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-areas:
+    "controls controls"
+    "volume   side"
+    "radial   plane";
+  gap: 1.25rem 2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.qnm-controls { grid-area: controls; }
+.qnm-volume   { grid-area: volume; }
+.qnm-side     { grid-area: side; display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.qnm-radial   { grid-area: radial; }
+.qnm-plane    { grid-area: plane; }
+
+.qnm-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.75rem;
+  padding: 0.6rem 0 0.8rem;
+  border-bottom: 1px solid var(--hair);
+}
+
+.qnm-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.qnm-controls label > span {
+  font-style: italic;
+  min-width: 1.6em;
+  text-align: right;
+}
+
+.qnm-controls input[type="range"] {
+  width: 5.5rem;
+  accent-color: var(--accent);
+}
+
+.qnm-controls label.wide input[type="range"] {
+  width: 10rem;
+}
+
+.qnm-controls output {
+  min-width: 2.8em;
+  color: var(--muted);
+}
+
+.qnm-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.qnm-buttons button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.qnm-panel {
+  margin: 0;
+  min-width: 0;
+}
+
+.qnm-panel canvas {
+  display: block;
+  width: 100%;
+  touch-action: pan-y;   /* vertical swipes still scroll the page */
+}
+
+.qnm-volume canvas { aspect-ratio: 1; cursor: grab; }
+.qnm-volume canvas:active { cursor: grabbing; }
+.qnm-sphere canvas { aspect-ratio: 1; max-width: 17rem; margin: 0 auto; cursor: grab; }
+.qnm-wave canvas   { height: 5.5rem; }
+.qnm-radial canvas { height: 12rem; }
+.qnm-plane canvas  { height: 12rem; }
+
+.qnm-panel figcaption {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+.qnm-readout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem 1rem;
+  margin: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.qnm-readout dt {
+  font-variant-caps: small-caps;
+  color: var(--muted);
+}
+
+.qnm-readout dd { margin: 0; }
+
+.qnm-nogl {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.qnm-notes summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .qnm-lab {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "controls" "volume" "side" "radial" "plane";
+  }
+  .qnm-controls label.wide input[type="range"] { width: 8rem; }
+  .qnm-buttons { margin-left: 0; }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quasinormal modes — Jaime Redondo-Yuste</title>
+    <meta name="description" content="Quasinormal modes of a spinning black hole live: frequencies, spheroidal harmonics and radial profiles.">
+    <link rel="icon" href="/files/favicon.png">
+    <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/theme.js"></script>
+    <script src="/js/ringdown.js" defer></script>
+    <script src="/js/kerr-qnm.js" defer></script>
+    <script src="/js/kerr-view.js" defer></script>
+</head>
+
+<body>
+<div class="page page-qnm">
+    <nav class="header" aria-label="Site">
+        <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <a href="/">[home]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
+        <a href="/vault.html">[vault]</a>
+        <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
+    </nav>
+
+    <h1>Quasinormal modes</h1>
+
+    <p class="qnm-intro">
+        A perturbed black hole rings down in a discrete set of damped harmonics.
+        Each tone is labelled by an angular number &#8467;, an azimuthal number <i>m</i>,
+        and an overtone index <i>n</i>. Its frequency depends only on the mass and spin of the black hole.
+        Everything below is solved for live, as you move the sliders, in your browser!
+    </p>
+
+    <div class="qnm-lab">
+        <form class="qnm-controls" aria-label="Mode and view">
+            <label><span>&#8467;</span><input type="range" id="q-l" min="2" max="6" step="1" value="2"><output id="q-l-out">2</output></label>
+            <label><span>m</span><input type="range" id="q-m" min="-2" max="2" step="1" value="2"><output id="q-m-out">2</output></label>
+            <label><span>n</span><input type="range" id="q-n" min="0" max="3" step="1" value="0"><output id="q-n-out">0</output></label>
+            <label class="wide"><span>a/M</span><input type="range" id="q-a" min="0" max="0.99" step="0.001" value="0.7"><output id="q-a-out">0.700</output></label>
+            <label class="wide"><span>&iota;</span><input type="range" id="q-i" min="0" max="180" step="1" value="60"><output id="q-i-out">60&deg;</output></label>
+            <span class="qnm-buttons">
+                <button type="button" id="q-play" aria-pressed="true">[pause]</button>
+                <button type="button" id="q-damp" aria-pressed="false">[steady]</button>
+                <button type="button" id="q-slice" aria-pressed="false">[hyperboloidal]</button>
+                <button type="button" id="q-mirror" aria-pressed="false">[single mode]</button>
+            </span>
+        </form>
+
+        <figure class="qnm-panel qnm-volume">
+            <canvas id="q-vol" aria-label="Three-dimensional rendering of the mode"></canvas>
+            <figcaption id="q-vol-cap">
+                Re&thinsp;&psi; around the BH. The black sphere is the horizon, the rim is null infinity.
+                Drag to turn.
+            </figcaption>
+        </figure>
+
+        <div class="qnm-side">
+            <figure class="qnm-panel qnm-sphere">
+                <canvas id="q-sph" aria-label="Spheroidal harmonic on the sphere"></canvas>
+                <figcaption>The angular pattern, Re&thinsp;[<sub>&minus;2</sub>S<sub>&#8467;m</sub>(&theta;)&thinsp;e<sup><i>i</i>(<i>m</i>&phi;&minus;&omega;<sub>R</sub>&tau;)</sup>].</figcaption>
+            </figure>
+            <dl class="qnm-readout" id="q-readout" aria-live="polite"></dl>
+            <figure class="qnm-panel qnm-wave">
+                <canvas id="q-wave" aria-label="Ringdown waveform seen from the viewing angle"></canvas>
+                <figcaption>What an observer at &iota; records: <i>h</i><sub>+</sub> and <i>h</i><sub>&times;</sub>.</figcaption>
+            </figure>
+        </div>
+
+        <figure class="qnm-panel qnm-radial">
+            <canvas id="q-rad" aria-label="Radial profile of the mode"></canvas>
+            <figcaption id="q-rad-cap">
+                The radial profile on a hyperboloidal slice that reaches both the horizon and null infinity.
+            </figcaption>
+        </figure>
+
+        <figure class="qnm-panel qnm-plane">
+            <canvas id="q-om" aria-label="Complex frequency plane"></canvas>
+            <figcaption>The complex frequency as the spin runs from 0 to 0.99: this mode, and its siblings of the same &#8467; and <i>n</i> in faint.</figcaption>
+        </figure>
+    </div>
+
+    <details class="qnm-notes">
+        <summary>How this is computed</summary>
+        <p>
+            Conventions: Geometric units <i>G</i> = <i>c</i> = <i>M</i> = 1, spin weight <i>s</i> = &minus;2, and time dependence
+            e<sup>&minus;<i>i</i>&omega;<i>t</i> + <i>im</i>&phi;</sup>.
+            The frequency is obtained through Leaver's continued fraction (in the form of Cook &amp; Zalutskiy 2014),
+            coupled through the separation constant <i>A</i>(<i>a</i>&omega;) to the angular equation,
+            which is solved as a banded eigenvalue problem in spin-weighted spherical harmonics.
+            Each spin sequence is continued from the Schwarzschild value. 
+        </p>
+        <p>
+            The radial profile is obtained from Leaver's series &Sigma; <i>a<sub>k</sub></i> <i>x<sup>k</sup></i>, with
+            <i>x</i> = (<i>r</i> &minus; <i>r</i><sub>+</sub>)/(<i>r</i> &minus; <i>r</i><sub>&minus;</sub>)
+            running from the horizon (<i>x</i> = 0) to null infinity (<i>x</i> = 1). 
+            In the 3D view, a point at Boyer&ndash;Lindquist radius <i>r</i> is drawn at radius
+            <i>r</i>/(<i>r</i>&nbsp;+&nbsp;4<i>M</i>).
+            The surfaces are Re&thinsp;&psi; = &plusmn;0.3 of its peak.
+            Animation time runs at 8&nbsp;<i>M</i> per second.
+        </p>
+        <p>
+            The [Boyer&ndash;Lindquist] view shows the same mode at constant Boyer&ndash;Lindquist time <i>t</i>.
+            Going from (&tau;, &phi;&#771;) to (<i>t</i>, &phi;) multiplies it by
+            e<sup><i>i</i>&omega;<i>h</i>(<i>r</i>) + <i>imr</i><sup>&sharp;</sup></sup>, where
+            <i>h</i> behaves like <i>r</i><sub>*</sub> at infinity and like &minus;<i>r</i><sub>*</sub> at the horizon.
+            Since Im&thinsp;&omega; &lt; 0 this factor grows exponentially towards both ends. 
+            Quasinormal modes blow-up, but that is a problem of the slicing. 
+        </p>
+    </details>
+
+    <footer id="footer">
+        <p>
+            <a href="mailto:jredondo@princeton.edu">say hi!</a>
+            &nbsp;·&nbsp; &copy; 2026 · <a href="/vault.html#colophon">colophon</a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>

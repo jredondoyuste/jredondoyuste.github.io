@@ -46,12 +46,28 @@
             <label><span>n</span><input type="range" id="q-n" min="0" max="3" step="1" value="0"><output id="q-n-out">0</output></label>
             <label class="wide"><span>a/M</span><input type="range" id="q-a" min="0" max="0.99" step="0.001" value="0.7"><output id="q-a-out">0.700</output></label>
             <label class="wide"><span>&iota;</span><input type="range" id="q-i" min="0" max="180" step="1" value="60"><output id="q-i-out">60&deg;</output></label>
-            <span class="qnm-buttons">
-                <button type="button" id="q-play" aria-pressed="true">[pause]</button>
-                <button type="button" id="q-damp" aria-pressed="false">[steady]</button>
-                <button type="button" id="q-slice" aria-pressed="false">[hyperboloidal]</button>
-                <button type="button" id="q-mirror" aria-pressed="false">[single mode]</button>
-            </span>
+            <div class="qnm-switches">
+                <span class="qnm-switch" role="group" aria-label="Animation">
+                    <span class="qnm-switch-label">time</span>
+                    <button type="button" data-flag="playing" data-on="1" title="Let the mode evolve">running</button>
+                    <button type="button" data-flag="playing" data-on="0" title="Freeze the picture">frozen</button>
+                </span>
+                <span class="qnm-switch" role="group" aria-label="Damping">
+                    <span class="qnm-switch-label">damping</span>
+                    <button type="button" data-flag="damped" data-on="0" title="Damping divided out: the mode keeps ringing at the same amplitude">divided out</button>
+                    <button type="button" data-flag="damped" data-on="1" title="The mode decays as e^(Im &omega; &tau;), and is struck again every four e-foldings">ringing down</button>
+                </span>
+                <span class="qnm-switch" role="group" aria-label="Time slicing">
+                    <span class="qnm-switch-label">slice</span>
+                    <button type="button" data-flag="bl" data-on="0" title="Horizon-penetrating and hyperboloidal: the mode is finite at both ends">hyperboloidal</button>
+                    <button type="button" data-flag="bl" data-on="1" title="Constant Boyer&ndash;Lindquist time: the mode diverges at both ends">Boyer&ndash;Lindquist</button>
+                </span>
+                <span class="qnm-switch" role="group" aria-label="Mirror mode">
+                    <span class="qnm-switch-label">modes</span>
+                    <button type="button" data-flag="mirror" data-on="0" title="One complex mode (&#8467;, m, &omega;)">this one</button>
+                    <button type="button" data-flag="mirror" data-on="1" title="Adding the mirror mode (&#8467;, &minus;m, &minus;&omega;*), as an equatorially symmetric source excites it">+ its mirror</button>
+                </span>
+            </div>
         </form>
 
         <figure class="qnm-panel qnm-volume">

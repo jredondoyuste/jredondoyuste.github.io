@@ -566,34 +566,42 @@
   }
   Object.keys(ui).forEach(function (k) { ui[k].addEventListener('input', onInput); });
 
-  var play = $('q-play'), damp = $('q-damp'), slice = $('q-slice'), mirror = $('q-mirror');
+  // the hyperboloidal captions are whatever kerr.html says, so editing them
+  // there is enough; only the t = const ones live here
   var CAPS = {
-    hyp: 'The radial profile on a slice that reaches both the horizon and null infinity, where the mode stays finite.',
+    hyp: $('q-rad-cap').textContent.trim(),
     bl: 'The same mode at constant Boyer\u2013Lindquist time: it grows towards both ends, and its phase winds into outgoing waves.',
-    vol: 'Re \u03c8 around the hole. The black sphere is the horizon, the rim is null infinity. Drag to turn.',
+    vol: $('q-vol-cap').textContent.trim(),
     volBl: 'Re \u03c8 in the equatorial plane at constant t, saturating as it grows: the spiral arms are outgoing wavefronts. Drag to turn.'
   };
+
+  // Each switch shows both of its options, with the live one bracketed.
+  // What to do after the flag changes:
+  var onFlag = {
+    playing: function () {},
+    damped: function () { state.tau = 0; dirty = true; },
+    bl: function () { pending = true; },
+    mirror: function () { pending = true; }
+  };
+  var switches = [].slice.call(document.querySelectorAll('.qnm-switch button'));
+  switches.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.flag, v = b.dataset.on === '1';
+      if (state[f] === v) return;
+      state[f] = v;
+      onFlag[f]();
+      labels();
+    });
+  });
   function labels() {
-    play.textContent = state.playing ? '[pause]' : '[play]';
-    play.setAttribute('aria-pressed', String(state.playing));
-    damp.textContent = state.damped ? '[ringing]' : '[steady]';
-    damp.setAttribute('aria-pressed', String(state.damped));
-    damp.title = state.damped ? 'Damped: the mode decays and is struck again'
-                              : 'Damping divided out: the mode keeps ringing';
-    slice.textContent = state.bl ? '[Boyer\u2013Lindquist]' : '[hyperboloidal]';
-    mirror.textContent = state.mirror ? '[+ mirror]' : '[single mode]';
-    mirror.setAttribute('aria-pressed', String(state.mirror));
-    mirror.title = state.mirror ? 'With the mirror mode (\u2113, \u2212m, \u2212\u03c9*) of an equatorially symmetric source'
-                                : 'One complex mode: click to add its mirror';
-    slice.setAttribute('aria-pressed', String(state.bl));
-    slice.title = 'Time slicing: click to switch';
+    switches.forEach(function (b) {
+      var on = state[b.dataset.flag] === (b.dataset.on === '1');
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
     $('q-rad-cap').textContent = state.bl ? CAPS.bl : CAPS.hyp;
     $('q-vol-cap').textContent = state.bl ? CAPS.volBl : CAPS.vol;
   }
-  play.addEventListener('click', function () { state.playing = !state.playing; labels(); });
-  damp.addEventListener('click', function () { state.damped = !state.damped; state.tau = 0; labels(); dirty = true; });
-  slice.addEventListener('click', function () { state.bl = !state.bl; labels(); pending = true; });
-  mirror.addEventListener('click', function () { state.mirror = !state.mirror; labels(); pending = true; });
   labels();
 
   // drag on either sphere to turn the view

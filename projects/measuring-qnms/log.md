@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — amplitude model restated
+
+- Replaced derivations §8–10 with a single §8: the linear Bayesian model, $\iota$ fixed, mirror modes tied, a PN × complex-QNEF prior block-diagonal in $(\ell, m)$, and NR used only to calibrate the error. The Fisher proposal is withdrawn. §7 now describes the Toeplitz detector noise.
+
 ### 2026-09-24 — Pages build fixed; v1 plots retired; parametrization proposal
 
 - The Pages build had been failing since the plan commit. GitHub Pages runs Jekyll with optional front matter, so every `.md` goes through Liquid, and a double opening brace in a LaTeX superscript broke it. Fixed, and the website's pre-commit hook now rejects Liquid delimiters (double brace, brace-percent) in markdown.

@@ -91,92 +91,82 @@ $$
 
 where $z_{220}$ is the 220 column of $Z$. This is the matched-filter SNR of the 220 mode alone at its prior scale. It does not depend on the absolute noise normalisation, which is what makes white and coloured noise comparable. It is smaller than a whole-ringdown SNR.
 
-## 7. Coloured-noise covariance
+## 7. Detector noise covariance
 
-For stationary noise with one-sided PSD $S(f)$, give each FFT bin (both signs of $f$) an independent $\mathcal{CN}(0, S(|f|)\,\Delta f)$ component:
+Each detector's noise is real, stationary and Gaussian, with one-sided PSD $S(f)$. Its covariance on the time grid is Toeplitz, built from the autocorrelation
 
 $$
-(\Sigma_n)_{jk} = \sum_{f} S(|f|)\,\Delta f\; e^{2\pi i f (t_j - t_k)} .
+C(\tau) = \int_0^{f_{\rm Nyq}} S(f)\, \cos(2\pi f \tau)\, df, \qquad (\Sigma_n)_{jk} = C(t_j - t_k).
 $$
 
-Using both signs matters. A one-sided analytic signal would make $\Sigma_n$ rank-deficient, and the whitener would not exist. Geometric time is converted with $t_{\rm sec} = t\, M_f\, G M_\odot/c^3$. The PSD is normalised so that its minimum is 1, which puts it on the same scale as `WhiteNoise(1)`. The aLIGO curve is held flat below 20 Hz so that it stays finite.
+The integral is evaluated on a zero-padded frequency grid much longer than the segment, so there is no wrap-around. $S$ is held at $S(f_{\rm low})$ below $f_{\rm low}$. Geometric time converts to seconds with the detector-frame mass, $t_{\rm sec} = t\, (1+z) M_f\, G M_\odot / c^3$. The curves are O4, A+, ET-D, ET-10km, CE-40km and CE-20km (gwfast), plus LISA (Robson–Cornish–Liu, one TDI channel). The v1 circulant construction is superseded.
 
 ## Numerics
 
 - Never form $Z^\dagger Z$. Squaring the condition number throws away half the digits. Take the SVD of the rectangular $\tilde Z$ directly.
 - float64 is enough: for $\rho \lesssim 10^4$ only singular values within about 4 decades of the top matter. mpmath stays an optional cross-check.
 
-## 8. How $\Sigma_A$ is built today, and what is wrong with it
+## 8. The amplitude model (v2)
 
-### From a relation to a covariance
+The model is linear and Gaussian throughout, $d = G\theta + n$, with an exact posterior and channels from the SVD. There are three ingredients.
 
-The relation $A_j = w_j A_{220} + \epsilon_j$ is a **recipe for drawing amplitudes**, not an equation to solve:
+### 8.1 Amplitudes and angles
 
-1. We don't know the amplitudes before looking at the data: they depend on distance, orientation, mass ratio and so on. The prior is a probability distribution over them. A zero-mean Gaussian is fixed entirely by $\Sigma_{jk} = \mathbb E[A_j \bar A_k]$, and the analysis only uses these second moments.
-2. The recipe: draw $A_{220} \sim \mathcal{CN}(0, \sigma^2)$, draw independent errors $\epsilon_j \sim \mathcal{CN}(0, s_j^2)$, and set $A_j = w_j A_{220} + \epsilon_j$.
-3. Substitute the recipe into the definition. The cross terms vanish because the errors are independent of $A_{220}$ and have zero mean:
+Each QNM $j = (\ell, m, n)$ has one complex amplitude $C_j$. The inclination $\iota$ is **fixed** for each scenario: the measured value for a named event, or an axis we scan. QNM $j$ contributes
 
 $$
-\Sigma_{jk} = \mathbb E\big[(w_j A_{220} + \epsilon_j)(\bar w_k \bar A_{220} + \bar\epsilon_k)\big] = \sigma^2 w_j \bar w_k + s_j^2\,\delta_{jk}.
+C_j\, S_j(\iota)\, e^{-i\omega_j t} \;+\; \bar C_j\, \tilde S_j(\iota)\, e^{+i\bar\omega_j t}
 $$
 
-**Example with two modes.** Take $w = (1,\ 4e^{i\theta})$ for (220, 221), $\sigma = 1$, and a 30% error on the 221 only ($s = 1.2$):
+to the complex strain $h = h_+ - i h_\times$.
+
+- $S_j = \sum_{\ell'} c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell' m}$ is its spheroidal harmonic, with mixing coefficients $c$ from the `qnm` package.
+- The second term is the mirror mode. Equatorial symmetry ($h_{\ell,-m} = (-1)^\ell \bar h_{\ell m}$, aligned spins) fixes it: $\tilde S_j = \sum_{\ell'} (-1)^{\ell'}\, \bar c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell',-m}$. **The mirror adds no parameters.**
+- Because $\bar C_j$ appears, $h$ is linear in $\theta = (\mathrm{Re}\,C, \mathrm{Im}\,C)$ rather than in $C$. That is the only reason the parameters are real.
+- A detector records $\mathrm{Re}[(F_+ + iF_\times)h]$, which is also linear in $\theta$. This gives $G$.
+
+### 8.2 Prior: analytic ratios
+
+Within each $(\ell, m)$ overtone ladder, the overtones follow the fundamental through the excitation factors carried to the analysis start $t_0$:
 
 $$
-\Sigma = \begin{pmatrix} 1 & 4e^{-i\theta} \\ 4e^{i\theta} & 17.44 \end{pmatrix}, \qquad \text{correlation} = 4/\sqrt{17.44} = 0.96 .
+C_{\ell m n} = A_{\ell m 0}\, g_{\ell m n} + \epsilon_{\ell m n}, \qquad
+g_{\ell m n} = \frac{B_{\ell m n}}{B_{\ell m 0}}\; e^{-i(\omega_{\ell m n} - \omega_{\ell m 0})(t_0 - t_{\rm ref})}, \qquad g_{\ell m 0} = 1 .
 $$
 
-The prior cloud is a thin cigar along $w$: knowing $A_{220}$ fixes $A_{221}$ to within 30%. The error model sets how thin the cigar is, and the phase of $w$ sets its direction in the complex plane. Other unknowns enter the same way, by averaging: a uniform azimuth gives $\mathbb E[e^{i(m - m')\phi}] = \delta_{mm'}$, which removes the correlations between different $m$.
+Here $B$ is complex, taken straight from the QNEF tables, and $|e^{-i\Delta\omega\,\Delta t}| = e^{\mathrm{Im}\,\Delta\omega\,\Delta t}$ is the overtone suppression when the analysis starts later.
 
-### What the code does today
+- The fundamental has $A_{\ell m 0} \sim \mathcal{CN}(0, \sigma_{\ell m}^2)$ with $\sigma_{\ell m} = r_{\ell m}(\eta, v)\, \sigma_{220}$, where $r_{\ell m}$ is the leading-order PN ratio.
+- The errors are independent: $\epsilon_{\ell m n} \sim \mathcal{CN}(0, s_{\ell m n}^2)$.
+- **Different ladders are independent**, because the unknown azimuth makes their relative phase uniform.
 
-**The current PN + QNEF prior** (`PNQNEFPrior`) is a one-factor model tied to the 220 amplitude:
-
-$$
-A_{\ell m n} = w_{\ell m n}\, A_{220} + \epsilon_{\ell m n}, \qquad
-w_{\ell m n} = r_{\ell m}(\eta, v_{\rm ref})\;\Big|\frac{B_{\ell m n}}{B_{\ell m 0}}\Big|\; e^{\mathrm{Im}(\omega_{\ell m n} - \omega_{\ell m 0})(t_0 - t_{\rm ref})}\; s^{\,n},
-$$
-
-with $A_{220} \sim \mathcal{CN}(0, \sigma_{220}^2)$ and independent errors $\epsilon_j \sim \mathcal{CN}\big(0, (f\, w_j \sigma_{220})^2\big)$, where $f = 0.3$ is `spread_frac`. Here $r_{\ell m}$ is the leading-order PN ratio $|h_{\ell m}/h_{22}|$ and $s$ is the source-suppression factor. Taking the second moment,
+Substituting into $\Sigma = \mathbb E[C C^\dagger]$ (the cross terms vanish because $\epsilon$ is independent of $A$ and has zero mean), the covariance is block-diagonal, one block per $(\ell, m)$:
 
 $$
-\Sigma_A = \mathbb E[A A^\dagger] = \sigma_{220}^2\, w w^{T} + \sigma_{220}^2 f^2\, \mathrm{diag}(w_j^2).
+\Sigma_C^{(\ell m)} = \sigma_{\ell m}^2\, g\, g^\dagger + \mathrm{diag}(s^2), \qquad \Sigma_\theta = \tfrac12\begin{pmatrix}\mathrm{Re}\,\Sigma_C & -\mathrm{Im}\,\Sigma_C\\ \mathrm{Im}\,\Sigma_C & \mathrm{Re}\,\Sigma_C\end{pmatrix}.
 $$
 
-So the prior is **rank one plus a small diagonal**, and the error model is a 30% complex Gaussian scatter around the scaling, independent between modes.
-
-**Problem 1: the phases are locked.** $w_j$ is real and positive, so every mode is assumed to be *in phase* with $A_{220}$, up to about $\pm 17^\circ$ from $\epsilon$. Physically:
-
-- between overtones of the same $(\ell, m)$, the relative phase is $\arg(B_n/B_0) - \mathrm{Re}(\omega_n - \omega_0)(t_0 - t_{\rm ref})$, plus a source phase. It is known, but it is not zero. The QNEF tables contain it, but v1 used only $|B_n|/|B_0|$ and only the $\mathrm{Im}\,\omega$ part of the time shift. There was no good reason for that; it was a shortcut. NR confirms that the phase is coherent: the 221/220 phase at peak scatters by only 0.28 rad over 468 SXS runs (331/330: 0.16 rad);
-- between different $(\ell, m)$, the observed amplitude carries ${}_{-2}Y_{\ell m}(\iota, \phi) \propto e^{im\phi}$, so the relative phase depends on the unknown orientation.
-
-**Checked (2026-09-24)** at $\chi = 0.7$, $\ell = m$ set, white noise: the rank-one structure makes one "template" channel ($s_1/s_2 \approx 40$, against $\approx 7$ for a diagonal prior with the same variances). It costs 1–2 measurable channels at $\rho_{220} = 30$–$1000$, at both $t_0 = 0$ and $5\,M$.
-
-**Fix: average over orientation.** Write the observed amplitude as $A^{\rm obs}_{\ell m n} = A_{\ell m n}\, {}_{-2}Y_{\ell m}(\iota, \phi)$.
-
-- With $\phi$ uniform, $\mathbb E[e^{i(m - m')\phi}] = \delta_{m m'}$. This removes all cross-covariance between different $m$.
-- If $\iota$ is also isotropic, orthonormality $\int {}_{-2}Y_{\ell m}\, {}_{-2}Y^*_{\ell' m'}\, d\Omega = \delta_{\ell\ell'}\delta_{mm'}$ gives
+**Example: the 220 + 221 block.** With $g = (1,\ 4e^{i\theta})$, $\sigma = 1$ and $s_{221} = 0.3 \times 4$:
 
 $$
-\mathbb E\big[A^{\rm obs}_{\ell m n} A^{\mathrm{obs}*}_{\ell' m' n'}\big] = \frac{\delta_{\ell\ell'}\delta_{mm'}}{4\pi}\; \mathbb E\big[A_{\ell m n} A^*_{\ell m n'}\big].
+\Sigma_C = \begin{pmatrix} 1 & 4e^{-i\theta} \\ 4e^{i\theta} & 17.44 \end{pmatrix}.
 $$
 
-So $\Sigma_A$ is **block-diagonal in $(\ell, m)$**, and all the correlation sits inside each overtone ladder. Within a block the loadings are complex: $w_{\ell m n} \propto r_{\ell m}\,(B_{\ell m n}/B_{\ell m 0})\, e^{-i\omega_{\ell m n}(t_0 - t_{\rm ref})}$. For a specific event with a measured inclination (GW250114), keep $\iota$ fixed and average only over $\phi$: the blocks become per-$m$.
+The correlation is $0.96$: knowing $C_{220}$ fixes $C_{221}$ to within 30%, in modulus *and* phase.
 
-**The error model** should be calibrated, not assumed. Compare $w$ with the jaxqualin NR hyperfits at the same reference time. The scatter of $\ln|A_{\rm NR}/A_{\rm model}|$ and of the phase residual, per $\ell$ and $n$, then replaces $f = 0.3$.
+### 8.3 Error: calibrated on NR
 
-**Mirror modes (corrected 2026-09-24).** The strain $h = h_+ - i h_\times$ is complex, and the mirror frequencies $-\bar\omega$ are distinct in it, so the mode set *is* doubled. For aligned spins, equatorial symmetry $h_{\ell,-m} = (-1)^\ell\, \bar h_{\ell m}$ ties the two amplitudes together:
+NR amplitudes do not enter the model. The jaxqualin SXS extractions (516 runs, amplitudes and phases at the peak) are used only to calibrate the prior:
 
-$$
-A_{\ell m n} = C_{\ell m n}\, {}_{-2}Y_{\ell m}(\iota,\phi), \qquad
-A^{\rm mirror}_{\ell m n} = (-1)^\ell\, \bar C_{\ell m n}\, {}_{-2}Y_{\ell,-m}(\iota,\phi).
-$$
+1. **$t_{\rm ref}$**, the one free constant in $g$: fitted so that $g_{221}$ matches the NR 221/220 ratios.
+2. **$s_{\ell m n}$**: the scatter of the NR overtone ratios $C_{\ell m n}/C_{\ell m 0}$ around $g_{\ell m n}$, in modulus and phase. NR only has $n = 1$, so $n \ge 2$ is extrapolated and flagged.
+3. **The error on $r_{\ell m}$**: the scatter of NR $|C_{\ell m 0}/C_{220}|$ around the PN ratio, which inflates $\sigma_{\ell m}$.
 
-So $\mathbb E[A\,A^{\rm mirror}] \neq 0$. This is a *pseudo*-covariance, and it survives the average over $\phi$ because the two phase factors $e^{\pm im\phi}$ cancel. A circular complex Gaussian cannot represent it, so the analysis moves to an augmented (real) parametrization with two real parameters per $C$. The mirror columns then enter with weight ${}_{-2}Y_{\ell,-m}/{}_{-2}Y_{\ell m}$, which is large away from face-on. With precession the tie breaks and the mirror amplitudes become free.
+### 8.4 Counting parameters
 
-NR agrees: the *intrinsic* counter-rotating content of $h_{22}$ is tiny (jaxqualin: $A_{-220}/A_{220} \sim 4\times 10^{-4}$ at peak), so the mirror frequencies in the observed strain come from $\bar h_{\ell m}$ through the inclination.
+220 + 221 gives two complex amplitudes, i.e. 4 real parameters, and the prior correlation carries their predicted ratio. The angles are *handled* rather than fitted: $\iota$ is conditioned on and the azimuth is averaged into the prior.
 
-A single detector records only the real projection $\mathrm{Re}[(F_+ + iF_\times)h]$, and in it a mirror term has the same time dependence as its partner. Separating them needs both polarizations, i.e. a network. H1 and L1 are nearly co-aligned, so for GW250114 that is a real limitation; ET's triangle and ET + CE see both.
+**Superseded:** v1's rank-one prior with $|B|$ and real loadings, and a Fisher proposal (withdrawn 2026-09-24). Both remain in the git history.
 
 ## 9. Two-mode toy model in closed form
 
@@ -193,45 +183,3 @@ s_{1,2}^2 = \frac{\rho^2}{2}\Big[(a + b) \pm \sqrt{(a - b)^2 + 4ab\cos^2\theta}\
 $$
 
 With discrete sampling, $\rho$ absorbs the $1/\Delta t$. Two resolved channels need $s_2 > 1$, which requires both SNR and a separation $|\Delta\omega_R|$ that is large compared with $\gamma_1 + \gamma_2$. This is a Rayleigh criterion for damped modes. Overtones of one $(\ell, m)$ have similar $\omega_R$ and damping rates that grow with $n$, so $\cos\theta$ stays large and the second channel costs a lot of SNR. This will be item 5 of the plan.
-
-## 10. Counting parameters: a physical parametrization (proposal, 2026-09-24)
-
-**What Phase A does.** With tied mirrors, each QNM has *one* complex amplitude $C_j$ (two real parameters). The mirror term is fixed by $C_j$ and $\iota$. $\iota$ itself is held fixed, and the observer azimuth (together with the orbital phase) is absorbed into the phases of the $C_j$. Two QNMs therefore give 4 real parameters. The 8 you counted is the `free` option, meant only for precession.
-
-**What that misses.** All modes share *one* geometry. Absorbing the azimuth into each $C_j$ separately lets every mode rotate independently, and treating the $C_j$ as free ignores what NR and perturbation theory tell us about their ratios. For a physical model your count is the right one: two QNMs give one complex amplitude (2), two angles $\iota, \chi$ (2), and the complex deviation of the second mode from its predicted ratio (2), for a total of 6.
-
-**Proposed parametrization.** Everything is expressed through a few global parameters plus deviations from predicted ratios:
-
-$$
-C_{\ell m n} = A_{220}\; w_{\ell m n}\,(1 + \delta_{\ell m n})\, e^{i\epsilon_{\ell m n}}\; e^{i(m - 2)\chi},
-$$
-
-where
-
-- $A_{220}$ is complex (overall scale and phase);
-- $\chi$ is the combined observer-azimuth / orbital-phase angle;
-- $w_{\ell m n}$ is the *complex* predicted ratio at the reference time: jaxqualin NR hyperfits where they exist (220, 221, 210, 211, 330, 331, 320, 440, 550, retrograde), and PN × QNEF × time shift elsewhere;
-- $\delta, \epsilon$ are the amplitude and phase deviations, with prior widths from the NR scatter.
-
-The angular dependence uses the **spheroidal** harmonic of each QNM, $S_j(\iota) = \sum_{\ell'} c^{\,j}_{\ell'}\, Y_{\ell' m}(\iota)$, with the mixing coefficients $c$ from the `qnm` package (the 221 at $\chi_f = 0.68$ leaks about 7% into $\ell' = 3$). Equatorial symmetry, applied harmonic by harmonic, fixes the mirror term with no new parameters:
-
-$$
-h(t) = \sum_j C_j\, S_j(\iota)\, e^{-i\omega_j t} + \bar C_j\, \tilde S_j(\iota)\, e^{+i\bar\omega_j t},
-\qquad \tilde S_j(\iota) = \sum_{\ell'} (-1)^{\ell'}\, \bar c^{\,j}_{\ell'}\, Y_{\ell',-m}(\iota).
-$$
-
-**Parameters:** $(\mathrm{Re}\,A_{220}, \mathrm{Im}\,A_{220}, \iota, \chi)$ plus $(\delta_j, \epsilon_j)$ for every mode other than the 220. Two QNMs give $2 + 2 + 2 = 6$.
-
-**How it fits the machinery.** $h$ is now nonlinear in $\iota$, $\chi$ and in the products $A_{220}\delta_j$, so we linearize about a fiducial point $\theta_0$ (the Fisher regime, which is the right one at the SNRs we care about):
-
-$$
-\tilde Z = \Sigma_n^{-1/2}\, J\, \Sigma_\theta^{1/2}, \qquad J = \frac{\partial h}{\partial \theta}\Big|_{\theta_0}.
-$$
-
-The channels and $n_{\rm meas}$ are then exactly as before: `analysis.channels(J, noise_cov, prior_cov)`. For a linear model this reduces to the current construction.
-
-**Priors.** $A_{220}$ is broad. $\iota$ is Gaussian, with the inspiral-measured width for a named event such as GW250114, or broad otherwise. $\chi$ is broad (it is uniform). $\delta_j, \epsilon_j$ take the NR residual scatter, e.g. about 0.17 dex and 0.3 rad for the 221, raw.
-
-**What "a QNM is measured" means here.** A channel that points mostly along $(\delta_j, \epsilon_j)$ means the data constrain that mode's amplitude *better than the NR prediction already does*. Channels along $(A_{220}, \iota, \chi)$ only mean that the ringdown and its geometry are detected. This splits $n_{\rm meas}$ into "geometry" and "spectroscopy" and gives a sharper answer to the paper's question.
-
-**Caveat.** The Fisher analysis is local: it depends on the fiducial ($|A_{220}|$, $\iota$, $\chi$, $q$), so event plots use the event's parameters and population plots average over draws. For $n \ge 2$ and $\ell = 8$ there is no NR, so $w$ comes from PN × QNEF and the widths are assumed.

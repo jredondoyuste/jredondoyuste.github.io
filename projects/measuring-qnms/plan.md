@@ -13,16 +13,15 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 | A3 | modes to $\ell = 8$, all $m \ne 0$, $n \le 7$; general leading-order PN formula for any $(\ell, m)$; QNEF for $\ell = 8$ (extrapolated, flagged) | 2 |
 | A4 | physical amplitude scale: $\sigma_{220} = |A_{220}^{\rm NR}|\,(1+z) M_f / D_L$ | 4, 6 |
 
-### Phase B: the amplitude model (item 1), revised 2026-09-24
+### Phase B: the amplitude prior (item 1)
 
-The proposal is in [derivations §10](#derivations): parametrize by $(A_{220}, \iota, \chi)$ plus deviations $(\delta_j, \epsilon_j)$ from the predicted complex ratios $w_j$, use spheroidal harmonics with the mirror terms fixed by symmetry, and linearize about a fiducial point.
+The model is in [derivations §8](#derivations): linear and Bayesian, $\iota$ fixed per scenario, mirror modes tied by symmetry, PN × complex-QNEF prior, and NR used only for the error.
 
 | step | what |
 |---|---|
-| B1 | spheroidal angular factors $S_j$, $\tilde S_j$ from the `qnm` mixing coefficients |
-| B2 | predicted ratios $w_j$: jaxqualin hyperfits where available, else PN × complex QNEF × time shift (with the reference times matched) |
-| B3 | NR residual scatter per $(\ell, n)$, giving the prior widths of $\delta, \epsilon$ |
-| B4 | Jacobian $J = \partial h / \partial \theta$ (analytic) and the Fisher channels, split into "geometry" and "spectroscopy" |
+| B1 | spheroidal angular factors $S_j$, $\tilde S_j$ in the strain columns; remove the `free` mirror option |
+| B2 | prior $\Sigma_C$: block per $(\ell, m)$, $\sigma_{\ell m}^2 g g^\dagger + \mathrm{diag}(s^2)$, with complex $B$ |
+| B3 | NR calibration: fit $t_{\rm ref}$, then the residual scatter, giving $s_{\ell m n}$ and the error on $r_{\ell m}$ |
 
 ### Phase C: figures
 

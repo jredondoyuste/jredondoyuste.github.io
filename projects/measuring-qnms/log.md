@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — Phase B: priors calibrated on NR; code tightened
+
+- **Implemented** `FlatPrior` and `QNEFPrior`. All amplitudes are referenced to the merger, and $t_0$ is scanned through the time grid. $g$ uses the complex Teukolsky $B$ times $(\omega_0/\omega_n)^2$. Without that $\psi_4 \to$ strain factor, the 221 phase against NR is off by 0.57 rad; with it, by 0.01 rad.
+- **Spheroidal harmonics.** Their convention against our $Y_{\ell m}$ was verified by solving the angular Teukolsky equation (residual $10^{-6}$). The 220 at $\chi = 0.68$ mixes 7% into $\ell = 3$; I had wrongly said 0.3% earlier.
+- **Calibrated** $k_{\ell m}$, $f_{\ell m n}$ and the flat-prior errors on 500 SXS runs: finding F1.
+- **Removed** the v1 code: old priors, circulant noise, complex design path, v1 experiments and the marimo notebook. It remains in git history (`b7cfe5f`). The package is now 608 lines, and 103 tests pass.
+
 ### 2026-09-24 — amplitude model restated
 
 - Replaced derivations §8–10 with a single §8: the linear Bayesian model, $\iota$ fixed, mirror modes tied, a PN × complex-QNEF prior block-diagonal in $(\ell, m)$, and NR used only to calibrate the error. The Fisher proposal is withdrawn. §7 now describes the Toeplitz detector noise.

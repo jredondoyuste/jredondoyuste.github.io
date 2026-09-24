@@ -15,13 +15,7 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 
 ### Phase B: the amplitude prior (item 1)
 
-The model is in [derivations §8](#derivations): linear and Bayesian, $\iota$ fixed per scenario, mirror modes tied by symmetry, PN × complex-QNEF prior, and NR used only for the error.
-
-| step | what |
-|---|---|
-| B1 | spheroidal angular factors $S_j$, $\tilde S_j$ in the strain columns; remove the `free` mirror option |
-| B2 | prior $\Sigma_C$: block per $(\ell, m)$, $\sigma_{\ell m}^2 g g^\dagger + \mathrm{diag}(s^2)$, with complex $B$ |
-| B3 | NR calibration: fit $t_{\rm ref}$, then the residual scatter, giving $s_{\ell m n}$ and the error on $r_{\ell m}$ |
+The model is in [derivations §8](#derivations). **Status (2026-09-24):** the priors are implemented and calibrated on NR (finding [F1](#results)). $t_{\rm ref}$ is the merger by definition; only the errors $f_{\ell mn}$ and $k_{\ell m}$ are calibrated, for both the QNEF and the flat prior. The package has been cut to 608 lines.
 
 ### Phase C: figures
 

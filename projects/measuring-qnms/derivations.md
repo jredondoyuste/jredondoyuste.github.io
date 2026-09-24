@@ -127,14 +127,14 @@ to the complex strain $h = h_+ - i h_\times$.
 
 ### 8.2 Prior: analytic ratios
 
-Within each $(\ell, m)$ overtone ladder, the overtones follow the fundamental through the excitation factors carried to the analysis start $t_0$:
+Within each $(\ell, m)$ overtone ladder, the overtones follow the fundamental through the excitation factors. All amplitudes are referenced to the **merger** ($t = 0$, the peak of $|h_{22}|$); the decay to a later start $t_0$ lives in the columns $e^{-i\omega t}$, so the prior itself does not depend on $t_0$:
 
 $$
 C_{\ell m n} = A_{\ell m 0}\, g_{\ell m n} + \epsilon_{\ell m n}, \qquad
-g_{\ell m n} = \frac{B_{\ell m n}}{B_{\ell m 0}}\; e^{-i(\omega_{\ell m n} - \omega_{\ell m 0})(t_0 - t_{\rm ref})}, \qquad g_{\ell m 0} = 1 .
+g_{\ell m n} = \frac{B_{\ell m n}}{B_{\ell m 0}} \left(\frac{\omega_{\ell m 0}}{\omega_{\ell m n}}\right)^{2}, \qquad g_{\ell m 0} = 1 .
 $$
 
-Here $B$ is complex, taken straight from the QNEF tables, and $|e^{-i\Delta\omega\,\Delta t}| = e^{\mathrm{Im}\,\Delta\omega\,\Delta t}$ is the overtone suppression when the analysis starts later.
+$B$ is the complex Teukolsky ($s = -2$) excitation factor. The $(\omega_0/\omega_n)^2$ converts $\psi_4$ to strain ($\psi_4 = \ddot h$). NR confirms this factor is needed: without it the 221 phase is off by 0.57 rad.
 
 - The fundamental has $A_{\ell m 0} \sim \mathcal{CN}(0, \sigma_{\ell m}^2)$ with $\sigma_{\ell m} = r_{\ell m}(\eta, v)\, \sigma_{220}$, where $r_{\ell m}$ is the leading-order PN ratio.
 - The errors are independent: $\epsilon_{\ell m n} \sim \mathcal{CN}(0, s_{\ell m n}^2)$.
@@ -156,11 +156,13 @@ The correlation is $0.96$: knowing $C_{220}$ fixes $C_{221}$ to within 30%, in m
 
 ### 8.3 Error: calibrated on NR
 
-NR amplitudes do not enter the model. The jaxqualin SXS extractions (516 runs, amplitudes and phases at the peak) are used only to calibrate the prior:
+NR amplitudes do not enter the model. The jaxqualin SXS extractions (500 runs with $\chi_f \ge 0$, all referenced to the peak of $|h_{22}|$) set only the prior's second moments. Each NR harmonic amplitude is divided by the mode's mixing coefficient $c_\ell$ to give the spheroidal $C$, and outliers beyond $5\sigma$ (robust, in log space) are dropped.
 
-1. **$t_{\rm ref}$**, the one free constant in $g$: fitted so that $g_{221}$ matches the NR 221/220 ratios.
-2. **$s_{\ell m n}$**: the scatter of the NR overtone ratios $C_{\ell m n}/C_{\ell m 0}$ around $g_{\ell m n}$, in modulus and phase. NR only has $n = 1$, so $n \ge 2$ is extrapolated and flagged.
-3. **The error on $r_{\ell m}$**: the scatter of NR $|C_{\ell m 0}/C_{220}|$ around the PN ratio, which inflates $\sigma_{\ell m}$.
+- **Overtone error:** $f_{\ell m n} = \mathrm{rms}\,|R/g - 1|$, with $R = C_{\ell m n}/C_{\ell m 0}$ from NR. Then $s_{\ell m n} = f_{\ell m n}\,|g_{\ell m n}|\,\sigma_{\ell m}$.
+- **Fundamental ratio error:** $k_{\ell m} = \mathrm{rms}\; \big(|C_{\ell m 0}/C_{220}|_{\rm NR} / r_{\ell m}\big)$. Then $\sigma_{\ell m} = k_{\ell m}\, r_{\ell m}\, \sigma_{220}$.
+- **Flat prior** ($\Sigma_C = \sigma^2 I$): its error is $\mathrm{rms}\,|C_{\ell m n}/C_{220}|$, which the flat prior sets to 1.
+
+These are second moments, so they include any bias, as a Gaussian prior requires. Ladders with fewer than 10 runs fall back to defaults: the pooled $k$, and the largest $f$. The values are in `mqnm/data/nr_calibration.json`, and the figure is in [results](#results).
 
 ### 8.4 Counting parameters
 

@@ -1,0 +1,177 @@
+/* Project notebook pages — layered on /style.css, using its tokens only. */
+
+.page-project {
+  max-width: 50rem;
+}
+
+.proj-meta {
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 1.5rem;
+}
+
+/* tabs read like the site nav: [overview] [results] … */
+.proj-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.9rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--hair);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 2;
+}
+
+.proj-tabs a {
+  color: var(--muted);
+}
+
+.proj-tabs a:hover,
+.proj-tabs a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.proj-body h2:first-child {
+  margin-top: 1.5rem;
+}
+
+.proj-body p,
+.proj-body li {
+  hyphens: auto;
+}
+
+.proj-body code {
+  font-size: 0.88em;
+  background: var(--panel);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+
+.proj-body pre {
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  line-height: 1.4;
+}
+
+.proj-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.proj-body table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.proj-body th,
+.proj-body td {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.3rem 0.8rem 0.3rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.proj-body th {
+  font-weight: 400;
+  font-variant-caps: small-caps;
+  color: var(--muted);
+}
+
+/* callouts */
+.proj-body blockquote {
+  margin: 1.25rem 0;
+  padding: 0.4rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+}
+
+.proj-body blockquote p {
+  margin: 0.4rem 0;
+}
+
+/* figures sit on a white "print", like the photos elsewhere on the site */
+.proj-body figure {
+  margin: 1.75rem 0;
+}
+
+.proj-body figure img {
+  display: block;
+  background: var(--print);
+  padding: 0.5rem;
+  border: 1px solid var(--hair);
+}
+
+.proj-body figcaption {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+}
+
+.proj-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+
+/* dated log entries */
+.proj-body h3 {
+  font-variant-numeric: lining-nums;
+}
+
+/* the gate */
+.proj-gate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 2rem 0;
+}
+
+.proj-gate label {
+  color: var(--muted);
+  font-variant-caps: small-caps;
+}
+
+.proj-gate input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  padding: 0.25rem 0.5rem;
+  max-width: 100%;
+}
+
+.proj-gate button {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-variant-caps: small-caps;
+  padding: 0;
+}
+
+.proj-gate .small {
+  flex-basis: 100%;
+}
+
+/* index of projects */
+.proj-list {
+  list-style: none;
+  padding: 0;
+}
+
+.proj-list li {
+  margin: 0 0 1.25rem;
+}
+
+.proj-list .muted {
+  display: block;
+  font-style: italic;
+}

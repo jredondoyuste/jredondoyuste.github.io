@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — prior conditioned on the observing angles
+
+- Your correction: the relation should run through the 220, $C_{\ell m n} = g\, w\, A_{220} + \epsilon$. I had averaged over the azimuth, which made different $m$ independent and lost the fact that $|C_{330}|$ tracks $|C_{220}|$. Now $(\iota, \varphi)$ are fixed, like the masses and spins from an IMR fit; $w$ is the complex PN ratio, and every mode couples through $A_{220}$ ([derivations §8](#derivations)).
+- **NR check.** The frame-independent phase $\arg C_{\ell m 0} - \tfrac m2 \arg C_{220}$ is coherent for $(2,1)$, $(3,3)$ and $(4,3)$ (0.2–0.5 rad scatter), and much less so for $(4,4)$, $(5,5)$ and $(3,2)$. PN predicts the 330 phase to $-0.19$ rad.
+- **Bug caught.** While rotating NR runs into the PN frame, I first used the phase of $h_{22}/h_{22} = 1$ instead of $h_{22}$ itself, which shifted every $m = 3$ residual by $\pi/2$. Fixed; `pn_mode` is now exposed.
+- F1 re-run with complex fundamental errors. 106 tests pass.
+
 ### 2026-09-24 — Phase B: priors calibrated on NR; code tightened
 
 - **Implemented** `FlatPrior` and `QNEFPrior`. All amplitudes are referenced to the merger, and $t_0$ is scanned through the time grid. $g$ uses the complex Teukolsky $B$ times $(\omega_0/\omega_n)^2$. Without that $\psi_4 \to$ strain factor, the 221 phase against NR is off by 0.57 rad; with it, by 0.01 rad.

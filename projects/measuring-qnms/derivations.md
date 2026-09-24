@@ -108,67 +108,66 @@ The integral is evaluated on a zero-padded frequency grid much longer than the s
 
 ## 8. The amplitude model (v2)
 
-The model is linear and Gaussian throughout, $d = G\theta + n$, with an exact posterior and channels from the SVD. There are three ingredients.
+The model is linear and Gaussian throughout, $d = G\theta + n$, with an exact posterior and channels from the SVD. Everything an IMR analysis would give us is **fixed**: the remnant mass and spin (hence the frequencies), the mass ratio, and the observing angles $(\iota, \varphi)$. Only the ringdown amplitudes are uncertain.
 
-### 8.1 Amplitudes and angles
+### 8.1 Amplitudes, angles and the strain
 
-Each QNM $j = (\ell, m, n)$ has one complex amplitude $C_j$. The inclination $\iota$ is **fixed** for each scenario: the measured value for a named event, or an axis we scan. QNM $j$ contributes
-
-$$
-C_j\, S_j(\iota)\, e^{-i\omega_j t} \;+\; \bar C_j\, \tilde S_j(\iota)\, e^{+i\bar\omega_j t}
-$$
-
-to the complex strain $h = h_+ - i h_\times$.
-
-- $S_j = \sum_{\ell'} c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell' m}$ is its spheroidal harmonic, with mixing coefficients $c$ from the `qnm` package.
-- The second term is the mirror mode. Equatorial symmetry ($h_{\ell,-m} = (-1)^\ell \bar h_{\ell m}$, aligned spins) fixes it: $\tilde S_j = \sum_{\ell'} (-1)^{\ell'}\, \bar c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell',-m}$. **The mirror adds no parameters.**
-- Because $\bar C_j$ appears, $h$ is linear in $\theta = (\mathrm{Re}\,C, \mathrm{Im}\,C)$ rather than in $C$. That is the only reason the parameters are real.
-- A detector records $\mathrm{Re}[(F_+ + iF_\times)h]$, which is also linear in $\theta$. This gives $G$.
-
-### 8.2 Prior: analytic ratios
-
-Within each $(\ell, m)$ overtone ladder, the overtones follow the fundamental through the excitation factors. All amplitudes are referenced to the **merger** ($t = 0$, the peak of $|h_{22}|$); the decay to a later start $t_0$ lives in the columns $e^{-i\omega t}$, so the prior itself does not depend on $t_0$:
+Each QNM $j = (\ell, m, n)$ has one complex amplitude $C_j$, referenced to the merger ($t = 0$, the peak of $|h_{22}|$). It contributes
 
 $$
-C_{\ell m n} = A_{\ell m 0}\, g_{\ell m n} + \epsilon_{\ell m n}, \qquad
-g_{\ell m n} = \frac{B_{\ell m n}}{B_{\ell m 0}} \left(\frac{\omega_{\ell m 0}}{\omega_{\ell m n}}\right)^{2}, \qquad g_{\ell m 0} = 1 .
+C_j\, S_j(\iota, \varphi)\, e^{-i\omega_j t} \;+\; \bar C_j\, \tilde S_j(\iota, \varphi)\, e^{+i\bar\omega_j t}
 $$
 
-$B$ is the complex Teukolsky ($s = -2$) excitation factor. The $(\omega_0/\omega_n)^2$ converts $\psi_4$ to strain ($\psi_4 = \ddot h$). NR confirms this factor is needed: without it the 221 phase is off by 0.57 rad.
+to $h = h_+ - i h_\times$.
 
-- The fundamental has $A_{\ell m 0} \sim \mathcal{CN}(0, \sigma_{\ell m}^2)$ with $\sigma_{\ell m} = r_{\ell m}(\eta, v)\, \sigma_{220}$, where $r_{\ell m}$ is the leading-order PN ratio.
-- The errors are independent: $\epsilon_{\ell m n} \sim \mathcal{CN}(0, s_{\ell m n}^2)$.
-- **Different ladders are independent**, because the unknown azimuth makes their relative phase uniform.
+- $S_j = \sum_{\ell'} c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell' m}(\iota, \varphi)$ is its spheroidal harmonic.
+- The second term is the mirror mode. Equatorial symmetry fixes it, $\tilde S_j = \sum_{\ell'} (-1)^{\ell'} \bar c^{\,j}_{\ell'}\, {}_{-2}Y_{\ell', -m}$, so it adds **no parameters**.
+- $\varphi$ is the observer's azimuth in the frame where the orbital phase at merger is zero.
+- $h$ is linear in $\theta = (\mathrm{Re}\,C, \mathrm{Im}\,C)$, and so is the detector output $\mathrm{Re}[(F_+ + iF_\times)h]$. This gives $G$.
 
-Substituting into $\Sigma = \mathbb E[C C^\dagger]$ (the cross terms vanish because $\epsilon$ is independent of $A$ and has zero mean), the covariance is block-diagonal, one block per $(\ell, m)$:
+A later start time $t_0$ only moves the time grid: the decay is in $e^{-i\omega t}$, and the prior below does not change.
 
-$$
-\Sigma_C^{(\ell m)} = \sigma_{\ell m}^2\, g\, g^\dagger + \mathrm{diag}(s^2), \qquad \Sigma_\theta = \tfrac12\begin{pmatrix}\mathrm{Re}\,\Sigma_C & -\mathrm{Im}\,\Sigma_C\\ \mathrm{Im}\,\Sigma_C & \mathrm{Re}\,\Sigma_C\end{pmatrix}.
-$$
-
-**Example: the 220 + 221 block.** With $g = (1,\ 4e^{i\theta})$, $\sigma = 1$ and $s_{221} = 0.3 \times 4$:
+### 8.2 Prior: every mode tied to the 220
 
 $$
-\Sigma_C = \begin{pmatrix} 1 & 4e^{-i\theta} \\ 4e^{i\theta} & 17.44 \end{pmatrix}.
+C_{\ell m 0} = w_{\ell m}\, A_{220} + \epsilon_{\ell m 0}, \qquad
+C_{\ell m n} = g_{\ell m n}\, C_{\ell m 0} + \epsilon_{\ell m n}, \qquad A_{220} \sim \mathcal{CN}(0, \sigma_{220}^2).
 $$
 
-The correlation is $0.96$: knowing $C_{220}$ fixes $C_{221}$ to within 30%, in modulus *and* phase.
+- $w_{\ell m} = (h_{\ell m}/h_{22})_{\rm PN}$ is **complex**: leading-order PN, in the same frame (orbital phase zero). $w_{22} = 1$.
+- $g_{\ell m n} = (B_{\ell m n}/B_{\ell m 0})\,(\omega_{\ell m 0}/\omega_{\ell m n})^2$ is also complex. $B$ are the Teukolsky excitation factors, and $(\omega_0/\omega_n)^2$ converts $\psi_4 = \ddot h$ to strain.
+- The errors are independent and relative:
 
-### 8.3 Error: calibrated on NR
+$$
+\epsilon_{\ell m 0} \sim \mathcal{CN}\big(0,\ (e_{\ell m} |w_{\ell m}| \sigma_{220})^2\big), \qquad
+\epsilon_{\ell m n} \sim \mathcal{CN}\big(0,\ (f_{\ell m n} |g_{\ell m n}| \sigma_{\ell m})^2\big),
+$$
 
-NR amplitudes do not enter the model. The jaxqualin SXS extractions (500 runs with $\chi_f \ge 0$, all referenced to the peak of $|h_{22}|$) set only the prior's second moments. Each NR harmonic amplitude is divided by the mode's mixing coefficient $c_\ell$ to give the spheroidal $C$, and outliers beyond $5\sigma$ (robust, in log space) are dropped.
+  with $\sigma_{\ell m}^2 = \mathbb E|C_{\ell m 0}|^2 = |w_{\ell m}|^2 \sigma_{220}^2 (1 + e_{\ell m}^2)$.
 
-- **Overtone error:** $f_{\ell m n} = \mathrm{rms}\,|R/g - 1|$, with $R = C_{\ell m n}/C_{\ell m 0}$ from NR. Then $s_{\ell m n} = f_{\ell m n}\,|g_{\ell m n}|\,\sigma_{\ell m}$.
-- **Fundamental ratio error:** $k_{\ell m} = \mathrm{rms}\; \big(|C_{\ell m 0}/C_{220}|_{\rm NR} / r_{\ell m}\big)$. Then $\sigma_{\ell m} = k_{\ell m}\, r_{\ell m}\, \sigma_{220}$.
-- **Flat prior** ($\Sigma_C = \sigma^2 I$): its error is $\mathrm{rms}\,|C_{\ell m n}/C_{220}|$, which the flat prior sets to 1.
+Substituting into $\Sigma = \mathbb E[C C^\dagger]$ (cross terms vanish because the errors are independent and zero-mean), with $u_j = g_j w_j$:
 
-These are second moments, so they include any bias, as a Gaussian prior requires. Ladders with fewer than 10 runs fall back to defaults: the pooled $k$, and the largest $f$. The values are in `mqnm/data/nr_calibration.json`, and the figure is in [results](#results).
+$$
+\Sigma_C = \sigma_{220}^2\, u\, u^\dagger \;+\; \sum_{(\ell, m)} (e_{\ell m} |w_{\ell m}| \sigma_{220})^2\; g^{(\ell m)} g^{(\ell m)\dagger} \;+\; \mathrm{diag}\big(f_j |g_j| \sigma_{\ell m}\big)^2 .
+$$
+
+The first term ties everything to $A_{220}$. The second lets each $(\ell, m)$ ladder move together away from its PN prediction. The third is each overtone's own error. When NR shows a ratio is unpredictable ($e \gtrsim 1$), that ladder decouples from the 220 automatically.
+
+**The flat prior** is the uninformed alternative: $\Sigma_C = \sigma^2 I$, independent modes with a common scale.
+
+### 8.3 Errors: calibrated on NR
+
+NR amplitudes do not enter the model. The jaxqualin SXS extractions (500 runs with $\chi_f \ge 0$, at the peak of $|h_{22}|$) set only $e$ and $f$:
+
+- **$f_{\ell m n} = \mathrm{rms}\,|R/g - 1|$**, with $R = C_{\ell m n}/C_{\ell m 0}$. This ratio is frame-independent.
+- **$e_{\ell m} = \mathrm{rms}\,|R/w - 1|$**, with $R = C_{\ell m 0}/C_{220}$ after rotating each run into the PN frame. The rotation uses the phase of the run's own 220, $C_{\ell m} \to C_{\ell m} e^{im\Phi}$. For odd $m$ that fixes $\Phi$ only up to $\pi$, and the branch closest to PN is taken, which slightly understates the scatter.
+- **Flat prior:** $\mathrm{rms}\,|C_{\ell m n}/C_{220}|$, which it sets to 1.
+
+NR harmonic amplitudes are converted to spheroidal ones by dividing by $c_\ell$, and $5\sigma$ outliers (robust, in log space) are dropped. These are second moments, so they include any bias. Ladders with fewer than 10 runs fall back to the pooled $e$ and the largest $f$. The values are in `mqnm/data/nr_calibration.json`; see finding F1 in [results](#results).
 
 ### 8.4 Counting parameters
 
-220 + 221 gives two complex amplitudes, i.e. 4 real parameters, and the prior correlation carries their predicted ratio. The angles are *handled* rather than fitted: $\iota$ is conditioned on and the azimuth is averaged into the prior.
-
-**Superseded:** v1's rank-one prior with $|B|$ and real loadings, and a Fisher proposal (withdrawn 2026-09-24). Both remain in the git history.
+220 + 221 gives two complex amplitudes, i.e. 4 real parameters. The prior carries their predicted complex ratio. The angles, masses and spins are fixed, as they would be after an IMR analysis. Populations are handled by ensembles over them, not by averaging inside the prior.
 
 ## 9. Two-mode toy model in closed form
 

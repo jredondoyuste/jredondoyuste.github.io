@@ -8,6 +8,33 @@ Each finding is self-contained:
 - **Setup**: source, detector, prior, mode content.
 - **Reproduce**: script and commit.
 
+### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24)
+
+<figure>
+<a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Left: characteristic strain of a GW250114-like ringdown from NR, the 220 alone, and QNEF prior draws, against O4, A+, ET-D, CE 40 km and CE 20 km sensitivities. Right: the same amplitudes for a million-solar-mass remnant at redshift 1 against LISA"></a>
+<figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention: the area between the curves sets the SNR). Black: the ringdown from the merger on, with the QNM amplitudes that jaxqualin extracted from SXS:BBH:2085 (equal mass, $\chi_f = 0.684$, the run closest to GW250114); dashed: its 220 alone. Grey: 40 draws from the QNEF prior conditioned on that 220 ($\ell \le 5$, $n \le 1$, the same overtone content as the NR fit). $h_+$ for $F_+ = 1$; the 60° interferometers (ET, LISA) are shown as $\sqrt{f S_n}/\sin 60°$, their best orientation. ρ is the optimal single-detector SNR of the NR signal.</figcaption>
+</figure>
+
+**Question.** How does a GW250114-like ringdown sit against current and future detectors, and do our prior's amplitudes look like the real ones?
+
+**Takeaway.**
+
+- The prior draws bracket the NR signal: their rms strain is 0.8–1.5× NR at the merger and 0.7–0.9× NR at $t_0 = 10\,M$.
+- Below the peak and above about 600 Hz, the full signal sits well above the 220 alone. That is the 221 (4.3× the 220 at the merger) plus the sharp start at $t = 0$; see the caveats.
+- Optimal single-detector SNRs: O4 120, A+ 217, ET-D about 1000, CE 20 km about 1300, CE 40 km about 1900. For a $10^6\,M_\odot$ remnant at $z = 1$, LISA gets about $1.5\times10^4$ per channel.
+
+**Caveats.**
+
+- ρ is an optimal-orientation, from-the-merger number. LVK quote a network SNR of about 40 post-merger for GW250114; real antenna patterns and a later start both lower ours.
+- Starting the signal abruptly at $t = 0$ adds broadband power: the $\sqrt f$ rise at low frequency and the slow fall-off at high frequency.
+- $\varphi$ (the azimuth) is unknown and set to 0. $\iota = 0.78$ is the folded value.
+- $D_L = 405$ Mpc comes from $z = M_f^{\rm det}/M_f - 1 = 0.086$ (Planck 2018); other sources quote about 440 Mpc.
+- Draws with $n = 2$ (not calibrated by NR) overshoot NR by about 3× at the merger, so they are left out here.
+
+**Setup.** GW250114: $m_{1,2} = 33.6, 32.2\,M_\odot$, $M_f^{\rm det} = 68.1\,M_\odot$, $\chi_f = 0.68$ (arXiv:2509.08054, 2510.01001); $\iota = 0.78$ (arXiv:2509.08099).
+
+**Reproduce.** `python -m mqnm.experiments.sensitivity_overlay`.
+
 ### F2 — Do the calibrated priors actually cover NR? (2026-09-24)
 
 <figure>

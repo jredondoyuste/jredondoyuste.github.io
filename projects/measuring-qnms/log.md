@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — items 6 and 8: channel counts per detector, and saturation
+
+- **F3:** $n_{\rm meas}$ against $\rho_{220}$ and redshift for O4, A+, ET, CE and LISA, flat prior (same total SNR) against PN + QNEF. GW250114 at its distance: O4 5, A+ 6, CE 20 km 10, CE 40 km 11, ET 14 real channels.
+- **F4:** overtones saturate at $n_{\max} = 2$ from $10\,M$. Harmonics saturate under PN + QNEF (by $\ell = 4$–6) and never under the flat prior.
+- F1 now quotes 1σ coverage. The 221 drops to 26%, a tight bias the 90% number hid.
+- New code: `detectors.colocated`, `experiments/setups.py` (shared source and networks), `measurability.py`, `saturation.py`.
+
 ### 2026-09-24 — default start 10 M; findings renumbered
 
 - The default analysis start is now $10\,M_f$. How to do better at earlier times is an open item in the [plan](#plan).

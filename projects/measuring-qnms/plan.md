@@ -19,10 +19,14 @@ The model is in [derivations §8](#derivations). **Status (2026-09-24):** the pr
 
 ### Status and open investigations (2026-09-24)
 
+- **Items 6 and 8 done** (first pass): F3 (channels vs $\rho_{220}$ and redshift, per detector) and F4 (saturation).
+
 - **Default start: $t_0 = 10\,M_f$** after the peak (`design.DEFAULT_T_START`). Before that the prior overpredicts the NR strain (F1).
 - **Open: can we do better before 10 M?** Options: overtone errors that depend on $t_0$; per-mode stability times from jaxqualin; treating pre-10 M non-QNM content as structured noise.
 - **Open:** harmonics other than (2,2) stay under-covered at late times (quadratic 220×220 in $h_{44}$ and retrograde content are not modelled).
 - **Open:** the zero-mean overtone scale ($a = 1.41$, fitted at 5 M) still trends mildly with spin.
+- **Open:** the 221's 1σ coverage is only 26% (a tight bias at 0.8× the QNEF prediction). Consider calibrating that bias separately from the scatter.
+- **Next:** which modes the measured channels correspond to; realistic sky positions and antenna patterns; item 5 (two-mode toy model).
 
 ### Phase C: figures
 

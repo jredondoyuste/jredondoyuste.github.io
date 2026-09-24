@@ -8,6 +8,25 @@ Each finding is self-contained:
 - **Setup**: source, detector, prior, mode content.
 - **Reproduce**: script and commit.
 
+### F2 — Do the calibrated priors actually cover NR? (2026-09-24)
+
+<figure>
+<a href="figs/prior_vs_nr.png"><img src="figs/prior_vs_nr.png" alt="Violins of the prior-predictive amplitude ratio per mode for the QNEF and flat priors, with NR values as grey dots; top modulus, bottom phase; percentages of runs inside their own 90 percent interval above each mode"></a>
+<figcaption>For each SXS run, both priors are conditioned on that run's own 220 (with $\sigma_{220} = |C_{220}|$, and the run's $\eta$ and $\chi_f$), giving a predicted distribution of $C_j/C_{220}$. Violins pool these predictions over runs; grey dots are the NR values. Numbers: the fraction of runs whose NR modulus falls in *its own* central 90% predictive interval (blue: QNEF, orange: flat); a calibrated prior gives about 90%. Bottom: the phase in the PN frame.</figcaption>
+</figure>
+
+**Question.** With the calibrated errors, are the priors' amplitude distributions consistent with NR?
+
+**Takeaway.**
+
+- **QNEF prior, calibrated where it matters:** the 221 (81%), 330 (99%), 331 (96%), 210 (85%) and 211 (85%) are covered, and the 221, 330 and 331 phases are predicted.
+- **QNEF prior, miscalibrated for 320 (63%), 440 (54%), 550 (38%) and 660 (12%):** leading-order PN overpredicts these moduli by 2–4×, *systematically*. The calibrated error matches the second moment, but a zero-mean Gaussian centred on the biased prediction puts the NR values in its lower tail. The PN phases of these modes are also poor.
+- **Flat prior:** miscalibrated almost everywhere (0–75%). It is wrong by construction except for modes that happen to have the 220's scale.
+
+**Setup.** jaxqualin SXS catalogue, calibration from F1, 400 predictive draws per run, PN at $v = 0.7$.
+
+**Reproduce.** `python -m mqnm.experiments.prior_vs_nr`.
+
 ### F1 — Is the analytic prior right, and how wrong is the flat one? (2026-09-24, revised for the conditioned prior)
 
 <figure>

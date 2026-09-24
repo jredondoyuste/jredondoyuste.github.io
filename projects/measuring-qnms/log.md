@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — prior predictive check (F2)
+
+- Conditioned both priors on each SXS run's own 220 and compared the predicted $C_j/C_{220}$ with NR. The QNEF prior is calibrated for 221, 330, 331, 210 and 211, but not for 320, 440, 550 and 660, where PN is *biased* rather than noisy. The flat prior is miscalibrated almost everywhere. Open question: calibrate a bias as well as a scatter?
+
 ### 2026-09-24 — prior conditioned on the observing angles
 
 - Your correction: the relation should run through the 220, $C_{\ell m n} = g\, w\, A_{220} + \epsilon$. I had averaged over the azimuth, which made different $m$ independent and lost the fact that $|C_{330}|$ tracks $|C_{220}|$. Now $(\iota, \varphi)$ are fixed, like the masses and spins from an IMR fit; $w$ is the complex PN ratio, and every mode couples through $A_{220}$ ([derivations §8](#derivations)).

@@ -1,5 +1,11 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — corrections: complex loadings, mirror modes; jaxqualin data
+
+- Corrected per Jaime's comments. The QNEF loadings will be complex: the $|B|$ in v1 was a shortcut, not a choice. Mirror modes stay, but for aligned spins they are tied to their prograde partners by equatorial symmetry, which requires an augmented (real) parametrization ([derivations §8](#derivations), corrected in place).
+- Committed the pending `mqnm` work (checkpoint 9, 86 tests). Installed jax 0.11.2 and jaxqualin 1.0.0, and vendored the jaxqualin SXS amplitude data.
+- First NR numbers: the overtone relative phases are coherent (221/220: 0.28 rad), so the phases matter. The intrinsic mirror content of $h_{22}$ is about $4\times10^{-4}$. Table in [plan](#plan).
+
 ### 2026-09-24 — v2 plan; checking how $\Sigma_A$ is built
 
 - Wrote the [plan](#plan) for the new requests: $\Sigma_A$ and jaxqualin calibration, $\ell \ne m$ up to $\ell = 8$, detector noise (O4, A+, ET, CE, LISA), sensitivity overlay, two-mode toy model, per-detector money plots, and saturation tests.

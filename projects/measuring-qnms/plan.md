@@ -2,13 +2,13 @@
 
 These are your requests, numbered as you gave them (there is no item 7), ordered by dependency. The full technical version is in `PLAN.md` in the repo.
 
-> **Findings from preparing the plan.** (i) The current PN + QNEF prior phase-locks all modes to $A_{220}$, which costs 1–2 channels. [Derivations §8](#derivations) has the details and the fix: orientation averaging gives a block-diagonal $\Sigma_A$ with complex loadings. (ii) In a single real detector, a mirror mode is *exactly degenerate* with its prograde partner, so detector runs need a real-valued model. (iii) The current coloured noise is circulant, i.e. it wraps around at the segment edges, and it drops physical units. Both need fixing before any detector plot.
+> **Findings from preparing the plan.** (i) The current PN + QNEF prior phase-locks all modes to $A_{220}$, which costs 1–2 channels. [Derivations §8](#derivations) has the details and the fix: orientation averaging gives a block-diagonal $\Sigma_A$ with complex loadings. (ii) *Revised after your comments:* mirror modes stay, doubling the mode set in the complex strain. For aligned spins, though, their amplitudes are tied to the prograde ones through $h_{\ell,-m} = (-1)^\ell \bar h_{\ell m}$ and the inclination. That is a pseudo-covariance, so the analysis needs an augmented (real) parametrization. See [derivations §8](#derivations). (iii) The current coloured noise is circulant, i.e. it wraps around at the segment edges, and it drops physical units. Both need fixing before any detector plot.
 
 ### Phase A: foundations
 
 | step | what | serves |
 |---|---|---|
-| A1 | real-valued design matrix for detector data; mirror modes folded into their partners | 3, 4, 6 |
+| A1 | augmented (real) parametrization; mirror modes tied (aligned spin) or free (precession); observation operators: complex two-polarization $h$, a single detector (real projection), networks (H1+L1, ET triangle, ET+CE) | 2, 3, 4, 6 |
 | A2 | `DetectorNoise`: Toeplitz ACF from the PSD, physical units. Curves: aLIGO O4, A+, ET-D, ET 10 km, CE 40/20 km (gwfast files), LISA (Robson–Cornish–Liu, from your folder) | 3 |
 | A3 | modes to $\ell = 8$, all $m \ne 0$, $n \le 7$; general leading-order PN formula for any $(\ell, m)$; QNEF for $\ell = 8$ (extrapolated, flagged) | 2 |
 | A4 | physical amplitude scale: $\sigma_{220} = |A_{220}^{\rm NR}|\,(1+z) M_f / D_L$ | 4, 6 |
@@ -18,7 +18,7 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 | step | what |
 |---|---|
 | B1 | orientation-averaged prior: blocks by $(\ell, m)$ (isotropic) or by $m$ (fixed $\iota$); complex coherent overtone loadings from the QNEF phases and the time shift |
-| B2 | jaxqualin calibration: install it in a separate env, export its hyperfit amplitudes vs $q$ for the robust modes, compare them with PN × QNEF at a common reference time, and set the error model (dex and phase scatter per $\ell$, $n$) from the residuals |
+| B2 | jaxqualin calibration: the data are now vendored (516 SXS runs, amplitudes and phases at the peak of $|h|$). Compare them with the complex PN × QNEF loadings at a common reference time; the residual scatter in dex and phase, per $\ell$ and $n$, replaces the fixed 30% |
 
 ### Phase C: figures
 
@@ -29,8 +29,19 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 | 8 | saturation: $n_{\rm meas}$ against nested model size (add overtones; add $\ell$), plus the principal angles between the measurable subspaces of nested models. With a flat prior, $n_{\rm meas}$ can never decrease (interlacing), so any plateau comes from the prior |
 | 6 | money plots: (a) GW250114-like source, $n_{\rm meas}$ per detector, with markers per amplitude assumption and error bars; (b) $n_{\rm meas}$ against redshift per detector, with bands for the prior assumptions; LISA across masses |
 
-### Decisions pending
+### Decisions
 
-1. Real-valued model for all detector runs (recommended), keeping the complex model only for the abstract story?
-2. LISA fiducial source: $10^6 M_\odot$, $q \approx 1$, $z = 1$?
-3. OK to install jaxqualin (and jax) in a separate environment, so `mqnm` itself gains no dependencies?
+1. Complex strain with mirror modes: **yes**, via the augmented parametrization, with single-detector and network projections as variants.
+2. jax and jaxqualin: **installed** in the project env.
+3. Still open: LISA fiducial source ($10^6 M_\odot$, $q \approx 1$, $z = 1$?).
+
+### First look at the NR scatter (raw, before subtracting any model)
+
+| ratio at peak | runs | median | amplitude scatter | phase scatter |
+|---|---|---|---|---|
+| 221 / 220 | 468 | 4.0 | 0.17 dex | 0.28 rad |
+| 331 / 330 | 264 | 5.3 | 0.18 dex | 0.16 rad |
+| (−220) / 220 in $h_{22}$ | 258 | $4\times10^{-4}$ | 0.60 dex | ≈ uniform |
+| 220×220 / 440 in $h_{44}$ | 304 | 3.7 | 0.29 dex | 1.36 rad |
+
+NR overtones stop at $n = 1$ (none at $n \ge 2$ in jaxqualin) and harmonics at $\ell = 7$, so the high-$n$ and $\ell = 8$ error model remains an assumption.

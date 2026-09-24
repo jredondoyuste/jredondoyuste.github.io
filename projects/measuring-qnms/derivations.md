@@ -125,7 +125,7 @@ So the prior is **rank one plus a small diagonal**, and the error model is a 30%
 
 **Problem 1: the phases are locked.** $w_j$ is real and positive, so every mode is assumed to be *in phase* with $A_{220}$, up to about $\pm 17^\circ$ from $\epsilon$. Physically:
 
-- between overtones of the same $(\ell, m)$, the relative phase is $\arg(B_n/B_0) - \mathrm{Re}(\omega_n - \omega_0)(t_0 - t_{\rm ref})$, plus a source phase. It is known, but it is not zero. The QNEF tables contain it; we only use $|B|$;
+- between overtones of the same $(\ell, m)$, the relative phase is $\arg(B_n/B_0) - \mathrm{Re}(\omega_n - \omega_0)(t_0 - t_{\rm ref})$, plus a source phase. It is known, but it is not zero. The QNEF tables contain it, but v1 used only $|B_n|/|B_0|$ and only the $\mathrm{Im}\,\omega$ part of the time shift. There was no good reason for that; it was a shortcut. NR confirms that the phase is coherent: the 221/220 phase at peak scatters by only 0.28 rad over 468 SXS runs (331/330: 0.16 rad);
 - between different $(\ell, m)$, the observed amplitude carries ${}_{-2}Y_{\ell m}(\iota, \phi) \propto e^{im\phi}$, so the relative phase depends on the unknown orientation.
 
 **Checked (2026-09-24)** at $\chi = 0.7$, $\ell = m$ set, white noise: the rank-one structure makes one "template" channel ($s_1/s_2 \approx 40$, against $\approx 7$ for a diagonal prior with the same variances). It costs 1–2 measurable channels at $\rho_{220} = 30$–$1000$, at both $t_0 = 0$ and $5\,M$.
@@ -143,7 +143,18 @@ So $\Sigma_A$ is **block-diagonal in $(\ell, m)$**, and all the correlation sits
 
 **The error model** should be calibrated, not assumed. Compare $w$ with the jaxqualin NR hyperfits at the same reference time. The scatter of $\ln|A_{\rm NR}/A_{\rm model}|$ and of the phase residual, per $\ell$ and $n$, then replaces $f = 0.3$.
 
-**Caveat for real detectors.** A single detector records a *real* strain. A mirror mode $\mathrm{Re}[C' e^{+i\bar\omega t}] = \mathrm{Re}[\bar C' e^{-i\omega t}]$ has exactly the same time dependence as its prograde partner, so the two are degenerate in one detector. The detector-noise runs will switch to a real-valued model with two real parameters per frequency.
+**Mirror modes (corrected 2026-09-24).** The strain $h = h_+ - i h_\times$ is complex, and the mirror frequencies $-\bar\omega$ are distinct in it, so the mode set *is* doubled. For aligned spins, equatorial symmetry $h_{\ell,-m} = (-1)^\ell\, \bar h_{\ell m}$ ties the two amplitudes together:
+
+$$
+A_{\ell m n} = C_{\ell m n}\, {}_{-2}Y_{\ell m}(\iota,\phi), \qquad
+A^{\rm mirror}_{\ell m n} = (-1)^\ell\, \bar C_{\ell m n}\, {}_{-2}Y_{\ell,-m}(\iota,\phi).
+$$
+
+So $\mathbb E[A\,A^{\rm mirror}] \neq 0$. This is a *pseudo*-covariance, and it survives the average over $\phi$ because the two phase factors $e^{\pm im\phi}$ cancel. A circular complex Gaussian cannot represent it, so the analysis moves to an augmented (real) parametrization with two real parameters per $C$. The mirror columns then enter with weight ${}_{-2}Y_{\ell,-m}/{}_{-2}Y_{\ell m}$, which is large away from face-on. With precession the tie breaks and the mirror amplitudes become free.
+
+NR agrees: the *intrinsic* counter-rotating content of $h_{22}$ is tiny (jaxqualin: $A_{-220}/A_{220} \sim 4\times 10^{-4}$ at peak), so the mirror frequencies in the observed strain come from $\bar h_{\ell m}$ through the inclination.
+
+A single detector records only the real projection $\mathrm{Re}[(F_+ + iF_\times)h]$, and in it a mirror term has the same time dependence as its partner. Separating them needs both polarizations, i.e. a network. H1 and L1 are nearly co-aligned, so for GW250114 that is a real limitation; ET's triangle and ET + CE see both.
 
 ## 9. Two-mode toy model in closed form
 

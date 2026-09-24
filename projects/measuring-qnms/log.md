@@ -1,5 +1,10 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — default start 10 M; findings renumbered
+
+- The default analysis start is now $10\,M_f$. How to do better at earlier times is an open item in the [plan](#plan).
+- Retired the old F1 (the calibration scatter). The old F2 is now **F1** and the old F3 is now **F2**, both redrawn in publication style from $10\,M$. The earlier log entries use the old numbering.
+
 ### 2026-09-24 — zero-mean overtones calibrated on the total strain; start time
 
 - Following your suggestion, overtones jaxqualin does not see now have zero mean and are independent, with scale $a\,|g_{\ell m 1}|\,\sigma_{\ell m}$. $a = 1.41$ is fitted to the residual power of 30 SXS strains from $5\,M$. A QNEF-shaped variance ($\propto |g_{\ell m n}|$) failed: the per-run $a$ was strongly anticorrelated with spin. Details in [derivations §8.3](#derivations).

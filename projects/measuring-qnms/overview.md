@@ -30,11 +30,10 @@ With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma
 
 ## Where things stand (2026-09-24)
 
-v1 (a complex signal, white or circulant noise, flat / PN / QNEF priors) is retired; its numbers remain in the [log](#log). v2 so far:
-
-- **Phase A, done:** the complex strain $h = h_+ - i h_\times$ with mirror modes tied by equatorial symmetry; detector projections and networks; noise for O4, A+, ET, CE and LISA from their PSDs; modes up to $\ell = 8$.
-- **Under discussion:** how to parametrize the amplitudes. See [derivations §10](#derivations).
-- **Next:** the amplitude prior calibrated on NR (jaxqualin), then the figures in the [plan](#plan).
+- **Model:** the complex strain with tied mirror modes and spheroidal harmonics; detector projections and networks; noise for O4, A+, ET, CE and LISA from their PSDs; modes up to $\ell = 8$, $n = 7$.
+- **Prior:** conditioned on the observing angles, PN × complex QNEF, with errors calibrated on NR (jaxqualin per mode, SXS strain for the overtones jaxqualin does not see). See [derivations §8](#derivations).
+- **Default start: $10\,M_f$** after the peak, where the prior is consistent with NR (F1).
+- **Next:** the two-mode toy model, saturation tests, and the per-detector channel counts (the [plan](#plan)).
 
 ## Open threads
 

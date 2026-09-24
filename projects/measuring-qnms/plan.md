@@ -17,6 +17,13 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 
 The model is in [derivations §8](#derivations). **Status (2026-09-24):** the priors are implemented and calibrated on NR (finding [F1](#results)). $t_{\rm ref}$ is the merger by definition; only the errors $f_{\ell mn}$ and $k_{\ell m}$ are calibrated, for both the QNEF and the flat prior. The package has been cut to 608 lines.
 
+### Status and open investigations (2026-09-24)
+
+- **Default start: $t_0 = 10\,M_f$** after the peak (`design.DEFAULT_T_START`). Before that the prior overpredicts the NR strain (F1).
+- **Open: can we do better before 10 M?** Options: overtone errors that depend on $t_0$; per-mode stability times from jaxqualin; treating pre-10 M non-QNM content as structured noise.
+- **Open:** harmonics other than (2,2) stay under-covered at late times (quadratic 220×220 in $h_{44}$ and retrograde content are not modelled).
+- **Open:** the zero-mean overtone scale ($a = 1.41$, fitted at 5 M) still trends mildly with spin.
+
 ### Phase C: figures
 
 | item | figure |

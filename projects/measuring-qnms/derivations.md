@@ -182,7 +182,7 @@ Two alternatives failed:
 
 With the first-overtone scale, the per-run $a$ scatters by 0.16 dex.
 
-The values are in `mqnm/data/nr_calibration.json`; see F1 and F2 in [results](#results).
+The values are in `mqnm/data/nr_calibration.json`; see F1 in [results](#results).
 
 ### 8.4 Counting parameters
 

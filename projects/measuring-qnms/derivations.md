@@ -108,6 +108,28 @@ Using both signs matters. A one-sided analytic signal would make $\Sigma_n$ rank
 
 ## 8. How $\Sigma_A$ is built today, and what is wrong with it
 
+### From a relation to a covariance
+
+The relation $A_j = w_j A_{220} + \epsilon_j$ is a **recipe for drawing amplitudes**, not an equation to solve:
+
+1. We don't know the amplitudes before looking at the data: they depend on distance, orientation, mass ratio and so on. The prior is a probability distribution over them. A zero-mean Gaussian is fixed entirely by $\Sigma_{jk} = \mathbb E[A_j \bar A_k]$, and the analysis only uses these second moments.
+2. The recipe: draw $A_{220} \sim \mathcal{CN}(0, \sigma^2)$, draw independent errors $\epsilon_j \sim \mathcal{CN}(0, s_j^2)$, and set $A_j = w_j A_{220} + \epsilon_j$.
+3. Substitute the recipe into the definition. The cross terms vanish because the errors are independent of $A_{220}$ and have zero mean:
+
+$$
+\Sigma_{jk} = \mathbb E\big[(w_j A_{220} + \epsilon_j)(\bar w_k \bar A_{220} + \bar\epsilon_k)\big] = \sigma^2 w_j \bar w_k + s_j^2\,\delta_{jk}.
+$$
+
+**Example with two modes.** Take $w = (1,\ 4e^{i\theta})$ for (220, 221), $\sigma = 1$, and a 30% error on the 221 only ($s = 1.2$):
+
+$$
+\Sigma = \begin{pmatrix} 1 & 4e^{-i\theta} \\ 4e^{i\theta} & 17.44 \end{pmatrix}, \qquad \text{correlation} = 4/\sqrt{17.44} = 0.96 .
+$$
+
+The prior cloud is a thin cigar along $w$: knowing $A_{220}$ fixes $A_{221}$ to within 30%. The error model sets how thin the cigar is, and the phase of $w$ sets its direction in the complex plane. Other unknowns enter the same way, by averaging: a uniform azimuth gives $\mathbb E[e^{i(m - m')\phi}] = \delta_{mm'}$, which removes the correlations between different $m$.
+
+### What the code does today
+
 **The current PN + QNEF prior** (`PNQNEFPrior`) is a one-factor model tied to the 220 amplitude:
 
 $$

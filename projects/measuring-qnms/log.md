@@ -1,5 +1,26 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — Phase A: complex strain, detectors, noise, $\ell \le 8$
+
+- New `mqnm` modules, each with tests (174 pass):
+  - `harmonics`: spin-weighted $Y_{\ell m}$;
+  - `strain`: the complex strain as a real-linear map, with mirror modes *tied* (aligned spins), *free* (precession) or *none*;
+  - `detectors`: projection onto a detector, networks, antenna patterns;
+  - `psd`: O4, A+, ET-D, ET-10km, CE-40/20km from gwfast, and LISA; the covariance comes from the PSD through a Toeplitz ACF, with no wrap-around;
+  - `analysis.channels`: one SVD path for everything.
+- The PN ratios now use the general leading-order formula (Damour–Iyer–Nagar). It reproduces all 19 hand-typed Kidder entries to $10^{-15}$ and extends to $\ell = 8$.
+- The LISA noise matches your Robson–Cornish–Liu code: per channel, it is $0.3\,S_n$.
+- **Inclination check.** GW250114-like source, O4 noise on both polarizations, $\ell \le 4$, $n \le 3$, placeholder PN prior:
+
+| $\iota$ | tied mirrors | no mirrors |
+|---|---|---|
+| 0.3 (face-on) | 8 channels, $s_1 = 63$ | 8, $s_1 = 63$ |
+| $\pi/2$ (edge-on) | 8, $s_1 = 26$ | 8, $s_1 = 17$ |
+| 2.6 (face-away) | 8, $s_1 = 57$ | **0**, $s_1 = 0.3$ |
+
+  Face-away, the mirror terms carry the whole signal. The numbers are not results yet: the prior is still the placeholder, and Phase B replaces it.
+- Added the step from the $A_{\ell mn}/A_{220}$ relation to $\Sigma_A$ at the start of [derivations §8](#derivations).
+
 ### 2026-09-24 — corrections: complex loadings, mirror modes; jaxqualin data
 
 - Corrected per Jaime's comments. The QNEF loadings will be complex: the $|B|$ in v1 was a shortcut, not a choice. Mirror modes stay, but for aligned spins they are tied to their prograde partners by equatorial symmetry, which requires an augmented (real) parametrization ([derivations §8](#derivations), corrected in place).

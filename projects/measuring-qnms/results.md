@@ -11,7 +11,7 @@ Each finding is self-contained:
 ### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24, real SXS strain, every mode)
 
 <figure>
-<a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Three panels: characteristic strain of the real SXS:BBH:0180 ringdown and of QNEF prior draws against O4, A+, ET-D and CE, from the peak and from 10 M after it, and against LISA for a million-solar-mass remnant at redshift 1"></a>
+<a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Three panels: characteristic strain of the real SXS:BBH:0180 ringdown and of QNEF prior draws against O4, A+, ET-D and CE, from 5 M and from 10 M after the peak, and against LISA for a million-solar-mass remnant at redshift 1"></a>
 <figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention). Black: the real SXS:BBH:0180 strain (equal mass, non-spinning, $\chi_f = 0.686$), all harmonics $\ell \le 8$, $m \ne 0$, at $\iota = 0.78$, from $t_0$ on. Grey: 40 QNEF-prior draws of every mode ($\ell \le 8$, $n \le 7$) conditioned on the 220 fitted to that strain. Panels (a) and (b) start at $5\,M$ and $10\,M$ after the peak. $h_+$ for $F_+ = 1$; 60° interferometers at their best orientation. ρ is the optimal single-detector SNR of the NR strain.</figcaption>
 </figure>
 

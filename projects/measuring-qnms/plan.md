@@ -13,12 +13,16 @@ These are your requests, numbered as you gave them (there is no item 7), ordered
 | A3 | modes to $\ell = 8$, all $m \ne 0$, $n \le 7$; general leading-order PN formula for any $(\ell, m)$; QNEF for $\ell = 8$ (extrapolated, flagged) | 2 |
 | A4 | physical amplitude scale: $\sigma_{220} = |A_{220}^{\rm NR}|\,(1+z) M_f / D_L$ | 4, 6 |
 
-### Phase B: the amplitude prior (item 1)
+### Phase B: the amplitude model (item 1), revised 2026-09-24
+
+The proposal is in [derivations §10](#derivations): parametrize by $(A_{220}, \iota, \chi)$ plus deviations $(\delta_j, \epsilon_j)$ from the predicted complex ratios $w_j$, use spheroidal harmonics with the mirror terms fixed by symmetry, and linearize about a fiducial point.
 
 | step | what |
 |---|---|
-| B1 | orientation-averaged prior: blocks by $(\ell, m)$ (isotropic) or by $m$ (fixed $\iota$); complex coherent overtone loadings from the QNEF phases and the time shift |
-| B2 | jaxqualin calibration: the data are now vendored (516 SXS runs, amplitudes and phases at the peak of $|h|$). Compare them with the complex PN × QNEF loadings at a common reference time; the residual scatter in dex and phase, per $\ell$ and $n$, replaces the fixed 30% |
+| B1 | spheroidal angular factors $S_j$, $\tilde S_j$ from the `qnm` mixing coefficients |
+| B2 | predicted ratios $w_j$: jaxqualin hyperfits where available, else PN × complex QNEF × time shift (with the reference times matched) |
+| B3 | NR residual scatter per $(\ell, n)$, giving the prior widths of $\delta, \epsilon$ |
+| B4 | Jacobian $J = \partial h / \partial \theta$ (analytic) and the Fisher channels, split into "geometry" and "spectroscopy" |
 
 ### Phase C: figures
 

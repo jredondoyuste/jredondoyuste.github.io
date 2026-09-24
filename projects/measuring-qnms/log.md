@@ -1,5 +1,11 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — Pages build fixed; v1 plots retired; parametrization proposal
+
+- The Pages build had been failing since the plan commit. GitHub Pages runs Jekyll with optional front matter, so every `.md` goes through Liquid, and a double opening brace in a LaTeX superscript broke it. Fixed, and the website's pre-commit hook now rejects Liquid delimiters (double brace, brace-percent) in markdown.
+- Retired the v1 figures. [Results](#results) restarts under the v2 model, as self-contained findings.
+- Proposal for the amplitude model ([derivations §10](#derivations)): parametrize by $A_{220}$, the angles $\iota$ and $\chi$, and the deviations from the predicted complex ratios. Spheroidal harmonics; mirror terms fixed by symmetry; Fisher linearization. Two QNMs give 6 parameters.
+
 ### 2026-09-24 — Phase A: complex strain, detectors, noise, $\ell \le 8$
 
 - New `mqnm` modules, each with tests (174 pass):

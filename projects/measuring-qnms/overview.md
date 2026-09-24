@@ -30,29 +30,11 @@ With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma
 
 ## Where things stand (2026-09-24)
 
-| layer | status |
-|---|---|
-| modes: Kerr prograde / retrograde / mirror / quadratic (via `qnm`) | done |
-| white noise, flat prior, whitened SVD, exact Gaussian posterior | done (v0) |
-| PN multipole prior (leading order, to $\ell = 6$) | done (v1) |
-| QNEF overtone prior, with the start-time shift | done (v1) |
-| prior-uncertainty ensemble and robust flat blend | done (v1) |
-| coloured noise (aLIGO analytic PSD), combined PN + QNEF prior | in working tree, **not yet committed** |
-| jaxqualin-informed priors; nonmodal content treated as noise | planned (v2) |
+v1 (a complex signal, white or circulant noise, flat / PN / QNEF priors) is retired; its numbers remain in the [log](#log). v2 so far:
 
-## What the numbers say so far
-
-These readings come from the plots in [results](#results). The fixed setup, unless a plot says otherwise: $\chi = 0.7$, $T = 100\,M$, $\Delta t = 0.1\,M$, and the $\ell = m$ set with $\ell \le 4$, $n \le 4$ (15 modes).
-
-- **Growth is logarithmic in SNR.** For white noise and a flat prior, the $\ell = m$ set goes from 7 to 14 measurable channels as $\rho$ goes from $10$ to $10^5$, about 1.5–2 channels per decade. That follows from the singular values falling off roughly geometrically, about half a decade per index.
-- **More modes in the model means more channels, but a smaller fraction.** At the same SNRs the full $\ell \le 4$, $n \le 4$ set gives 11 → 21, and adding mirror and quadratic modes gives 25 → 43.
-- **Spin helps, mostly near extremality.** $n_{\rm meas}$ is flat up to $\chi \approx 0.4$–$0.7$ and then rises steeply. At $\chi = 0.99$ all 15 channels are measurable for $\rho \ge 10^3$.
-- **Longer data stops helping by $T \approx 50\,M$.** The signal has decayed by then, and $n_{\rm meas}$ stays at 11 from $T = 50$ up to $400\,M$.
-- **The start time dominates once overtones are weighted realistically.** With the PN + QNEF prior, $n_{\rm meas}$ drops from 12–14 at $t_0 = 0$ to 3 (the fundamentals) by $t_0 \approx 18$–$30\,M$. This is the $e^{\mathrm{Im}\,\omega_n\,\Delta t}$ factor at work.
-- **Prior uncertainty costs about ±1 channel.** With a 0.5 dex log-normal spread on each mode's scale, the 5–95% band on $n_{\rm meas}$ is roughly one channel wide.
-- **Coloured noise costs about one channel** compared with white noise at the same $\rho_{220}$. At $t_0 = 5\,M$ the PN + QNEF prior no longer beats the flat one at low SNR.
-
-> Caveat: every number above counts *channels*, not named modes. A measurable channel is a combination of amplitudes and need not line up with any single $(\ell, m, n)$.
+- **Phase A, done:** the complex strain $h = h_+ - i h_\times$ with mirror modes tied by equatorial symmetry; detector projections and networks; noise for O4, A+, ET, CE and LISA from their PSDs; modes up to $\ell = 8$.
+- **Under discussion:** how to parametrize the amplitudes. See [derivations §10](#derivations).
+- **Next:** the amplitude prior calibrated on NR (jaxqualin), then the figures in the [plan](#plan).
 
 ## Open threads
 

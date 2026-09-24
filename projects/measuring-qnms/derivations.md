@@ -158,7 +158,7 @@ So the prior is **rank one plus a small diagonal**, and the error model is a 30%
 - If $\iota$ is also isotropic, orthonormality $\int {}_{-2}Y_{\ell m}\, {}_{-2}Y^*_{\ell' m'}\, d\Omega = \delta_{\ell\ell'}\delta_{mm'}$ gives
 
 $$
-\mathbb E\big[A^{\rm obs}_{\ell m n} A^{{\rm obs}\,*}_{\ell' m' n'}\big] = \frac{\delta_{\ell\ell'}\delta_{mm'}}{4\pi}\; \mathbb E\big[A_{\ell m n} A^*_{\ell m n'}\big].
+\mathbb E\big[A^{\rm obs}_{\ell m n} A^{\mathrm{obs}*}_{\ell' m' n'}\big] = \frac{\delta_{\ell\ell'}\delta_{mm'}}{4\pi}\; \mathbb E\big[A_{\ell m n} A^*_{\ell m n'}\big].
 $$
 
 So $\Sigma_A$ is **block-diagonal in $(\ell, m)$**, and all the correlation sits inside each overtone ladder. Within a block the loadings are complex: $w_{\ell m n} \propto r_{\ell m}\,(B_{\ell m n}/B_{\ell m 0})\, e^{-i\omega_{\ell m n}(t_0 - t_{\rm ref})}$. For a specific event with a measured inclination (GW250114), keep $\iota$ fixed and average only over $\phi$: the blocks become per-$m$.
@@ -193,3 +193,45 @@ s_{1,2}^2 = \frac{\rho^2}{2}\Big[(a + b) \pm \sqrt{(a - b)^2 + 4ab\cos^2\theta}\
 $$
 
 With discrete sampling, $\rho$ absorbs the $1/\Delta t$. Two resolved channels need $s_2 > 1$, which requires both SNR and a separation $|\Delta\omega_R|$ that is large compared with $\gamma_1 + \gamma_2$. This is a Rayleigh criterion for damped modes. Overtones of one $(\ell, m)$ have similar $\omega_R$ and damping rates that grow with $n$, so $\cos\theta$ stays large and the second channel costs a lot of SNR. This will be item 5 of the plan.
+
+## 10. Counting parameters: a physical parametrization (proposal, 2026-09-24)
+
+**What Phase A does.** With tied mirrors, each QNM has *one* complex amplitude $C_j$ (two real parameters). The mirror term is fixed by $C_j$ and $\iota$. $\iota$ itself is held fixed, and the observer azimuth (together with the orbital phase) is absorbed into the phases of the $C_j$. Two QNMs therefore give 4 real parameters. The 8 you counted is the `free` option, meant only for precession.
+
+**What that misses.** All modes share *one* geometry. Absorbing the azimuth into each $C_j$ separately lets every mode rotate independently, and treating the $C_j$ as free ignores what NR and perturbation theory tell us about their ratios. For a physical model your count is the right one: two QNMs give one complex amplitude (2), two angles $\iota, \chi$ (2), and the complex deviation of the second mode from its predicted ratio (2), for a total of 6.
+
+**Proposed parametrization.** Everything is expressed through a few global parameters plus deviations from predicted ratios:
+
+$$
+C_{\ell m n} = A_{220}\; w_{\ell m n}\,(1 + \delta_{\ell m n})\, e^{i\epsilon_{\ell m n}}\; e^{i(m - 2)\chi},
+$$
+
+where
+
+- $A_{220}$ is complex (overall scale and phase);
+- $\chi$ is the combined observer-azimuth / orbital-phase angle;
+- $w_{\ell m n}$ is the *complex* predicted ratio at the reference time: jaxqualin NR hyperfits where they exist (220, 221, 210, 211, 330, 331, 320, 440, 550, retrograde), and PN × QNEF × time shift elsewhere;
+- $\delta, \epsilon$ are the amplitude and phase deviations, with prior widths from the NR scatter.
+
+The angular dependence uses the **spheroidal** harmonic of each QNM, $S_j(\iota) = \sum_{\ell'} c^{\,j}_{\ell'}\, Y_{\ell' m}(\iota)$, with the mixing coefficients $c$ from the `qnm` package (the 221 at $\chi_f = 0.68$ leaks about 7% into $\ell' = 3$). Equatorial symmetry, applied harmonic by harmonic, fixes the mirror term with no new parameters:
+
+$$
+h(t) = \sum_j C_j\, S_j(\iota)\, e^{-i\omega_j t} + \bar C_j\, \tilde S_j(\iota)\, e^{+i\bar\omega_j t},
+\qquad \tilde S_j(\iota) = \sum_{\ell'} (-1)^{\ell'}\, \bar c^{\,j}_{\ell'}\, Y_{\ell',-m}(\iota).
+$$
+
+**Parameters:** $(\mathrm{Re}\,A_{220}, \mathrm{Im}\,A_{220}, \iota, \chi)$ plus $(\delta_j, \epsilon_j)$ for every mode other than the 220. Two QNMs give $2 + 2 + 2 = 6$.
+
+**How it fits the machinery.** $h$ is now nonlinear in $\iota$, $\chi$ and in the products $A_{220}\delta_j$, so we linearize about a fiducial point $\theta_0$ (the Fisher regime, which is the right one at the SNRs we care about):
+
+$$
+\tilde Z = \Sigma_n^{-1/2}\, J\, \Sigma_\theta^{1/2}, \qquad J = \frac{\partial h}{\partial \theta}\Big|_{\theta_0}.
+$$
+
+The channels and $n_{\rm meas}$ are then exactly as before: `analysis.channels(J, noise_cov, prior_cov)`. For a linear model this reduces to the current construction.
+
+**Priors.** $A_{220}$ is broad. $\iota$ is Gaussian, with the inspiral-measured width for a named event such as GW250114, or broad otherwise. $\chi$ is broad (it is uniform). $\delta_j, \epsilon_j$ take the NR residual scatter, e.g. about 0.17 dex and 0.3 rad for the 221, raw.
+
+**What "a QNM is measured" means here.** A channel that points mostly along $(\delta_j, \epsilon_j)$ means the data constrain that mode's amplitude *better than the NR prediction already does*. Channels along $(A_{220}, \iota, \chi)$ only mean that the ringdown and its geometry are detected. This splits $n_{\rm meas}$ into "geometry" and "spectroscopy" and gives a sharper answer to the paper's question.
+
+**Caveat.** The Fisher analysis is local: it depends on the fiducial ($|A_{220}|$, $\iota$, $\chi$, $q$), so event plots use the event's parameters and population plots average over draws. For $n \ge 2$ and $\ell = 8$ there is no NR, so $w$ comes from PN × QNEF and the widths are assumed.

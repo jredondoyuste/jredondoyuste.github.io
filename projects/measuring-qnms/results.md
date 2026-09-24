@@ -8,11 +8,11 @@ Each finding is self-contained:
 - **Setup**: source, detector, prior, mode content.
 - **Reproduce**: script and commit.
 
-### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24, redone with the real SXS strain)
+### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24, real SXS strain, every mode)
 
 <figure>
 <a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Three panels: characteristic strain of the real SXS:BBH:0180 ringdown and of QNEF prior draws against O4, A+, ET-D and CE, from the peak and from 10 M after it, and against LISA for a million-solar-mass remnant at redshift 1"></a>
-<figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention). Black: the real SXS:BBH:0180 strain (equal mass, non-spinning, $\chi_f = 0.686$), all harmonics $\ell \le 8$, $m \ne 0$, at $\iota = 0.78$, from $t_0$ on. Grey: 40 QNEF-prior draws ($\ell \le 8$, $n \le 1$) conditioned on the 220 fitted to that strain. $h_+$ for $F_+ = 1$; 60° interferometers at their best orientation. ρ is the optimal single-detector SNR of the NR strain.</figcaption>
+<figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention). Black: the real SXS:BBH:0180 strain (equal mass, non-spinning, $\chi_f = 0.686$), all harmonics $\ell \le 8$, $m \ne 0$, at $\iota = 0.78$, from $t_0$ on. Grey: 40 QNEF-prior draws of every mode ($\ell \le 8$, $n \le 7$) conditioned on the 220 fitted to that strain. Panels (a) and (b) start at $5\,M$ and $10\,M$ after the peak. $h_+$ for $F_+ = 1$; 60° interferometers at their best orientation. ρ is the optimal single-detector SNR of the NR strain.</figcaption>
 </figure>
 
 **Question.** How does a GW250114-like ringdown sit against current and future detectors, and does the QNM model with our prior reproduce the real strain?
@@ -20,32 +20,38 @@ Each finding is self-contained:
 **Takeaway.**
 
 - **With the real strain, the SNR is right.** O4 gives an optimal ρ = 35 from the peak, consistent with LVK's network value of about 40 post-merger, and 22 from $10\,M$. The earlier version injected the jaxqualin QNM fit, which is about 10× too loud at the peak and gave ρ = 120.
-- **From the peak (a), the QNM model overshoots the real signal by about 10×,** even with $n \le 1$: the fitted amplitudes are extrapolated back from later times, and the waveform near the peak is not yet a ringdown.
-- **From $10\,M$ (b), the prior draws follow the real strain closely.**
-- **Optimal SNRs from the peak:** A+ 63, ET-D 293, CE 20 km 357, CE 40 km 527. From $10\,M$: 41, 187, 223, 326. For a $10^6\,M_\odot$ remnant at $z = 1$, LISA gets about 2800 per channel from $10\,M$.
+- **From $5\,M$ (a), the all-mode draws scatter well above the real strain,** below 100 Hz and above 400 Hz. From $10\,M$ (b) they bracket it (see F2 for the coverage numbers).
+- **Optimal SNRs from $5\,M$:** O4 27, A+ 48, ET-D 223, CE 20 km 266, CE 40 km 389. From $10\,M$: 22, 41, 187, 223, 326. From the peak, O4 gets 35. For a $10^6\,M_\odot$ remnant at $z = 1$, LISA gets about 2800 per channel from $10\,M$.
 
-**Caveats.** $\varphi$ is set to 0 and $\iota$ is the folded value. $D_L = 405$ Mpc comes from $z = 0.086$. $m = 0$ harmonics are left out. The draws stop at $n = 1$ because the calibration of $n \ge 2$ is open (see the log).
+**Caveats.** $\varphi$ is set to 0 and $\iota$ is the folded value. $D_L = 405$ Mpc comes from $z = 0.086$. $m = 0$ harmonics are left out. 
 
 **Reproduce.** `python -m mqnm.experiments.sensitivity_overlay` (downloads SXS:BBH:0180 through `sxs`).
 
-### F2 — Do the calibrated priors actually cover NR? (2026-09-24)
+### F2 — Do the calibrated priors actually cover NR? (2026-09-24; strain row added)
 
 <figure>
-<a href="figs/prior_vs_nr.png"><img src="figs/prior_vs_nr.png" alt="Violins of the prior-predictive amplitude ratio per mode for the QNEF and flat priors, with NR values as grey dots; top modulus, bottom phase; percentages of runs inside their own 90 percent interval above each mode"></a>
-<figcaption>For each SXS run, both priors are conditioned on that run's own 220 (with $\sigma_{220} = |C_{220}|$, and the run's $\eta$ and $\chi_f$), giving a predicted distribution of $C_j/C_{220}$. Violins pool these predictions over runs; grey dots are the NR values. Numbers: the fraction of runs whose NR modulus falls in *its own* central 90% predictive interval (blue: QNEF, orange: flat); a calibrated prior gives about 90%. Bottom: the phase in the PN frame.</figcaption>
+<a href="figs/prior_vs_nr.png"><img src="figs/prior_vs_nr.png" alt="Top two rows: prior-predictive amplitude ratios per mode versus NR, modulus and phase. Bottom row: NR strain versus prior bands with every mode for two SXS runs"></a>
+<figcaption>Rows 1–2: for each SXS run, both priors conditioned on that run's own 220 predict $C_j/C_{220}$ at the merger. Violins pool the predictions and grey dots are NR; the numbers give the fraction of runs inside *their own* 90% interval (blue: QNEF, orange: flat). Row 3: the NR strain for SXS:BBH:0180 (GW250114-like) and SXS:BBH:1437 ($q \approx 6$, $\chi_f = 0.87$) against 5–95% bands from 200 draws of **every mode** ($\ell \le 8$, $n \le 7$) of the QNEF prior, conditioned on the 220 fitted to that strain. The two quantities are $|h_{22}|$ and the rms of all other $m > 0$ harmonics.</figcaption>
 </figure>
 
-**Question.** With the calibrated errors, are the priors' amplitude distributions consistent with NR?
+**Question.** With the calibrated errors, are the priors consistent with NR, both per mode and for the total strain?
 
 **Takeaway.**
 
-- **QNEF prior, calibrated where it matters:** the 221 (81%), 330 (99%), 331 (96%), 210 (85%) and 211 (85%) are covered, and the 221, 330 and 331 phases are predicted.
-- **QNEF prior, miscalibrated for 320 (63%), 440 (54%), 550 (38%) and 660 (12%):** leading-order PN overpredicts these moduli by 2–4×, *systematically*. The calibrated error matches the second moment, but a zero-mean Gaussian centred on the biased prediction puts the NR values in its lower tail. The PN phases of these modes are also poor.
-- **Flat prior:** miscalibrated almost everywhere (0–75%). It is wrong by construction except for modes that happen to have the 220's scale.
+- **Per mode:** the QNEF prior covers the 221, 330, 331, 210 and 211 (81–99%). It overpredicts the moduli of the 320, 440, 550 and 660 (12–63%), where PN is biased. The flat prior is miscalibrated almost everywhere.
+- **Total strain, coverage across 30 SXS runs** (fraction of NR samples inside the prior's 90% band):
 
-**Setup.** jaxqualin SXS catalogue, calibration from F1, 400 predictive draws per run, PN at $v = 0.7$.
+| window after the peak | $h_{22}$ | other harmonics | prior / NR for $\lvert h_{22} \rvert$ |
+|---|---|---|---|
+| 5–10 M | 61% | 2% | 1.78 (10–90%: 1.18–4.49) |
+| 10–15 M | 83% | 33% | 1.06 |
+| 15–20 M | 95% | 59% | 0.98 |
+| 20–25 M | 72% | 68% | 0.97 |
 
-**Reproduce.** `python -m mqnm.experiments.prior_vs_nr`.
+- **Before about 10 M the prior predicts too much strain.** This comes mostly from the *jaxqualin-calibrated* overtones: jaxqualin measures their amplitudes where they are stable (10–15 M) and quotes them back at the peak, and at 5 M the real waveform is not yet described by them. Starting at 5 M would therefore overcount measurable channels. **10 M is the earliest start at which the prior is consistent with NR.**
+- The other harmonics stay under-covered at late times, because NR contains content the model lacks (e.g. the quadratic 220×220 in $h_{44}$).
+
+**Reproduce.** `python -m mqnm.experiments.prior_vs_nr` (downloads two SXS runs).
 
 ### F1 — Is the analytic prior right, and how wrong is the flat one? (2026-09-24, revised for the conditioned prior)
 

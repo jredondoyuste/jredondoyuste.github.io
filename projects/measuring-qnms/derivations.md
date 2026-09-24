@@ -157,13 +157,32 @@ The first term ties everything to $A_{220}$. The second lets each $(\ell, m)$ la
 
 ### 8.3 Errors: calibrated on NR
 
-NR amplitudes do not enter the model. The jaxqualin SXS extractions (500 runs with $\chi_f \ge 0$, at the peak of $|h_{22}|$) set only $e$ and $f$:
+NR amplitudes do not enter the model; NR sets only the errors.
 
-- **$f_{\ell m n} = \mathrm{rms}\,|R/g - 1|$**, with $R = C_{\ell m n}/C_{\ell m 0}$. This ratio is frame-independent.
-- **$e_{\ell m} = \mathrm{rms}\,|R/w - 1|$**, with $R = C_{\ell m 0}/C_{220}$ after rotating each run into the PN frame. The rotation uses the phase of the run's own 220, $C_{\ell m} \to C_{\ell m} e^{im\Phi}$. For odd $m$ that fixes $\Phi$ only up to $\pi$, and the branch closest to PN is taken, which slightly understates the scatter.
-- **Flat prior:** $\mathrm{rms}\,|C_{\ell m n}/C_{220}|$, which it sets to 1.
+**Modes jaxqualin sees** (500 SXS runs, amplitudes at the peak of $|h_{22}|$):
 
-NR harmonic amplitudes are converted to spheroidal ones by dividing by $c_\ell$, and $5\sigma$ outliers (robust, in log space) are dropped. These are second moments, so they include any bias. Ladders with fewer than 10 runs fall back to the pooled $e$ and the largest $f$. The values are in `mqnm/data/nr_calibration.json`; see finding F1 in [results](#results).
+- $f_{\ell m n} = \mathrm{rms}\,|R/g - 1|$, with $R = C_{\ell m n}/C_{\ell m 0}$ (frame-independent).
+- $e_{\ell m} = \mathrm{rms}\,|R/w - 1|$, with $R = C_{\ell m 0}/C_{220}$ after rotating each run into the PN frame using its own 220. For odd $m$ the branch closest to PN is taken.
+- Flat prior: $\mathrm{rms}\,|C_{\ell m n}/C_{220}|$.
+
+The NR harmonic amplitudes are divided by $c_\ell$ to give spheroidal ones, and $5\sigma$ outliers are dropped.
+
+**Overtones jaxqualin does not see** ($n \ge 2$, and $n = 1$ of ladders with fewer than 10 runs) have zero mean, are independent of the 220, and take the scale of the ladder's first overtone:
+
+$$
+C_{\ell m n} \sim \mathcal{CN}\big(0,\ (a\, |g_{\ell m 1}|\, \sigma_{\ell m})^2\big).
+$$
+
+$a$ is fitted to the **total strain** of 30 SXS runs spanning $q = 1$–8 and $\chi_f = 0$–0.95. The prior's predicted residual power, $\sum_{m>0}\int_{5M}^{85M} |h - \mathbb E[h \mid C_{220}]|^2\,dt$ conditioned on the 220 fitted to each run's strain, is matched to the observed one. This gives $a = 1.41$.
+
+Two alternatives failed:
+
+- A variance $\propto |g_{\ell m n}|^2$ (the QNEF growth with $n$) varied over 7 orders of magnitude with spin while the observed residual varied by about 300×, giving a per-run $a$ anticorrelated with $\chi_f$ ($-0.8$).
+- The QNEF *mean* for $n \ge 2$ diverges at the peak, so a zero mean is needed.
+
+With the first-overtone scale, the per-run $a$ scatters by 0.16 dex.
+
+The values are in `mqnm/data/nr_calibration.json`; see F1 and F2 in [results](#results).
 
 ### 8.4 Counting parameters
 

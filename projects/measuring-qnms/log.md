@@ -1,5 +1,11 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — zero-mean overtones calibrated on the total strain; start time
+
+- Following your suggestion, overtones jaxqualin does not see now have zero mean and are independent, with scale $a\,|g_{\ell m 1}|\,\sigma_{\ell m}$. $a = 1.41$ is fitted to the residual power of 30 SXS strains from $5\,M$. A QNEF-shaped variance ($\propto |g_{\ell m n}|$) failed: the per-run $a$ was strongly anticorrelated with spin. Details in [derivations §8.3](#derivations).
+- **Coverage of the NR strain versus start time** (F2): the prior predicts about 1.8× too much $h_{22}$ at 5–10 M, mostly from the jaxqualin overtones quoted back at the peak, and is consistent from about 10 M. **Recommendation: 10 M as the default start, with 5 M as an optimistic variant.**
+- F3 now draws every mode ($\ell \le 8$, $n \le 7$), from 5 M and 10 M.
+
 ### 2026-09-24 — real SXS injection; strain-level calibration of $n \ge 2$ does not work as posed
 
 - Installed `sxs`; `mqnm.nr` loads an SXS strain with $t = 0$ at the peak of $|h_{22}|$ and fits the 220 from its tail. For SXS:BBH:0180, $|C_{220}| = 0.961$ against jaxqualin's 0.984. F3 now injects the real strain: O4 ρ = 35 from the peak, in line with LVK's ~40.

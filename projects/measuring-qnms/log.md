@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — v2 plan; checking how $\Sigma_A$ is built
+
+- Wrote the [plan](#plan) for the new requests: $\Sigma_A$ and jaxqualin calibration, $\ell \ne m$ up to $\ell = 8$, detector noise (O4, A+, ET, CE, LISA), sensitivity overlay, two-mode toy model, per-detector money plots, and saturation tests.
+- Found that the PN + QNEF prior is rank one with real loadings, i.e. every mode is phase-locked to $A_{220}$. Compared with a diagonal prior with the same variances, it costs 1–2 channels. Fix proposed in [derivations §8](#derivations).
+- Found that mirror modes are exactly degenerate with their prograde partners in a single real detector, and that the coloured-noise covariance is circulant. Both are to be fixed in Phase A.
+- Added the closed-form two-mode model ([derivations §9](#derivations)).
+
 ### 2026-09-24 — project page
 
 - Started this page. The figures are the current contents of `results/`, rendered from the PDFs.

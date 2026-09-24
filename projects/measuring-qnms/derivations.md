@@ -105,3 +105,58 @@ Using both signs matters. A one-sided analytic signal would make $\Sigma_n$ rank
 
 - Never form $Z^\dagger Z$. Squaring the condition number throws away half the digits. Take the SVD of the rectangular $\tilde Z$ directly.
 - float64 is enough: for $\rho \lesssim 10^4$ only singular values within about 4 decades of the top matter. mpmath stays an optional cross-check.
+
+## 8. How $\Sigma_A$ is built today, and what is wrong with it
+
+**The current PN + QNEF prior** (`PNQNEFPrior`) is a one-factor model tied to the 220 amplitude:
+
+$$
+A_{\ell m n} = w_{\ell m n}\, A_{220} + \epsilon_{\ell m n}, \qquad
+w_{\ell m n} = r_{\ell m}(\eta, v_{\rm ref})\;\Big|\frac{B_{\ell m n}}{B_{\ell m 0}}\Big|\; e^{\mathrm{Im}(\omega_{\ell m n} - \omega_{\ell m 0})(t_0 - t_{\rm ref})}\; s^{\,n},
+$$
+
+with $A_{220} \sim \mathcal{CN}(0, \sigma_{220}^2)$ and independent errors $\epsilon_j \sim \mathcal{CN}\big(0, (f\, w_j \sigma_{220})^2\big)$, where $f = 0.3$ is `spread_frac`. Here $r_{\ell m}$ is the leading-order PN ratio $|h_{\ell m}/h_{22}|$ and $s$ is the source-suppression factor. Taking the second moment,
+
+$$
+\Sigma_A = \mathbb E[A A^\dagger] = \sigma_{220}^2\, w w^{T} + \sigma_{220}^2 f^2\, \mathrm{diag}(w_j^2).
+$$
+
+So the prior is **rank one plus a small diagonal**, and the error model is a 30% complex Gaussian scatter around the scaling, independent between modes.
+
+**Problem 1: the phases are locked.** $w_j$ is real and positive, so every mode is assumed to be *in phase* with $A_{220}$, up to about $\pm 17^\circ$ from $\epsilon$. Physically:
+
+- between overtones of the same $(\ell, m)$, the relative phase is $\arg(B_n/B_0) - \mathrm{Re}(\omega_n - \omega_0)(t_0 - t_{\rm ref})$, plus a source phase. It is known, but it is not zero. The QNEF tables contain it; we only use $|B|$;
+- between different $(\ell, m)$, the observed amplitude carries ${}_{-2}Y_{\ell m}(\iota, \phi) \propto e^{im\phi}$, so the relative phase depends on the unknown orientation.
+
+**Checked (2026-09-24)** at $\chi = 0.7$, $\ell = m$ set, white noise: the rank-one structure makes one "template" channel ($s_1/s_2 \approx 40$, against $\approx 7$ for a diagonal prior with the same variances). It costs 1–2 measurable channels at $\rho_{220} = 30$–$1000$, at both $t_0 = 0$ and $5\,M$.
+
+**Fix: average over orientation.** Write the observed amplitude as $A^{\rm obs}_{\ell m n} = A_{\ell m n}\, {}_{-2}Y_{\ell m}(\iota, \phi)$.
+
+- With $\phi$ uniform, $\mathbb E[e^{i(m - m')\phi}] = \delta_{m m'}$. This removes all cross-covariance between different $m$.
+- If $\iota$ is also isotropic, orthonormality $\int {}_{-2}Y_{\ell m}\, {}_{-2}Y^*_{\ell' m'}\, d\Omega = \delta_{\ell\ell'}\delta_{mm'}$ gives
+
+$$
+\mathbb E\big[A^{\rm obs}_{\ell m n} A^{{\rm obs}\,*}_{\ell' m' n'}\big] = \frac{\delta_{\ell\ell'}\delta_{mm'}}{4\pi}\; \mathbb E\big[A_{\ell m n} A^*_{\ell m n'}\big].
+$$
+
+So $\Sigma_A$ is **block-diagonal in $(\ell, m)$**, and all the correlation sits inside each overtone ladder. Within a block the loadings are complex: $w_{\ell m n} \propto r_{\ell m}\,(B_{\ell m n}/B_{\ell m 0})\, e^{-i\omega_{\ell m n}(t_0 - t_{\rm ref})}$. For a specific event with a measured inclination (GW250114), keep $\iota$ fixed and average only over $\phi$: the blocks become per-$m$.
+
+**The error model** should be calibrated, not assumed. Compare $w$ with the jaxqualin NR hyperfits at the same reference time. The scatter of $\ln|A_{\rm NR}/A_{\rm model}|$ and of the phase residual, per $\ell$ and $n$, then replaces $f = 0.3$.
+
+**Caveat for real detectors.** A single detector records a *real* strain. A mirror mode $\mathrm{Re}[C' e^{+i\bar\omega t}] = \mathrm{Re}[\bar C' e^{-i\omega t}]$ has exactly the same time dependence as its prograde partner, so the two are degenerate in one detector. The detector-noise runs will switch to a real-valued model with two real parameters per frequency.
+
+## 9. Two-mode toy model in closed form
+
+For two modes $\omega_j = \omega_{jR} - i\gamma_j$ in white noise, over a long segment, the overlap of the two columns is
+
+$$
+\cos^2\theta = \frac{|\langle z_1, z_2\rangle|^2}{\|z_1\|^2\|z_2\|^2} = \frac{4\gamma_1\gamma_2}{(\omega_{1R} - \omega_{2R})^2 + (\gamma_1 + \gamma_2)^2},
+$$
+
+and the two channel strengths are
+
+$$
+s_{1,2}^2 = \frac{\rho^2}{2}\Big[(a + b) \pm \sqrt{(a - b)^2 + 4ab\cos^2\theta}\Big], \qquad a = \frac{\sigma_1^2}{2\gamma_1},\; b = \frac{\sigma_2^2}{2\gamma_2}.
+$$
+
+With discrete sampling, $\rho$ absorbs the $1/\Delta t$. Two resolved channels need $s_2 > 1$, which requires both SNR and a separation $|\Delta\omega_R|$ that is large compared with $\gamma_1 + \gamma_2$. This is a Rayleigh criterion for damped modes. Overtones of one $(\ell, m)$ have similar $\omega_R$ and damping rates that grow with $n$, so $\cos\theta$ stays large and the second channel costs a lot of SNR. This will be item 5 of the plan.

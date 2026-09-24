@@ -8,34 +8,25 @@ Each finding is self-contained:
 - **Setup**: source, detector, prior, mode content.
 - **Reproduce**: script and commit.
 
-### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24)
+### F3 — A GW250114-like ringdown against the detector sensitivities (2026-09-24, redone with the real SXS strain)
 
 <figure>
-<a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Left: characteristic strain of a GW250114-like ringdown from NR, the 220 alone, and QNEF prior draws, against O4, A+, ET-D, CE 40 km and CE 20 km sensitivities. Right: the same amplitudes for a million-solar-mass remnant at redshift 1 against LISA"></a>
-<figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention: the area between the curves sets the SNR). Black: the ringdown from the merger on, with the QNM amplitudes that jaxqualin extracted from SXS:BBH:2085 (equal mass, $\chi_f = 0.684$, the run closest to GW250114); dashed: its 220 alone. Grey: 40 draws from the QNEF prior conditioned on that 220 ($\ell \le 5$, $n \le 1$, the same overtone content as the NR fit). $h_+$ for $F_+ = 1$; the 60° interferometers (ET, LISA) are shown as $\sqrt{f S_n}/\sin 60°$, their best orientation. ρ is the optimal single-detector SNR of the NR signal.</figcaption>
+<a href="figs/sensitivity_overlay.png"><img src="figs/sensitivity_overlay.png" alt="Three panels: characteristic strain of the real SXS:BBH:0180 ringdown and of QNEF prior draws against O4, A+, ET-D and CE, from the peak and from 10 M after it, and against LISA for a million-solar-mass remnant at redshift 1"></a>
+<figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention). Black: the real SXS:BBH:0180 strain (equal mass, non-spinning, $\chi_f = 0.686$), all harmonics $\ell \le 8$, $m \ne 0$, at $\iota = 0.78$, from $t_0$ on. Grey: 40 QNEF-prior draws ($\ell \le 8$, $n \le 1$) conditioned on the 220 fitted to that strain. $h_+$ for $F_+ = 1$; 60° interferometers at their best orientation. ρ is the optimal single-detector SNR of the NR strain.</figcaption>
 </figure>
 
-> **Correction (2026-09-24): the SNRs in this figure are inflated by about 3–4×.** The "NR" signal is the jaxqualin QNM fit evaluated from the peak. Those amplitudes are extrapolated back from later fit times, so at $t = 0$ the fitted modes sum to $|r h_{22}/M| \approx 3.8$, while the real SXS equal-mass waveform peaks at about 0.4 (the fitted 220 alone gives 0.99, and the 221 adds 4.3× the 220). The O4 optimal SNR of this injection is 120 from $t_0 = 0$, but 37 from $5\,M$ and 29 from $10\,M$. LVK's network value of about 40 post-merger is consistent with the real signal. The fix is to inject the SXS strain itself.
-
-**Question.** How does a GW250114-like ringdown sit against current and future detectors, and do our prior's amplitudes look like the real ones?
+**Question.** How does a GW250114-like ringdown sit against current and future detectors, and does the QNM model with our prior reproduce the real strain?
 
 **Takeaway.**
 
-- The prior draws bracket the NR signal: their rms strain is 0.8–1.5× NR at the merger and 0.7–0.9× NR at $t_0 = 10\,M$.
-- Below the peak and above about 600 Hz, the full signal sits well above the 220 alone. That is the 221 (4.3× the 220 at the merger) plus the sharp start at $t = 0$; see the caveats.
-- Optimal single-detector SNRs: O4 120, A+ 217, ET-D about 1000, CE 20 km about 1300, CE 40 km about 1900. For a $10^6\,M_\odot$ remnant at $z = 1$, LISA gets about $1.5\times10^4$ per channel.
+- **With the real strain, the SNR is right.** O4 gives an optimal ρ = 35 from the peak, consistent with LVK's network value of about 40 post-merger, and 22 from $10\,M$. The earlier version injected the jaxqualin QNM fit, which is about 10× too loud at the peak and gave ρ = 120.
+- **From the peak (a), the QNM model overshoots the real signal by about 10×,** even with $n \le 1$: the fitted amplitudes are extrapolated back from later times, and the waveform near the peak is not yet a ringdown.
+- **From $10\,M$ (b), the prior draws follow the real strain closely.**
+- **Optimal SNRs from the peak:** A+ 63, ET-D 293, CE 20 km 357, CE 40 km 527. From $10\,M$: 41, 187, 223, 326. For a $10^6\,M_\odot$ remnant at $z = 1$, LISA gets about 2800 per channel from $10\,M$.
 
-**Caveats.**
+**Caveats.** $\varphi$ is set to 0 and $\iota$ is the folded value. $D_L = 405$ Mpc comes from $z = 0.086$. $m = 0$ harmonics are left out. The draws stop at $n = 1$ because the calibration of $n \ge 2$ is open (see the log).
 
-- ρ is an optimal-orientation, from-the-merger number. LVK quote a network SNR of about 40 post-merger for GW250114; real antenna patterns and a later start both lower ours.
-- Starting the signal abruptly at $t = 0$ adds broadband power: the $\sqrt f$ rise at low frequency and the slow fall-off at high frequency.
-- $\varphi$ (the azimuth) is unknown and set to 0. $\iota = 0.78$ is the folded value.
-- $D_L = 405$ Mpc comes from $z = M_f^{\rm det}/M_f - 1 = 0.086$ (Planck 2018); other sources quote about 440 Mpc.
-- Draws with $n = 2$ (not calibrated by NR) overshoot NR by about 3× at the merger, so they are left out here.
-
-**Setup.** GW250114: $m_{1,2} = 33.6, 32.2\,M_\odot$, $M_f^{\rm det} = 68.1\,M_\odot$, $\chi_f = 0.68$ (arXiv:2509.08054, 2510.01001); $\iota = 0.78$ (arXiv:2509.08099).
-
-**Reproduce.** `python -m mqnm.experiments.sensitivity_overlay`.
+**Reproduce.** `python -m mqnm.experiments.sensitivity_overlay` (downloads SXS:BBH:0180 through `sxs`).
 
 ### F2 — Do the calibrated priors actually cover NR? (2026-09-24)
 

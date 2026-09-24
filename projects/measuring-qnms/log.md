@@ -1,5 +1,19 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — real SXS injection; strain-level calibration of $n \ge 2$ does not work as posed
+
+- Installed `sxs`; `mqnm.nr` loads an SXS strain with $t = 0$ at the peak of $|h_{22}|$ and fits the 220 from its tail. For SXS:BBH:0180, $|C_{220}| = 0.961$ against jaxqualin's 0.984. F3 now injects the real strain: O4 ρ = 35 from the peak, in line with LVK's ~40.
+- **Tried** calibrating one error $f$ for all overtones without jaxqualin data, by matching the prior-predicted and observed residual power of the NR strain (all $m > 0$ harmonics), conditioned on the fitted 220. Results for SXS:BBH:0180, $\ell \le 8$, $n \le 7$:
+
+| $t_0$ | observed residual | predicted ($f = 0$) | $f$ |
+|---|---|---|---|
+| 0 | $3.6\times10^6$ | $3.7\times10^6$ | 0 |
+| 5 | 5.1 | 5.0 | 0.04 |
+| 10 | 0.059 | 0.033 | 0.49 |
+| 20 | 0.0063 | 0.0021 | 12 |
+
+  (The NR strain power is about 10.) At early $t_0$ the residual is dominated by the prior *mean*, since the QNEF-predicted $n \ge 2$ overtones diverge at the peak, so the second moments match trivially. At late $t_0$ those overtones have decayed, and $f$ absorbs unrelated residuals. **An error alone cannot calibrate these modes.** Options are in the chat; the code was removed until one is chosen.
+
 ### 2026-09-24 — why F3's SNR (120) disagrees with LVK's (~40)
 
 - The injected "NR" signal is the jaxqualin QNM fit evaluated from the peak. The fitted amplitudes are back-extrapolated, so at $t = 0$ they sum to $|r h_{22}/M| = 3.8$, against about 0.4 for the real SXS peak. The O4 optimal SNR drops from 120 ($t_0 = 0$) to 37 ($5\,M$) and 29 ($10\,M$). Antenna patterns and the network matter less: the sky-averaged two-detector value is about 100, from the same injection. The next step is to inject the real SXS strain (the `sxs` package).

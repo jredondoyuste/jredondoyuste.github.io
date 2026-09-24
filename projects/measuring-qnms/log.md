@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-24 — why F3's SNR (120) disagrees with LVK's (~40)
+
+- The injected "NR" signal is the jaxqualin QNM fit evaluated from the peak. The fitted amplitudes are back-extrapolated, so at $t = 0$ they sum to $|r h_{22}/M| = 3.8$, against about 0.4 for the real SXS peak. The O4 optimal SNR drops from 120 ($t_0 = 0$) to 37 ($5\,M$) and 29 ($10\,M$). Antenna patterns and the network matter less: the sky-averaged two-detector value is about 100, from the same injection. The next step is to inject the real SXS strain (the `sxs` package).
+
 ### 2026-09-24 — sensitivity overlay (F3)
 
 - GW250114-like NR ringdown (SXS:BBH:2085) plus conditioned QNEF prior draws against O4, A+, ET-D, CE and LISA. See [results](#results).

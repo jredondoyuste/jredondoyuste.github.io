@@ -15,6 +15,8 @@ Each finding is self-contained:
 <figcaption>$2\sqrt f\,|\tilde h_+(f)|$ against $\sqrt{f S_n(f)}$ (Moore, Cole &amp; Berry convention: the area between the curves sets the SNR). Black: the ringdown from the merger on, with the QNM amplitudes that jaxqualin extracted from SXS:BBH:2085 (equal mass, $\chi_f = 0.684$, the run closest to GW250114); dashed: its 220 alone. Grey: 40 draws from the QNEF prior conditioned on that 220 ($\ell \le 5$, $n \le 1$, the same overtone content as the NR fit). $h_+$ for $F_+ = 1$; the 60° interferometers (ET, LISA) are shown as $\sqrt{f S_n}/\sin 60°$, their best orientation. ρ is the optimal single-detector SNR of the NR signal.</figcaption>
 </figure>
 
+> **Correction (2026-09-24): the SNRs in this figure are inflated by about 3–4×.** The "NR" signal is the jaxqualin QNM fit evaluated from the peak. Those amplitudes are extrapolated back from later fit times, so at $t = 0$ the fitted modes sum to $|r h_{22}/M| \approx 3.8$, while the real SXS equal-mass waveform peaks at about 0.4 (the fitted 220 alone gives 0.99, and the 221 adds 4.3× the 220). The O4 optimal SNR of this injection is 120 from $t_0 = 0$, but 37 from $5\,M$ and 29 from $10\,M$. LVK's network value of about 40 post-merger is consistent with the real signal. The fix is to inject the SXS strain itself.
+
 **Question.** How does a GW250114-like ringdown sit against current and future detectors, and do our prior's amplitudes look like the real ones?
 
 **Takeaway.**

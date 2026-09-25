@@ -2,8 +2,8 @@
 
 <div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">original plan (items 1–8) · 7 of 7 done</div>
 <div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 100%; height: 100%; background: var(--accent);"></div></div>
-<div style="margin: 0.9rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">follow-ups · 1 of 8 done</div>
-<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 12.5%; height: 100%; background: var(--accent);"></div></div>
+<div style="margin: 0.9rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">follow-ups · 2 of 8 done</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 25%; height: 100%; background: var(--accent);"></div></div>
 
 ## Original plan
 
@@ -24,7 +24,7 @@
 | Code: private repo, tests, tutorial notebook | <span style="color: var(--accent)">✓ done</span> | github.com/jredondoyuste/mqnm |
 | Which modes each measured channel corresponds to | <span style="color: var(--accent-2)">◐ next</span> | project each channel onto the modes |
 | Realistic sky positions and antenna patterns (H1/L1 for GW250114) | <span style="color: var(--accent-2)">◐ next</span> | replaces the overhead, co-located idealisation |
-| Start before 10 M | <span style="color: var(--muted)">○ open</span> | model pre-10 M non-QNM content as structured noise with a GP kernel (Dyer & Moore) |
+| Start before 10 M: non-modal GP noise | <span style="color: var(--accent)">✓ first version</span> | [§10](#derivations), F6. The count is flat for any start before ~10–15 M. Next: calibrate beyond (2,2); decide whether it replaces the 10 M default |
 | 221 bias: 1σ coverage only 26% | <span style="color: var(--muted)">○ open</span> | NR sits at 0.8× the QNEF prediction with little scatter |
 | Correlated fundamental and overtone errors ((3,3): +0.53) | <span style="color: var(--muted)">○ open</span> | the independent model slightly underestimates the total error |
 | Harmonics other than (2,2) under-covered at late times | <span style="color: var(--muted)">○ open</span> | quadratic 220×220 and retrograde content not modelled |

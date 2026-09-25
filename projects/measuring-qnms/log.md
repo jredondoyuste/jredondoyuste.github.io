@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-25 — non-modal GP; the count no longer depends on the start time
+
+- Diagnosis: with every overtone in the signal, the prior *over*-predicts the early residual (5% of predicted at $t = 0$). The unseen overtones act as free absorbers of non-modal content and count as channels.
+- New model (§10): the signal keeps the trusted modes; everything else is a GP in the noise. The two-term kernel is fitted by maximum likelihood on SXS (2,2) residuals: $\lambda_e = 3.1$, $\tau = 3.9\,M$, $\lambda_l = 0.14$, $\ell_c = 11\,M$. Pooling across harmonics failed (the fit runs to its bounds), so the kernel is calibrated on (2,2) only.
+- F6: with the GP, $n_{\rm meas}$ is flat for $t_0 \lesssim 10$–15 M (O4 4, CE 40 km 8, ET 10). Without it, O4 reaches 12 and ET 25 at $t_0 = 0$.
+- F5: the left column is now at $\rho = 0.2$, where the posterior is the prior.
+
 ### 2026-09-25 — no QNEF extrapolation; e and f checked; toy model; plan redrawn
 
 - **(i) No extrapolation.** Excitation factors are used only inside their tables ($\ell \le 7$, $n \le 3$). Everything else takes the zero-mean model; for $\ell = 8$ its scale uses the median tabulated $|g_{\ell m 1}|$. Recalibrated $a$ and regenerated the figures.

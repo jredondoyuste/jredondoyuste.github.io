@@ -1,16 +1,31 @@
 Findings under the v2 model (complex strain, tied mirror modes, detector noise, NR-calibrated priors), newest first. Every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$ unless stated. The v1 plots and the earlier F1 (the calibration scatter) are retired; their numbers remain in the [log](#log).
 
-### F5 — Two-mode toy model: what 0, 1 and 2 measurable channels look like
+### F6 — How does the count depend on the start time? A non-modal GP
 
 <figure>
-<a href="figs/toy_two_modes.png"><img src="figs/toy_two_modes.png" alt="Prior and posterior ellipses of two real amplitudes for three SNRs, flat prior on top and correlated prior below"></a>
-<figcaption>Prior (dashed, 1σ and 2σ) and posterior (filled, 1σ and 2σ) of two real amplitudes $(a_1, a_2)$ for per-mode SNR $\rho = 0.6, 2, 8$ (columns). The data overlap is $c = 0.864$, the 220–221 value at $\chi_f = 0.686$. Top: flat prior. Bottom: correlated prior, $r = 0.8$. The star is the true value, and each panel gives the channel strengths $s_\pm$, with $s_\pm^2 = \rho^2 (1 \pm r)(1 \pm c)$ exactly ([derivations §9](#derivations)).</figcaption>
+<a href="figs/start_time.png"><img src="figs/start_time.png" alt="Measurable channels against analysis start time for O4, CE 40 km and ET under three models"></a>
+<figcaption>$n_{\rm meas}$ against the start time $t_0$ for the GW250114-like source at its distance. Blue: trusted modes (fundamentals + overtones NR sees) with the non-modal Gaussian process added to the noise ([derivations §10](#derivations)). Orange: every mode ($\ell \le 8$, $n \le 7$, unseen overtones zero-mean), no GP. Grey: trusted modes, no GP. The vertical line is the current default start, $10\,M$.</figcaption>
 </figure>
 
 **Takeaway.**
 
-- **Flat prior:** no channels at $\rho = 0.6$ (the posterior barely moves). One at $\rho = 2$: the sum $a_1 + a_2$ is measured and the difference is not. Both at $\rho = 8$. Resolving two overlapping damped modes needs $\rho > 1/\sqrt{1 - c} = 2.7$.
-- **Correlated prior:** the prior already ties $a_1$ to $a_2$. One channel appears at lower SNR, and resolving the difference needs $\rho > 6.1$. At $\rho = 2$ the posterior is compact with only one measurable channel. $n_{\rm meas}$ counts what the *data* teach us; the prior supplies the rest.
+- **Without the GP, starting earlier keeps adding channels:** O4 goes from 6 to 12 and ET from 14 to 25 between $t_0 = 10$ and 0. The free overtones absorb the non-modal content near the merger and are counted as modes.
+- **With the GP, the count is flat for any start before about 10–15 M:** O4 4, CE 40 km 8, ET 10. Early data are down-weighted by the non-modal noise, so the answer no longer depends on the arbitrary choice of $t_0$, and we could start at the merger.
+- The late GP term (14% of each harmonic, decaying with it) changes the counts by at most 1. The effect comes from the early term plus restricting the signal to trusted modes.
+
+**Reproduce.** `python -m mqnm.experiments.start_time`.
+
+### F5 — Two-mode toy model: what 0, 1 and 2 measurable channels look like
+
+<figure>
+<a href="figs/toy_two_modes.png"><img src="figs/toy_two_modes.png" alt="Prior and posterior ellipses of two real amplitudes for three SNRs, flat prior on top and correlated prior below"></a>
+<figcaption>Prior (dashed, 1σ and 2σ) and posterior (filled, 1σ and 2σ) of two real amplitudes $(a_1, a_2)$ for per-mode SNR $\rho = 0.2, 2, 8$ (columns). The data overlap is $c = 0.864$, the 220–221 value at $\chi_f = 0.686$. Top: flat prior. Bottom: correlated prior, $r = 0.8$. The star is the true value, and each panel gives the channel strengths $s_\pm$, with $s_\pm^2 = \rho^2 (1 \pm r)(1 \pm c)$ exactly ([derivations §9](#derivations)).</figcaption>
+</figure>
+
+**Takeaway.**
+
+- **Flat prior:** no channels at $\rho = 0.2$; the posterior is the prior. One at $\rho = 2$: the sum $a_1 + a_2$ is measured and the difference is not. Both at $\rho = 8$. Resolving two overlapping damped modes needs $\rho > 1/\sqrt{1 - c} = 2.7$.
+- **Correlated prior:** again nothing at $\rho = 0.2$. The prior already ties $a_1$ to $a_2$, so resolving the difference needs $\rho > 6.1$. At $\rho = 2$ the posterior is compact with only one measurable channel. $n_{\rm meas}$ counts what the *data* teach us; the prior supplies the rest.
 
 **Reproduce.** `python -m mqnm.experiments.toy_two_modes`.
 

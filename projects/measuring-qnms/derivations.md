@@ -237,3 +237,33 @@ $$
 For the 220 and 221 at $\chi_f = 0.686$, $c = 0.864$. The second channel then needs $\rho > 2.7$ with a flat prior and $\rho > 6.1$ with $r = 0.8$. Finding F5 shows the three regimes (0, 1 and 2 channels) for both priors.
 
 **Complex amplitudes.** Each complex amplitude is two real parameters. With circular priors and both polarizations, every $s_i$ appears twice, which is why the counts in F3 and F4 come in pairs for the dominant modes.
+
+## 10. Non-modal content as noise
+
+**Why.** Near the merger the strain is not yet a sum of QNMs. If free overtones are allowed to absorb that content, they are counted as measurable channels, and $n_{\rm meas}$ keeps growing as the start time moves earlier (F6). Following Dyer & Moore (arXiv:2510.11783), we instead model what the QNM model misses as a Gaussian process and add it to the *noise*. The signal keeps only the modes we have evidence for: all fundamentals, plus the overtones NR sees (221, 331, 211, 321, 441).
+
+**Kernel.** For each $m > 0$ harmonic, independently,
+
+$$
+k_{\ell m}(t, t') = \sigma_{\ell m}^2 \Big[\lambda_e^2\, e^{-(t + t')/\tau} + \lambda_l^2\, e^{-\gamma_{\ell m 0}(t + t')}\Big]\, e^{-(t - t')^2/2\ell_c^2}\, e^{-i\,\mathrm{Re}\,\omega_{\ell m 0}\,(t - t')},
+$$
+
+with $\sigma_{\ell m} = |w_{\ell m}|\,\sigma_{220}$ the PN scale of the harmonic and $\gamma_{\ell m 0} = -\mathrm{Im}\,\omega_{\ell m 0}$.
+
+- The **early term** is the non-modal content near the merger.
+- The **late term** is modal content the model leaves out (quadratic, retrograde, mixing), which decays with the harmonic.
+- The oscillation at $\mathrm{Re}\,\omega_{\ell m 0}$ is what the NR residuals show (0.8–1.0 × that frequency).
+
+**Projection onto detectors.** The mirror harmonic carries $(-1)^\ell \bar e_{\ell m}$, so a detector reading $\mathrm{Re}[a h]$ sees $\mathrm{Re}[e_{\ell m}\beta]$ with $\beta = a Y_{\ell m} + \overline{a (-1)^\ell Y_{\ell,-m}}$. All detectors see the *same* realisation, so the GP is correlated across detectors:
+
+$$
+\mathrm{Cov}(d_i, d_j) \mathrel{+}= \tfrac12\,\mathrm{Re}\big(\beta_i \bar\beta_j\, k_{\ell m}\big).
+$$
+
+**Calibration.** Maximum likelihood on the (2,2) residuals of 30 SXS runs, 0–20 M. The residual is modelled as the prior-predictive covariance of the trusted modes, conditioned on the fitted 220 (with a 2% fit uncertainty), plus the GP:
+
+$$
+\lambda_e = 3.07, \quad \tau = 3.9\,M, \quad \lambda_l = 0.14, \quad \ell_c = 11\,M .
+$$
+
+At the merger the non-modal content is about $3\,\sigma_{22}$, and it has decayed to about 8% by $10\,M$. Only (2,2) is used because the PN scale is too poor a normaliser to pool the weaker harmonics (the fit then runs to its bounds). The same kernel, scaled by each $\sigma_{\ell m}$, is applied to every harmonic. That is a stated limitation.

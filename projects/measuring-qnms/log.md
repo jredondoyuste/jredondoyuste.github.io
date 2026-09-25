@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-25 — no QNEF extrapolation; e and f checked; toy model; plan redrawn
+
+- **(i) No extrapolation.** Excitation factors are used only inside their tables ($\ell \le 7$, $n \le 3$). Everything else takes the zero-mean model; for $\ell = 8$ its scale uses the median tabulated $|g_{\ell m 1}|$. Recalibrated $a$ and regenerated the figures.
+- **(ii) Not double counting.** $e$ and $f$ are errors on different ratios. In NR the overtone-to-220 scatter matches or slightly exceeds $\sqrt{e^2 + f^2 + e^2 f^2}$, because the two errors are positively correlated for (3,3) (+0.53). Table in [derivations §8](#derivations).
+- **(iii) Toy model rewritten**, with the exact channel strengths $s_\pm^2 = \rho^2(1 \pm r)(1 \pm c)$ and a figure (F5).
+- **(iv) Read Dyer & Moore (arXiv:2510.11783).** Same linear-Gaussian QNM framework, applied to NR. Their GP kernel for model error is the natural route to starting before 10 M. Notes in the [plan](#plan).
+
 ### 2026-09-24 — items 6 and 8: channel counts per detector, and saturation
 
 - **F3:** $n_{\rm meas}$ against $\rho_{220}$ and redshift for O4, A+, ET, CE and LISA, flat prior (same total SNR) against PN + QNEF. GW250114 at its distance: O4 5, A+ 6, CE 20 km 10, CE 40 km 11, ET 14 real channels.

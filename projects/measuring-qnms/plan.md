@@ -1,55 +1,47 @@
-## Plan v2 (2026-09-24)
+## Progress
 
-These are your requests, numbered as you gave them (there is no item 7), ordered by dependency. The full technical version is in `PLAN.md` in the repo.
+<div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">original plan (items 1–8) · 7 of 7 done</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 100%; height: 100%; background: var(--accent);"></div></div>
+<div style="margin: 0.9rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">follow-ups · 1 of 8 done</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 12.5%; height: 100%; background: var(--accent);"></div></div>
 
-> **Findings from preparing the plan.** (i) The current PN + QNEF prior phase-locks all modes to $A_{220}$, which costs 1–2 channels. [Derivations §8](#derivations) has the details and the fix: orientation averaging gives a block-diagonal $\Sigma_A$ with complex loadings. (ii) *Revised after your comments:* mirror modes stay, doubling the mode set in the complex strain. For aligned spins, though, their amplitudes are tied to the prograde ones through $h_{\ell,-m} = (-1)^\ell \bar h_{\ell m}$ and the inclination. That is a pseudo-covariance, so the analysis needs an augmented (real) parametrization. See [derivations §8](#derivations). (iii) The current coloured noise is circulant, i.e. it wraps around at the segment edges, and it drops physical units. Both need fixing before any detector plot.
+## Original plan
 
-### Phase A: foundations
+| # | task | status | where |
+|---|---|---|---|
+| 1 | Amplitude prior: PN × complex QNEF ratios, conditioned on the observing angles, errors calibrated on NR | <span style="color: var(--accent)">✓ done</span> | [§8](#derivations), F1 |
+| 2 | Modes $\ell \le 8$, all $m$, $n \le 7$; spheroidal harmonics; mirror modes tied by symmetry | <span style="color: var(--accent)">✓ done</span> | [§8](#derivations) |
+| 3 | Detector noise: O4, A+, ET, CE, LISA; PSD → Toeplitz covariance | <span style="color: var(--accent)">✓ done</span> | [§7](#derivations) |
+| 4 | Sensitivity overlay: GW250114-like (real SXS strain) and LISA | <span style="color: var(--accent)">✓ done</span> | F2 |
+| 5 | Two-mode toy model: closed form, and prior / posterior for 0, 1, 2 channels | <span style="color: var(--accent)">✓ done</span> | [§9](#derivations), F5 |
+| 6 | Channel counts against $\rho_{220}$ and redshift, per detector | <span style="color: var(--accent)">✓ done</span> | F3 |
+| 8 | Saturation as overtones and harmonics are added | <span style="color: var(--accent)">✓ done</span> | F4 |
 
-| step | what | serves |
+## Follow-ups
+
+| task | status | notes |
 |---|---|---|
-| A1 | augmented (real) parametrization; mirror modes tied (aligned spin) or free (precession); observation operators: complex two-polarization $h$, a single detector (real projection), networks (H1+L1, ET triangle, ET+CE) | 2, 3, 4, 6 |
-| A2 | `DetectorNoise`: Toeplitz ACF from the PSD, physical units. Curves: aLIGO O4, A+, ET-D, ET 10 km, CE 40/20 km (gwfast files), LISA (Robson–Cornish–Liu, from your folder) | 3 |
-| A3 | modes to $\ell = 8$, all $m \ne 0$, $n \le 7$; general leading-order PN formula for any $(\ell, m)$; QNEF for $\ell = 8$ (extrapolated, flagged) | 2 |
-| A4 | physical amplitude scale: $\sigma_{220} = |A_{220}^{\rm NR}|\,(1+z) M_f / D_L$ | 4, 6 |
+| Code: private repo, tests, tutorial notebook | <span style="color: var(--accent)">✓ done</span> | github.com/jredondoyuste/mqnm |
+| Which modes each measured channel corresponds to | <span style="color: var(--accent-2)">◐ next</span> | project each channel onto the modes |
+| Realistic sky positions and antenna patterns (H1/L1 for GW250114) | <span style="color: var(--accent-2)">◐ next</span> | replaces the overhead, co-located idealisation |
+| Start before 10 M | <span style="color: var(--muted)">○ open</span> | model pre-10 M non-QNM content as structured noise with a GP kernel (Dyer & Moore) |
+| 221 bias: 1σ coverage only 26% | <span style="color: var(--muted)">○ open</span> | NR sits at 0.8× the QNEF prediction with little scatter |
+| Correlated fundamental and overtone errors ((3,3): +0.53) | <span style="color: var(--muted)">○ open</span> | the independent model slightly underestimates the total error |
+| Harmonics other than (2,2) under-covered at late times | <span style="color: var(--muted)">○ open</span> | quadratic 220×220 and retrograde content not modelled |
+| Mild spin trend of the zero-mean overtone scale $a$ | <span style="color: var(--muted)">○ open</span> | correlation +0.55 with $\chi_f$ |
 
-### Phase B: the amplitude prior (item 1)
+## Fixed choices
 
-The model is in [derivations §8](#derivations). **Status (2026-09-24):** the priors are implemented and calibrated on NR (finding [F1](#results)). $t_{\rm ref}$ is the merger by definition; only the errors $f_{\ell mn}$ and $k_{\ell m}$ are calibrated, for both the QNEF and the flat prior. The package has been cut to 608 lines.
+- **Linear Bayesian model**, $d = G\theta + n$; no Fisher. The observing angles, masses and spin are fixed (as from an IMR fit).
+- **Default start $t_0 = 10\,M_f$** after the peak of $|h_{22}|$, where the prior reproduces NR strain (F1).
+- **The analytic prediction is never replaced by NR:** NR only calibrates errors, and there is no extrapolation beyond the excitation-factor tables.
 
-### Status and open investigations (2026-09-24)
+## From Dyer & Moore (arXiv:2510.11783)
 
-- **Items 6 and 8 done** (first pass): F3 (channels vs $\rho_{220}$ and redshift, per detector) and F4 (saturation).
+They fit QNMs to NR with the same linear-Gaussian structure: real and imaginary amplitudes, Gaussian posterior, spheroidal mixing. Three things to borrow:
 
-- **Default start: $t_0 = 10\,M_f$** after the peak (`design.DEFAULT_T_START`). Before that the prior overpredicts the NR strain (F1).
-- **Open: can we do better before 10 M?** Options: overtone errors that depend on $t_0$; per-mode stability times from jaxqualin; treating pre-10 M non-QNM content as structured noise.
-- **Open:** harmonics other than (2,2) stay under-covered at late times (quadratic 220×220 in $h_{44}$ and retrograde content are not modelled).
-- **Open:** the zero-mean overtone scale ($a = 1.41$, fitted at 5 M) still trends mildly with spin.
-- **Open:** the 221's 1σ coverage is only 26% (a tight bias at 0.8× the QNEF prediction). Consider calibrating that bias separately from the scatter.
-- **Next:** which modes the measured channels correspond to; realistic sky positions and antenna patterns; item 5 (two-mode toy model).
+1. **A Gaussian-process kernel for what the QNM model misses.** Their kernel is stationary, with a period set by $\mathrm{Re}\,\omega_{\ell m 0}$ and an envelope decaying like $e^{-t/\tau}$ with $\tau = -1/\mathrm{Im}\,\omega_{\ell m 0}$, capped near the merger. Trained on SXS residuals (NR minus our prior mean), the same form could absorb pre-10 M non-QNM content as extra noise, $\Sigma_n \to \Sigma_n + K$. That keeps the model linear and could let us start earlier.
+2. **A per-mode significance** (posterior support for $C_\alpha \ne 0$), to put next to our channel counts, which are per-direction.
+3. **Posterior predictive checks** as the fit-quality metric instead of mismatch. This is what our F1 coverage test already does.
 
-### Phase C: figures
-
-| item | figure |
-|---|---|
-| 5 | two-mode toy: posterior ellipses in the 0 / 1 / 2-channel regimes, plus a phase diagram in ($\rho$, frequency separation), closed form in [derivations §9](#derivations) |
-| 4 | detector ASDs, $\sqrt{f S_n}$, against $2\sqrt f\,|\tilde h(f)|$ for prior draws: GW250114 at 440 Mpc; LISA $10^6 M_\odot$ at $z = 1$ |
-| 8 | saturation: $n_{\rm meas}$ against nested model size (add overtones; add $\ell$), plus the principal angles between the measurable subspaces of nested models. With a flat prior, $n_{\rm meas}$ can never decrease (interlacing), so any plateau comes from the prior |
-| 6 | money plots: (a) GW250114-like source, $n_{\rm meas}$ per detector, with markers per amplitude assumption and error bars; (b) $n_{\rm meas}$ against redshift per detector, with bands for the prior assumptions; LISA across masses |
-
-### Decisions
-
-1. Complex strain with mirror modes: **yes**, via the augmented parametrization, with single-detector and network projections as variants.
-2. jax and jaxqualin: **installed** in the project env.
-3. Still open: LISA fiducial source ($10^6 M_\odot$, $q \approx 1$, $z = 1$?).
-
-### First look at the NR scatter (raw, before subtracting any model)
-
-| ratio at peak | runs | median | amplitude scatter | phase scatter |
-|---|---|---|---|---|
-| 221 / 220 | 468 | 4.0 | 0.17 dex | 0.28 rad |
-| 331 / 330 | 264 | 5.3 | 0.18 dex | 0.16 rad |
-| (−220) / 220 in $h_{22}$ | 258 | $4\times10^{-4}$ | 0.60 dex | ≈ uniform |
-| 220×220 / 440 in $h_{44}$ | 304 | 3.7 | 0.29 dex | 1.36 rad |
-
-NR overtones stop at $n = 1$ (none at $n \ge 2$ in jaxqualin) and harmonics at $\ell = 7$, so the high-$n$ and $\ell = 8$ error model remains an assumption.
+Their fits also show overtone amplitudes becoming unstable before about 15 M, consistent with our 10 M start.

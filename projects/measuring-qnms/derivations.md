@@ -173,7 +173,9 @@ $$
 C_{\ell m n} \sim \mathcal{CN}\big(0,\ (a\, |g_{\ell m 1}|\, \sigma_{\ell m})^2\big).
 $$
 
-$a$ is fitted to the **total strain** of 30 SXS runs spanning $q = 1$–8 and $\chi_f = 0$–0.95. The prior's predicted residual power, $\sum_{m>0}\int_{5M}^{85M} |h - \mathbb E[h \mid C_{220}]|^2\,dt$ conditioned on the 220 fitted to each run's strain, is matched to the observed one. This gives $a = 1.41$.
+The excitation-factor tables stop at $\ell \le 7$, $n \le 3$, and **nothing is extrapolated beyond them**. Modes outside the tables always take this zero-mean model. For $\ell = 8$, where even $|g_{\ell m 1}|$ is missing, the scale uses the median of $|g_{\ell m 1}|$ over the tabulated ladders at the same spin.
+
+$a$ is fitted to the **total strain** of 30 SXS runs spanning $q = 1$–8 and $\chi_f = 0$–0.95. The prior's predicted residual power, $\sum_{m>0}\int_{5M}^{85M} |h - \mathbb E[h \mid C_{220}]|^2\,dt$ conditioned on the 220 fitted to each run's strain, is matched to the observed one. This gives $a = 1.42$.
 
 Two alternatives failed:
 
@@ -184,22 +186,54 @@ With the first-overtone scale, the per-run $a$ scatters by 0.16 dex.
 
 The values are in `mqnm/data/nr_calibration.json`; see F1 in [results](#results).
 
+**Why $e$ and $f$ are not double counting.** They are errors on *different ratios*. $e_{\ell m}$ is the error on the fundamental relative to the 220, $C_{\ell m 0}/C_{220}$. $f_{\ell m n}$ is the error on the overtone relative to its *own* fundamental, $C_{\ell m n}/C_{\ell m 0}$. Each is calibrated on its own NR ratio. An overtone relative to the 220 then carries both: $\mathbb E|R/(g w) - 1|^2 = e^2 + f^2 + e^2 f^2$ if the two are independent.
+
+NR checks this directly:
+
+| ladder | observed rms of $C_{\ell m 1}/(g w\, C_{220}) - 1$ | model | correlation of the two errors |
+|---|---|---|---|
+| (3,3) | 0.47 | 0.39 | +0.53 |
+| (2,1) | 4.0 | 3.0 | +0.08 |
+| (3,2) (23 runs) | 1.9 | 1.9 | −0.44 |
+| (4,4) (13 runs) | 0.6 | 0.7 | −0.05 |
+
+The hierarchical model, if anything, slightly *under*estimates the total error. When a fundamental overshoots PN, its overtone tends to overshoot with it (correlation +0.53 for the 33).
+
 ### 8.4 Counting parameters
 
 220 + 221 gives two complex amplitudes, i.e. 4 real parameters. The prior carries their predicted complex ratio. The angles, masses and spins are fixed, as they would be after an IMR analysis. Populations are handled by ensembles over them, not by averaging inside the prior.
 
-## 9. Two-mode toy model in closed form
+## 9. Two-mode toy model
 
-For two modes $\omega_j = \omega_{jR} - i\gamma_j$ in white noise, over a long segment, the overlap of the two columns is
-
-$$
-\cos^2\theta = \frac{|\langle z_1, z_2\rangle|^2}{\|z_1\|^2\|z_2\|^2} = \frac{4\gamma_1\gamma_2}{(\omega_{1R} - \omega_{2R})^2 + (\gamma_1 + \gamma_2)^2},
-$$
-
-and the two channel strengths are
+**Setup.** Two real amplitudes $a = (a_1, a_2)$, with data $d = a_1 z_1 + a_2 z_2 + n$ and white noise $n \sim \mathcal N(0, \sigma^2 I)$ (for coloured noise, replace $\sigma^{-2}$ by $\Sigma_n^{-1}$). Everything the data say about $a$ is in the sufficient statistic
 
 $$
-s_{1,2}^2 = \frac{\rho^2}{2}\Big[(a + b) \pm \sqrt{(a - b)^2 + 4ab\cos^2\theta}\Big], \qquad a = \frac{\sigma_1^2}{2\gamma_1},\; b = \frac{\sigma_2^2}{2\gamma_2}.
+y = Z^{T} d / \sigma^2 \sim \mathcal N(F a,\ F), \qquad F = Z^{T} Z / \sigma^2 \quad \text{(the Fisher matrix)}.
 $$
 
-With discrete sampling, $\rho$ absorbs the $1/\Delta t$. Two resolved channels need $s_2 > 1$, which requires both SNR and a separation $|\Delta\omega_R|$ that is large compared with $\gamma_1 + \gamma_2$. This is a Rayleigh criterion for damped modes. Overtones of one $(\ell, m)$ have similar $\omega_R$ and damping rates that grow with $n$, so $\cos\theta$ stays large and the second channel costs a lot of SNR. This will be item 5 of the plan.
+With a Gaussian prior $a \sim \mathcal N(0, \Sigma_a)$, the posterior is Gaussian:
+
+$$
+\Sigma_{\rm post} = \big(\Sigma_a^{-1} + F\big)^{-1}, \qquad \mu_{\rm post} = \Sigma_{\rm post}\, y .
+$$
+
+**Channels.** Whiten the prior, $a = \Sigma_a^{1/2} b$ with $b \sim \mathcal N(0, I)$. The data then see $b$ through $\tilde Z = \sigma^{-1} Z \Sigma_a^{1/2} = U\,\mathrm{diag}(s_i)\,W^{T}$. In the rotated coordinates $c = W^{T} b$ everything decouples: each $c_i$ has prior variance 1 and posterior variance $1/(1 + s_i^2)$, and its posterior mean is the data estimate shrunk by $s_i^2/(1 + s_i^2)$. Channel $i$ is **measurable** when $s_i > 1$: the data halve its variance.
+
+**Closed form.** Take equal per-mode SNR $\rho$ ($\rho^2 = \sigma_a^2 \lVert z_j\rVert^2/\sigma^2$), overlap $c = \langle z_1, z_2\rangle / (\lVert z_1\rVert\,\lVert z_2\rVert)$, and prior correlation $r$, so that $\Sigma_a = \sigma_a^2 \begin{pmatrix} 1 & r \\ r & 1\end{pmatrix}$. Both $F$ and $\Sigma_a$ are diagonal in the basis $(1, \pm 1)/\sqrt 2$, so exactly
+
+$$
+s_\pm^2 = \rho^2\, (1 \pm r)\,(1 \pm c).
+$$
+
+- **Flat prior** ($r = 0$): the sum $a_1 + a_2$ is measured first, with $s_+ = \rho\sqrt{1 + c}$. The difference, which is what *resolves* the two modes, needs $\rho > 1/\sqrt{1 - c}$: a Rayleigh criterion for damped modes.
+- **Correlated prior** ($r > 0$, like the PN + QNEF prior tying modes together): the difference direction is already constrained by the prior, $s_- = \rho\sqrt{(1 - r)(1 - c)}$, so the data have little to add there. The posterior can then be narrow with only one measurable channel. $n_{\rm meas}$ counts what the *data* teach us, not how narrow the posterior is.
+
+**Overlap of two damped modes.** For a long segment starting at $t = 0$,
+
+$$
+c^2 = \frac{4\gamma_1\gamma_2}{(\omega_{1R} - \omega_{2R})^2 + (\gamma_1 + \gamma_2)^2}, \qquad \omega_j = \omega_{jR} - i\gamma_j .
+$$
+
+For the 220 and 221 at $\chi_f = 0.686$, $c = 0.864$. The second channel then needs $\rho > 2.7$ with a flat prior and $\rho > 6.1$ with $r = 0.8$. Finding F5 shows the three regimes (0, 1 and 2 channels) for both priors.
+
+**Complex amplitudes.** Each complex amplitude is two real parameters. With circular priors and both polarizations, every $s_i$ appears twice, which is why the counts in F3 and F4 come in pairs for the dominant modes.

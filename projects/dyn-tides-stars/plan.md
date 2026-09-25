@@ -1,15 +1,15 @@
 ## Progress
 
-<div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">campaign 1: build and validate the codes · 0 of 8 done</div>
-<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 2%; height: 100%; background: var(--accent);"></div></div>
+<div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">campaign 1: build and validate the codes · 2 of 8 done</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 25%; height: 100%; background: var(--accent);"></div></div>
 
 ## Campaign 1 — frequency- and time-domain codes
 
 | # | task | status | notes |
 |---|---|---|---|
-| P0 | Julia package skeleton, units, conventions | <span style="color: var(--accent-2)">◐ in progress</span> | `DynTides.jl` |
-| P1 | Literature: equations, EOS models, check values | <span style="color: var(--accent-2)">◐ in progress</span> | |
-| P2 | EOS (SLy4 table, nucleonic model, soft/stiff pair) + TOV + static Love number $k_2$ | <span style="color: var(--muted)">○ open</span> | checks: polytrope M, R; SLy4 $M_{\max}$; paper's M–R curve; $k_2$ |
+| P0 | Julia package skeleton, units, conventions | <span style="color: var(--accent)">✓ done</span> | `DynTides.jl` |
+| P1 | Literature: equations, EOS models, check values | <span style="color: var(--accent)">✓ done</span> | [log](#log) |
+| P2 | EOS (SLy4 table, nucleonic model, soft/stiff pair) + TOV + static Love number $k_2$ | <span style="color: var(--accent-2)">◐ in progress</span> | checks: polytrope M, R; SLy4 $M_{\max}$; paper's M–R curve; $k_2$ |
 | P3 | Frequency domain, axial | <span style="color: var(--muted)">○ open</span> | checks: $\lvert S\rvert = 1$, convergence, w-mode |
 | P4 | Frequency domain, polar (with buoyancy) | <span style="color: var(--muted)">○ open</span> | checks: f-mode, g-modes, $\omega \to 0$ limit vs $k_2$, the paper's dynamical tide |
 | P5 | Time domain, axial | <span style="color: var(--muted)">○ open</span> | check against P3 |

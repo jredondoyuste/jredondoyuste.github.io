@@ -175,3 +175,52 @@
   display: block;
   font-style: italic;
 }
+
+/* progress beads on the index: one per task.
+   filled = done, half = under way, hollow = open. Written by the project-page skill. */
+.proj-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+}
+
+.proj-progress .beads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+}
+
+.proj-progress i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--muted);
+  box-sizing: border-box;
+}
+
+.proj-progress i.done {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.proj-progress i.active {
+  border-color: var(--accent-2);
+  background: linear-gradient(90deg, var(--accent-2) 50%, transparent 50%);
+  animation: proj-bead 2.4s ease-in-out infinite;
+}
+
+.proj-progress small {
+  color: var(--muted);
+  font-variant-caps: small-caps;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: 0.85rem;
+}
+
+@keyframes proj-bead {
+  50% { transform: scale(1.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proj-progress i.active { animation: none; }
+}

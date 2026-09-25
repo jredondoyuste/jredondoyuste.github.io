@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-25 — F6 withdrawn
+
+- Restricting the signal to jaxqualin-extractable modes conflicts with the goal. The signal must be a very large mode set, so that $n_{\rm meas}$ reflects the data and not our truncation. The non-modal GP will be redone on top of that.
+
 ### 2026-09-25 — non-modal GP; the count no longer depends on the start time
 
 - Diagnosis: with every overtone in the signal, the prior *over*-predicts the early residual (5% of predicted at $t = 0$). The unseen overtones act as free absorbers of non-modal content and count as channels.

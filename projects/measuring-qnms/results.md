@@ -2,6 +2,8 @@ Findings under the v2 model (complex strain, tied mirror modes, detector noise, 
 
 ### F6 — How does the count depend on the start time? A non-modal GP
 
+> **Withdrawn (2026-09-25).** This version restricts the signal to the modes jaxqualin can extract (about 40). That conflicts with the goal: the *theoretical* maximum number of measurable modes, out of a very large mode set. The GP idea stays; it will be redone with the full mode set.
+
 <figure>
 <a href="figs/start_time.png"><img src="figs/start_time.png" alt="Measurable channels against analysis start time for O4, CE 40 km and ET under three models"></a>
 <figcaption>$n_{\rm meas}$ against the start time $t_0$ for the GW250114-like source at its distance. Blue: trusted modes (fundamentals + overtones NR sees) with the non-modal Gaussian process added to the noise ([derivations §10](#derivations)). Orange: every mode ($\ell \le 8$, $n \le 7$, unseen overtones zero-mean), no GP. Grey: trusted modes, no GP. The vertical line is the current default start, $10\,M$.</figcaption>

@@ -15,3 +15,9 @@
 - **M. H.-Y. Cheung et al.**, jaxqualin. [2310.04489](https://arxiv.org/abs/2310.04489). Planned source of NR-informed amplitude means and widths (v2).
 - **P. Ajith**, [1107.1267](https://arxiv.org/abs/1107.1267). The analytic aLIGO zero-detuned high-power PSD fit ($f_0 = 215$ Hz, $S_0 = 10^{-49}$) used in `noise.py`.
 - Adamyan–Arov–Krein theorem and balanced truncation: optimal low-rank Hankel approximation. Relevant to the compression framing from the first version.
+
+## Consulted, not used
+
+- **Dyer, Moore**, GP kernel for NR resolution-difference uncertainty. PRD 113, 104031, [2510.11783](https://arxiv.org/abs/2510.11783). Compared with our non-modal kernel: theirs models numerical error, not non-modal content.
+- **Dyer, Moore**, Bayesian greedy QNM model building with a significance threshold and posterior predictive checks. PRL 136, 191403, [2510.13954](https://arxiv.org/abs/2510.13954). Checked for their mode-count and start-time conclusions.
+- **Dyer, Chung, Moore**, a direct-wave (horizon-mode) term added to ringdown fits. [2606.25021](https://arxiv.org/abs/2606.25021). A deterministic damped sinusoid for early non-modal content, not a GP.

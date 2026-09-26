@@ -2,8 +2,8 @@
 
 <div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">original plan (items 1–8) · 7 of 7 done</div>
 <div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 100%; height: 100%; background: var(--accent);"></div></div>
-<div style="margin: 0.9rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">follow-ups · 1 of 9 done</div>
-<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 11%; height: 100%; background: var(--accent);"></div></div>
+<div style="margin: 0.9rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">follow-ups · 1 of 10 done, 2 under way</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 10%; height: 100%; background: var(--accent);"></div></div>
 
 ## Original plan
 
@@ -24,12 +24,19 @@
 | Code: private repo, tests, tutorial notebook | <span style="color: var(--accent)">✓ done</span> | github.com/jredondoyuste/mqnm |
 | Which modes each measured channel corresponds to | <span style="color: var(--accent-2)">◐ next</span> | project each channel onto the modes |
 | Realistic sky positions and antenna patterns (H1/L1 for GW250114) | <span style="color: var(--accent-2)">◐ next</span> | replaces the overhead, co-located idealisation |
-| Start before 10 M: non-modal GP noise | <span style="color: var(--accent-2)">◐ redo</span> | first version (F6) used only NR-extractable modes; redo with the full mode set |
-| Very large mode set (10⁴–10⁵ modes) | <span style="color: var(--accent-2)">◐ next</span> | computed in data space; asymptotic frequencies for high ℓ, n |
+| Start before 10 M: non-modal GP noise | <span style="color: var(--accent-2)">◐ active</span> | the noise ladder, below; the first version (F6) used only NR-extractable modes and is withdrawn |
+| Amplitude prior $\Sigma_A$ from theory, lightly calibrated on NR | <span style="color: var(--accent-2)">◐ active</span> | started 2026-09-26; plan not yet written |
+| Quadratic 220×220 mode in the signal model | <span style="color: var(--muted)">○ open</span> | added 2026-09-26 |
 | 221 bias: 1σ coverage only 26% | <span style="color: var(--muted)">○ open</span> | NR sits at 0.8× the QNEF prediction with little scatter |
 | Correlated fundamental and overtone errors ((3,3): +0.53) | <span style="color: var(--muted)">○ open</span> | the independent model slightly underestimates the total error |
 | Harmonics other than (2,2) under-covered at late times | <span style="color: var(--muted)">○ open</span> | quadratic 220×220 and retrograde content not modelled |
 | Mild spin trend of the zero-mean overtone scale $a$ | <span style="color: var(--muted)">○ open</span> | correlation +0.55 with $\chi_f$ |
+
+## Dead ends
+
+- **Calibrating the $n \ge 2$ overtone error from NR strain power** (2026-09-24). The prior mean dominates the residual at early times, and unrelated residuals dominate late, so an error alone cannot be fitted. See the [log](#log).
+- **First non-modal GP, trusted modes only** (F6, withdrawn 2026-09-25). The signal kept only the modes NR can extract; replaced by the noise ladder. The kernel and detector projection remain valid.
+- **Very large mode sets ($10^4$–$10^5$ modes)**: dropped by decision on 2026-09-26, not tried.
 
 ## Noise ladder and the non-modal GP: agreed plan (2026-09-25)
 

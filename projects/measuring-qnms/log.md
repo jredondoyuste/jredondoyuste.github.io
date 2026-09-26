@@ -1,5 +1,14 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-26 — scope decisions; amplitude-prior task started
+
+- **Dropped:** very large mode sets ($10^4$–$10^5$ modes). The noise ladder keeps all 280 modes ($\ell \le 8$, $n \le 7$).
+- **Added as later work:** the quadratic 220×220 mode in the signal model.
+- **New task:** the amplitude prior $\Sigma_A$ from theory, lightly calibrated on NR. The plan is not written yet.
+- Raised for discussion: cleaning up the NR calibration, and the choice of GP kernel.
+- Read two more papers by Dyer and collaborators (arXiv:2510.13954, 2606.25021) next to 2510.11783, to compare with our GP kernel. Their GP models NR resolution error, not non-modal content; the closest they come to non-modal early content is a deterministic direct-wave term. None is used yet ([references](#references)).
+- The project moved to a new layout; the code is unchanged.
+
 ### 2026-09-25 — F6 withdrawn
 
 - Restricting the signal to jaxqualin-extractable modes conflicts with the goal. The signal must be a very large mode set, so that $n_{\rm meas}$ reflects the data and not our truncation. The non-modal GP will be redone on top of that.

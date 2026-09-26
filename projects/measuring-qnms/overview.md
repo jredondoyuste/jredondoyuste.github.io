@@ -28,16 +28,19 @@ $$
 
 With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma_A/\sigma_n$. The problem is then just the singular spectrum of a Vandermonde-type matrix, cut at $1/\rho$.
 
-## Where things stand (2026-09-24)
+## Where things stand (2026-09-26)
 
-- **Model:** the complex strain with tied mirror modes and spheroidal harmonics; detector projections and networks; noise for O4, A+, ET, CE and LISA from their PSDs; modes up to $\ell = 8$, $n = 7$.
-- **Prior:** conditioned on the observing angles, PN × complex QNEF, with errors calibrated on NR (jaxqualin per mode, SXS strain for the overtones jaxqualin does not see). See [derivations §8](#derivations).
-- **Default start: $10\,M_f$** after the peak, where the prior is consistent with NR (F1).
-- **Next:** the two-mode toy model, saturation tests, and the per-detector channel counts (the [plan](#plan)).
+- **Baseline done (F1–F5).** From $10\,M_f$ after the peak, with the PN × QNEF prior calibrated on NR: the GW250114-like source at its distance gives O4 5, A+ 6, CE 20 km 10, CE 40 km 11 and ET 14 measurable real channels. Overtones saturate at $n_{\max} = 2$; harmonics saturate under PN + QNEF and never under the flat prior.
+- **Starting earlier.** The first non-modal GP (F6) is withdrawn: it kept only the modes NR can extract. The **noise ladder** redoes it with the signal prior and the noise chosen independently: all 280 modes at the overtone ceiling $a = 1.42$, against white, detector and detector + GP noise. The plan is agreed; nothing has run yet.
+- **Amplitude prior.** A new task derives the amplitude prior $\Sigma_A$ from theory, lightly calibrated on NR. Its plan is not written yet.
+- **Dropped:** very large mode sets ($10^4$–$10^5$ modes).
 
 ## Open threads
 
-- Check the net QNEF × time-shift overtone scaling against jaxqualin / NR amplitude fits before trusting the PN + QNEF curves quantitatively.
+- **221 bias:** 1σ coverage only 26%; NR sits at 0.8× the QNEF prediction with little scatter.
+- **Correlated errors:** fundamental and overtone errors are correlated ((3,3): +0.53), so the independent model slightly underestimates the total error.
+- **Late-time harmonics** other than (2,2) are under-covered: the quadratic 220×220 and retrograde content are not modelled. Adding the quadratic mode to the signal is planned.
+- Mild spin trend of the overtone scale $a$ (correlation +0.55 with $\chi_f$).
 - Pin down the $r_{44}$ PN coefficient: $(8/9)\sqrt{5/7}$ or $(8/9)\sqrt{10/7}$.
 - Map channels back to modes: how much of each channel's weight sits on which $(\ell, m, n)$.
-- Model nonmodal content as extra noise, either as a time-dependent variance or as NR residuals.
+- Realistic sky position and antenna patterns (H1/L1 for GW250114).

@@ -6,6 +6,7 @@
 - **S. Borhanian, K. G. Arun, H. P. Pfeiffer, B. S. Sathyaprakash**, [1901.08516](https://arxiv.org/abs/1901.08516). Leading-order PN multipole amplitudes track NR through merger. This is the basis of `PNPrior`.
 - **L. E. Kidder**, [0710.0614](https://arxiv.org/abs/0710.0614). Explicit PN mode coefficients.
 - **L. Blanchet**, Living Reviews in Relativity, [1310.1528](https://arxiv.org/abs/1310.1528).
+- **A. Bohé et al.**, SEOBNRv4, PRD 95, 044028, [1611.03703](https://arxiv.org/abs/1611.03703). NR fit of $M\omega_{22}$ at the peak of $|h_{22}|$ (App. A.3, eqs. A6–A9), which gives each binary's $v$ in the amplitude prior (`mqnm.amplitudes.v_peak`).
 - **L. C. Stein**, `qnm`: a Python package for Kerr QNMs, JOSS 2019. [1908.10377](https://arxiv.org/abs/1908.10377).
 
 ## Populations and observations (population-counts task)

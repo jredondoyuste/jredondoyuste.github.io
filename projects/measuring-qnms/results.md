@@ -6,12 +6,14 @@ $n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$,
 
 | choice | O4 | CE 40 km | ET | LISA |
 |---|---|---|---|---|
-| as published (F3) | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
+| as published (F3), earlier prior | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
 | time step $0.05$ / $0.2\,M$ instead of $0.1\,M$ | 5 / 5 | 11 / 11 | 14 / 14 | 25 / 25 |
 | PSD continued as a power law above its table | 5 (19) | 11 (36) | 14 (56) | — |
 | 16× finer frequency grid for the ACF | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
 | $10^6\times$ more noise below $f_{\rm low}$ | 5 (18) | 11 (36) | 14 (56) | 25 (74) |
 | band-limited at 4096 Hz | 5 (19) | 11 (36) | **12** (56) | — |
+
+With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9 (36), 12 (56) and 22 (74); the rows above used the earlier prior and will be rerun with it.
 
 **Takeaway.**
 
@@ -33,9 +35,9 @@ $n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$,
 
 **Takeaway.**
 
-- **Without the GP, starting earlier keeps adding channels:** O4 goes from 6 to 12 and ET from 14 to 25 between $t_0 = 10$ and 0. The free overtones absorb the non-modal content near the merger and are counted as modes.
-- **With the GP, the count is flat for any start before about 10–15 M:** O4 4, CE 40 km 8, ET 10. Early data are down-weighted by the non-modal noise, so the answer no longer depends on the arbitrary choice of $t_0$, and we could start at the merger.
-- The late GP term (14% of each harmonic, decaying with it) changes the counts by at most 1. The effect comes from the early term plus restricting the signal to trusted modes.
+- **Without the GP, starting earlier keeps adding channels:** O4 goes from 5 to 10 and ET from 12 to 22 between $t_0 = 10$ and 0. The free overtones absorb the non-modal content near the merger and are counted as modes.
+- **With the GP, the count is flat for any start before about 10 M:** O4 4, CE 40 km 6, ET 8. Early data are down-weighted by the non-modal noise, so the answer no longer depends on the arbitrary choice of $t_0$, and we could start at the merger.
+- The late GP term (12% of each harmonic, decaying with it) changed the counts by at most 1 with the earlier calibration (14%); not rechecked. The effect comes from the early term plus restricting the signal to trusted modes.
 
 **Reproduce.** `python -m mqnm.experiments.start_time`.
 
@@ -62,8 +64,8 @@ $n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$,
 
 **Takeaway.**
 
-- **Overtones saturate at $n_{\max} = 2$** for every SNR shown, under both priors. From $10\,M$ the higher overtones have decayed below reach.
-- **Harmonics saturate with the PN + QNEF prior** by $\ell_{\max} = 4$ at $\rho_{220} = 30$ and by 6 at 300. At 3000 the count still gains from $\ell = 8$; that gain is optimistic, because PN overpredicts the weak high-$\ell$ amplitudes (F1).
+- **Overtones saturate early.** With the PN + QNEF prior the count stops at $n_{\max} = 1$ for $\rho_{220} = 30$ and at 2 for 3000; at 300 one more channel appears at $n_{\max} = 4$. With the flat prior the count is flat from $n_{\max} = 1$. From $10\,M$ the higher overtones have decayed below reach.
+- **Harmonics saturate with the PN + QNEF prior:** from $\ell_{\max} = 2$ at $\rho_{220} = 30$ (4 channels) and by 6 at 3000 (16). At 300 the count reaches 8 at $\ell_{\max} = 4$ and gains one more at 8.
 - **With a flat prior the count grows linearly in $\ell_{\max}$ and never saturates.** Saturation comes from the physical amplitude hierarchy, not from the noise.
 
 **Reproduce.** `python -m mqnm.experiments.saturation`.
@@ -77,13 +79,13 @@ $n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$,
 
 **Takeaway.**
 
-- **GW250114 at its distance, PN + QNEF prior:** O4 5, A+ 6, CE 20 km 10, CE 40 km 11, ET 14. That is, the 220 plus about 3 (O4) to 12 (ET) further real channels.
-- **Growth with SNR is roughly logarithmic:** about 3 channels at $\rho_{220} = 10$ and 25–32 at $10^4$. Above $\rho_{220} \approx 500$, networks that see both polarizations (ET, LISA) pull ahead.
-- **Third-generation detectors keep 5–6 channels out to $z \sim 1$–5**, because the redshifted mass moves the ringdown into their low-frequency band. O4 and A+ drop to the 220 alone.
-- **LISA ($10^6\,M_\odot$) keeps about 25 channels from $z \approx 1$ to 5.**
-- **At equal total SNR, the flat prior gives 3–4× more channels.** The PN + QNEF structure concentrates the signal into a few correlated directions, so the measurability count depends strongly on what we know about the amplitudes.
+- **GW250114 at its distance, PN + QNEF prior:** O4 5, A+ 6, CE 20 km 8, CE 40 km 9, ET 12. That is, the 220 plus 3 (O4) to 10 (ET) further real channels. With the earlier prior these were 5, 6, 10, 11, 14.
+- **Growth with SNR is roughly logarithmic:** 2 channels at $\rho_{220} = 10$, 6 at 100, 12–16 at 1000 and 22–28 at $10^4$. Above $\rho_{220} \approx 500$, networks that see both polarizations (ET, LISA) pull ahead.
+- **Third-generation detectors keep 4–6 channels out to $z \sim 5$**, because the redshifted mass moves the ringdown into their low-frequency band. O4 and A+ drop to the 220 alone (2) by $z \approx 1$.
+- **LISA ($10^6\,M_\odot$) keeps about 20–22 channels from $z \approx 1$ to 10**, and 14 at $z = 20$.
+- **At equal total SNR, the flat prior gives 3–5× more channels** (O4 19, CE 40 km 36, ET 56, LISA 74 at the source). The PN + QNEF structure concentrates the signal into a few correlated directions, so the measurability count depends strongly on what we know about the amplitudes.
 
-**Caveats.** An overhead source with co-located detectors is an idealisation. The PN + QNEF prior is optimistic for the weak high-$\ell$ modes (F1). The count is of *channels* (combinations of amplitudes), not of named modes.
+**Caveats.** An overhead source with co-located detectors is an idealisation. The PN + QNEF prior under-covers (3,2) and (4,3) and over-covers (3,3) (F1). The count is of *channels* (combinations of amplitudes), not of named modes.
 
 **Reproduce.** `python -m mqnm.experiments.measurability`.
 
@@ -108,13 +110,17 @@ $n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$,
 
 <figure>
 <a href="figs/prior_vs_nr.png"><img src="figs/prior_vs_nr.png" alt="(a, b) prior-predictive amplitude ratios per mode versus NR, modulus and phase; (c, d) NR strain versus prior bands with every mode for two SXS runs, from 10 M"></a>
-<figcaption>(a, b) For each SXS run, both priors are conditioned on that run's own 220 and predict $C_j/C_{220}$ at the merger. Violins pool the predictions and grey dots are NR (jaxqualin). The numbers give the fraction of runs inside their own central 68% (1σ) interval (blue: QNEF, orange: flat); a calibrated prior gives about 68%. (c, d) NR strain for SXS:BBH:0180 and SXS:BBH:1437 from $10\,M_f$ against 5–95% bands from draws of every mode ($\ell \le 8$, $n \le 7$). Green: $|h_{22}|$; yellow: rms of all other $m > 0$ harmonics.</figcaption>
+<figcaption>(a, b) For each SXS run, both priors are conditioned on that run's own 220 and predict $C_j/C_{220}$ at the merger. The PN × QNEF prior is 1PN at the run's own $v_{\rm peak}$ with four calibrated numbers ([derivations §8](#derivations)). Violins pool the predictions and grey dots are NR (jaxqualin). The numbers give the fraction of runs inside their own central 68% (1σ) interval (blue: QNEF, orange: flat); a calibrated prior gives about 68%. (c, d) NR strain for SXS:BBH:0180 and SXS:BBH:1437 from $10\,M_f$ against 5–95% bands from draws of every mode ($\ell \le 8$, $n \le 7$). Green: $|h_{22}|$; yellow: rms of all other $m > 0$ harmonics.</figcaption>
 </figure>
 
 **Takeaway.**
 
-- **Per mode, 1σ coverage (target 68%):** 330 92%, 331 76%, 210 61%, 211 62%, but the **221 only 26%**. NR's 221 sits consistently at about 0.8× the QNEF prediction with little scatter, and the rms error ($f = 0.22$) reaches that bias only at its 1σ edge. The 320, 440, 550 and 660 are at 0–37%: PN overpredicts them, which is the optimistic direction for weak modes. The flat prior is at 0–51%.
-- **Total strain, coverage across 30 SXS runs:**
+- **Per mode, 1σ coverage (target 68%), all runs:** 221 88%, 330 100%, 331 99%, 210 63%, 211 58%, 320 42%, 440 68%, 550 79%, 660 68%. The flat prior is at 0–51%.
+- **The 221 is now covered** (88%; it was 26% with the earlier per-mode prior). The calibrated factor $\kappa = 0.77$ carries NR's known offset of about 0.8 from the QNEF ratio ([derivations §8.3](#derivations)).
+- **One pooled error $e$ is too wide for (3,3) and too narrow for (3,2).** (3,3) and (3,3,1) are over-covered, because NR's (3,3) sits at 1.9× the 1PN prediction at $v_{\rm peak}$ and $e$ has to reach it ([§8.4](#derivations)). The (3,2) is under-covered, and its phase is poorly predicted (panel b).
+- **The phases** of the 221 and 211 are predicted tightly and match NR; the 330's phase prior is broad but centred on NR. For the 331 and 210, NR's phases sit about 1.5 rad from the prior's median.
+- **Total strain (c, d):** the NR strain lies inside, or at the edge of, the prior bands from $10\,M$ for both runs.
+- The coverage table below was computed with the earlier per-mode prior and has not been redone:
 
 | window after the peak | $h_{22}$ | other harmonics | prior / NR for $\lvert h_{22}\rvert$ |
 |---|---|---|---|

@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-27 — new amplitude prior in the code; figures remade
+
+- **The four-number prior is now the code's prior.** Each binary takes its own $v = (M\Omega_{\rm peak})^{1/3}$ from the SEOBNRv4 NR fit of the peak frequency (Bohé et al., arXiv:1611.03703), which matches 280 SXS runs to 0.56% rms in frequency. Refitted in the code: $e = 1.95$, $f = 0.34$, $a = 1.30$, $\kappa = 0.77$. The non-modal GP was refitted with it ($\lambda_e = 2.21$, $\tau = 4.0\,M$). [Derivations §8, §10](#derivations).
+- **Figures F1–F4 and F6 remade.** The 221 is now covered 88% of the time at 1σ (26% before). The counts for GW250114 at its distance drop by two channels in 3G detectors (CE 40 km 11 → 9, ET 14 → 12, LISA 25 → 22); O4 and A+ are unchanged (5, 6). The flat-prior counts are unchanged, as they should be.
+- **Found:** with 1PN at $v_{\rm peak}$, NR's (3,3) sits at 1.9× the prediction (1.03 at leading order and $v = 0.7$). The pooled $e$ absorbs it, so (3,3) is over-covered and (3,2), (4,3) under-covered.
+- **Not yet redone:** the noise-covariance sweep (F7) and the 30-run strain coverage table in F1 still use the earlier prior.
+
 ### 2026-09-27 — amplitude prior settled on four numbers; overtones or unmodelled effects?
 
 - **Amplitude prior.** We use PN at 1PN (resummed), evaluated at each binary's own velocity $v = (M\Omega_{\rm peak})^{1/3}$, like $\eta$. The QNEF overtone ratios stay, and only four numbers are calibrated on NR: $e = 1.91$ (fundamentals), $f = 0.34$ (overtones), $a = 1.34$ (zero-mean overtones) and $\kappa = 0.77$ (the 221). On 150 held-out runs this beats the old 16-number tables by 2.6 in log density per run. The 221 is covered 88% of the time at 1σ, where it was 27% before. (3,3) is over-covered, and (3,2) and (4,3) are under-covered. $a$ is not constrained by the catalogue. Rewrote [derivations §8](#derivations).

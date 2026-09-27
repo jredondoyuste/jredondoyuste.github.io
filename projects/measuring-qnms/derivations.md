@@ -148,7 +148,7 @@ $$
 - **Harmonic ratio $w_{\ell m}$** (complex): the PN ratio $h_{\ell m}/h_{22}$ at leading order, in the frame where the orbital phase at merger is zero, times the resummed 1PN amplitude factor
   $$ w_{\ell m} = w^{\rm N}_{\ell m}(\eta, v)\; e^{(k_{\ell m}(\eta) - k_{22}(\eta))\, v^2}, $$
   where $k_{\ell m}$ is the $v^2$ coefficient of $|h_{\ell m}|/|h^{\rm N}_{\ell m}|$ for non-spinning binaries (Blanchet, arXiv:1310.1528, eqs. 491–513). $w_{22} = 1$. Harmonics without a tabulated $k_{\ell m}$ stay at leading order.
-- **The velocity $v$** at which PN is evaluated. It is not fitted: $v = (M\Omega_{\rm peak})^{1/3}$ per binary, with $\Omega_{\rm peak}$ half the $h_{22}$ frequency at the peak of $|h_{22}|$. See 8.4.
+- **The velocity $v$** at which PN is evaluated. It is not fitted: $v = (M\Omega_{\rm peak})^{1/3}$ per binary, with $\Omega_{\rm peak}$ half the $h_{22}$ frequency at the peak of $|h_{22}|$, taken from the SEOBNRv4 NR fit in $\eta$ and the aligned spins. See 8.4.
 - **Overtone ratio $g_{\ell m n}$** (complex): $(B_{\ell m n}/B_{\ell m 0})\,(\omega_{\ell m 0}/\omega_{\ell m n})^2$. $B$ are the Teukolsky excitation factors, and $(\omega_0/\omega_n)^2$ converts $\psi_4 = \ddot h$ to strain. For the 221 it is multiplied by a factor $\kappa$ (8.3).
 - **The errors** are independent and relative:
   $$
@@ -203,6 +203,12 @@ A number stays in the model only if it raises the held-out score.
 
 $$ e = 1.91, \qquad f = 0.34, \qquad a = 1.34, \qquad \kappa = 0.77 . $$
 
+**In the code** (`mqnm`, from 2026-09-27) every run takes its own $v$ from the peak-frequency fit of 8.4, and the four numbers are refitted on the same 350 training runs:
+
+$$ e = 1.95, \qquad f = 0.34, \qquad a = 1.30, \qquad \kappa = 0.77 . $$
+
+They agree with the study values above to within 2%. Every figure (F1–F4, F6) uses these.
+
 - Three pooled numbers beat sixteen per-mode ones by 2.6 per run, on runs they were not fitted to.
 - $\kappa = 0.77$ is the known bias of the 221: NR sits at 0.8 of the QNEF ratio. Without it, the 221 is covered 67% of the time at 1σ; with it, 88%.
 - Fitting $v$ instead of taking it from the peak frequency changes nothing (0.546 against 0.562).
@@ -230,6 +236,10 @@ A per-run $v_{\rm peak}$ does not remove the dependence of the fundamental offse
 | 0.562 for every run | 4 | 0 |
 
 They tie, and the coverage agrees to within 0.02 for every mode except the 211, where the per-run version covers less (0.59 against 0.73, on 22 runs). The reason is that $v_{\rm peak}$ barely varies across the catalogue. We keep $v$ as a source parameter, since it costs no calibrated number and follows the binary where the catalogue is thin.
+
+**$\Omega_{\rm peak}$ for any binary.** An event gives $\eta$ and the spins, not a waveform peak. We use the NR fit of $M\omega_{22}$ at the peak of $|h_{22}|$ from the SEOBNRv4 calibration (Bohé et al., arXiv:1611.03703, App. A.3, eqs. A6–A9), with $\Omega_{\rm peak} = \omega_{22}/2$. Against 280 SXS runs, the fit's relative error in $\omega_{22}$ has rms 0.56% (median +0.20%, largest 4.6%). That is 0.19% in $v$. As a control, the same fit with the spins set to zero is off by 9.6% rms. For the GW250114-like source (equal mass, non-spinning), $v = 0.565$.
+
+**What the new $v$ shows for (3,3).** With the 1PN factor at $v_{\rm peak}$, NR's (3,3) sits at 1.94 times the prediction (median $|R_{330}/w_{33}|$). At leading order and $v = 0.7$ it sat at 1.03. The pooled $e \approx 1.9$ absorbs that offset, which is why (3,3) is over-covered (0.99) while (3,2) and (4,3) are under-covered. A per-harmonic $e$ would separate them.
 
 ### 8.5 Not yet in the prior
 
@@ -309,10 +319,10 @@ $$
 **Calibration.** Maximum likelihood on the (2,2) residuals of 30 SXS runs, 0–20 M. The residual is modelled as the prior-predictive covariance of the trusted modes, conditioned on the fitted 220 (with a 2% fit uncertainty), plus the GP:
 
 $$
-\lambda_e = 3.07, \quad \tau = 3.9\,M, \quad \lambda_l = 0.14, \quad \ell_c = 11\,M .
+\lambda_e = 2.21, \quad \tau = 4.0\,M, \quad \lambda_l = 0.12, \quad \ell_c = 10\,M .
 $$
 
-At the merger the non-modal content is about $3\,\sigma_{22}$, and it has decayed to about 8% by $10\,M$. Only (2,2) is used because the PN scale is too poor a normaliser to pool the weaker harmonics (the fit then runs to its bounds). The same kernel, scaled by each $\sigma_{\ell m}$, is applied to every harmonic. That is a stated limitation.
+These are refitted with the amplitude prior of §8 (2026-09-27); with the earlier prior they were $3.07$, $3.9\,M$, $0.14$, $11\,M$. At the merger the non-modal content is about $2.2\,\sigma_{22}$, and it has decayed by a factor $e^{-10/4.0} \approx 0.08$ by $10\,M$. Only (2,2) is used because the PN scale is too poor a normaliser to pool the weaker harmonics (the fit then runs to its bounds). The same kernel, scaled by each $\sigma_{\ell m}$, is applied to every harmonic. That is a stated limitation.
 
 ## 11. Overtones or unmodelled effects? (brainstorm, 2026-09-27)
 

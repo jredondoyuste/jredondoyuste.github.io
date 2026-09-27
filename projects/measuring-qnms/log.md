@@ -1,5 +1,11 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-27 — amplitude prior settled on four numbers; overtones or unmodelled effects?
+
+- **Amplitude prior.** We use PN at 1PN (resummed), evaluated at each binary's own velocity $v = (M\Omega_{\rm peak})^{1/3}$, like $\eta$. The QNEF overtone ratios stay, and only four numbers are calibrated on NR: $e = 1.91$ (fundamentals), $f = 0.34$ (overtones), $a = 1.34$ (zero-mean overtones) and $\kappa = 0.77$ (the 221). On 150 held-out runs this beats the old 16-number tables by 2.6 in log density per run. The 221 is covered 88% of the time at 1σ, where it was 27% before. (3,3) is over-covered, and (3,2) and (4,3) are under-covered. $a$ is not constrained by the catalogue. Rewrote [derivations §8](#derivations).
+- **Per-run $v$ against a fixed $v$.** They tie (−0.03 ± 0.05 per run), because $v_{\rm peak}$ only spans 0.54–0.58.
+- **Next.** Replace $a$ with a power budget for the invisible overtones, estimated from jaxqualin fits extrapolated back to the peak. A brainstorm on how to tell "overtones" from "unmodelled effects" is in [derivations §11](#derivations). The two readings put the same power in the signal or in the noise, so they bracket $n_{\rm meas}$.
+
 ### 2026-09-27 — detector noise checked; slice-GP prior dropped
 
 - **Detector noise (F7).** The PSD-to-covariance construction is correct, and no numerical choice in it moves $n_{\rm meas}$ by more than one channel. We fixed two details in the code: the ACF now uses a frequency grid fine enough to resolve the steep PSD just above $f_{\rm low}$ (a 2.7% error in the O4 variance), and the PSD tables continue as a power law above their end instead of a flat hold. No published count changes. We keep the full Nyquist range: a 4096 Hz band limit would cost ET two channels. Rewrote [derivations §7](#derivations).

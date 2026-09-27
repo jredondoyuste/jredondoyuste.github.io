@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-27 — new plan: a dataset for the amplitudes community
+
+- The goal is now explicit: a public dataset of phase shifts $\delta_\ell(\omega)$ and reflectivities $S_\ell(\omega)$ that post-Newtonian and scattering-amplitude calculations can match against, for $\ell = 2$–$4$, both parities and several stars.
+- No expansion in $\omega$ anywhere; the band now reaches $\omega M = 0.2$ to cover the f-mode.
+- New steps: run on the cluster (P0c), fix the definition of the star-dependent phase with the amplitudes conventions (P3a), release the data (P8).
+- The project moved to a new repository layout. No results changed.
+
 ### 2026-09-25 — background stars and Love numbers (F1)
 
 - EOS, TOV and static Love-number code built and checked (see [results](#results)): polytrope $M$, $R$ to $3\times10^{-4}$; $k_2$ against Pitre & Poisson to $10^{-6}$; SLy4 $M_{\max}$ and $R_{1.4}$ within 0.5%.

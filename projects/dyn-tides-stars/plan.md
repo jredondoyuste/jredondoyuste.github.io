@@ -1,29 +1,45 @@
 ## Progress
 
-<div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">campaign 1: build and validate the codes · 3 of 9 done</div>
-<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 33%; height: 100%; background: var(--accent);"></div></div>
+<div style="margin: 0.6rem 0 0.2rem; font-variant-caps: small-caps; color: var(--muted);">3 of 12 steps done · 1 under way</div>
+<div style="background: var(--hair); height: 0.7rem; border-radius: 0.35rem; overflow: hidden;"><div style="width: 25%; height: 100%; background: var(--accent);"></div></div>
 
-## Campaign 1 — frequency- and time-domain codes
+**Goal.** A public dataset of $\delta_\ell(\omega)$ and $S_\ell(\omega)$, with error bars, for $\ell = 2, 3, 4$, axial and polar, $\omega M \in [10^{-3}, 0.2]$, and at least four stars. It is done when the frequency-domain code meets its error budget everywhere, the time-domain code agrees with it, and the data are released.
 
-| # | task | status | notes |
+## Foundations
+
+| step | what | status | check |
 |---|---|---|---|
-| P0 | Julia package skeleton, units, conventions | <span style="color: var(--accent)">✓ done</span> | `DynTides.jl` |
-| P1 | Literature: equations, EOS models, check values | <span style="color: var(--accent)">✓ done</span> | [log](#log) |
-| P2 | EOS (SLy4 table, nucleonic model, soft/stiff pair) + TOV + static Love number $k_2$ | <span style="color: var(--accent)">✓ done</span> | checks: polytrope M, R; SLy4 $M_{\max}$; paper's M–R curve; $k_2$ |
-| P2b | SRO(SLy4), SRO(APR) 3D tables: frozen $\Gamma_1$ | <span style="color: var(--muted)">○ open</span> | g-mode check: Gittins & Andersson |
-| P3 | Frequency domain, axial | <span style="color: var(--muted)">○ open</span> | checks: $\lvert S\rvert = 1$, convergence, w-mode |
-| P4 | Frequency domain, polar (with buoyancy) | <span style="color: var(--muted)">○ open</span> | checks: f-mode, g-modes, $\omega \to 0$ limit vs $k_2$, the paper's dynamical tide |
-| P5 | Time domain, axial | <span style="color: var(--muted)">○ open</span> | check against P3 |
-| P6 | Time domain, polar | <span style="color: var(--muted)">○ open</span> | check against P4 |
-| P7 | Production: $S_2(\omega)$, $\delta_2(\omega)$ for 3 EOS × 3 masses | <span style="color: var(--muted)">○ open</span> | $\omega M_S \in [10^{-3}, 0.1]$ |
+| P0 | Julia package, units, conventions | <span style="color: var(--accent)">✓ done</span> | unit tests |
+| P1 | Literature: equations, EOS models, check values | <span style="color: var(--accent)">✓ done</span> | [derivations](#derivations) |
+| P2 | EOS + TOV + static Love number $k_2$ | <span style="color: var(--accent)">✓ done</span> | [F1](#results) |
+| P0c | Run everything on the cluster | <span style="color: var(--accent-2)">◐ active</span> | P2 checks pass again there |
+| P2b | SRO(SLy4), SRO(APR) 3D tables: frozen $\Gamma_1$, buoyancy | <span style="color: var(--muted)">○ open</span> | $M_{\max}$, $R_{1.4}$ vs CompOSE; Gittins & Andersson star |
+
+## Frequency domain (production)
+
+| step | what | status | check |
+|---|---|---|---|
+| P3a | Define the star-dependent phase, with the amplitudes conventions | <span style="color: var(--muted)">○ open</span> | agreed before production |
+| P3 | Axial | <span style="color: var(--muted)">○ open</span> | $\lvert S\rvert - 1 < 10^{-10}$; error budget $10^2$ below the signal at $\omega M = 10^{-3}$; w-mode |
+| P4 | Polar, barotropic and with buoyancy | <span style="color: var(--muted)">○ open</span> | f-mode; g-modes of Gittins & Andersson to 1%; $\omega \to 0$ gives $k_2$ |
+
+## Time domain (check)
+
+| step | what | status | check |
+|---|---|---|---|
+| P5 | Axial | <span style="color: var(--muted)">○ open</span> | agrees with P3 to $10^{-3}$, $\omega M \in [0.02, 0.3]$ |
+| P6 | Polar, then with buoyancy | <span style="color: var(--muted)">○ open</span> | agrees with P4; f-mode ringing |
+
+## Data
+
+| step | what | status | check |
+|---|---|---|---|
+| P7 | Sweep: 4 EOSs × 3–4 masses × $\ell = 2$–$4$ × both parities, $\geq 200$ frequencies, refined at the modes | <span style="color: var(--muted)">○ open</span> | error bar on every point |
+| P8 | Dataset with conventions, definitions and error model; Zenodo release | <span style="color: var(--muted)">○ open</span> | — |
 
 ## Known difficulties
 
-- At $\omega M_S \ll 1$ the star's signal is a small correction, of relative order $(\omega R)^{5} k_2$ for $\ell = 2$, on top of the phase set by the mass alone. The code must compute it directly, not as a difference of two large phases.
-- The time-domain code needs a non-uniform grid: the wavelength at $\omega M = 10^{-2}$ is about 900 km, but the stellar surface needs steps of about 0.01 km.
-- With buoyancy, g-mode resonances in the band are narrow, so the $\omega$ grid must be adaptive near them.
-
-## Open decisions
-
-- MIT bag (quark-star) model: out of scope for now.
-- How low in $\omega$ the time-domain code must go.
+- At low frequency the star's signal is a correction of relative order $(\omega R)^{2\ell+1}$ times its tidal response. It must be computed directly, never as a difference of two large phases.
+- The time-domain code needs a non-uniform grid: the wavelength at $\omega M = 10^{-2}$ is about 900 km, and the stellar surface needs steps of about 0.01 km.
+- g-mode resonances are narrow, so the frequency grid adapts around them.
+- The published time-domain polar equations are barotropic. With buoyancy we must extend them to evolve the radial displacement.

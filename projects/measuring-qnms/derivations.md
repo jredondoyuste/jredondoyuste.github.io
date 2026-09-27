@@ -99,7 +99,16 @@ $$
 C(\tau) = \int_0^{f_{\rm Nyq}} S(f)\, \cos(2\pi f \tau)\, df, \qquad (\Sigma_n)_{jk} = C(t_j - t_k).
 $$
 
-The integral is evaluated on a zero-padded frequency grid much longer than the segment, so there is no wrap-around. $S$ is held at $S(f_{\rm low})$ below $f_{\rm low}$. Geometric time converts to seconds with the detector-frame mass, $t_{\rm sec} = t\, (1+z) M_f\, G M_\odot / c^3$. The curves are O4, A+, ET-D, ET-10km, CE-40km and CE-20km (gwfast), plus LISA (Robson–Cornish–Liu, one TDI channel). The v1 circulant construction is superseded.
+The integral is evaluated with an inverse FFT on a frequency grid of at least $8N$ points and spacing $\Delta f \le f_{\rm low}/64$, then truncated to the segment. This is the construction of Isi & Farr ([2107.05609](https://arxiv.org/abs/2107.05609), Eq. 45). The fine spacing matters for O4, where 98.5% of the variance on the grid sits within a decade of $f_{\rm low} = 10$ Hz; the earlier $\Delta f \approx f_{\rm low}/5$ left a 2.7% error in $C(0)$. Geometric time converts to seconds with the detector-frame mass, $t_{\rm sec} = t\, (1+z) M_f\, G M_\odot / c^3$. The curves are O4, A+, ET-D (one nested detector of the triangle), CE 40 km and CE 20 km (gwfast, the CE-T2000017-v5 baselines), plus LISA (Robson–Cornish–Liu, one TDI channel). The v1 circulant construction is superseded.
+
+**Outside the tabulated band.**
+
+- *Above the table* (5 kHz; 10 kHz for ET), the PSD continues as the power law of its last decade, up to the Nyquist frequency of the grid. Holding the last value, as before, made the noise unphysically low up to Nyquist; it changes no count ([F7](#results)).
+- *Below $f_{\rm low}$*, $S$ is held at $S(f_{\rm low})$. This is optimistic, because the real noise keeps rising. But more noise there has no limit: on a segment of tens of milliseconds, noise below $f_{\rm low}$ is a set of slow trends, and each factor of about 100 makes one more trend uninformative. Channel strengths fall by 1–2% per decade of extra noise, and the covariance becomes numerically singular. We treat it as a systematic of a few percent in strength, at most one channel.
+
+**Truncation, leakage and gaps.** The Toeplitz likelihood on $[t_0, t_0 + T]$ is exact for a finite segment. There is no spectral leakage, and it equals gating plus inpainting (Isi & Farr Sec. III B; Zackay et al. [1908.05644](https://arxiv.org/abs/1908.05644)). It gives a 4–6% lower SNR than the frequency-domain $4\int |\tilde h|^2/S\,df$ for the same signal, because it does not treat the data before $t_0$ as known to be signal-free; those data hold the merger. A data gap would simply remove rows and columns of $\Sigma_n$ and $G$. On the ground, gaps are irrelevant at these durations. For LISA, a ringdown of minutes to hours is either whole or lost, so gaps change rates, not the per-event noise.
+
+**LISA.** One A or E channel with the 60° antenna pattern has noise $P_n(f)\,[1 + 0.6 (f/f_*)^2] + \tfrac{3}{20} S_c(f)$, with $P_n$ and the four-year foreground $S_c$ from Robson, Cornish & Liu ([1803.01944](https://arxiv.org/abs/1803.01944), Eqs. 10–14). The factor $3/20$ is the sky and polarisation average of $F^2$ for a 60° interferometer. The smooth response factor is accurate to 6% at 10 mHz but off by 32% at 0.1 Hz, so it is adequate for $10^6\,M_\odot$ and not yet checked for lighter sources.
 
 ## Numerics
 

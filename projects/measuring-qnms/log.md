@@ -1,5 +1,20 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-27 — detector noise checked; slice-GP prior dropped
+
+- **Detector noise (F7).** The PSD-to-covariance construction is correct, and no numerical choice in it moves $n_{\rm meas}$ by more than one channel. We fixed two details in the code: the ACF now uses a frequency grid fine enough to resolve the steep PSD just above $f_{\rm low}$ (a 2.7% error in the O4 variance), and the PSD tables continue as a power law above their end instead of a flat hold. No published count changes. We keep the full Nyquist range: a 4096 Hz band limit would cost ET two channels. Rewrote [derivations §7](#derivations).
+- Deferred from that task: whether $n_{\rm meas}$ depends on $\rho_{220}$ alone across 3G sensitivities (waits on which CE curve version to use), and LISA with the exact TDI response for lighter sources.
+- **Amplitude prior.** The GP on a hyperboloidal slice is dropped (see the [plan](#plan), dead ends). We finish the PN × QNEF model with the fewest parameters that fit.
+- **Populations.** The population samplers are done (GWTC-4 for the ground, the Klein et al. 2016 catalogues for LISA). The fast emulator of $n_{\rm meas}$ fails its accuracy check: the count depends on the orbital phase, which the emulator ignored. The fix is under way.
+
+### 2026-09-26 — four new tasks
+
+- **The GP kernel becomes its own task.** It trains on the whole filtered SXS catalogue (448 runs), not 30. We extracted the strain to $\ell = 8$ on $-10$ to $60\,M$ and the difference between the two highest resolutions. The median resolution error of $h_{22}$ is $5 \times 10^{-4}$ of its amplitude (90th percentile $3.5 \times 10^{-3}$). Five runs whose second resolution merges 100–600 M later are left out of the resolution term.
+- **Amplitude prior, two models.** (A) PN × QNEF with calibrated errors; (B) a GP for the perturbation on a hyperboloidal slice, projected on the QNM eigenfunctions. What the current prior gets wrong: the $\ell = m \ge 4$ and (4,3) fundamentals sit at 0.2–0.4 of leading-order PN at $v = 0.7$; the zero-mean overtone scale carries about 80% of the prior energy at $t_0 = 0$; the 221 is covered 27% of the time. Held out on 150 runs, the 1PN-resummed variants win by a wide margin; the fitted $v$ is 0.544 with the 1PN factor and 0.361 without, and a per-run $v$ adds nothing.
+- **Model B** needs a mean profile: zero-mean, it is far too broad for NR's $C_{221}/C_{220}$.
+- **Populations.** A new task counts events, $\rho_{220}$ and $n_{\rm meas}$ per detector over astrophysical populations, with error bars, and tests the counts against O3.
+- **Detector noise.** A new task audits the noise covariance (F7 above).
+
 ### 2026-09-26 — scope decisions; amplitude-prior task started
 
 - **Dropped:** very large mode sets ($10^4$–$10^5$ modes). The noise ladder keeps all 280 modes ($\ell \le 8$, $n \le 7$).

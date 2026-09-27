@@ -1,5 +1,27 @@
 Findings under the v2 model (complex strain, tied mirror modes, detector noise, NR-calibrated priors), newest first. Every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$ unless stated. The v1 plots and the earlier F1 (the calibration scatter) are retired; their numbers remain in the [log](#log).
 
+### F7 — Does the count depend on how the noise covariance is built? (unverified)
+
+$n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$, PN × QNEF prior (flat prior with the same total SNR in brackets). Ground: the GW250114-like source at its distance. LISA: $10^6\,M_\odot$ at $z = 1$. Each row changes one choice in the covariance of [derivations §7](#derivations).
+
+| choice | O4 | CE 40 km | ET | LISA |
+|---|---|---|---|---|
+| as published (F3) | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
+| time step $0.05$ / $0.2\,M$ instead of $0.1\,M$ | 5 / 5 | 11 / 11 | 14 / 14 | 25 / 25 |
+| PSD continued as a power law above its table | 5 (19) | 11 (36) | 14 (56) | — |
+| 16× finer frequency grid for the ACF | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
+| $10^6\times$ more noise below $f_{\rm low}$ | 5 (18) | 11 (36) | 14 (56) | 25 (74) |
+| band-limited at 4096 Hz | 5 (19) | 11 (36) | **12** (56) | — |
+
+**Takeaway.**
+
+- **The published counts stand.** No numerical choice moves $n_{\rm meas}$ by more than one channel, at the source or at $\rho_{220} = 100$ and $1000$. The time step is converged, and $\rho_{220}$ changes by less than 1%.
+- **The analysis bandwidth is the one choice that matters.** Cutting at 4096 Hz, as a detector sampled at 8192 Hz would, costs ET two channels (and CE, O4 one at $\rho_{220} = 1000$). The heavily damped overtones have broad spectra that reach into the kHz band. We keep the full Nyquist range of the $0.1\,M$ grid (about 15 kHz at $68\,M_\odot$).
+- **The noise below $f_{\rm low}$ has no correct value.** More noise there lowers every channel strength by 1–2% per decade, without converging, and lowers $\rho_{220}$ by 2–6% at $10^6\times$. We keep the flat hold as a mildly optimistic default ([§7](#derivations)).
+- The covariance itself passes every check: white noise, direct quadrature, and simulated coloured noise, with a doubled covariance rejected at more than 100σ as the control.
+
+**Reproduce.** `python tasks/t08-detector-noise/S2/sweep.py` and `S1/acf_checks.py` in the project repository, with the `mqnm` package.
+
 ### F6 — How does the count depend on the start time? A non-modal GP
 
 > **Withdrawn (2026-09-25).** This version restricts the signal to the modes jaxqualin can extract (about 40). That conflicts with the goal: the *theoretical* maximum number of measurable modes, out of a very large mode set. The GP idea stays; it will be redone with the full mode set.

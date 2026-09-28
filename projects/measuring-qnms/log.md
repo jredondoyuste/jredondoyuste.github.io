@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-28 — F1–F3 redrawn as final figures; F2 axis correction
+
+- **F1** now uses only the 150 runs held out of the calibration, shows the PN + QNEF and flat priors side by side, and adds the (4,3). The coverage numbers moved from the plot to the text.
+- **F2 correction.** Earlier versions drew $2\sqrt f\,|\tilde h_+|$ against $\sqrt{fS_n}$, which put the noise curves off by $\sqrt f$ relative to the signal (about 16× too high at 250 Hz, 10× too low in the LISA band). The plot now uses $2f|\tilde h_+|$ against $\sqrt{fS_n}$. The SNRs were computed correctly and are unchanged. The corrected plot shows a flat strain spectrum above about 500 Hz, which comes from the sharp start of the analysis window; for ET and CE it lies above the noise up to 5 kHz. How much of their SNR it carries is not yet quantified.
+- **F3** adds LISA remnants of $10^5$ and $10^7\,M_\odot$. The $10^5\,M_\odot$ count rises again beyond $z \approx 3$; at its frequencies our long-wavelength LISA response is not accurate.
+- Fixed in the code: the LISA noise model returned NaN above about 3 Hz (only reached by light sources).
+
 ### 2026-09-27 — new amplitude prior in the code; figures remade
 
 - **The four-number prior is now the code's prior.** Each binary takes its own $v = (M\Omega_{\rm peak})^{1/3}$ from the SEOBNRv4 NR fit of the peak frequency (Bohé et al., arXiv:1611.03703), which matches 280 SXS runs to 0.56% rms in frequency. Refitted in the code: $e = 1.95$, $f = 0.34$, $a = 1.30$, $\kappa = 0.77$. The non-modal GP was refitted with it ($\lambda_e = 2.21$, $\tau = 4.0\,M$). [Derivations §8, §10](#derivations).

@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-28 — F2 cut moved to $2.5f_{220}$
+
+- The F2 signal curves now stop at $2.5f_{220}$ (625 Hz; 0.021 Hz for LISA); 1.3–1.9% of $\rho^2$ lies above. Panel titles give $M_f$, $\chi_f$ and $D_L$.
+
 ### 2026-09-28 — F2 signal curves cut at $3f_{220}$
 
 - F2 now stops the NR strain and the prior band at $3f_{220}$ (750 Hz; 0.026 Hz for LISA), where the window-edge plateau takes over. The noise curves keep the full range, and the SNRs are unchanged (0.8–1.2% of $\rho^2$ lies above the cut).

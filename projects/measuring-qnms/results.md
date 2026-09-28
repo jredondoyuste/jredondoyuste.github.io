@@ -100,7 +100,7 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 
 - The prior band brackets the real strain.
 - Optimal SNRs from $10\,M$: O4 22, A+ 41, ET 187, CE 20 km 223, CE 40 km 326; LISA about 2800 per channel.
-- **Above about 500 Hz the strain spectrum is flat** ($|\tilde h| \propto 1/f$). That is the sharp start of the analysis window at $10\,M$, not ringdown content. For ET and CE it lies above the noise up to 5 kHz, so part of their SNR comes from the window edge. Not yet quantified.
+- **Above about 500 Hz the strain spectrum is flat.** This is the sharp start of the analysis window, not ringdown content or NR noise: a signal that jumps to $h(t_0)$ has $|\tilde h| \to |h(t_0)|/2\pi f$, so $2f|\tilde h| \to |h(t_0)|/\pi$. The plateau matches $|h_+(t_0)|/\pi$ to 2%, it appears in the analytic prior draws too, and it drops 20-fold when the start is tapered over $2\,M$. It carries at most 1% of $\rho^2$ in any detector.
 - *Correction (2026-09-28):* earlier versions of this plot drew $2\sqrt f\,|\tilde h_+|$ against $\sqrt{fS_n}$, which put the noise curves off by $\sqrt f$ relative to the signal. The SNRs were computed correctly and do not change.
 - From the peak, O4 gets 35, in line with LVK's network value of about 40 post-merger.
 

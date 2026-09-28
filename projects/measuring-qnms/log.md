@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-28 — the flat tail in F2 is the window start
+
+- The flat high-frequency tail of the corrected F2 comes from starting the signal abruptly at $10\,M$: its level matches $|h_+(t_0)|/\pi$ to 2%, the pure-QNM prior draws show it too (so it is not NR resolution noise), and a 2 M taper removes it. It carries at most 1% of $\rho^2$ (O4 1%, ET and CE below 1%). The entry below overstated its weight for ET and CE.
+
 ### 2026-09-28 — F1–F3 redrawn as final figures; F2 axis correction
 
 - **F1** now uses only the 150 runs held out of the calibration, shows the PN + QNEF and flat priors side by side, and adds the (4,3). The coverage numbers moved from the plot to the text.

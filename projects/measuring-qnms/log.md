@@ -1,5 +1,9 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-28 — F2 signal curves cut at $3f_{220}$
+
+- F2 now stops the NR strain and the prior band at $3f_{220}$ (750 Hz; 0.026 Hz for LISA), where the window-edge plateau takes over. The noise curves keep the full range, and the SNRs are unchanged (0.8–1.2% of $\rho^2$ lies above the cut).
+
 ### 2026-09-28 — the flat tail in F2 is the window start
 
 - The flat high-frequency tail of the corrected F2 comes from starting the signal abruptly at $10\,M$: its level matches $|h_+(t_0)|/\pi$ to 2%, the pure-QNM prior draws show it too (so it is not NR resolution noise), and a 2 M taper removes it. It carries at most 1% of $\rho^2$ (O4 1%, ET and CE below 1%). The entry below overstated its weight for ET and CE.

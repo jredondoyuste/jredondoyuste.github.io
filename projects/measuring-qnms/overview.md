@@ -28,20 +28,18 @@ $$
 
 With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma_A/\sigma_n$. The problem is then just the singular spectrum of a Vandermonde-type matrix, cut at $1/\rho$.
 
-## Where things stand (2026-09-27)
+## Where things stand (2026-09-29)
 
-- **Baseline done (F1–F5).** From $10\,M_f$ after the peak, with the PN × QNEF prior calibrated on NR: the GW250114-like source at its distance gives O4 5, A+ 6, CE 20 km 10, CE 40 km 11 and ET 14 measurable real channels. Overtones saturate at $n_{\max} = 2$; harmonics saturate under PN + QNEF and never under the flat prior.
-- **Detector noise checked (F7).** The covariance built from the PSD is correct, and no numerical choice in it (time step, the PSD beyond its table, the frequency resolution, the noise below $f_{\rm low}$) moves $n_{\rm meas}$ by more than one channel. The published counts stand. The one choice that matters is the analysis bandwidth: cutting at 4096 Hz costs ET two channels. We keep the full Nyquist range.
-- **Amplitude prior.** Of the PN × QNEF variants, the one with the 1PN factor wins on held-out NR (fitted $v = 0.544$). The alternative, a GP for the perturbation on a hyperboloidal slice, is dropped: zero-mean, it is far too broad for NR's $C_{221}/C_{220}$. We are finishing the PN × QNEF model with as few parameters as possible.
-- **Non-modal noise.** The GP kernel for what the QNM model misses in NR is now its own task, trained on 448 SXS runs (strain and resolution error extracted). It becomes the top rung of the noise ladder.
-- **Populations.** A new task turns channel counts into expected numbers of events per detector over the GWTC-4 and LISA massive-black-hole populations, tested against O3.
+- **Baseline done (F1–F5).** From $10\,M_f$ after the peak, with the PN × QNEF prior calibrated on NR: the GW250114-like source at its distance gives O4 5, A+ 6, CE 20 km 8, CE 40 km 9 and ET 12 measurable real channels. Overtones saturate at $n_{\max} = 2$; harmonics saturate under PN + QNEF and never under the flat prior.
+- **Detector noise checked (F7).** No numerical choice in the covariance moves $n_{\rm meas}$ by more than one channel; the one choice that matters is the analysis bandwidth.
+- **Amplitude prior settled.** 1PN × QNEF at each binary's own $v_{\rm peak}$, with three calibrated numbers ($e, f, \kappa$) and the untied-overtone scale set to $a = 1$ (NR bounds it at 0.38; it matters only for starts before about 10 M). The hyperboloidal-slice GP is dropped ([§8](#derivations)).
+- **Non-modal noise.** A GP for what the QNM model misses, trained on 434 SXS runs. The base kernel ranks first among the variants tried but under-covers before 20 M; a single kernel from $t = 0$ is being fitted ([§10](#derivations)). It becomes the top rung of the noise ladder.
+- **Populations.** Channel counts become expected numbers of events per detector over the GWTC-5 and Klein+16 populations ([F8](#results)): O5 gives about 55 2+ mode detections in 2 yr, ET and CE 30–40 5+ mode detections a year. O3 is matched; O4 ringdown events are 2.6× high.
 
 ## Open threads
 
-- **221 bias:** 1σ coverage only 26%; NR sits at 0.8× the QNEF prediction with little scatter.
-- **Correlated errors:** fundamental and overtone errors are correlated ((3,3): +0.53), so the independent model slightly underestimates the total error.
+- **One pooled error** over-covers (3,3) and under-covers (3,2), (4,3); a per-harmonic $e$ would fix it.
 - **Late-time harmonics** other than (2,2) are under-covered: the quadratic 220×220 and retrograde content are not modelled. Adding the quadratic mode to the signal is planned.
-- Mild spin trend of the overtone scale $a$ (correlation +0.55 with $\chi_f$).
 - Does $n_{\rm meas}$ depend on $\rho_{220}$ alone, or on the shape of the detector's sensitivity? To test on the 3G curves, including the CE 20 km post-merger tuning.
 - LISA with the exact TDI response for $10^5$–$10^7\,M_\odot$, where the smooth approximation we use is off by up to 30%.
 - Pin down the $r_{44}$ PN coefficient: $(8/9)\sqrt{5/7}$ or $(8/9)\sqrt{10/7}$.

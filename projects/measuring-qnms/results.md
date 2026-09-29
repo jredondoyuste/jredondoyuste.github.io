@@ -1,45 +1,44 @@
-Findings under the v2 model (complex strain, tied mirror modes, detector noise, NR-calibrated priors), newest first. Every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$ unless stated. The v1 plots and the earlier F1 (the calibration scatter) are retired; their numbers remain in the [log](#log).
+Findings, newest first. Unless stated, every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$ and uses all 280 modes ($\ell \le 8$, $n \le 7$). Retired plots and superseded numbers remain in the [log](#log).
 
-### F7 — Does the count depend on how the noise covariance is built? (unverified)
+### F8 — How many 2+ and 5+ mode detections will each detector generation see? (unverified)
 
-$n_{\rm meas}$ for all 280 modes ($\ell \le 8$, $n \le 7$) from $t_0 = 10\,M_f$, PN × QNEF prior (flat prior with the same total SNR in brackets). Ground: the GW250114-like source at its distance. LISA: $10^6\,M_\odot$ at $z = 1$. Each row changes one choice in the covariance of [derivations §7](#derivations).
+<figure><a href="figs/money_ladder.png"><img src="figs/money_ladder.png" alt="Expected detections, ringdown events, and 2+ and 5+ mode detections per run for O4a+b, O5, ET, CE 40 km and three LISA populations"></a><figcaption>Events per run on a log scale. Outline bar: detections (network SNR ≥ 9). Filled bar: ringdown events (SNR ≥ 8 in both the inspiral and the post-inspiral part, the LVK's pSEOBNR selection). Markers: expected numbers of ringdown events with $n_{\rm meas} \ge 4$ (2+ mode detections, squares) and $n_{\rm meas} \ge 10$ (5+ mode detections, diamonds), with 90% intervals over population draws and Poisson scatter. A complex mode is two real channels ([§12.1](#derivations)). A marker is missing when its count is below 0.1, like O5's 5+ mode detections, which no pool event reaches. The black lines on O4a+b are the observed detections (190 BBH with FAR &lt; 1/yr) and the observed ringdown events (21 analysed with pSEOBNR). Ground: GWTC-5 BP2P with a Madau–Dickinson redshift history (draws whose rate falls after the peak). LISA: Klein+16 catalogues. Runs: O4a+b 0.891 yr of real two-detector time and real noise; O5 = LIGO A+ design curve, 2 yr; ET and CE 40 km 1 yr; LISA 4 yr. All choices are in [§12](#derivations).</figcaption></figure>
 
-| choice | O4 | CE 40 km | ET | LISA |
+| run | detections (SNR ≥ 8) | ringdown events | 2+ mode ($n_{\rm meas} \ge 4$) | 5+ mode ($n_{\rm meas} \ge 10$) |
 |---|---|---|---|---|
-| as published (F3), earlier prior | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
-| time step $0.05$ / $0.2\,M$ instead of $0.1\,M$ | 5 / 5 | 11 / 11 | 14 / 14 | 25 / 25 |
-| PSD continued as a power law above its table | 5 (19) | 11 (36) | 14 (56) | — |
-| 16× finer frequency grid for the ACF | 5 (19) | 11 (36) | 14 (56) | 25 (74) |
-| $10^6\times$ more noise below $f_{\rm low}$ | 5 (18) | 11 (36) | 14 (56) | 25 (74) |
-| band-limited at 4096 Hz | 5 (19) | 11 (36) | **12** (56) | — |
-
-With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9 (36), 12 (56) and 22 (74); the rows above used the earlier prior and will be rerun with it.
+| O4a+b, 0.891 yr | 329 [283, 377] | 54 [41, 69] | 2.9 [0, 6] | 0 (no pool event) |
+| O5 (A+), 2 yr | 4960 [3740, 6330] | 882 [734, 1037] | 55 [39, 75] | 0 (no pool event) |
+| ET, 1 yr | $8.4\times10^4$ [$2.7\times10^4$, $1.9\times10^5$] | $2.4\times10^4$ | 7900 [3000, 16000] | 29 [16, 47] |
+| CE 40 km, 1 yr | $8.9\times10^4$ [$2.6\times10^4$, $2.1\times10^5$] | $2.8\times10^4$ | 8500 [2900, 19300] | 39 [17, 76] |
+| LISA popIII, 4 yr | 192 | 7.3 [3, 12] | 7.3 [3, 12] | 6.9 [3, 11] |
+| LISA Q3-d, 4 yr | 32 | 29 [20, 38] | 28 [20, 37] | 26.5 [18, 35] |
+| LISA Q3-nod, 4 yr | 474 | 387 [354, 419] | 365 [334, 396] | 245 [219, 271] |
 
 **Takeaway.**
 
-- **The published counts stand.** No numerical choice moves $n_{\rm meas}$ by more than one channel, at the source or at $\rho_{220} = 100$ and $1000$. The time step is converged, and $\rho_{220}$ changes by less than 1%.
-- **The analysis bandwidth is the one choice that matters.** Cutting at 4096 Hz, as a detector sampled at 8192 Hz would, costs ET two channels (and CE, O4 one at $\rho_{220} = 1000$). The heavily damped overtones have broad spectra that reach into the kHz band. We keep the full Nyquist range of the $0.1\,M$ grid (about 15 kHz at $68\,M_\odot$).
-- **The noise below $f_{\rm low}$ has no correct value.** More noise there lowers every channel strength by 1–2% per decade, without converging, and lowers $\rho_{220}$ by 2–6% at $10^6\times$. We keep the flat hold as a mildly optimistic default ([§7](#derivations)).
-- The covariance itself passes every check: white noise, direct quadrature, and simulated coloured noise, with a doubled covariance rejected at more than 100σ as the control.
+- **O5 should see 55 [39, 75] 2+ mode detections in 2 yr.** O4a+b expects 2.9 [0, 6], consistent with the one observed (GW250114). No ground detector before the next generation reaches five modes.
+- **ET and CE 40 km give 30–40 5+ mode detections a year**, and thousands of 2+ mode detections. The factor 5–10 width of their intervals comes from the uncertain high-redshift rate.
+- **LISA's heavy-seed populations measure five or more modes in almost every ringdown it sees.** Light seeds (popIII) give a handful, because their ringdowns mostly lie above the LISA band.
+- **Against observations:** O3 matches (detections 57 vs 59, ringdown events 11 vs 10, two-mode events 0.4 vs 0). O4a+b predicts 1.24× the observed detections and 2.6× the ringdown events; the excess most likely comes from the LVK's stricter O4 ringdown selection ([§12.6](#derivations)).
 
-**Reproduce.** `python tasks/t08-detector-noise/S2/sweep.py` and `S1/acf_checks.py` in the project repository, with the `mqnm` package.
+**Reproduce.** `python tasks/t07-population-counts/S7/counts.py <pools> <GWTC-5 MD hyperposterior> gwtc5md S7 <loud pools>`, then `S7/figures.py <pools> S7/counts_gwtc5md.json S7`, with the `mqnm` package. The pools come from `S7/submit_s7.sh` and `S7/submit_loud.sh`.
+
+### F7 — Does the count depend on how the noise covariance is built? (unverified; to be rerun)
+
+> **To be rerun** with the current amplitude prior. The numbers below used the earlier prior.
+
+We changed one choice at a time in the covariance of [§7](#derivations), for the GW250114-like source (O4, CE 40 km, ET) and a $10^6\,M_\odot$ LISA source at $z = 1$: the time step ($0.05$, $0.1$, $0.2\,M$), the PSD above its table, the frequency resolution of the ACF, and the noise below $f_{\rm low}$.
+
+- **No numerical choice moves $n_{\rm meas}$ by more than one channel**, at the source or at $\rho_{220} = 100$ and $1000$.
+- **The analysis bandwidth is the one choice that matters.** Cutting at 4096 Hz costs ET two channels (14 → 12), because the damped overtones have broad spectra. We keep the full Nyquist range of the $0.1\,M$ grid.
+- **The noise below $f_{\rm low}$ has no correct value.** More noise there lowers every channel strength by 1–2% per decade without converging. We hold the PSD flat there, a mildly optimistic default.
+- The covariance passes checks against white noise, direct quadrature and simulated coloured noise; a doubled covariance is rejected at more than 100σ (the control).
+
+**Reproduce.** `python tasks/t08-detector-noise/S2/sweep.py` and `S1/acf_checks.py`, with the `mqnm` package.
 
 ### F6 — How does the count depend on the start time? A non-modal GP
 
-> **Withdrawn (2026-09-25).** This version restricts the signal to the modes jaxqualin can extract (about 40). That conflicts with the goal: the *theoretical* maximum number of measurable modes, out of a very large mode set. The GP idea stays; it will be redone with the full mode set.
-
-<figure>
-<a href="figs/start_time.png"><img src="figs/start_time.png" alt="Measurable channels against analysis start time for O4, CE 40 km and ET under three models"></a>
-<figcaption>$n_{\rm meas}$ against the start time $t_0$ for the GW250114-like source at its distance. Blue: trusted modes (fundamentals + overtones NR sees) with the non-modal Gaussian process added to the noise ([derivations §10](#derivations)). Orange: every mode ($\ell \le 8$, $n \le 7$, unseen overtones zero-mean), no GP. Grey: trusted modes, no GP. The vertical line is the current default start, $10\,M$.</figcaption>
-</figure>
-
-**Takeaway.**
-
-- **Without the GP, starting earlier keeps adding channels:** O4 goes from 5 to 10 and ET from 12 to 22 between $t_0 = 10$ and 0. The free overtones absorb the non-modal content near the merger and are counted as modes.
-- **With the GP, the count is flat for any start before about 10 M:** O4 4, CE 40 km 6, ET 8. Early data are down-weighted by the non-modal noise, so the answer no longer depends on the arbitrary choice of $t_0$, and we could start at the merger.
-- The late GP term (12% of each harmonic, decaying with it) changed the counts by at most 1 with the earlier calibration (14%); not rechecked. The effect comes from the early term plus restricting the signal to trusted modes.
-
-**Reproduce.** `python -m mqnm.experiments.start_time`.
+> **Withdrawn (2026-09-25).** This version kept in the signal only the modes NR can extract (about 40), while the goal is the maximum out of the full mode set. It found that with a GP for the non-modal content, $n_{\rm meas}$ stops growing as $t_0$ moves before 10 M. The GP is being rebuilt from 434 SXS runs ([§10](#derivations)), and the start-time study will be remade with it.
 
 ### F5 — Two-mode toy model: what 0, 1 and 2 measurable channels look like
 
@@ -50,8 +49,8 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 
 **Takeaway.**
 
-- **Flat prior:** no channels at $\rho = 0.2$; the posterior is the prior. One at $\rho = 2$: the sum $a_1 + a_2$ is measured and the difference is not. Both at $\rho = 8$. Resolving two overlapping damped modes needs $\rho > 1/\sqrt{1 - c} = 2.7$.
-- **Correlated prior:** again nothing at $\rho = 0.2$. The prior already ties $a_1$ to $a_2$, so resolving the difference needs $\rho > 6.1$. At $\rho = 2$ the posterior is compact with only one measurable channel. $n_{\rm meas}$ counts what the *data* teach us; the prior supplies the rest.
+- **Flat prior:** no channel at $\rho = 0.2$; one at $\rho = 2$ (the sum $a_1 + a_2$); both at $\rho = 8$. Resolving two overlapping damped modes needs $\rho > 1/\sqrt{1 - c} = 2.7$.
+- **Correlated prior:** the prior already ties $a_1$ to $a_2$, so resolving the difference needs $\rho > 6.1$. At $\rho = 2$ the posterior is compact with only one measurable channel: $n_{\rm meas}$ counts what the *data* teach us.
 
 **Reproduce.** `python -m mqnm.experiments.toy_two_modes`.
 
@@ -64,9 +63,8 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 
 **Takeaway.**
 
-- **Overtones saturate early.** With the PN + QNEF prior the count stops at $n_{\max} = 1$ for $\rho_{220} = 30$ and at 2 for 3000; at 300 one more channel appears at $n_{\max} = 4$. With the flat prior the count is flat from $n_{\max} = 1$. From $10\,M$ the higher overtones have decayed below reach.
-- **Harmonics saturate with the PN + QNEF prior:** from $\ell_{\max} = 2$ at $\rho_{220} = 30$ (4 channels) and by 6 at 3000 (16). At 300 the count reaches 8 at $\ell_{\max} = 4$ and gains one more at 8.
-- **With a flat prior the count grows linearly in $\ell_{\max}$ and never saturates.** Saturation comes from the physical amplitude hierarchy, not from the noise.
+- **Overtones saturate early:** with the PN + QNEF prior the count stops at $n_{\max} = 1$–2 (one more channel at $n_{\max} = 4$ for $\rho_{220} = 300$). From $10\,M$ the higher overtones have decayed below reach.
+- **Harmonics saturate with the PN + QNEF prior** (by $\ell_{\max} = 2$ at $\rho_{220} = 30$, by 6 at 3000), **but grow linearly without limit under a flat prior.** Saturation comes from the physical amplitude hierarchy, not from the noise.
 
 **Reproduce.** `python -m mqnm.experiments.saturation`.
 
@@ -79,13 +77,12 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 
 **Takeaway.**
 
-- **GW250114 at its distance, PN + QNEF prior:** O4 5, A+ 6, CE 20 km 8, CE 40 km 9, ET 12. That is, the 220 plus 3 (O4) to 10 (ET) further real channels. With the earlier prior these were 5, 6, 10, 11, 14.
-- **Growth with SNR is roughly logarithmic:** 2 channels at $\rho_{220} = 10$, 6 at 100, 12–16 at 1000 and 22–28 at $10^4$. Above $\rho_{220} \approx 500$, networks that see both polarizations (ET, LISA) pull ahead.
-- **Third-generation detectors keep 4–6 channels out to $z \sim 5$**, because the redshifted mass moves the ringdown into their low-frequency band. O4 and A+ drop to the 220 alone (2) by $z \approx 1$.
-- **LISA:** a $10^6\,M_\odot$ remnant keeps about 20–22 channels from $z \approx 1$ to 10, and 14 at $z = 20$. A $10^7\,M_\odot$ remnant gives more at low redshift (51 at $z = 0.1$) and falls below $10^6$ beyond $z \approx 5$, as its ringdown drops out of the band. A $10^5\,M_\odot$ remnant gives only 4–6 channels, and its count rises again beyond $z \approx 3$ as redshift moves its ringdown (about 0.15 Hz) down into the most sensitive band. At those frequencies our long-wavelength LISA response is not accurate; the exact response is a planned check.
-- **At equal total SNR, the flat prior gives 3–5× more channels** (O4 19, CE 40 km 36, ET 56, LISA 74 at the source). The PN + QNEF structure concentrates the signal into a few correlated directions, so the measurability count depends strongly on what we know about the amplitudes.
+- **GW250114 at its distance, PN + QNEF prior:** O4 5, A+ 6, CE 20 km 8, CE 40 km 9, ET 12 real channels: the 220 plus 3 (O4) to 10 (ET).
+- **Growth with SNR is roughly logarithmic:** 2 channels at $\rho_{220} = 10$, 6 at 100, 12–16 at 1000, 22–28 at $10^4$. Networks that see both polarizations (ET, LISA) pull ahead above $\rho_{220} \approx 500$.
+- **Third-generation detectors keep 4–6 channels out to $z \sim 5$**; O4 and A+ drop to the 220 alone by $z \approx 1$. **LISA** keeps about 20 channels for a $10^6\,M_\odot$ remnant from $z \approx 1$ to 10.
+- **At equal total SNR, a flat prior gives 3–5× more channels** (O4 19, ET 56). The count depends strongly on what we know about the amplitudes.
 
-**Caveats.** An overhead source with co-located detectors is an idealisation. The PN + QNEF prior under-covers (3,2) and (4,3) and over-covers (3,3) (F1). The count is of *channels* (combinations of amplitudes), not of named modes.
+**Caveats.** Overhead source, co-located detectors, untied-overtone scale $a = 1.30$ (now 1, [§8](#derivations)). The prior under-covers (3,2) and (4,3) and over-covers (3,3) (F1). Channels are combinations of amplitudes, not named modes.
 
 **Reproduce.** `python -m mqnm.experiments.measurability`.
 
@@ -99,12 +96,9 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 **Takeaway.**
 
 - The prior band brackets the real strain.
-- Optimal SNRs from $10\,M$: O4 22, A+ 41, ET 187, CE 20 km 223, CE 40 km 326; LISA about 2800 per channel.
-- **The signal curves stop at $2.5f_{220}$.** Beyond it the spectrum of a signal switched on at $t_0$ is flat, $2f|\tilde h| \to |h(t_0)|/\pi$: the sharp start of the window, not ringdown content or NR noise. That plateau matches $|h_+(t_0)|/\pi$ to 2%, shows up in the analytic prior draws too, and drops 20-fold when the start is tapered over $2\,M$. The spectrum still falls steeply at $2f_{220}$ and is flat by $3f_{220}$. Above the cut lies 1.3–1.9% of $\rho^2$ in every detector.
-- *Correction (2026-09-28):* earlier versions of this plot drew $2\sqrt f\,|\tilde h_+|$ against $\sqrt{fS_n}$, which put the noise curves off by $\sqrt f$ relative to the signal. The SNRs were computed correctly and do not change.
-- From the peak, O4 gets 35, in line with LVK's network value of about 40 post-merger.
-
-**Caveats.** $\varphi = 0$; $\iota$ is the folded value; $m = 0$ harmonics are left out; $D_L$ comes from $z = M_f^{\rm det}/M_f - 1$.
+- Optimal SNRs from $10\,M$: O4 22, A+ 41, ET 187, CE 20 km 223, CE 40 km 326; LISA about 2800 per channel. From the peak, O4 gets 35, in line with the LVK's network value of about 40 post-merger.
+- Above $2.5f_{220}$ the spectrum is the flat tail $|h(t_0)|/\pi$ of a signal switched on at $t_0$ (it drops 20-fold with a $2\,M$ taper). It holds 1.3–1.9% of $\rho^2$.
+- *Correction (2026-09-28):* earlier versions drew the noise curves off by $\sqrt f$; the SNRs were always correct.
 
 **Reproduce.** `python -m mqnm.experiments.sensitivity_overlay`.
 
@@ -117,10 +111,8 @@ With the current amplitude prior (2026-09-27) the reference counts are 5 (19), 9
 
 **Takeaway.**
 
-- **The PN + QNEF prior tracks NR mode by mode.** Coverage of $|C_j/C_{220}|$ in each run's own central 68% interval (target 68%): 221 87%, 440 70%, 550 74%, 660 68%, 211 62%, 210 59%. The flat prior covers 0–2% for every fundamental and the 221.
-- **One pooled error $e$ is too wide for (3,3) and too narrow for (3,2) and (4,3).** 330 and 331: 99–100%. 320: 41%; 430: 37% (43 runs). NR's (3,3) sits at 1.9× the 1PN prediction at $v_{\rm peak}$, and $e$ has to reach it ([§8.4](#derivations)).
-- **The 221 is now covered** (87%; 26% with the earlier per-mode prior). The calibrated factor $\kappa = 0.77$ carries NR's offset of about 0.8 from the QNEF ratio.
-- **Phases:** the 221 is predicted tightly and matches NR; the 330's broader prediction is centred on NR. NR's phase sits about 1 rad from the prior's circular mean for the 210 and 211, and 0.5 rad for the 331. For the 320, 440 and 660, NR splits into two groups that the prior does not resolve.
-- **The default start of 10 M** comes from an earlier check of the total strain against the earlier prior (5–10 M after the peak the prior predicted 1.8× too much $|h_{22}|$; from 10 M it was within 6%). It has not been redone with this prior.
+- **The PN + QNEF prior tracks NR mode by mode.** 1σ coverage of $|C_j/C_{220}|$ (target 68%): 221 87%, 440 70%, 550 74%, 660 68%, 211 62%, 210 59%. The flat prior covers 0–2%.
+- **One pooled error $e$ is too wide for (3,3)** (99%) **and too narrow for (3,2) and (4,3)** (41%, 37%). NR's (3,3) sits at 1.9× the 1PN prediction ([§8](#derivations)).
+- **Phases:** the 221 is tight and matches NR. The 210, 211 and 331 sit 0.5–1 rad off the prior's mean; for the 320, 440 and 660, NR splits into two groups the prior does not resolve.
 
 **Reproduce.** `python -m mqnm.experiments.prior_vs_nr`.

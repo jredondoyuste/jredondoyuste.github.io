@@ -1,5 +1,20 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-09-29 — page compacted and re-synced
+
+- Derivations shortened by about half. §10 now describes the current GP training (434 SXS runs, the base kernel, its early under-coverage); the first GP's calibration is marked superseded. §8 gives the adopted numbers once, including $a = 1$ and the NR bound $a \le 0.38$. §12's population choices are unchanged.
+- Results: F6 (withdrawn) and F7 (to be rerun with the current prior) reduced to short entries; the other takeaways tightened, with no number changed.
+- Plan and overview re-synced with the tasks: seven tasks (three done, four active), the noise-ladder steps, and two new dead ends (the overtone power budget, the $n_{\rm meas}$ emulator). Resolved open threads removed: the 221 bias is fixed by $\kappa$, and the +0.53 error correlation was withdrawn.
+
+### 2026-09-29 — population counts: F8 and §12
+
+- New result F8: expected detections, ringdown events, and 2+ and 5+ mode detections ($n_{\rm meas} \ge 4$, $\ge 10$: a complex mode is two real channels) for O4a+b, O5, ET, CE 40 km and LISA. Full choices in [§12](#derivations).
+- Final population: GWTC-5 BP2P with the Madau–Dickinson redshift fit, keeping only draws whose rate falls after the peak (42% of draws rise to $z = 20$ and would give ET millions of events). LISA: Klein+16.
+- Runs: O4a+b uses its real noise and 0.891 yr of two-detector time. O5 is the A+ design curve at 2 yr: the LVK has not yet fixed O5's length or start, and a six-month intermediate run (IR1) begins in November 2026. ET and CE run 1 yr, LISA 4 yr.
+- Amplitude prior at the untied-overtone scale $a = 1$ (was 1.30). Under GWTC-4, $N(n_{\rm meas} \ge 10)$ for ET drops from 57 to 47 a year.
+- Loud-event pools, stratified by network SNR, resolve the high-$k$ tails. Every hyperposterior draw passes the effective-sample-size check.
+- Against observations: O3 matches (detections 57 vs 59, ringdown events 11 vs 10, two-mode 0.4 vs 0). O4a+b predicts 1.24× the observed detections and 2.6× the ringdown events. The network-SNR shape matches the catalogue, so the excess most likely comes from the LVK's O4 ringdown selection. We report it and do not tune it away.
+
 ### 2026-09-28 — F2 cut moved to $2.5f_{220}$
 
 - The F2 signal curves now stop at $2.5f_{220}$ (625 Hz; 0.021 Hz for LISA); 1.3–1.9% of $\rho^2$ lies above. Panel titles give $M_f$, $\chi_f$ and $D_L$.

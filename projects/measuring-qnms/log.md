@@ -1,5 +1,13 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-05 — results redone at $a = 1$; counts now in modes
+
+- **Counts are now in modes**, $n_{\rm meas} = \lfloor n_{\rm ch}/2 \rfloor$: each mode amplitude has two real channels, and a mode counts once both are measured. Earlier entries and figures counted real channels. The channel counts themselves did not change. GW250114 from $10\,M$: O4 4 → 2 modes, ET 10 → 5, CE 40 km 9 → 4.
+- F1–F4, F7 and F8 redone at the current prior ($a = 1$, was 1.30). The old F3 numbers (O4 5, CE 40 km 11, ET 14 channels) were at $a = 1.30$. F3 now also shows the start times $t_0 = 0, 5, 10, 15\,M$.
+- F7 rerun: the claim that a 4096 Hz band limit costs ET two channels no longer holds (10 vs 10). It costs O4 and CE 40 km one channel each, which is not a mode.
+- New results F9 (the order in which modes enter, and what each is made of), F10 (which amplitudes the data pin down), F11 (flat vs PN × QNEF prior) and F12 (events per run with at least $k$ modes).
+- New colours, one per detector, shared by every figure.
+
 ### 2026-09-29 — page compacted and re-synced
 
 - Derivations shortened by about half. §10 now describes the current GP training (434 SXS runs, the base kernel, its early under-coverage); the first GP's calibration is marked superseded. §8 gives the adopted numbers once, including $a = 1$ and the NR bound $a \le 0.38$. §12's population choices are unchanged.

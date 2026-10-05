@@ -30,6 +30,7 @@ With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma
 
 ## Where things stand (2026-10-05)
 
+- **Paused for review.** All planned work is done. We are reading through the code and the results, and thinking, for about a week before the next step.
 - **Mode counts (F3, F9).** From $10\,M_f$ after the peak, with the PN × QNEF prior calibrated on NR, the GW250114-like source at its distance measures O4 2, A+ 3, CE 20 km 4, CE 40 km 4 and ET 5 modes. In every detector the 220 enters first, then a mode made mostly of the calibrated $n = 1$ overtones, then one made mostly of the fundamental harmonics.
 - **Which amplitudes are learned (F10).** O4 pins down the 220 and 221 and about 60% of the 440 and 441; ET adds the 222, 320 and 321. Starting earlier than $10\,M$ adds modes, but they rest on overtones that NR does not support near the peak.
 - **Saturation and the prior (F4, F11).** Under PN × QNEF the count saturates at $n_{\max} = 2$ and $\ell_{\max} = 6$. A flat prior counts 3–8× more modes and never saturates.
@@ -40,7 +41,7 @@ With white noise and a flat prior, $s_i = \rho\,\sigma_i(Z)$ with $\rho = \sigma
 ## Open threads
 
 - **One pooled error** over-covers (3,3) and under-covers (3,2), (4,3); a per-harmonic $e$ would fix it.
-- **Late-time harmonics** other than (2,2) are under-covered: the quadratic 220×220 and retrograde content are not modelled. Adding the quadratic mode to the signal is planned.
+- **Late-time harmonics** other than (2,2) are under-covered: the quadratic 220×220 and retrograde content are not modelled.
 - Does $n_{\rm meas}$ depend on $\rho_{220}$ alone, or on the shape of the detector's sensitivity? To test on the 3G curves, including the CE 20 km post-merger tuning.
 - LISA with the exact TDI response for $10^5$–$10^7\,M_\odot$, where the smooth approximation we use is off by up to 30%.
 - Pin down the $r_{44}$ PN coefficient: $(8/9)\sqrt{5/7}$ or $(8/9)\sqrt{10/7}$.

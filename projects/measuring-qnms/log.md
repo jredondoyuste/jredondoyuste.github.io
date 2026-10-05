@@ -1,5 +1,12 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-05 — all tasks closed; paused for review
+
+- The money-plot task is closed: every figure has a result record with its numbers, the command that made it, and its provenance.
+- The code was tidied for reading (shorter comments and docstrings, no behaviour change: tests and a numerical comparison agree) and pushed.
+- Plan closed: eight tasks done; the GP kernel, the noise ladder and the overtone-vs-non-modal comparison are dead ends; the sky-position, quadratic-mode, 3G and LISA-TDI follow-ups are not pursued for now.
+- Next: a week of reading the code and thinking it through before deciding what comes next.
+
 ### 2026-10-05 — results redone at $a = 1$; counts now in modes
 
 - **Counts are now in modes**, $n_{\rm meas} = \lfloor n_{\rm ch}/2 \rfloor$: each mode amplitude has two real channels, and a mode counts once both are measured. Earlier entries and figures counted real channels. The channel counts themselves did not change. GW250114 from $10\,M$: O4 4 → 2 modes, ET 10 → 5, CE 40 km 9 → 4.

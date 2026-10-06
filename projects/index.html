@@ -18,27 +18,34 @@
     <nav class="header" aria-label="Site">
         <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
         <a href="/">[home]</a>
+        <a href="/research.html">[research]</a>
         <a href="/projects/" aria-current="page">[projects]</a>
+        <a href="/vault.html">[vault]</a>
         <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
     </nav>
 
     <h1>Projects</h1>
-    <p class="proj-meta">Working notebooks: results, derivations and dead ends, written as they happen. Each one asks for its own password.</p>
+    <p class="proj-meta">These are things I'm working on. Not all of these will be published. Please email me at jredondo [at] princeton [dot] edu if you are interested in any of them or would like to discuss further. </p>
 
-    <!-- One <li> per project, newest first. -->
+    <!-- One <li> per project, newest first. The icon says how it opens:
+         la-lock + "password-protected" for a notebook behind the gate,
+         la-lock-open + "open" for a published, public project.
+         .proj-people lists collaborators; leave it out when there are none. -->
     <ul class="proj-list">
         <li>
-            <a href="/projects/kerr-newman-2nd/">Second-order perturbations of Kerr–Newman</a>
+            <a href="/projects/kerr-newman-2nd/"><svg class="la-icon proj-access" role="img" aria-label="password-protected"><title>password-protected</title><use href="/files/la-sprite.svg#la-lock"/></svg>Second-order perturbations of Kerr–Newman</a>
+            <span class="proj-people">with David Pereñiguez</span>
             <span class="muted"></span>
             <span class="proj-progress" role="img" aria-label="0 of 12 tasks done" title="0 done, 12 open"><span class="beads"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><small>0 / 12</small></span>
         </li>
         <li>
-            <a href="/projects/dyn-tides-stars/">Dynamical tides: GW scattering off neutron stars</a>
+            <a href="/projects/dyn-tides-stars/"><svg class="la-icon proj-access" role="img" aria-label="password-protected"><title>password-protected</title><use href="/files/la-sprite.svg#la-lock"/></svg>Dynamical tides: GW scattering off neutron stars</a>
             <span class="muted">Phase shifts and reflectivities of gravitational waves scattered by neutron stars with realistic equations of state and g-modes: data to match dynamical tides against.</span>
             <span class="proj-progress" role="img" aria-label="3 of 12 steps done, 1 under way" title="3 done, 1 under way, 8 open"><span class="beads"><i class="done"></i><i class="done"></i><i class="done"></i><i class="active"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><small>3 / 12</small></span>
         </li>
         <li>
-            <a href="/projects/measuring-qnms/">Measuring QNMs</a>
+            <a href="/projects/measuring-qnms/"><svg class="la-icon proj-access" role="img" aria-label="password-protected"><title>password-protected</title><use href="/files/la-sprite.svg#la-lock"/></svg>Measuring QNMs</a>
+            <span class="proj-people">with Sophia Yi</span>
             <span class="muted">How many quasinormal modes a high-SNR ringdown lets you measure, under Gaussian priors and realistic noise.</span>
             <span class="proj-progress" role="img" aria-label="8 of 8 tasks done" title="8 done · 9 dead ends · 4 not pursued; paused for review"><span class="beads"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i></span><small>8 / 8</small></span>
         </li>

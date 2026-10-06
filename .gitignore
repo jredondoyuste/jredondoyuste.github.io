@@ -28,3 +28,6 @@ _site/
 *.log
 *.out
 *.synctex.gz
+
+# Project-page passwords: local only, never committed (the site repo is public).
+passwords.txt

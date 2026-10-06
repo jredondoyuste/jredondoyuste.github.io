@@ -1,9 +1,5 @@
 /* Project notebook pages — layered on /style.css, using its tokens only. */
 
-.page-project {
-  max-width: 50rem;
-}
-
 .proj-meta {
   color: var(--muted);
   font-style: italic;
@@ -171,6 +167,23 @@
   margin: 0 0 1.25rem;
 }
 
+.proj-access {
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 0.35em;
+  vertical-align: -0.1em;
+  fill: var(--muted);
+}
+.proj-list a:hover .proj-access {
+  fill: currentColor;
+}
+.proj-people {
+  display: block;
+  font-size: 0.9rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
 .proj-list .muted {
   display: block;
   font-style: italic;
@@ -223,4 +236,255 @@
 
 @media (prefers-reduced-motion: reduce) {
   .proj-progress i.active { animation: none; }
+}
+
+/* ----- notebook items: heading + short part here, detail on the stage ---- */
+
+/* the spine is long on these pages, so it scrolls; the stage stays in view */
+@media (min-width: 1100px) {
+  .page-project.with-stage .spine {
+    position: static;
+  }
+  .page-project .stage-inner {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+.page-project .proj-people {
+  margin: -0.4rem 0 0.2rem;
+}
+
+.proj-item {
+  margin: 1.4rem 0;
+}
+
+.proj-head {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+  font-variant-numeric: lining-nums;
+}
+div.proj-head { cursor: default; }
+
+button.proj-head:hover,
+.proj-item.on-stage > .proj-head,
+.proj-item.is-open > .proj-head {
+  color: var(--accent);
+}
+
+.proj-short > :first-child { margin-top: 0.35rem; }
+.proj-short > :last-child { margin-bottom: 0; }
+.proj-short figure { margin: 0.6rem 0 0; }
+
+.proj-more {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.3rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  cursor: pointer;
+}
+.proj-more:hover,
+.proj-item.on-stage > .proj-more { color: var(--accent); }
+
+.proj-detail { margin-top: 0.5rem; }
+
+/* derivations and results: the heading reads as an h3 */
+.proj-note > .proj-head,
+.proj-fig > .proj-head,
+.proj-day > .proj-head,
+.proj-ref > .proj-head {
+  font-size: var(--fs-1);
+}
+.proj-fig { margin: 2.2rem 0; }
+
+/* status groups and reference groups: bars, like the research page */
+.proj-bar {
+  margin: 0;
+  border-bottom: 1px solid var(--hair);
+}
+.proj-bar:first-of-type,
+:not(.proj-bar) + .proj-bar { border-top: 1px solid var(--hair); margin-top: 1.4rem; }
+.proj-bar > .proj-head {
+  position: relative;
+  padding: 0.6rem 1.5em 0.6rem 0;
+  font-size: 1.15rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+}
+.proj-bar > .proj-head::after {
+  content: "▸";
+  position: absolute;
+  right: 0;
+  color: var(--muted);
+  transition: transform 0.3s ease, color 0.2s;
+}
+.proj-bar.on-stage > .proj-head::after,
+.proj-bar.is-open > .proj-head::after {
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+.proj-bar > .proj-detail { margin: 0 0 1rem; }
+.proj-count {
+  margin-left: 0.5em;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: lining-nums;
+}
+
+/* a task opens into its subtasks, downwards, on the stage */
+details.proj-sub {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.45rem 0;
+}
+details.proj-sub > summary {
+  cursor: pointer;
+  list-style: none;
+  font-variant-numeric: lining-nums;
+}
+details.proj-sub > summary::-webkit-details-marker { display: none; }
+details.proj-sub > summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1.1em;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+}
+details.proj-sub[open] > summary::before { transform: rotate(90deg); }
+details.proj-sub > summary:hover { color: var(--accent); }
+details.proj-sub > :not(summary) { margin-left: 1.1rem; }
+
+/* status marks, from a trailing "· done" etc. */
+.st {
+  white-space: nowrap;
+  font-size: 0.88em;
+  font-variant-caps: small-caps;
+}
+.st-done { color: var(--accent); }
+.st-live { color: var(--accent-2); }
+.st-idle,
+.st-dead { color: var(--muted); }
+.st-dead { text-decoration: line-through; text-decoration-thickness: 1px; }
+
+/* moving figures: a video, or an interactive page in figs/ shown in a frame */
+.proj-body figure video,
+.stage-body figure video,
+.proj-body figure iframe,
+.stage-body figure iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--hair);
+  background: var(--print);
+}
+.proj-body figure iframe,
+.stage-body figure iframe {
+  aspect-ratio: 4 / 3;
+}
+
+/* the stage carries the same figure and table look as the spine */
+.stage-body figure { margin: 1.25rem 0; }
+.stage-body figure img {
+  display: block;
+  max-width: 100%;
+  background: var(--print);
+  padding: 0.5rem;
+  border: 1px solid var(--hair);
+}
+.stage-body figcaption {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+}
+.stage-body table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.stage-body th,
+.stage-body td {
+  border-bottom: 1px solid var(--hair);
+  padding: 0.3rem 0.8rem 0.3rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+.stage-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.stage-body code {
+  font-size: 0.88em;
+  background: var(--panel);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+
+/* references */
+.ref-usage {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.ref-key { font-size: 0.85rem; color: var(--muted); }
+
+/* the log's timeline: one dot per working day */
+.proj-timeline {
+  position: relative;
+  margin: 1.25rem 0 1.75rem;
+  height: 46px;
+}
+.proj-timeline svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.proj-timeline line {
+  stroke: var(--hair);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.proj-timeline line.tick { stroke: var(--muted); }
+.proj-tl-labels span {
+  position: absolute;
+  top: 28px;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-variant-caps: small-caps;
+  color: var(--muted);
+}
+.proj-tl-day {
+  position: absolute;
+  top: 18px;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.75;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.proj-tl-day:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.35);
+}
+.proj-day > .proj-short p {
+  color: var(--muted);
+  font-size: 0.95rem;
 }

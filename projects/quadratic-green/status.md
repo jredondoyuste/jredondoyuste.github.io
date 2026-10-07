@@ -1,4 +1,4 @@
-**Time-domain comparison done; refining the mode sum (2026-10-06).** Evolutions with thin Gaussians in place of the deltas converge to the analytic linear and second-order solutions at all times away from the light-cone edges ([F2–F4](#results)). The second-order mode sum is being pushed from $N = 50$ to $N = 100$ to tighten the late-time comparison. The derivation corrections ([F1](#results)) still need to go into the draft.
+**Time-domain comparison done (2026-10-07).** Evolutions with thin Gaussians in place of the deltas, extrapolated to zero width, converge to the analytic linear and second-order solutions at all times away from the light-cone edges, as more modes are summed: exponentially at linear order, as a power of $N$ at second order, to $4\times10^{-6}$ of the peak at late times ([F2–F4](#results)). The derivation corrections ([F1](#results)) still need to go into the draft.
 
 ## Tasks
 
@@ -15,7 +15,7 @@ Every equation got a verdict (OK, wrong with a correction, or not checked), with
 - **S4** Report · done
   The merged audit, with the corrections ready to transcribe.
 
-### t02 — Time-domain evolutions against the mode sums · active
+### t02 — Time-domain evolutions against the mode sums · done
 
 Evolve the linear and second-order equations with Gaussians of width $\sigma$ for the deltas, and compare with the analytic mode sums at all times ([F2–F4](#results)).
 
@@ -27,8 +27,8 @@ Evolve the linear and second-order equations with Gaussians of width $\sigma$ fo
   Regulator error $O(\sigma)$, mechanism confirmed; after extrapolation in $\sigma$ the evolution matches the analytic solution ([F3](#results)).
 - **S4** Result and report · done
   The agreement written up as one result.
-- **S5** Mode sum at $N = 50$ and $100$; summary figures · active
-  $N = 50$ lowers the late-time residual 5.7× to $6\times10^{-5}$; $N = 100$ running ([F3](#results), [F4](#results)).
+- **S5** Mode sum at $N = 50$ and $100$; summary figures · done
+  Residual against the number of modes; $4\times10^{-6}$ of the peak at late times with $N = 100$ ([F3](#results), [F4](#results)).
 
 ## Simmering
 
@@ -47,6 +47,10 @@ $\alpha = 1$, $V_0 = 1$ ($V_0 = 0.1$ for one check, where $4V_0 < \alpha^2$).
 ### How a check counts · done
 
 The ground truth for every mode-sum statement comes only from the closed-form $G_\omega$: direct quadrature of the $s^{(2)}$ convolution, or exact forward Laplace transforms of the windowed time-domain formulas. Every check carries a deliberately wrong variant that must fail.
+
+### Working precision at second order · done
+
+The second-order coefficients reach $10^{425}$ at $N = 100$ and cancel to $O(1)$. We use $\texttt{mp.dps} = 0.6N + 20$ up to $N = 50$ and $2N + 20$ above, and check every run by the imaginary part of the summed field, which must vanish.
 
 ### Mode sums · done
 

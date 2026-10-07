@@ -36,11 +36,10 @@
 
     <!-- DRAFT-FOR-JAIME: intro. -->
     <p class="qnm-intro">
-        A small body falls into a spinning black hole. Its orbit is fixed by three conserved numbers:
-        the energy <i>E</i>, the angular momentum <i>L</i> about the spin axis, and Carter's constant <i>Q</i>,
-        which measures how far the orbit tilts out of the equator.
-        It can fall in from far away, or slip off the innermost stable orbit.
-        On its way in it radiates gravitational waves; pick one mode (&#8467;, <i>m</i>) of the radiation to follow.
+        The plunge of a particle into a Kerr black hole is fixed by three conserved quantities:
+        the energy <i>E</i>, the angular momentum <i>L</i>, and Carter's constant <i>Q</i>.
+        Choose whether the plunge starts from infinity, or right inside the ISCO, and pick 
+        which mode you want to compute. 
         Everything below is solved live in your browser.
     </p>
 
@@ -79,12 +78,9 @@
                 <output id="p-time-out"></output>
             </div>
             <figcaption>
-                The particle falls in (black: the horizon) while the (&#8467;, <i>m</i>) mode of its radiation spreads out:
-                Re&thinsp;[<i>h</i>(<i>u</i>, &theta;) e<sup><i>im</i>&phi;</sup>] with <i>u</i> = <i>t</i> &minus; <i>r</i><sub>*</sub>,
-                the field far away continued inwards (it is faded near the hole, where the true field differs),
-                without its slowest part (below a tenth of the quasinormal frequency: the drift before the burst and the memory after it).
-                A point at radius <i>r</i> is drawn at <i>r</i>/(<i>r</i> + <i>R</i>). Drag to turn, scroll to zoom;
-                the slider runs through time (Kerr&ndash;Schild <i>T</i>, zero when the particle crosses the horizon; until then also its Mino time &lambda; and radius).
+                Re&thinsp;[<i>h</i>(<i>u</i>, &theta;) e<sup><i>im</i>&phi;</sup>] with <i>u</i> = <i>t</i> &minus; <i>r</i><sub>*</sub>.
+                Drag to turn, scroll to zoom;
+                The slider runs through Kerr&ndash;Schild time, and zero is when the particle crosses the horizon.
             </figcaption>
         </figure>
 
@@ -102,15 +98,14 @@
         <figure class="qnm-panel plunge-wave">
             <canvas id="p-wave" aria-label="The waveform of the chosen mode"></canvas>
             <figcaption id="p-wave-cap">
-                The waveform of the mode, <i>r</i> <i>h</i><sub>&#8467;<i>m</i></sub>(<i>u</i>)/&mu;: real part solid, imaginary part fainter.
-                The marker is the retarded time reaching the edge of the picture.
+                The waveform of the mode, <i>r</i> <i>h</i><sub>&#8467;<i>m</i></sub>(<i>u</i>)/&mu;: real part (solid), imaginary part (faint).
             </figcaption>
         </figure>
 
         <figure class="qnm-panel plunge-spec">
             <canvas id="p-spec" aria-label="The spectrum of the chosen mode"></canvas>
             <figcaption>
-                Its spectrum, |<i>h&#771;</i><sub>&#8467;<i>m</i></sub>(&omega;)| on a log scale, at positive and negative frequency.
+                Frequency-domain waveform, |<i>h&#771;</i><sub>&#8467;<i>m</i></sub>(&omega;)|.
                 Dashed: the fundamental quasinormal mode and its mirror.
             </figcaption>
         </figure>

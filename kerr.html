@@ -35,7 +35,7 @@
 
     <p class="qnm-intro">
         A perturbed black hole rings down in a discrete set of damped harmonics.
-        Each tone is labelled by an angular number &#8467;, an azimuthal number <i>m</i>,
+        Each mode is labelled by an angular number &#8467;, an azimuthal number <i>m</i>,
         and an overtone index <i>n</i>. Its frequency depends only on the mass and spin of the black hole.
         Everything below is solved for live, as you move the sliders, in your browser!
     </p>
@@ -74,7 +74,7 @@
         <figure class="qnm-panel qnm-volume">
             <canvas id="q-vol" aria-label="Three-dimensional rendering of the mode"></canvas>
             <figcaption id="q-vol-cap">
-                Re&thinsp;&psi; around the BH. The black sphere is the horizon, the rim is null infinity.
+                Re&thinsp;&psi; around the BH. The black sphere is the horizon, the edge is null infinity.
                 Drag to turn.
             </figcaption>
         </figure>
@@ -82,25 +82,25 @@
         <div class="qnm-side">
             <figure class="qnm-panel qnm-sphere">
                 <canvas id="q-sph" aria-label="Spheroidal harmonic on the sphere"></canvas>
-                <figcaption>The angular pattern, Re&thinsp;[<sub>&minus;2</sub>S<sub>&#8467;m</sub>(&theta;)&thinsp;e<sup><i>i</i>(<i>m</i>&phi;&minus;&omega;<sub>R</sub>&tau;)</sup>].</figcaption>
+                <figcaption>Angular pattern, Re&thinsp;[<sub>&minus;2</sub>S<sub>&#8467;m</sub>(&theta;)&thinsp;e<sup><i>i</i>(<i>m</i>&phi;&minus;&omega;<sub>R</sub>&tau;)</sup>].</figcaption>
             </figure>
             <dl class="qnm-readout" id="q-readout" aria-live="polite"></dl>
             <figure class="qnm-panel qnm-wave">
                 <canvas id="q-wave" aria-label="Ringdown waveform seen from the viewing angle"></canvas>
-                <figcaption>What an observer at &iota; records: <i>h</i><sub>+</sub> and <i>h</i><sub>&times;</sub>.</figcaption>
+                <figcaption>What an observer at &iota; measures: <i>h</i><sub>+</sub> and <i>h</i><sub>&times;</sub>.</figcaption>
             </figure>
         </div>
 
         <figure class="qnm-panel qnm-radial">
             <canvas id="q-rad" aria-label="Radial profile of the mode"></canvas>
             <figcaption id="q-rad-cap">
-                The radial profile on a hyperboloidal slice that reaches both the horizon and null infinity.
+                Radial profile on a hyperboloidal slice.
             </figcaption>
         </figure>
 
         <figure class="qnm-panel qnm-plane">
             <canvas id="q-om" aria-label="Complex frequency plane"></canvas>
-            <figcaption>The complex frequency as the spin runs from 0 to 0.99: this mode, and its siblings of the same &#8467; and <i>n</i> in faint.</figcaption>
+            <figcaption>The QNM frequency as a function of the BH spin. Faint: modes of the same &#8467; and <i>n</i>.</figcaption>
         </figure>
     </div>
 

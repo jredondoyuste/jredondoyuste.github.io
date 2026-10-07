@@ -248,3 +248,95 @@
   archivePrefix = {arXiv},
   usage = {Eqs. (7), (25)-(28): RN algebraically special frequencies k_alpha = kappa/(2|beta_alpha|), beta_alpha = 3M + (-1)^alpha sqrt(9M^2+4Q^2(l-1)(l+2)), open-access statement of Chandrasekhar's result; t04 S6 identification of IRG residual modes (tasks/t04-kn-linear-system/S6/notes_algebraically_special.md). Cached lit_cache/arxiv-1001.0152.pdf.}
 }
+
+@article{BertiKokkotas2005,
+  author = {Emanuele Berti and Kostas D. Kokkotas},
+  title = {{Quasinormal modes of Kerr-Newman black holes: coupling of electromagnetic and gravitational perturbations}},
+  journal = {Phys. Rev. D},
+  volume = {71},
+  pages = {124008},
+  year = {2005},
+  eprint = {gr-qc/0502065},
+  archivePrefix = {arXiv},
+  usage = {Table IV rows "Leaver, V_i^(-)" (units 2M=1): coupled RN grav-EM n=0 QNMs, l=1 EM, l=2 EM-led and grav-led, Q/M=0..0.8; Sec. III eqs (12)-(16) (axial Moncrief system, isospectrality statement). t06 S2 reference values (tasks/t06-rn-spectral/S2/notes_rn_qnm_tables.md). Cached lit_cache/arxiv-gr-qc_0502065.pdf.}
+}
+
+@article{ZhouMaHuang2026,
+  author = {Bo-Yun Zhou and Hao-Yun Ma and Jia-Hui Huang},
+  title = {{Quasinormal modes of Reissner-Nordstr\"om black hole from bound state spectrum}},
+  year = {2026},
+  eprint = {2609.14979},
+  archivePrefix = {arXiv},
+  usage = {Tables I-II rows "Leaver" (M=1): RN l=2 grav-led and EM-led QNMs, n=0..3(4), Q/M=0.2,0.4,0.6,0.8,0.99; Table VII extremal RN (10 digits, BS method). t06 S2 reference values. Cached lit_cache/arxiv-2609.14979.pdf.}
+}
+
+@article{DiasGodazgarSantos2022,
+  author = {\'Oscar J. C. Dias and Mahdi Godazgar and Jorge E. Santos and Gregorio Carullo and Walter Del Pozzo and Danny Laghi},
+  title = {{Eigenvalue repulsions and quasinormal mode spectra of Kerr-Newman: an extended study}},
+  journal = {JHEP},
+  year = {2022},
+  eprint = {2205.13072},
+  archivePrefix = {arXiv},
+  usage = {Table 1 (p. 51): Schwarzschild n=0 QNMs to 8 digits, Z2 (grav) l=2 and Z1 (EM) l=1,2, e^{-i omega t}. t06 S2 Schwarzschild reference. Cached lit_cache/arxiv-2205.13072.pdf.}
+}
+
+@article{KokkotasSchmidt1999,
+  author = {Kostas D. Kokkotas and Bernd G. Schmidt},
+  title = {{Quasi-Normal Modes of Stars and Black Holes}},
+  journal = {Living Rev. Rel.},
+  volume = {2},
+  pages = {2},
+  year = {1999},
+  eprint = {gr-qc/9909058},
+  archivePrefix = {arXiv},
+  usage = {Table 1: Schwarzschild gravitational QNMs l=2,3,4, n=0..3 (5 digits, from Leaver). t06 S2 Schwarzschild s=2 n=1 reference. Cached lit_cache/arxiv-gr-qc_9909058.pdf.}
+}
+
+@article{Zhidenko2004,
+  author = {A. Zhidenko},
+  title = {{Quasi-normal modes of Schwarzschild-de Sitter black holes}},
+  journal = {Class. Quant. Grav.},
+  volume = {21},
+  pages = {273},
+  year = {2004},
+  eprint = {gr-qc/0307012},
+  archivePrefix = {arXiv},
+  usage = {Sec. 3 tables, Lambda=0 rows (WKB, M=1): Schwarzschild EM l=1 n=0, l=2 n=0,1 (approximate, 4-5 digits). t06 S2 only source found for EM l=2 n=1. Cached lit_cache/arxiv-gr-qc_0307012.pdf.}
+}
+
+@software{pythonflint,
+  title = {python-flint: Python bindings for FLINT},
+  author = {{The python-flint developers}},
+  version = {0.9.0},
+  url = {https://github.com/flintlib/python-flint},
+  year = {2026},
+  usage = {Extended-precision (acb) linear solves in the Newton refinement of RN QNMs, tasks/t06-rn-spectral/S3/mprefine.py.}
+}
+
+@article{Destounis2026KNsep,
+  author = {Destounis, Kyriakos and Cardoso, Vitor and Hintz, Peter},
+  title = {The quasinormal modes of {Kerr-Newman} black holes: a separated approach},
+  year = {2026},
+  eprint = {2610.07142},
+  archivePrefix = {arXiv},
+  usage = {Separated angular (eq. 5-7) and radial (eqs. radial-defs, ABC) KN equations and Tables I-V, Figs. 1-2: reproduced with an independent solver in t06 S3b (tasks/t06-rn-spectral/S3b/notes_arxiv-2610.07142.md).}
+}
+
+@article{Pombo2026KN,
+  author = {Pombo, Alexandre M.},
+  title = {Coupled by Design: Computing {Kerr-Newman} Quasinormal Modes with a Hybrid {SpectralPINN} Solver},
+  year = {2026},
+  eprint = {2607.14216},
+  archivePrefix = {arXiv},
+  usage = {Companion paper of the coupled-system KN QNM dataset (Pombo2026KNdata) compared against in t06 S3b. Not read.}
+}
+
+@dataset{Pombo2026KNdata,
+  author = {Pombo, Alexandre M.},
+  title = {{Kerr-Newman} Quasinormal modes},
+  year = {2026},
+  publisher = {Zenodo},
+  version = {V1},
+  doi = {10.5281/zenodo.21359120},
+  usage = {Coupled-system KN QNM frequencies (l=m=2, n=0,1) used as seeds and as the comparison of Fig. 1 of Destounis2026KNsep in t06 S3b; CC-BY-4.0.}
+}

@@ -1,4 +1,4 @@
-**Linear theory done (2026-10-06).** Foundations (t01, t02) and the full linear Kerr–Newman problem (t04) are done: the coupled system for the gauge-invariant pair, matched to Weller et al., Hintz and Giorgi, and the reconstruction of the metric and potential from that pair. Next is the second-order problem on Reissner–Nordström (t05) or the RN hyperboloidal code (t06).
+**RN numerics under way (2026-10-07).** The linear theory is done (t01, t02, t04). The spectral code on Reissner–Nordström hyperboloidal slices (t06) reproduces the published coupled RN QNMs ([F1](#results)), and our solver of Hintz's separated equations reproduces the Kerr–Newman QNMs of Destounis, Cardoso and Hintz ([F2](#results)). Now: reconstructing the first-order metric and potential for QNM data (t06 S4), then the second-order invariants (t13) and sources (t05).
 
 ## Tasks
 
@@ -45,13 +45,30 @@ The linear problem, end to end, with a tutorial notebook ([§2–§6](#derivatio
 - **S7** Tutorial notebook · done
   Six sections with exercises; runs headless in about 3 min.
 
-### t05 — RN: second-order equations with explicit quadratic sources · next
+### t06 — RN numerics: spectral code, coupled QNMs, reconstruction for QNM data · active
 
-Sources grav×grav, grav×EM, EM×EM; gauge dependence; behaviour at the horizon and at scri.
+From GHP equations to Chebyshev arrays on RN hyperboloidal slices; the QNMs of the coupled system; the first-order metric and potential for each QNM ([F1, F2](#results)).
 
-### t06 — RN: hyperboloidal spectral code, 1+1 per multipole · next
+- **S1** Bridge from GHP to spectral arrays · done
+  GHP expressions become coordinate operators, then Chebyshev matrices; the hyperboloidal $\ell=2$ system equals t04's after the change of chart, exactly.
+- **S2** Reference RN QNM tables · done
+  Published coupled values at $Q/M\in\{0.2,0.4,0.6,0.8,0.99\}$, with their units and conventions.
+- **S3** Coupled RN QNMs · done
+  $\ell=1,2$, $n=0,1$, $Q/M$ up to $0.99$: 25 of 28 published values matched to every printed digit; the other 3 are wrong in the 5th decimal of one table ([F1](#results)).
+- **S3b** Reproduce Destounis–Cardoso–Hintz (arXiv:2610.07142) · done
+  Our own 40-digit solver of the separated KN equations reproduces their tables and figures; at $a=0$ it equals S3 to $10^{-11}$ ([F2](#results)).
+- **S4** Reconstruct $h_{ab}$, $A^{(1)}_a$ for QNM data · active
+  A least-squares solve of the transport equations works, but converges only algebraically, with the error in the Maxwell part; we are isolating the cause.
+- **S5** Plots and results, then a hold · open
+  Reconstruction plots against $\sigma$; a headline plot of the KN frequencies against $Q$ for several $a$.
 
-First and second order; coupled RN QNMs against published values.
+### t13 — Second-order gauge- and frame-invariant variables on KN · planned
+
+The quadratic corrections that make the second-order parts of $(\varphi_{+2},\varphi_{+1})$ invariant under second-order gauge and tetrad changes, the Einstein–Maxwell analogue of Campanelli–Lousto; in GHP, checked off shell on RN and KN. Plan awaiting approval.
+
+### t05 — RN: second-order equations with explicit quadratic sources · planned
+
+Sources grav×grav, grav×EM, EM×EM, for the t13 invariant variables; behaviour at the horizon and at scri. After t06 and t13.
 
 ### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · planned
 
@@ -87,6 +104,10 @@ On RN we know exactly what fixes them; on KN only the Kerr–Newman family itsel
 
 Not needed for t06, which can evolve the coupled form directly.
 
+### Map from the separated variables to our pair · open
+
+Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1})$. The QNMs agree ([F2](#results)); the map between the variables is left for the KN tasks (t10, t11).
+
 ## Dead ends
 
 ### t03 — Linear Teukolsky-type system on KN · superseded
@@ -106,6 +127,10 @@ The gauge-invariant pair $\varphi_{+2}=\Psi_0^{(1)}$, $\varphi_{+1}=2\phi_1\Psi_
 ### Gauge for reconstruction
 
 Ingoing radiation gauge for both $h_{ab}$ and $A^{(1)}_a$, with the tetrad perturbation fixed by $l^{(1)}=0$.
+
+### Numerics
+
+Chebyshev collocation in $\sigma\in[0,1]$ from scri to the horizon. Eigenvalues are found in double precision and refined by Newton's method in 40-digit arithmetic (python-flint): in double precision the gravitational-led eigenvalue is ill-conditioned and stalls near $10^{-7}$.
 
 ### Charts
 

@@ -1,5 +1,18 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-07 — RN QNMs, and the separated KN QNMs reproduced
+
+- Coupled RN QNMs from our system ($\ell=1,2$, $n=0,1$, $Q/M$ up to $0.99$) match four published tables to every printed digit, except three values of one table, which are wrong ([F1](#results)).
+- Destounis, Cardoso and Hintz (arXiv:2610.07142) appeared; we reproduced their KN tables and figures with our own solver of the separated equations, and found their spin-label isospectrality holds to $10^{-15}$ ([F2](#results)).
+- What went wrong: double precision stalls the gravitational-led eigenvalue at $10^{-7}$ (fixed with a 40-digit Newton step); the first continuation run lost the mode at small $Q$; the `KN_a=0.00` files of a public dataset are not $a=0$ data.
+- Started the reconstruction of the metric and potential for QNM data (t06 S4): it solves, but converges too slowly in the Maxwell part. Two rounds without a mechanism, so we are re-planning with simpler separating tests.
+
+### 2026-10-06 — RN numerics planned; spectral bridge and reference tables
+
+- Two new tasks: the RN numerics (t06) and the second-order gauge- and frame-invariant variables on KN (t13); the second-order sources (t05) come after both.
+- The bridge from GHP equations to Chebyshev arrays on hyperboloidal slices, checked exactly against the t04 radial system (t06 S1).
+- Published coupled RN QNM tables collected, with their conventions (t06 S2).
+
 ### 2026-10-06 — linear theory finished
 
 - The reconstruction hierarchy written in BL and both hyperboloidal charts, and checked there ([§6](#derivations)).

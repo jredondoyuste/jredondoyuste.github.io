@@ -1,4 +1,4 @@
-**Paused for review (2026-10-05).** Every planned task is done or closed as a dead end. We now read through the code and the results together, and think, for about a week before deciding what comes next.
+**Paused for review (2026-10-07).** Every planned task is done or closed as a dead end. During the review we added one short task on what the measured modes are made of, how many bits they carry and when a mode is detected (F13–F16). We read through the code and the results together before deciding what comes next.
 
 ## Tasks
 
@@ -33,6 +33,19 @@ F1–F4, F7–F12 at $a = 1$, $n_{\rm meas} = \lfloor n_{\rm ch}/2 \rfloor$.
 ### Code tidied for review · done
 
 github.com/jredondoyuste/mqnm
+
+### t13 — What the measured modes are made of: bits, posteriors, detection · done
+
+F13–F16. ET, GW250114-like, from $10\,M$ and $6\,M$.
+
+- **S1** Physical-mode content of measured modes 1–4 · done
+  An exact split of each channel over the modes: the second mode from $10\,M$ is mostly the (2,2,1).
+- **S2** Information in bits per channel and per mode · done
+  The count threshold is half a bit per channel; the 220 tells at most 0.34 bits about the 440.
+- **S3** Posterior correlations and the shape of the 440/220 and 221/220 posteriors · done
+  The data trade the prior's ties for an overtone-chain degeneracy; a 221 off its tie stays pulled toward it.
+- **S5** When an amplitude excludes zero at $3\sigma$ · done
+  2–6× later in $\rho_{220}$ than the count; the 440 at about 200.
 
 ## Simmering
 

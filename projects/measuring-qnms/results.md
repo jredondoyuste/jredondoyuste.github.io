@@ -1,5 +1,73 @@
 Findings, newest first. Unless stated, every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$, uses all 280 modes ($\ell \le 8$, $n \le 7$) and the PN × QNEF prior with untied-overtone scale $a = 1$ ([§8](#derivations)). **Counts are in modes:** the amplitudes enter as real and imaginary parts, so every mode has two real channels, and we report $n_{\rm meas} = \lfloor n_{\rm ch}/2 \rfloor$, where $n_{\rm ch} = \#\{s_k > 1\}$. A mode counts once both its quadratures are measured. Retired plots and superseded numbers remain in the [log](#log).
 
+### F16 — How well is the 221/220 ratio measured, and how much does the prior pull it? (unverified)
+
+<figure><a href="figs/shape_221.png"><img src="figs/shape_221.png" alt="Posterior regions of the 221/220 amplitude ratio and relative phase for three simulated signals at rho_220 = 30, 100 and 321, ET, from 10 M"></a><figcaption>Posterior of $|C_{221}/C_{220}|$ (x) and of $(\arg C_{221} - \arg C_{220} - \phi_{\rm PN})/\pi$ (y), the relative phase minus its PN × QNEF prediction $\phi_{\rm PN} = \arg(g_{221}\kappa)$, in ET from $t_0 = 10\,M$, at $\rho_{220} = 30$, 100 and 321 (the GW250114-like source). Each colour is one simulated signal, a set of true amplitudes analysed on its own and without added noise: black, A, the PN × QNEF prediction (ratio 4.19); orange, B, and green, C, two amplitude sets drawn from the prior (ratios 4.77 and 0.94). Crosses: the true values. Contours: 50% and 90% posterior regions.</figcaption></figure>
+
+The 221's prior tie to the 220 is tight: its error is $f = 0.34$ of its PN amplitude for a typical 220. Signal C has a weak 220 ($0.65\,\sigma_{220}$), so the same absolute 221 error is a large relative one, and its ratio is 0.94 against 4.19 predicted.
+
+| $\rho_{220}$ | A (truth 4.19) | B (4.77) | C (0.94) |
+|---|---|---|---|
+| 30 | 4.24 [3.56, 4.92] | 4.68 [3.79, 5.59] | 2.16 [1.24, 3.10] |
+| 100 | 4.22 [3.74, 4.69] | 4.77 [4.14, 5.40] | 1.76 [1.09, 2.43] |
+| 321 | 4.20 [3.92, 4.48] | 4.75 [4.39, 5.12] | 1.26 [0.85, 1.67] |
+
+Median [16%, 84%] of $|C_{221}/C_{220}|$.
+
+**Takeaway.**
+
+- **Near the PN prediction, the 221/220 ratio is measured to about ±7% at the source**, the phase to about $\pm 0.05\pi$.
+- **A 221 that departs from its tie stays pulled toward it.** For C the truth is still at the lower edge of the 68% interval at $\rho_{220} = 321$: an analysis with this prior would underreport the departure.
+
+**Reproduce.** `PYTHONPATH=src/mqnm python tasks/t13-channel-anatomy/S3/plot_shape.py <S1 npz> <tag> 221`; the posterior is the exact Gaussian of the linear model.
+
+### F15 — What does the 440/220 posterior look like as the source gets louder? (unverified)
+
+<figure><a href="figs/shape_440.png"><img src="figs/shape_440.png" alt="Posterior regions of the 440/220 amplitude ratio and relative phase for three simulated signals at rho_220 = 30, 100 and 321, ET, from 10 M"></a><figcaption>Posterior of $|C_{440}/C_{220}|$ (x) and of $(\arg C_{440} - 2\arg C_{220} - \phi_{\rm PN})/\pi$ (y), the relative phase minus its PN × QNEF prediction $\phi_{\rm PN} = \pi$, in ET from $t_0 = 10\,M$, at $\rho_{220} = 30$, 100 and 321 (the GW250114-like source). Each colour is one simulated signal, analysed on its own and without added noise: black, A, the PN × QNEF prediction (ratio 0.031); orange, B, and green, C, two amplitude sets drawn from the prior (ratios 0.058 and 0.164; the prior error on the 440 is 1.95 times its PN amplitude). Crosses: the true values. Contours: 50% and 90% posterior regions.</figcaption></figure>
+
+The posterior is Gaussian in the real and imaginary parts of the amplitudes, so its covariance does not depend on the signal; the shape of quoted quantities such as a ratio and a phase does, and needs a true signal.
+
+**Takeaway.**
+
+- **Until the 440 is resolved, its ratio is biased high and skewed.** For A at $\rho_{220} = 30$ the median is 0.046 [0.024, 0.074] against a true 0.031; at the source 0.032 [0.024, 0.040].
+- **At low SNR the phase is set by the prior, not the data.** A's phase is confined to about $\pm 0.3\pi$ at $\rho_{220} = 30$, where the 440 itself carries under 1 bit (F13): the confinement comes from the tie to $A_{220}$.
+- By $\rho_{220} = 100$ the three signals separate; at the source each is pinned near its truth.
+
+**Reproduce.** `PYTHONPATH=src/mqnm python tasks/t13-channel-anatomy/S3/plot_shape.py <S1 npz> <tag>`; data from `tasks/t13-channel-anatomy/S1/anatomy.py`.
+
+### F14 — When does a mode amplitude exclude zero at $3\sigma$? (unverified)
+
+<figure><a href="figs/mode_detection.png"><img src="figs/mode_detection.png" alt="Probability that each mode's amplitude excludes zero at 3 sigma against rho_220, ET, from 10 M and 6 M, under three analysis priors"></a><figcaption>Probability that a mode's complex amplitude excludes zero at $3\sigma$ ($D^2 = \hat\mu_j^\top\Sigma_{jj}^{-1}\hat\mu_j > 11.83$, zero's distance from the posterior mean in units of the posterior covariance), against $\rho_{220}$ (log), in ET from $t_0 = 10\,M$ (left) and $6\,M$ (right). Each point: 1000 simulated GW250114-like signals whose true amplitudes are drawn from the PN × QNEF prior, 50 noise realisations each. Colours: (2,2,0) black, (2,2,1) orange, (4,4,0) blue, (4,4,1) green, (2,2,2) yellow, (3,2,0) pink. Line style: the prior the analysis puts on the tested mode (below). Dashed vertical line: the source, $\rho_{220} = 321$.</figcaption></figure>
+
+The three line styles analyse the same signals with different priors on the tested mode $j$:
+
+- **Dashed, PN × QNEF prior** (production). A tied mode is a prediction from the 220 plus an error, $C_j = w_j A_{220} + e_j$, so the prior correlates $C_j$ with $C_{220}$. Once the data fix the 220, the prior alone centres $C_j$ on $w_j\hat C_{220}$, away from zero: by about half its error for the 440 (error 1.95 of the PN amplitude), by about three times its error for the 221 (error 0.34). So for the 221 the prior by itself nearly excludes zero.
+- **Solid, untied prior.** The same prior, but the tested mode keeps its width and loses every prior correlation with the other modes, as in an agnostic fit with a free amplitude per mode. Only data on that mode can move it from zero: the usual meaning of "detected". The gap to the dashed curve is the prior's share.
+- **Dotted, Bayes factor** for "mode present" over "mode zero" under the untied prior (Savage–Dickey, exact here), at the threshold matched to $3\sigma$. It penalises the extra parameter and needs the most signal.
+
+**Takeaway.**
+
+- **Detection comes 2–6× later in $\rho_{220}$ than the mode count of F9.** From $10\,M$, 50% detection (untied) at $\rho_{220} \approx 8$ (220), 32 (221), 200 (440), 400 (441), against entries at 1.6, 15 and 35 in F9. With the tie kept: 6, 16, 126, 200.
+- **At the source the 440 is excluded at $3\sigma$ in 80% of signals**; for the PN prediction itself, whose 440 is small, the median is $2.8\sigma$ (untied) and $3.6\sigma$ (tied). The (2,2,2) and (3,2,0) are not yet detected.
+- In bits (F13): "measured" is more than 1 bit on a mode; a $3\sigma$ detection of a prior-typical amplitude takes about 3.6 bits on it (estimated; checked on the 220 and 440).
+
+**Reproduce.** `python tasks/t13-channel-anatomy/S5/detect.py <S1 npz> <tag>`, then `S5/plot_detect.py`; seed fixed.
+
+### F13 — How many bits does a ringdown carry about each mode amplitude? (unverified)
+
+<figure><a href="figs/mode_bits.png"><img src="figs/mode_bits.png" alt="Bits of information on each mode amplitude against rho_220, ET, from 10 M and 6 M, for ten modes"></a><figcaption>The mutual information $I(C_j; d) = \tfrac12\log_2 \det P_{jj}/\det\Sigma_{jj}$ between each mode's complex amplitude and the data, against $\rho_{220}$ (log), in ET from $t_0 = 10\,M$ (left) and $6\,M$ (right); $P_{jj}$ and $\Sigma_{jj}$ are the $2\times2$ prior and posterior covariances of $({\rm Re}\,C_j, {\rm Im}\,C_j)$, all other modes marginalised. Each bit halves the area of the amplitude's error ellipse. Colour: harmonic, (2,2) black, (4,4) blue, (3,2) green, (4,2) pink, (6,6) purple; line style: overtone, $n = 0$ solid, 1 dashed, 2 dotted. Grey dotted line: 0.34 bits, what a perfectly known 220 implies about a tied fundamental through the prior. Dashed vertical line: the GW250114-like source.</figcaption></figure>
+
+The model is linear and Gaussian, so the information is exact and does not depend on the true amplitudes or the noise realisation. The total splits over the channels of [F9](#results): $I(\theta; d) = \sum_k \tfrac12\log_2(1 + s_k^2)$, so the threshold $s_k > 1$ of the count means "more than half a bit", and a measured mode carries more than 1 bit. In physical modes, the measured modes from $10\,M$ are: first the (2,2,0); second mostly the (2,2,1) (58%), with the (2,2,2) and the 44 pair; third mostly the (4,4,0) (60%); fourth mostly the (2,2,2). From $6\,M$ the first already mixes the (2,2,0) with the (2,2,1).
+
+**Takeaway.**
+
+- **At the source, from $10\,M$:** 220 12.5 bits, 221 6.8, 440 5.2, 441 3.8, 222 1.9, 320 1.5, 321 1.3, 420 0.5, 660 0.4. Total over all modes 35.9 bits (50.4 from $6\,M$).
+- **The 220 tells at most 0.34 bits about the 440**, through the prior tie. Everything else, 4.9 bits at the source, is new information on the 440's departure from its PN prediction, enough to bound that departure to about a third of the PN amplitude.
+- **The 221 rises with the 220 at first, flattens near 3 bits** (the most its tie can give) **and rises again** once the data reach its own error.
+- The data trade the prior's ties to the 220 for correlations along the overtone chain: posterior correlation 221–222 is 0.91 from $10\,M$, 222–223 0.83 from $6\,M$.
+
+**Reproduce.** `sbatch tasks/t13-channel-anatomy/S1/run.sh <python>` (decomposition), then `python tasks/t13-channel-anatomy/S2/bits.py <S1 npz> <tag>` and `S2/plot_modes.py`.
+
 ### F12 — How many events per run measure at least $k$ modes? (unverified)
 
 <figure><a href="figs/n_ge_k.png"><img src="figs/n_ge_k.png" alt="Expected number of ringdowns per run with at least k measured modes, for O3, O4a+b, O5, ET and CE 40 km (left) and three LISA populations (right)"></a><figcaption>Expected number of events in one run with $n_{\rm meas} \ge k$ measured modes (log), against $k$ (log). The 220 alone gives $k = 1$; the dotted line marks "beyond the 220". Left: ground networks with the GWTC-5 population (Madau–Dickinson redshift history, 500 hyperposterior draws). O3 grey (0.75 yr), O4a+b black (real noise, 0.89 yr), O5 = A+ orange (2 yr), ET green (1 yr), CE 40 km red (1 yr). Lines and dots: mean over draws. Bands: 90% interval of the expected count. Dashed with open dots: fewer than 10 pool events carry the count. Right: LISA with the Klein+16 popIII (solid), Q3-d (dashed) and Q3-nod (dotted) models, 4 yr. Every count uses ringdown events (SNR ≥ 8 in both inspiral and post-inspiral, the LVK pSEOBNR selection). Choices in [§12](#derivations).</figcaption></figure>

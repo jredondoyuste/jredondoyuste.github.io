@@ -1,0 +1,30 @@
+% Works and software this project actually uses. Documents cite them as [@key].
+% Software entries give the version and, where there is one, the DOI.
+% Give each entry what the project site needs to link it: `doi` (or `url`), and for an arXiv
+% paper `eprint`, `archivePrefix = {arXiv}` and `primaryClass`; `collaboration` for a
+% collaboration paper. A `usage` field (ignored by BibTeX styles) says in a few words how the
+% project uses the work, for example `usage = {The detector noise model of every injection.}`;
+% the site shows it in its citations table.
+
+@misc{DLMF,
+  title = {{NIST} Digital Library of Mathematical Functions},
+  note = {Release 1.2.x, F. W. J. Olver et al. (eds.); chapters 15.2, 15.6, 15.8, 15.10, 15.12},
+  url = {https://dlmf.nist.gov/},
+  usage = {Hypergeometric connection, Barnes-integral and large-c asymptotic formulas used to check the draft.}
+}
+
+@software{sympy,
+  author = {Meurer, Aaron and others},
+  title = {SymPy: symbolic computing in Python},
+  version = {1.14.0},
+  doi = {10.7717/peerj-cs.103},
+  usage = {Symbolic checks of the draft derivations (t01).}
+}
+
+@software{mpmath,
+  author = {{The mpmath development team}},
+  title = {mpmath: a Python library for arbitrary-precision floating-point arithmetic},
+  version = {1.3.0},
+  url = {https://mpmath.org/},
+  usage = {Arbitrary-precision hypergeometric functions, residues and quadrature in the t01 numerical checks.}
+}

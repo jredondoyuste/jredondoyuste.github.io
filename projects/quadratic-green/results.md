@@ -12,36 +12,38 @@ Geometry A ($r_S = -1$, $r_{NL} = -2.5$, observer $r = 4$), $\alpha = V_0 = a = 
 
 **Reproduce.** `tasks/t02-time-domain/S5/money_plots.py` after `S5/terms.py 50 4` (terms and the family split).
 
-### F3 — Does the evolved second-order field converge to the analytic solution? (unverified)
+### F3 — Does the evolved second-order field converge to the analytic solution as modes are added? (unverified)
 
-<figure><a href="figs/f3-second-order.png"><img src="figs/f3-second-order.png" alt="Second-order field at r = 4: evolution and analytic sum, and their residual for each Gaussian width and after extrapolation"></a><figcaption>Yes: after extrapolating the Gaussian width to zero, the evolution matches the $N = 50$ mode sum to $6\times10^{-5}$ of the peak after $\tau_2$.</figcaption></figure>
+<figure><a href="figs/f3-second-order.png"><img src="figs/f3-second-order.png" alt="Second-order field at r = 4: evolution and analytic sum, and their residual for N = 2 to 50"></a><figcaption>Yes: after $\tau_2$ the residual falls like a power of $N$, to $6\times10^{-5}$ of the peak at $N = 50$.</figcaption></figure>
 
-Geometry A, both deltas replaced by unit Gaussians of width $\sigma$; 4th-order finite differences + RK4, $\Delta r = \sigma/16$. Top: $\lvert\psi^{(2)}(t, 4)\rvert$; navy, evolution at $\sigma = 0.025$; coral, the extrapolation $u_0 = (8u_{0.025} - 6u_{0.05} + u_{0.1})/3$; black dashed, the analytic sum at $N = 50$. Bottom: residual over the peak; blue, each $\sigma$; grey, $u_0$ against $N = 25$; coral, $u_0$ against $N = 50$. Yellow: window II.
+Geometry A ($r_S = -1$, $r_{NL} = -2.5$, observer $r = 4$). Both deltas are replaced by unit Gaussians of width $\sigma$; the evolution runs at $\sigma = 0.1, 0.05, 0.025$ and is extrapolated to $\sigma \to 0$ (below). Top: $\lvert\psi^{(2)}(t, 4)\rvert$; black, the evolution; coral dashed, the analytic three-window sum at $N = 50$. Bottom: their difference over the peak, for $N = 2, 4, 8, 16, 25, 50$ (light to dark). Yellow: window II.
+
+**The $\sigma \to 0$ limit.** A Gaussian of width $\sigma$ changes the field, at each $t$ away from the light-cone edges, by a power series in $\sigma$. For the linear field only even powers appear (the Gaussian is symmetric). At second order there is also a term linear in $\sigma$: the source squares $\psi^{(1)}$, and the square of a smoothed step is not the smoothed square. Its imprint is $c\,\sigma\,G(t - 1.5, 4 \vert r_{NL})$ to 0.3%, with $c \to -0.167$. With $u_\sigma = u_0 + a\sigma + b\sigma^2$ at three widths, $u_0 = (8u_{0.025} - 6u_{0.05} + u_{0.1})/3$ cancels both terms (Richardson extrapolation). Near the edges the series fails, which leaves the spikes at $\tau_{1,2}$.
 
 **Takeaway.**
 
-- The second-order regulator error is $O(\sigma)$, not $O(\sigma^2)$. The square of a smoothed step is not the smoothed square, so the source carries an extra impulse $\propto\sigma$ at the front of $\psi^{(1)}(t, r_{NL})$. Its late-time imprint is $c\,\sigma\,G(t - 1.5, 4 \vert r_{NL})$ to 0.3%, with $c \to -0.167$.
-- Outside $\lvert t - \tau_i\rvert < 0.5$ the extrapolated evolution agrees with the analytic solution at $N = 50$ to $7.2\times10^{-4}$ (window II), $5.9\times10^{-5}$ (window III), $1.4\times10^{-5}$ ($t \ge 15$) of the peak.
-- From $N = 25$ to $50$ the window-III residual drops 5.7×. At $N = 25$ the truncation of the mode sum set the error. In window II the two truncations agree to $10^{-8}$, so the $7\times10^{-4}$ left there comes from the evolution.
+- Outside $\lvert t - \tau_i\rvert < 0.5$, window III: $6.8\times10^{-2}$ ($N = 2$), $4.4\times10^{-3}$ (8), $9.8\times10^{-4}$ (16), $3.3\times10^{-4}$ (25), $5.9\times10^{-5}$ (50) of the peak, roughly $N^{-2.5}$. The linear sum converges exponentially ([F2](#results)); the second-order one only as a power.
+- Window II stays at $6$–$7\times10^{-4}$ from $N = 8$ on: there the evolution sets the level (in geometry B it is $1.1\times10^{-5}$).
+- Without the extrapolation the $O(\sigma)$ term hides the modes: the raw $\sigma = 0.025$ evolution stops at $4.6\times10^{-3}$.
 - Controls: dropping the window-II QNM term or the QQNMs gives $0.58$ and $0.19$.
 - An $N = 100$ run is under way; the figure will be updated.
 
-**Reproduce.** `tasks/t02-time-domain/S3/second_compare.py` (evolutions), `S5/terms.py 50 4`, `S5/metrics.py`, `S5/money_plots.py`.
+**Reproduce.** `tasks/t02-time-domain/S3/second_compare.py` (evolutions), `S5/terms.py 50 4`, `S5/metrics_byN.py`, `S5/money_plots.py`.
 
 ### F2 — Does the evolved linear Green's function match the mode sum at all times? (unverified)
 
-<figure><a href="figs/f2-linear.png"><img src="figs/f2-linear.png" alt="Linear Green's function: evolution and N = 100 mode sum, and the residual for four Gaussian widths"></a><figcaption>Yes: away from the light-cone edges the residual falls like $\sigma^2$, to $6\times10^{-5}$ of the peak at $\sigma = 0.025$.</figcaption></figure>
+<figure><a href="figs/f2-linear.png"><img src="figs/f2-linear.png" alt="Linear Green's function: evolution and N = 100 mode sum, and the residual for N = 1 to 100"></a><figcaption>Yes: the residual falls exponentially with $N$, to $10^{-10}$ of the peak after $\tau_2$ at $N = 32$.</figcaption></figure>
 
-Case 2: source $y = -2.5$, observer $x = -1$. Top: $\lvert G(t; x\vert y)\rvert$; navy, evolution at $\sigma = 0.025$; black dashed, the windowed mode sum at $N = 100$. Bottom: $\lvert G_\sigma - G_{N=100}\rvert$ over the peak, $\sigma = 0.2, 0.1, 0.05, 0.025$ (light to dark). Yellow: the window $1.5 < t < 3.5$ (zero-mode plateau plus Matsubara sums); after it, QNMs only.
+Case 2: source $y = -2.5$, observer $x = -1$. The evolution, at $\sigma = 0.1, 0.05, 0.025$, is extrapolated to $\sigma \to 0$ with $(64u_{0.025} - 20u_{0.05} + u_{0.1})/45$, which cancels the $\sigma^2$ and $\sigma^4$ terms ([F3](#results) explains the limit). Top: $\lvert G(t; x\vert y)\rvert$; black, the evolution; coral dashed, the windowed mode sum at $N = 100$. Bottom: their difference over the peak, for $N = 1, 2, 4, 8, 16, 32, 100$ (light to dark). Yellow: the window $1.5 < t < 3.5$ (zero-mode plateau plus Matsubara sums); after it, QNMs only.
 
 **Takeaway.**
 
-- Off the edges the residual is the Gaussian's second moment: $\propto\sigma^2$. Averaging the mode sum over the same Gaussian removes it (to $2.6\times10^{-7}$).
-- At $t = \tau_{1,2}$ the Green's function jumps; the evolution smooths the jump over a width $\sim\sigma$.
-- Adding modes at fixed $\sigma = 0.025$ lowers the residual from $0.3$ ($N = 1$) to the $\sigma^2$ floor; this holds also inside a long Matsubara window.
+- After $\tau_2$: $9\times10^{-2}$ ($N = 1$), $3.5\times10^{-3}$ (4), $1.2\times10^{-6}$ (16), $1.4\times10^{-10}$ (32). From $N = 32$ on the evolution's own error ($2\times10^{-9}$ inside the window) is the limit.
+- Without the extrapolation, the $\sigma^2$ term of the raw $\sigma = 0.025$ evolution stops the residual at $6\times10^{-5}$.
+- At $t = \tau_{1,2}$ the Green's function jumps; within a few $\sigma$ of a jump the expansion in $\sigma$ fails, which leaves the spikes.
 - Controls: dropping the zero-mode plateau, or flipping the sign of the initial data, gives $O(1)$.
 
-**Reproduce.** `tasks/t02-time-domain/S2/linear_compare.py`, `S2/linear_modes.py`, `S5/money_plots.py`.
+**Reproduce.** `tasks/t02-time-domain/S2/linear_compare.py` (evolutions), `S5/metrics_byN.py`, `S5/money_plots.py`.
 
 ### F1 — Is the analytical second-order solution correct? (unverified)
 

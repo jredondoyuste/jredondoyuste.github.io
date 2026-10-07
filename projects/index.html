@@ -32,6 +32,38 @@
          la-lock-open + "open" for a published, public project.
          .proj-people lists collaborators; leave it out when there are none. -->
     <ul class="proj-list">
+        <!-- The lab: not a notebook, so no beads and no gate. Its title opens
+             one card per page (a <details>: no script needed). -->
+        <li class="proj-lab">
+          <details>
+            <summary>
+                <span class="proj-title"><svg class="la-icon proj-access" role="img" aria-label="open"><title>open</title><use href="/files/la-sprite.svg#la-lock-open"/></svg>Black Hole Lab</span>
+                <span class="muted">A playground with visualizations of black hole quasinormal modes, gravitational waves emitted when particles fall into black holes, and other stuff I find useful to gain intuition. Continuously under construction.</span>
+            </summary>
+            <!-- DRAFT-FOR-JAIME: the two card lines -->
+            <div class="lab-cards">
+                <a class="lab-card" href="/kerr.html">
+                    <svg viewBox="0 0 160 80" aria-hidden="true">
+                        <circle class="lab-hole" cx="26" cy="40" r="13"/>
+                        <path class="lab-wave" d="M44 40 C48 18 52 18 56 40 S64 60 68 40 S75 25 79 40 S85 51 89 40 S95 32 98 40 S103 46 106 40 S110 36 113 40 S117 43 120 40 S124 38 127 40 S131 41 134 40 L152 40"/>
+                    </svg>
+                    <span class="lab-name">Quasinormal modes</span>
+                    <span class="lab-line">How a spinning black hole rings: frequencies, angular patterns and radial profiles.</span>
+                </a>
+                <a class="lab-card" href="/plunge.html">
+                    <svg viewBox="0 0 160 80" aria-hidden="true">
+                        <path class="lab-front" d="M92 12 A34 34 0 0 1 92 68"/>
+                        <path class="lab-front lab-faint" d="M108 6 A46 46 0 0 1 108 74"/>
+                        <path class="lab-orbit" d="M150 18 C118 22 96 30 84 38 C74 45 62 52 52 50 C42 48 40 36 50 32 C56 30 60 36 56 40"/>
+                        <circle class="lab-hole" cx="56" cy="40" r="10"/>
+                        <circle class="lab-dot" cx="150" cy="18" r="2.6"/>
+                    </svg>
+                    <span class="lab-name">Plunges</span>
+                    <span class="lab-line">A particle falls into a spinning black hole, and the gravitational waves it sends out.</span>
+                </a>
+            </div>
+          </details>
+        </li>
         <li>
             <a href="/projects/kerr-newman-2nd/"><svg class="la-icon proj-access" role="img" aria-label="password-protected"><title>password-protected</title><use href="/files/la-sprite.svg#la-lock"/></svg>Second-order perturbations of Kerr–Newman</a>
             <span class="proj-people">with David Pereñiguez</span>

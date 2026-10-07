@@ -2171,3 +2171,48 @@ body.lb-open {
   /* one switch per line, so no option breaks across lines */
   .qnm-switches { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 }
+
+/* ----- plunge.html: the plunge lab ------------------------------------ */
+/* Borrows the QNM lab's controls, panels and readout; only the grid
+   differs: the orbit large, the plunge region and numbers beside it. */
+
+.plunge-lab {
+  grid-template-areas:
+    "controls controls"
+    "volume   side"
+    "wave     wave"
+    "spec     spec";
+}
+
+.plunge-wave { grid-area: wave; }
+.plunge-spec { grid-area: spec; }
+.plunge-wave canvas { height: 9rem; }
+.plunge-spec canvas { height: 11rem; }
+
+/* the 3D view: WebGL underneath, the orbit drawn on a 2D canvas on top */
+.plunge-stage { position: relative; aspect-ratio: 1; cursor: grab; touch-action: pan-y; }
+.plunge-stage:active { cursor: grabbing; }
+.plunge-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.plunge-lab .qnm-controls label[hidden] { display: none; }
+
+/* the compute button: in the switches' bracket style, always "on" */
+.plunge-run { flex-basis: 100%; display: flex; align-items: baseline; gap: 1rem; }
+.plunge-run button {
+  background: none; border: none; padding: 0; font: inherit;
+  color: var(--accent); cursor: pointer; white-space: nowrap;
+}
+.plunge-run button:disabled { color: var(--muted); cursor: progress; }
+.plunge-run span { color: var(--muted); font-style: italic; }
+
+/* time controls under the 3D view */
+.plunge-time { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.4rem; font-variant-numeric: lining-nums tabular-nums; }
+.plunge-time button { background: none; border: none; padding: 0; font: inherit; color: var(--accent); cursor: pointer; white-space: nowrap; }
+.plunge-time input[type="range"] { flex: 1; min-width: 6rem; accent-color: var(--accent); }
+.plunge-time output { color: var(--muted); font-size: 0.9rem; min-width: 14em; }
+
+.plunge-region canvas { height: 15rem; cursor: crosshair; }
+
+@media (max-width: 800px) {
+  .plunge-lab { grid-template-areas: "controls" "volume" "side" "wave" "spec"; }
+}

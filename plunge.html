@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plunges — Jaime Redondo-Yuste</title>
+    <meta name="description" content="A particle plunging into a spinning black hole, solved live: the orbit, and which orbits plunge at all.">
+    <link rel="icon" href="/files/favicon.png">
+    <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/theme.js"></script>
+    <script src="/js/ringdown.js" defer></script>
+    <script src="/js/kerr-qnm.js" defer></script>
+    <script src="/js/kerr-geodesic.js" defer></script>
+    <script src="/js/plunge-view.js" defer></script>
+</head>
+
+<body>
+<div class="page page-qnm">
+    <nav class="header" aria-label="Site">
+        <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <a href="/">[home]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
+        <a href="/projects/">[projects]</a>
+        <a href="/vault.html">[vault]</a>
+        <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
+    </nav>
+
+    <h1>Plunges</h1>
+
+    <!-- DRAFT-FOR-JAIME: intro. -->
+    <p class="qnm-intro">
+        A small body falls into a spinning black hole. Its orbit is fixed by three conserved numbers:
+        the energy <i>E</i>, the angular momentum <i>L</i> about the spin axis, and Carter's constant <i>Q</i>,
+        which measures how far the orbit tilts out of the equator.
+        It can fall in from far away, or slip off the innermost stable orbit.
+        On its way in it radiates gravitational waves; pick one mode (&#8467;, <i>m</i>) of the radiation to follow.
+        Everything below is solved live in your browser.
+    </p>
+
+    <div class="qnm-lab plunge-lab">
+        <form class="qnm-controls" aria-label="Orbit">
+            <div class="qnm-switches">
+                <span class="qnm-switch" role="group" aria-label="Where the plunge starts">
+                    <span class="qnm-switch-label">from</span>
+                    <button type="button" data-from="inf" title="Falls in from far away, with E &ge; 1">infinity</button>
+                    <button type="button" data-from="isco" title="Slips off the innermost stable spherical orbit">the ISCO</button>
+                </span>
+            </div>
+            <label class="wide"><span>a/M</span><input type="range" id="p-a" min="0" max="0.99" step="0.001" value="0.7"><output id="p-a-out">0.700</output></label>
+            <label class="wide p-inf"><span>E</span><input type="range" id="p-E" min="1" max="1.5" step="0.001" value="1.02"><output id="p-E-out">1.020</output></label>
+            <label class="wide p-inf"><span>L</span><input type="range" id="p-L" min="-7" max="7" step="0.01" value="2.2"><output id="p-L-out">2.20</output></label>
+            <label class="wide p-inf"><span>Q</span><input type="range" id="p-Q" min="0" max="40" step="0.05" value="6"><output id="p-Q-out">6.00</output></label>
+            <label class="wide p-isco" hidden><span>&iota;</span><input type="range" id="p-i" min="0" max="180" step="1" value="40"><output id="p-i-out">40&deg;</output></label>
+            <label class="wide"><span>&chi;<sub>0</sub></span><input type="range" id="p-c" min="0" max="6.283" step="0.01" value="0"><output id="p-c-out">0.00</output></label>
+            <label><span>&#8467;</span><input type="range" id="p-l" min="2" max="4" step="1" value="2"><output id="p-l-out">2</output></label>
+            <label><span>m</span><input type="range" id="p-m" min="-2" max="2" step="1" value="2"><output id="p-m-out">2</output></label>
+            <div class="plunge-run">
+                <button type="button" id="p-run">[compute the radiation]</button>
+                <span id="p-run-status" aria-live="polite"></span>
+            </div>
+        </form>
+
+        <figure class="qnm-panel qnm-volume">
+            <div class="plunge-stage" id="p-stage">
+                <canvas id="p-vol" aria-label="The orbit and the radiation of the chosen mode"></canvas>
+                <canvas id="p-over" aria-hidden="true"></canvas>
+            </div>
+            <div class="plunge-time">
+                <button type="button" id="p-restart" title="From the start">[restart]</button>
+                <button type="button" id="p-play" title="Pause or play">[pause]</button>
+                <input type="range" id="p-time" min="0" max="1000" step="1" value="0" aria-label="Time">
+                <output id="p-time-out"></output>
+            </div>
+            <figcaption>
+                The particle falls in (black: the horizon) while the (&#8467;, <i>m</i>) mode of its radiation spreads out:
+                Re&thinsp;[<i>h</i>(<i>u</i>, &theta;) e<sup><i>im</i>&phi;</sup>] with <i>u</i> = <i>t</i> &minus; <i>r</i><sub>*</sub>,
+                the field far away continued inwards (it is faded near the hole, where the true field differs),
+                without its slowest part (below a tenth of the quasinormal frequency: the drift before the burst and the memory after it).
+                A point at radius <i>r</i> is drawn at <i>r</i>/(<i>r</i> + <i>R</i>). Drag to turn, scroll to zoom;
+                the slider runs through time (Kerr&ndash;Schild <i>T</i>, zero when the particle crosses the horizon; until then also its Mino time &lambda; and radius).
+            </figcaption>
+        </figure>
+
+        <div class="qnm-side">
+            <figure class="qnm-panel plunge-region">
+                <canvas id="p-region" aria-label="Which angular momenta plunge"></canvas>
+                <figcaption id="p-region-cap">
+                    At this <i>E</i> and spin, the orbits inside the shaded region plunge; the others turn around and escape.
+                    Click to choose (<i>L</i>, <i>Q</i>).
+                </figcaption>
+            </figure>
+            <dl class="qnm-readout" id="p-readout" aria-live="polite"></dl>
+        </div>
+
+        <figure class="qnm-panel plunge-wave">
+            <canvas id="p-wave" aria-label="The waveform of the chosen mode"></canvas>
+            <figcaption id="p-wave-cap">
+                The waveform of the mode, <i>r</i> <i>h</i><sub>&#8467;<i>m</i></sub>(<i>u</i>)/&mu;: real part solid, imaginary part fainter.
+                The marker is the retarded time reaching the edge of the picture.
+            </figcaption>
+        </figure>
+
+        <figure class="qnm-panel plunge-spec">
+            <canvas id="p-spec" aria-label="The spectrum of the chosen mode"></canvas>
+            <figcaption>
+                Its spectrum, |<i>h&#771;</i><sub>&#8467;<i>m</i></sub>(&omega;)| on a log scale, at positive and negative frequency.
+                Dashed: the fundamental quasinormal mode and its mirror.
+            </figcaption>
+        </figure>
+    </div>
+
+    <details class="qnm-notes">
+        <summary>How this is computed</summary>
+        <!-- DRAFT-FOR-JAIME: methods. Each number below is a choice. -->
+        <p>
+            Units <i>G</i> = <i>c</i> = <i>M</i> = 1. In Mino time &lambda; (d&tau; = &Sigma;&thinsp;d&lambda;) the radial and polar motions decouple.
+            A plunge has no radial turning point, so <i>r</i> falls monotonically. &theta; oscillates between &theta;<sub>min</sub> and &pi; &minus; &theta;<sub>min</sub>.
+            It is followed through an angle &chi;, with cos&thinsp;&theta; = cos&thinsp;&theta;<sub>min</sub> cos&thinsp;&chi;; &chi;<sub>0</sub> is its value at the start.
+            Time and azimuth are integrated in ingoing Kerr coordinates, which cross the horizon smoothly.
+            The equations are integrated with an adaptive Dormand&ndash;Prince method to relative accuracy 10<sup>&minus;12</sup>.
+        </p>
+        <p>
+            &ldquo;Infinity&rdquo; is <i>r</i><sub>0</sub> = 1000<i>M</i>.
+            From infinity (<i>E</i> &ge; 1), an orbit plunges when the radial potential <i>R</i>(<i>r</i>) stays positive all the way down to the horizon.
+            At fixed <i>L</i>, raising <i>Q</i> only lowers <i>R</i>, so the plunging orbits are those below an edge <i>Q</i><sub>c</sub>(<i>L</i>).
+            On that edge the orbit would whirl forever on an unstable spherical orbit.
+            The region is drawn in (<i>L</i>, &radic;<i>Q</i>): for a non-spinning hole it is the half-disc <i>L</i><sup>2</sup> + <i>Q</i> &lt; <i>L</i><sub>c</sub>(<i>E</i>)<sup>2</sup>.
+        </p>
+        <p>
+            From the ISCO, the constants are those of the innermost stable spherical orbit at inclination &iota;, where sin&thinsp;&theta;<sub>min</sub> = |cos&thinsp;&iota;|.
+            The exact plunge has circled that orbit forever, which would put a line in the spectrum at <i>m</i>&Omega;<sub>ISCO</sub>.
+            It is followed instead from three orbits before it leaves the ISCO (passes 0.97&thinsp;<i>r</i><sub>ISCO</sub>), with its source switched on smoothly over the first of them.
+            The animation runs in Kerr&ndash;Schild time <i>v</i> &minus; <i>r</i> at 25<i>M</i> per second.
+            Where the particle hardly moves inwards (|d<i>r</i>/d<i>t</i>| &lt; 0.01, the slow whirl near the ISCO) it is fast-forwarded,
+            by 0.01/|d<i>r</i>/d<i>t</i>| and at most ten times.
+        </p>
+        <p>
+            The radiation is computed in the frequency domain. For each frequency the Teukolsky equation is solved through the
+            generalised Sasaki&ndash;Nakamura equation (Lo 2023), and the source is integrated along the orbit in Mino time
+            (Drasco &amp; Hughes 2006, with one misprint corrected). The strain of the mode is
+            <i>h</i>(<i>u</i>, &theta;) = &minus;2 &int; d&omega; <i>Z</i>(&omega;)/&omega;<sup>2</sup> <i>S</i>(&theta;; &omega;) e<sup>&minus;<i>i</i>&omega;<i>u</i></sup>,
+            so its angular pattern changes in time as different frequencies dominate.
+            The grid in &omega; has 256 points (512 from the ISCO) out to 1.8 times the quasinormal frequency, and is filled coarse-first.
+        </p>
+        <p>
+            A plunge from far away cannot simply start at a finite radius: the integral over the orbit would grow with it.
+            The source is switched on smoothly instead, with a tanh step whose width is matched to each frequency, and the
+            answer no longer depends on where.
+        </p>
+    </details>
+
+    <footer id="footer">
+        <p>
+            <a href="mailto:jredondo@princeton.edu">say hi!</a>
+            &nbsp;·&nbsp; &copy; 2026 · <a href="/vault.html#colophon">colophon</a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>

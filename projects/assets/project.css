@@ -189,6 +189,44 @@
   font-style: italic;
 }
 
+/* the lab: an entry of its own at the top; its title opens one card per page */
+.proj-lab summary { list-style: none; cursor: pointer; }
+.proj-lab summary::-webkit-details-marker { display: none; }
+.proj-lab .proj-title { display: block; color: var(--accent); }
+.proj-lab summary:hover .proj-access { fill: currentColor; }
+.proj-lab .proj-title::after { content: " \25B8"; font-size: 0.8em; color: var(--muted); }
+.proj-lab details[open] .proj-title::after { content: " \25BE"; }
+.proj-lab .muted { font-style: normal; }
+.lab-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.1rem;
+  margin: 0.9rem 0 0.5rem;
+}
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.lab-card:hover, .lab-card:focus-visible { border-color: var(--accent); }
+.lab-card svg { width: 100%; height: 6.5rem; margin-bottom: 0.4rem; overflow: visible; }
+.lab-name { font-variant-caps: small-caps; letter-spacing: 0.02em; font-size: 1.1rem; }
+.lab-card:hover .lab-name { color: var(--accent); }
+.lab-line { font-size: 0.95rem; color: var(--muted); line-height: 1.4; }
+.lab-hole { fill: var(--ink); }
+.lab-wave, .lab-orbit, .lab-front { fill: none; stroke-linecap: round; }
+.lab-wave { stroke: var(--accent); stroke-width: 1.6; }
+.lab-orbit { stroke: var(--ink); stroke-width: 1.2; }
+.lab-front { stroke: var(--accent); stroke-width: 1.6; }
+.lab-front.lab-faint { stroke: var(--accent-2); opacity: 0.6; }
+.lab-dot { fill: var(--ink); }
+
 /* progress beads on the index: one per task.
    filled = done, half = under way, hollow = open. Written by the project-page skill. */
 .proj-progress {

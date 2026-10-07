@@ -1,4 +1,4 @@
-**Derivations checked (2026-10-01).** The analytical second-order solution is correct up to fixable errors: main.tex needs one correction and a few clarifications, and PT.tex has six errors, all corrected ([F1](#results)). The corrections are ready to go into the draft. Next: time-domain evolutions with thin Gaussians, compared with the mode sums.
+**Time-domain comparison done; refining the mode sum (2026-10-06).** Evolutions with thin Gaussians in place of the deltas converge to the analytic linear and second-order solutions at all times away from the light-cone edges ([F2–F4](#results)). The second-order mode sum is being pushed from $N = 50$ to $N = 100$ to tighten the late-time comparison. The derivation corrections ([F1](#results)) still need to go into the draft.
 
 ## Tasks
 
@@ -15,9 +15,20 @@ Every equation got a verdict (OK, wrong with a correction, or not checked), with
 - **S4** Report · done
   The merged audit, with the corrections ready to transcribe.
 
-### Time-domain evolutions against the mode sums · next
+### t02 — Time-domain evolutions against the mode sums · active
 
-Evolve the second-order equation with thin Gaussians in place of the deltas, and compare with the analytical solution as more QNMs, Matsubara modes and QQNMs are summed. Not started.
+Evolve the linear and second-order equations with Gaussians of width $\sigma$ for the deltas, and compare with the analytic mode sums at all times ([F2–F4](#results)).
+
+- **S1** Evolution code · done
+  4th-order finite differences + RK4; clean 4th-order convergence, error $\le 6\times10^{-6}$ of the peak at $\Delta r = \sigma/16$.
+- **S2** Linear field at all times · done
+  Residual $\propto\sigma^2$ off the edges; adding modes lowers it to that floor ([F2](#results)).
+- **S3** Second-order field · done
+  Regulator error $O(\sigma)$, mechanism confirmed; after extrapolation in $\sigma$ the evolution matches the analytic solution ([F3](#results)).
+- **S4** Result and report · done
+  The agreement written up as one result.
+- **S5** Mode sum at $N = 50$ and $100$; summary figures · active
+  $N = 50$ lowers the late-time residual 5.7× to $6\times10^{-5}$; $N = 100$ running ([F3](#results), [F4](#results)).
 
 ## Simmering
 

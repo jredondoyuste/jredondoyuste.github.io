@@ -1,5 +1,11 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-07 — second-order mode sum to $N = 100$
+
+- The second-order sum at $N = 100$ ($40\,801$ terms per geometry) brings the late-time agreement to $4\times10^{-6}$ of the peak ([F3](#results)). It converges as a power of $N$, unlike the linear sum.
+- What went wrong: the first $N = 100$ run used 80 digits and lost precision; the fundamental's late-time coefficient came out wrong by a factor of 5. We now use $2N + 20$ digits above $N = 50$, and check each run by the imaginary part of the field.
+- Just after $\tau_2$ the residual stops improving between $N = 50$ and $100$: there the evolution, not the mode sum, sets the error.
+
 ### 2026-10-06 — time-domain evolutions agree with the analytic solution
 
 - Evolution code: 4th-order finite differences + RK4, Gaussians of width $\sigma$ for the deltas; checked against a free wave and by self-convergence.

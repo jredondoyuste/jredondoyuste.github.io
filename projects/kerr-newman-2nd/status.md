@@ -1,4 +1,4 @@
-**Linear RN layer finished; second-order variables next (2026-10-08).** The linear theory (t01, t02, t04) and the RN numerics (t06) are done: coupled QNMs ([F1](#results)), the separated KN QNMs ([F2](#results)), and the first-order metric and potential of each QNM. t14 put that field in a gauge that is Bondi–Sachs at scri and regular at the horizon ([F3](#results)), and computed its physical fluxes, whose GW/EM split agrees with an exact prediction to $10^{-9}$ ([F4](#results)). Next: the second-order invariant variables (t13), then the sources (t05).
+**Second-order variables done; RN sources next (2026-10-08).** The linear theory (t01, t02, t04), the RN numerics (t06) and the first-order gauge (t14) are done ([F1–F4](#results)). t13 gave the second-order variables: the linear pieces of the gauge-invariant pair, invariant under second-order gauge, $U(1)$ and frame changes, with their equation and its quadratic source, checked on exact second-order solutions to $10^{-100}$ ([§8](#derivations)). Next: the explicit RN sources (t05).
 
 ## Tasks
 
@@ -77,13 +77,23 @@ Takes the t06 field to an asymptotically flat gauge on the whole slice, and comp
 - **S4** Gauge recommendation · done
   The glued gauge for second-order work; the gauge is fully fixed for every mode of nonzero frequency.
 
-### t13 — Second-order gauge- and frame-invariant variables on KN · active
+### t13 — Second-order gauge- and frame-invariant variables on KN · done
 
-The second-order variables to evolve. With the first-order gauge fixed (t14), the linear pieces $\psi^{(2)}_{0L}$, $\psi^{(2)}_{4L}$ of the second-order Weyl scalars are already invariant, as in Spiers–Pound–Moxon; the electromagnetic channel needs its own invariant, because the background $\phi_1\neq0$.
+The second-order variables to evolve: the linear pieces $V^{(2)}_L=V^{(1)}[h_2,a_2]$ of the invariant pair, their equation, and what they give at scri and at the horizon ([§8](#derivations)).
 
-### t05 — RN: second-order equations with explicit quadratic sources · planned
+- **S1** Literature: Spiers–Pound–Moxon's linear piece, Campanelli–Lousto, Bruni et al. · done
+  The construction carries over to Einstein–Maxwell; no prior gauge-invariant second-order curvature variable on RN or KN.
+- **S2** Definitions and transformation laws · done
+  $V^{(1)}$ for all four variables is gauge, $U(1)$ and frame invariant for a general perturbation, to $10^{-118}$ on RN and KN; the second-order gauge law checked exactly against a pull-back.
+- **S3** The equation and the observables · done
+  $\mathcal O[V^{(2)}_L]=-\sum c_V\,\mathrm{Chain}_V[\mathcal A_Q]$, checked on exact second-order solutions to $10^{-100}$; $\Psi_4^{(2)}$ at scri and $\Psi_0^{(2)}$ in radiation gauge are the linear pieces, the electromagnetic channel needs extra quadratic terms.
+- **S4** Off-shell check · done
+  Covered by the S2 and S3 checks; the coordinate route moves to t05.
+- **S5** Result and notes for t05 · done
 
-Sources grav×grav, grav×EM, EM×EM, for the t13 invariant variables; behaviour at the horizon and at scri. After t06 and t13.
+### t05 — RN: second-order equations with explicit quadratic sources · next
+
+Sources grav×grav, grav×EM, EM×EM, for the t13 variables, from first-order QNMs in the glued gauge; behaviour at the horizon and at scri.
 
 ### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · planned
 
@@ -126,6 +136,10 @@ Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1}
 ### Zero-frequency sector · open
 
 Our gauge is fully fixed only for modes with $\omega\neq0$. Static or $\ell\le1$ first-order content (tides, shifts of mass and charge) would need the BMS frame fixed by charges.
+
+### The electromagnetic waveform at second order · open
+
+At scri the linear piece of $\varphi_{-1}$ mixes $\Psi_3$ and $\phi_2$, and its quadratic part is of the same order; the EM waveform needs a quadratic correction from the Bianchi identity at scri, or the reconstructed second-order potential. Identified in t13, not computed.
 
 ### Horizon derivatives of $h_{nn}$ · open
 

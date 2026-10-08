@@ -1,5 +1,13 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-08 — second-order variables on Kerr–Newman
+
+- The second-order variables are the first-order invariant pair applied to the second-order fields. They are invariant under second-order gauge, $U(1)$ and frame changes, for perturbations in any gauge, to $10^{-118}$ on RN and KN ([§8](#derivations)).
+- Their equation is the first-order coupled operator with a quadratic source built from the Einstein–Maxwell residuals; checked on exact second-order solutions to $10^{-100}$.
+- At scri the second-order GW waveform is the linear piece; at the horizon, in radiation gauge, the full $\Psi_0^{(2)}$ is. The electromagnetic channel needs extra quadratic terms at both ends.
+- t13 finished; next, the explicit RN sources (t05).
+- What went wrong: a sign slip in one tetrad rotation, caught by the normalisation check; building the test fields symbolically took 30 minutes per point until we moved the Lie derivatives onto the Taylor jets (1 minute). Our session-clearing tool did not fire.
+
 ### 2026-10-08 — the first-order field in Bondi–Sachs gauge, and its fluxes
 
 - On Reissner–Nordström the radiation-gauge conditions contain the Bondi–Sachs ones; a closed-form gauge transformation makes our first-order field asymptotically flat, and gluing it to the radiation gauge keeps it regular at the horizon ([F3](#results)).

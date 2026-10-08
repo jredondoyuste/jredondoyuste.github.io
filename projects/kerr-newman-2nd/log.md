@@ -1,5 +1,13 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-08 — the first-order field in Bondi–Sachs gauge, and its fluxes
+
+- On Reissner–Nordström the radiation-gauge conditions contain the Bondi–Sachs ones; a closed-form gauge transformation makes our first-order field asymptotically flat, and gluing it to the radiation gauge keeps it regular at the horizon ([F3](#results)).
+- A linearised Einstein–Maxwell operator written directly in coordinates, independent of our GHP code, confirms both the reconstruction and the glued field.
+- Fluxes: the GW/EM split at scri equals Motohashi's exact ratio to $10^{-9}$ at the QNM frequency; the horizon shear and $\phi_0$ follow from gauge-invariant formulas ([F4](#results)).
+- t06 and t14 finished; next, the second-order invariant variables (t13).
+- What went wrong: a 13th-degree polynomial evaluated in the monomial basis put $10^{-12}$ noise into second derivatives (fixed with a Bernstein form); a wrong normalisation of an angular derivative, caught by the check; and one reconstructed component has unconverged second derivatives at the horizon, set aside for now.
+
 ### 2026-10-07 — RN QNMs, and the separated KN QNMs reproduced
 
 - Coupled RN QNMs from our system ($\ell=1,2$, $n=0,1$, $Q/M$ up to $0.99$) match four published tables to every printed digit, except three values of one table, which are wrong ([F1](#results)).

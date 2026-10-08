@@ -1,4 +1,4 @@
-**RN numerics under way (2026-10-07).** The linear theory is done (t01, t02, t04). The spectral code on Reissner–Nordström hyperboloidal slices (t06) reproduces the published coupled RN QNMs ([F1](#results)), and our solver of Hintz's separated equations reproduces the Kerr–Newman QNMs of Destounis, Cardoso and Hintz ([F2](#results)). Now: reconstructing the first-order metric and potential for QNM data (t06 S4), then the second-order invariants (t13) and sources (t05).
+**Linear RN layer finished; second-order variables next (2026-10-08).** The linear theory (t01, t02, t04) and the RN numerics (t06) are done: coupled QNMs ([F1](#results)), the separated KN QNMs ([F2](#results)), and the first-order metric and potential of each QNM. t14 put that field in a gauge that is Bondi–Sachs at scri and regular at the horizon ([F3](#results)), and computed its physical fluxes, whose GW/EM split agrees with an exact prediction to $10^{-9}$ ([F4](#results)). Next: the second-order invariant variables (t13), then the sources (t05).
 
 ## Tasks
 
@@ -45,9 +45,9 @@ The linear problem, end to end, with a tutorial notebook ([§2–§6](#derivatio
 - **S7** Tutorial notebook · done
   Six sections with exercises; runs headless in about 3 min.
 
-### t06 — RN numerics: spectral code, coupled QNMs, reconstruction for QNM data · active
+### t06 — RN numerics: spectral code, coupled QNMs, reconstruction for QNM data · done
 
-From GHP equations to Chebyshev arrays on RN hyperboloidal slices; the QNMs of the coupled system; the first-order metric and potential for each QNM ([F1, F2](#results)).
+From GHP equations to Chebyshev arrays on RN hyperboloidal slices; the QNMs of the coupled system; the first-order metric and potential for each QNM ([F1–F3](#results)).
 
 - **S1** Bridge from GHP to spectral arrays · done
   GHP expressions become coordinate operators, then Chebyshev matrices; the hyperboloidal $\ell=2$ system equals t04's after the change of chart, exactly.
@@ -57,14 +57,29 @@ From GHP equations to Chebyshev arrays on RN hyperboloidal slices; the QNMs of t
   $\ell=1,2$, $n=0,1$, $Q/M$ up to $0.99$: 25 of 28 published values matched to every printed digit; the other 3 are wrong in the 5th decimal of one table ([F1](#results)).
 - **S3b** Reproduce Destounis–Cardoso–Hintz (arXiv:2610.07142) · done
   Our own 40-digit solver of the separated KN equations reproduces their tables and figures; at $a=0$ it equals S3 to $10^{-11}$ ([F2](#results)).
-- **S4** Reconstruct $h_{ab}$, $A^{(1)}_a$ for QNM data · active
-  A least-squares solve of the transport equations works, but converges only algebraically, with the error in the Maxwell part; we are isolating the cause.
-- **S5** Plots and results, then a hold · open
-  Reconstruction plots against $\sigma$; a headline plot of the KN frequencies against $Q$ for several $a$.
+- **S4** Reconstruct $h_{ab}$, $A^{(1)}_a$ for QNM data · done
+  Marching the nine transport equations step by step gives the unique radiation-gauge field analytic from scri to the horizon; every field equation holds to $10^{-8}$, confirmed by an independent coordinate operator ([F3](#results)).
+- **S5** Plots and results · done
+  Reconstruction plots against $\sigma$, with the rescalings at scri stated.
 
-### t13 — Second-order gauge- and frame-invariant variables on KN · planned
+### t14 — Gauge of the first-order field: from radiation gauge to Bondi–Sachs, regular at the horizon · done
 
-The quadratic corrections that make the second-order parts of $(\varphi_{+2},\varphi_{+1})$ invariant under second-order gauge and tetrad changes, the Einstein–Maxwell analogue of Campanelli–Lousto; in GHP, checked off shell on RN and KN. Plan awaiting approval.
+Takes the t06 field to an asymptotically flat gauge on the whole slice, and computes its observables at scri and at the horizon ([F3, F4](#results)).
+
+- **S1** Literature: electrovacuum Bondi–Sachs gauges · done
+  The perturbative Bondi–Sachs gauge of Spiers, Pound and Moxon, and the radial Maxwell gauge $A_r=0$.
+- **S2** Gauge conditions as equations · done
+  On RN the radiation-gauge conditions contain the Bondi–Sachs ones exactly; the remaining gauge freedom is closed form, three amplitudes per mode, all fixed by the falloffs at scri.
+- **S3** Apply to the QNMs, glued · done
+  Bondi–Sachs near scri, radiation gauge near the horizon, a $C^6$ join between; checked by a linearised Einstein–Maxwell operator built independently in coordinates ([F3](#results)).
+- **S3b** Fluxes at scri and at the horizon · done
+  Strain and news from the metric; GW/EM power split equal to Motohashi's $(L-1)/(L+1)$ to $10^{-9}$; horizon shear and $\phi_0$ from invariant formulas ([F4](#results)).
+- **S4** Gauge recommendation · done
+  The glued gauge for second-order work; the gauge is fully fixed for every mode of nonzero frequency.
+
+### t13 — Second-order gauge- and frame-invariant variables on KN · active
+
+The second-order variables to evolve. With the first-order gauge fixed (t14), the linear pieces $\psi^{(2)}_{0L}$, $\psi^{(2)}_{4L}$ of the second-order Weyl scalars are already invariant, as in Spiers–Pound–Moxon; the electromagnetic channel needs its own invariant, because the background $\phi_1\neq0$.
 
 ### t05 — RN: second-order equations with explicit quadratic sources · planned
 
@@ -108,7 +123,19 @@ Not needed for t06, which can evolve the coupled form directly.
 
 Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1})$. The QNMs agree ([F2](#results)); the map between the variables is left for the KN tasks (t10, t11).
 
+### Zero-frequency sector · open
+
+Our gauge is fully fixed only for modes with $\omega\neq0$. Static or $\ell\le1$ first-order content (tides, shifts of mass and charge) would need the BMS frame fixed by charges.
+
+### Horizon derivatives of $h_{nn}$ · open
+
+Second and third derivatives of one radiation-gauge component at the horizon do not converge, from a degenerate step of the reconstruction. Values and first derivatives are fine; set aside until a second-order source needs more.
+
 ## Dead ends
+
+### Global least-squares reconstruction · superseded
+
+Solving all transport equations at once converged only algebraically; marching them one by one, with analyticity at both ends, replaced it.
 
 ### t03 — Linear Teukolsky-type system on KN · superseded
 
@@ -126,7 +153,7 @@ The gauge-invariant pair $\varphi_{+2}=\Psi_0^{(1)}$, $\varphi_{+1}=2\phi_1\Psi_
 
 ### Gauge for reconstruction
 
-Ingoing radiation gauge for both $h_{ab}$ and $A^{(1)}_a$, with the tetrad perturbation fixed by $l^{(1)}=0$.
+Ingoing radiation gauge for both $h_{ab}$ and $A^{(1)}_a$, with the tetrad perturbation fixed by $l^{(1)}=0$. For second-order work the field is moved to the glued gauge: Bondi–Sachs with $A_r=0$ for $\sigma\le1/4$, radiation gauge for $\sigma\ge3/4$ ([F3](#results)).
 
 ### Numerics
 

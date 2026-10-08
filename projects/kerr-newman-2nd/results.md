@@ -1,3 +1,37 @@
+### F4 — How does the radiation of a charged black hole's ringdown split between gravity and electromagnetism? (unverified)
+
+<figure><a href="figs/rn_composition_ratio.png"><img src="figs/rn_composition_ratio.png" alt="Relative difference between the measured GW/EM power ratio and Motohashi's prediction, against resolution"></a><figcaption>The measured GW/EM power split converges to Motohashi's exact $(L-1)/(L+1)$.</figcaption></figure>
+
+From the first-order metric and potential in the Bondi–Sachs gauge ([F3](#results)) we compute the gravitational power (from $\Psi_4$, and equally from the news of the metric) and the electromagnetic power (from $\phi_2$, read off $A_{\bar m}$) at scri, for the $\ell=2$ fundamental QNMs of RN at $Q/M=0.6$. Motohashi (arXiv:2610.10529) predicts, for real frequencies, that the minority channel carries the fraction $(L-1)/(L+1)$, $L=\sqrt{1+4Q^2(\ell-1)(\ell+2)/(9M^2)}$, here $0.1230473516$.
+
+The figure shows the relative difference between our ratio and the prediction against the Chebyshev resolution: blue the gravitational-led mode ($P_E/P_G$), orange the electromagnetic-led mode ($P_G/P_E$); filled circles the mode itself, open squares its mirror partner, which a real perturbation also contains at scri. At $N=64$ the agreement is $5\times10^{-9}$ and $10^{-9}$.
+
+- The prediction holds at the complex QNM frequency, and for both parts of the real field.
+- At the horizon, the shear and the Maxwell scalar $\phi_0$ computed from the metric and potential equal formulas in the gauge-invariant pair $(\Psi_0,\varphi_{+1})$ to $10^{-14}$; the one for $\phi_0$ is new. The energy absorbed by the hole is then $0.40$ (gravitational) $+\ 0.05$ (electromagnetic) of the power at scri for the gravitational-led mode, and $0.04+0.36$ for the electromagnetic-led one, on the same slice.
+- With $m=0$ no angular momentum is radiated or absorbed.
+
+**Takeaway.** The ringdown's split between gravitational and electromagnetic waves is fixed by the angular structure alone, and our reconstructed fields reproduce it independently of the separated equations behind the prediction. The horizon fluxes are what the backreaction question (towards or away from extremality) needs at first order.
+
+**Reproduce.** `tasks/t14-bondi-gauge/S3b/`: `fluxes.py` (2 min), then `plot_ratio.py`.
+
+### F3 — Can the first-order field be asymptotically flat at scri and regular at the horizon at the same time? (unverified)
+
+<figure><a href="figs/rn_gauges_components.png"><img src="figs/rn_gauges_components.png" alt="Components of the first-order metric and potential against sigma in three gauges"></a><figcaption>Radiation gauge (left) grows at scri, Bondi–Sachs (middle) blows up at the horizon, the glued gauge (right) is regular at both.</figcaption></figure>
+
+Every nonzero tetrad component of the first-order metric and Maxwell perturbation of the $\ell=2$ fundamental QNMs of RN ($Q/M=0.6$), against $\sigma=r_+/r$ (scri at 0, horizon at 1); top the gravitational-led mode, bottom the electromagnetic-led one; log scale, normalised by $\Psi_0$ at the horizon. The grey band is the gluing region.
+
+- **Left, radiation gauge.** Our reconstruction (t06): unique and analytic on the whole slice, solving every field equation to $10^{-8}$; but $h_{nn},h_{nm}$ grow like $r$ at scri.
+- **Middle, Bondi–Sachs.** On RN the radiation-gauge conditions already contain the Bondi–Sachs ones, and a closed-form residual gauge transformation (three amplitudes per mode) makes every component fall off like $1/r$; it carries $(1-\sigma)^{i\omega/\kappa_+}$, so it is singular at the horizon.
+- **Right, glued.** Bondi–Sachs for $\sigma\le1/4$, radiation gauge for $\sigma\ge3/4$, joined by a $C^6$ step; in the band the field leaves both gauges (dashed: $h_{ll},h_{ln},h_{lm},A_l$).
+
+The glued field was checked with the linearised Einstein–Maxwell equations written directly in coordinates, independently of our GHP code, on all 14 components: residuals fall with resolution to $\le2\times10^{-8}$ on every patch, and $\Psi_0$ recomputed from it equals the input to $7\times10^{-9}$. The same operator confirms the radiation-gauge field independently.
+
+<figure><a href="figs/rn_reconstruction_fields.png"><img src="figs/rn_reconstruction_fields.png" alt="Rescaled radial functions of the radiation-gauge reconstruction"></a><figcaption>The radiation-gauge reconstruction, rescaled by its powers at scri: smooth from scri to the horizon.</figcaption></figure>
+
+**Takeaway.** For every mode of nonzero frequency the first-order gauge is fully fixed: Bondi–Sachs at scri, regular at the horizon. Then the second-order Weyl scalars are invariant (Spiers–Pound–Moxon), which is the starting point for t13. Second-order sources must accept all fourteen components.
+
+**Reproduce.** `tasks/t14-bondi-gauge/`: `S3/lin_op.py` (1 min), `S3/transform.py` (2 min), `S4/plot_gauges.py`.
+
 ### F2 — Do the separated Kerr–Newman equations give the same QNMs as the coupled equations? (unverified)
 
 <figure><a href="figs/kn_separated_vs_pombo.png"><img src="figs/kn_separated_vs_pombo.png" alt="Difference between our separated-equation KN QNMs and Pombo's coupled-system data, against Q/M and a/M"></a><figcaption>Our separated-equation KN frequencies against independent coupled-system data: the differences are the accuracy of that data.</figcaption></figure>

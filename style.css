@@ -2216,3 +2216,95 @@ body.lb-open {
 @media (max-width: 800px) {
   .plunge-lab { grid-template-areas: "controls" "volume" "side" "wave" "spec"; }
 }
+
+/* ----- quadratic.html: the quadratic scattering lab ------------------- */
+/* Borrows the QNM lab's controls, switches, panels and readout. The three
+   waves get one column each; the stage runs the full width, the value
+   under it, and the two surfaces side by side. */
+
+.qq-lab {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "controls controls"
+    "stage    stage"
+    "value    value"
+    "abs      arg"
+    "note     note";
+}
+
+.qq-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem 1.75rem;
+  align-items: start;
+}
+.qq-controls .qnm-switches { grid-column: 1 / -1; }
+
+.qq-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.qq-group legend {
+  padding: 0 0 0.2rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.qq-controls label.wide input[type="range"] { width: 7rem; }
+.qq-controls output small { font-size: 0.8rem; }
+
+.qq-lp { display: flex; align-items: baseline; gap: 0.55rem; }
+.qq-lp-label { font-style: italic; min-width: 1.6em; text-align: right; }
+.qq-lp #qq-lp { display: inline-flex; gap: 0.45rem; }
+.qq-lp button {
+  background: none; border: none; padding: 0; font: inherit;
+  color: var(--ink); cursor: pointer;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.qq-lp button::before { content: "["; color: transparent; }
+.qq-lp button::after  { content: "]"; color: transparent; }
+.qq-lp button.on { color: var(--accent); cursor: default; }
+.qq-lp button.on::before, .qq-lp button.on::after { color: inherit; }
+.qq-lp button:disabled { color: var(--hair); cursor: not-allowed; }
+.qq-fixed { margin: 0; color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+
+.qq-stage { grid-area: stage; }
+.qq-stage canvas { aspect-ratio: 2.4; cursor: grab; }
+.qq-stage canvas:active { cursor: grabbing; }
+
+.qq-value {
+  grid-area: value;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 2.5rem;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  padding: 0.7rem 0;
+}
+.qq-big {
+  margin: 0;
+  font-size: 1.6rem;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.qq-big small { font-size: 1rem; color: var(--muted); font-style: italic; margin-left: 0.5rem; }
+.qq-value .qnm-readout { grid-template-columns: auto auto auto auto; gap: 0.1rem 0.9rem; }
+.qq-value small { color: var(--muted); }
+.qq-warn { color: var(--accent); font-style: italic; }
+
+.qq-abs { grid-area: abs; }
+.qq-arg { grid-area: arg; }
+.qq-abs canvas, .qq-arg canvas { aspect-ratio: 1.25; cursor: grab; }
+.qq-surf-note { grid-area: note; margin: -0.5rem 0 0; font-size: 0.9rem; font-style: italic; color: var(--muted); }
+
+@media (max-width: 800px) {
+  .qq-lab { grid-template-columns: minmax(0, 1fr); grid-template-areas: "controls" "stage" "value" "abs" "arg" "note"; }
+  .qq-controls { grid-template-columns: minmax(0, 1fr); }
+  .qq-stage canvas { aspect-ratio: 1.5; }
+  .qq-value .qnm-readout { grid-template-columns: auto 1fr; }
+}

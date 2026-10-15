@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quadratic scattering — Jaime Redondo-Yuste</title>
+    <meta name="description" content="Two gravitational waves scatter off a Schwarzschild black hole and make a third: the quadratic coupling Q, for any pair of incoming harmonics.">
+    <link rel="icon" href="/files/favicon.png">
+    <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/theme.js"></script>
+    <script src="/js/ringdown.js" defer></script>
+    <script src="/js/quadratic-view.js" defer></script>
+</head>
+
+<body>
+<div class="page page-qnm">
+    <nav class="header" aria-label="Site">
+        <svg class="ringdown" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <a href="/">[home]</a>
+        <span class="nav-drop">
+            <a href="/research.html">[research]</a>
+            <span class="nav-menu">
+                <a href="/research.html#nonlinear-dynamics">nonlinear black hole dynamics</a>
+                <a href="/research.html#viscous-stars">viscosity and neutron stars</a>
+            </span>
+        </span>
+        <a href="/projects/">[projects]</a>
+        <a href="/vault.html">[vault]</a>
+        <button class="theme-toggle" aria-label="Switch between light and dark">[dark]</button>
+    </nav>
+
+    <h1>Quadratic scattering</h1>
+
+    <p class="qnm-intro">
+        Suppose two gravitational waves hit a Schwarzschild black hole. Gravity is nonlinear, so the black hole
+        responds with a third gravitational wave at the sum of their frequencies. The strength of this nonlinear
+        response is the quadratic coupling 𝒬 we computed in
+        <a href="https://arxiv.org/abs/2609.20934">Bucciotti, Redondo-Yuste, Zhong, Kuntz &amp; Cardoso (2026)</a>.
+        Here you can play around with the properties of the incoming and outgoing modes.
+    </p>
+
+    <div class="qnm-lab qq-lab">
+        <form class="qnm-controls qq-controls" aria-label="The three waves">
+            <fieldset class="qq-group" data-wave="1">
+                <legend>first wave</legend>
+                <span class="qnm-switch" role="group" aria-label="Parity of the first wave">
+                    <button type="button" data-par="1" data-val="1" title="Polar (Zerilli)">even</button>
+                    <button type="button" data-par="1" data-val="-1" title="Axial (Regge–Wheeler)">odd</button>
+                </span>
+                <label><span>&#8467;<sub>1</sub></span><input type="range" id="qq-l1" min="2" max="6" step="1" value="2"><output id="qq-l1-out">2</output></label>
+                <label><span>m<sub>1</sub></span><input type="range" id="qq-m1" min="-2" max="2" step="1" value="2"><output id="qq-m1-out">2</output></label>
+                <label class="wide"><span>&omega;<sub>1</sub></span><input type="range" id="qq-k1" min="0" max="25" step="1" value="20"><output id="qq-k1-out"></output></label>
+            </fieldset>
+            <fieldset class="qq-group" data-wave="2">
+                <legend>second wave</legend>
+                <span class="qnm-switch" role="group" aria-label="Parity of the second wave">
+                    <button type="button" data-par="2" data-val="1" title="Polar (Zerilli)">even</button>
+                    <button type="button" data-par="2" data-val="-1" title="Axial (Regge–Wheeler)">odd</button>
+                </span>
+                <label><span>&#8467;<sub>2</sub></span><input type="range" id="qq-l2" min="2" max="6" step="1" value="2"><output id="qq-l2-out">2</output></label>
+                <label><span>m<sub>2</sub></span><input type="range" id="qq-m2" min="-2" max="2" step="1" value="2"><output id="qq-m2-out">2</output></label>
+                <label class="wide"><span>&omega;<sub>2</sub></span><input type="range" id="qq-k2" min="0" max="25" step="1" value="20"><output id="qq-k2-out"></output></label>
+            </fieldset>
+            <fieldset class="qq-group" data-wave="3">
+                <legend>scattered wave</legend>
+                <span class="qnm-switch" role="group" aria-label="Parity of the scattered wave">
+                    <button type="button" data-par="3" data-val="1" title="Polar (Zerilli)">even</button>
+                    <button type="button" data-par="3" data-val="-1" title="Axial (Regge–Wheeler)">odd</button>
+                </span>
+                <div class="qq-lp" role="group" aria-label="Angular number of the scattered wave">
+                    <span class="qq-lp-label">&#8467;&prime;</span>
+                    <span id="qq-lp"></span>
+                </div>
+                <p class="qq-fixed" id="qq-fixed"></p>
+            </fieldset>
+            <div class="qnm-switches">
+                <span class="qnm-switch" role="group" aria-label="Normalisation of Q">
+                    <span class="qnm-switch-label">normalised by the parents&rsquo;</span>
+                    <button type="button" data-norm="in" title="𝒬: divided by the incoming amplitudes of the two parents">incoming</button>
+                    <button type="button" data-norm="out" title="𝒬_out: divided by their outgoing amplitudes">outgoing</button>
+                    <span class="qnm-switch-label">amplitudes</span>
+                </span>
+                <span class="qnm-switch" role="group" aria-label="Polarisation drawn on the spheres">
+                    <span class="qnm-switch-label">spheres show</span>
+                    <button type="button" data-pol="plus">h<sub>+</sub></button>
+                    <button type="button" data-pol="cross">h<sub>&times;</sub></button>
+                </span>
+            </div>
+        </form>
+
+        <figure class="qnm-panel qq-stage">
+            <canvas id="qq-stage" aria-label="Two incoming waves, the black hole, and the scattered wave"></canvas>
+            <div class="plunge-time">
+                <button type="button" id="qq-play" title="Pause or play">[pause]</button>
+                <output id="qq-time-out"></output>
+            </div>
+            <figcaption>
+                Left: the two incoming waves on a sphere far away, and their wavefronts closing in.
+                Right: the scattered wave at &omega;&prime; = &omega;<sub>1</sub> + &omega;<sub>2</sub>, leaving.
+                Drag a sphere to turn both. Each sphere is scaled to its own maximum, so the right one is really smaller,
+                by &epsilon;|𝒬| for incoming waves of amplitude &epsilon;. The traces under them are the strain at the point of the sphere nearest to you.
+            </figcaption>
+        </figure>
+
+        <div class="qq-value" aria-live="polite">
+            <p class="qq-big" id="qq-big"></p>
+            <dl class="qnm-readout" id="qq-readout"></dl>
+        </div>
+
+        <figure class="qnm-panel qq-abs">
+            <canvas id="qq-sabs" aria-label="|Q| as a function of the two incoming frequencies"></canvas>
+            <figcaption>|𝒬| over the computed (&omega;<sub>1</sub>, &omega;<sub>2</sub>) grid.</figcaption>
+        </figure>
+        <figure class="qnm-panel qq-arg">
+            <canvas id="qq-sarg" aria-label="arg Q as a function of the two incoming frequencies"></canvas>
+            <figcaption>arg&thinsp;𝒬, unwrapped across the grid.</figcaption>
+        </figure>
+        <p class="qq-surf-note">
+            Drag to turn, click to pick a point. The dot is the chosen pair; the dashed line is the resonance
+            &omega;<sub>1</sub> + &omega;<sub>2</sub> = Re&thinsp;&omega;<sub>&#8467;&prime;0</sub>.
+            Grey cells touch a point whose numerical error exceeds 1% of |𝒬|.
+        </p>
+    </div>
+
+    <details class="qnm-notes">
+        <summary>How this is computed</summary>
+                <p>
+            The couplings were computed with
+            <a href="https://github.com/jredondoyuste/BlackHoleNonlinearities.jl">BlackHoleNonlinearities.jl</a>,
+            which implements the calculation of the paper, for &#8467; &le; 6 and on a grid of frequencies
+            &omega;<sub><i>i</i></sub> = <i>x</i> Re&thinsp;&omega;<sub>&#8467;<sub><i>i</i></sub>0</sub>, <i>x</i> = 0.05, 0.10, &hellip;, 1.30.
+            This page only reads that table; the sliders step through the grid, without interpolating.
+        </p>
+        <p>
+            The table was computed on Anvil at Purdue University through allocation PHY260445
+            from the Advanced Cyberinfrastructure Coordination Ecosystem: Services &amp; Support (ACCESS) program,
+            which is supported by U.S. National Science Foundation grants #2138259, #2138286, #2138307, #2137603, and #2138296.
+        </p>
+    </details>
+
+    <footer id="footer">
+        <p>
+            <a href="mailto:jredondo@princeton.edu">say hi!</a>
+            &nbsp;·&nbsp; &copy; 2026 · <a href="/vault.html#colophon">colophon</a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>

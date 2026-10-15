@@ -1,5 +1,29 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-15 — the EM ringdown signal, and Kerr–Newman next
+
+- An estimate of the EM ringdown of a charged binary-black-hole remnant ([F9](#results)): a fraction $\tfrac49(Q/M)^2$ of the GW power, plus at most about 20% from the quadratic channel, all at frequencies below the plasma frequency of every galactic medium. Not directly observable; parked until spin is added.
+- t07 accepted; the horizon ratios stay at their present stage, and the branch-cut channel stays a diagnostic. Next: second-order equations on Kerr–Newman (t09).
+- What went wrong: the EM/GW power ratio of the mode was first presented as new; it is Motohashi's ratio, which we had already reproduced ([F4](#results)).
+
+### 2026-10-14 — quadratic QNMs of RN
+
+- A second-order solver: three Chebyshev patches, 30 digits, and a complex path near scri, which stops source round-off from being amplified by the hyperboloidal resolvent.
+- The Schwarzschild limit agrees with Bourg et al. and Khera–Ma–Yang to $6\times10^{-4}$, once the source is made to vanish exactly at scri.
+- The $(2,2)\times(2,2)\to(4,4)$ couplings against $Q/M$ for GW$\times$GW, GW$\times$EM and EM$\times$EM$\to$GW, with exact control of the mirror content ([F5](#results)); parity maps in the variable of Bourg et al. ([F6](#results)).
+- The second-order EM waveform needs no quadratic correction on shell; GW$\times$EM$\to$EM survives in Schwarzschild ([F7](#results)). Couplings with the $\ell=1$ EM mode ([F8](#results)); ratios at the horizon, of the same order as numerical relativity.
+- What went wrong: noisy source fits at scri were amplified up to $10^4$ in the readout (fixed); products of a mode with its own conjugate lie on the branch cut and are not fixed by regularity: the average of the two sides matches the published value within 20%, the jump is unresolved.
+
+### 2026-10-13 — RN second-order sources done
+
+- Sources for all products of the $\ell=2$ modes at every charge, converged at the horizon after an extended-precision fix of one component.
+- For $Q/M>\sqrt{15}/4$ the master system in our normalisation is singular outside the horizon, at $r=4Q^2/3M$: moved to the near-extremal task (t12).
+- t05 finished; t07 (quadratic QNMs) planned and started with the Schwarzschild references and small-charge sources.
+
+### 2026-10-12 — horizon sources converge
+
+- The second-order sources did not converge at the horizon because of one first-order component with unconverged derivatives; an extended-precision evaluation fixed it.
+
 ### 2026-10-08 — second-order variables on Kerr–Newman
 
 - The second-order variables are the first-order invariant pair applied to the second-order fields. They are invariant under second-order gauge, $U(1)$ and frame changes, for perturbations in any gauge, to $10^{-118}$ on RN and KN ([§8](#derivations)).

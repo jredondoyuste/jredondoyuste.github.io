@@ -1,4 +1,4 @@
-**Second-order variables done; RN sources next (2026-10-08).** The linear theory (t01, t02, t04), the RN numerics (t06) and the first-order gauge (t14) are done ([F1–F4](#results)). t13 gave the second-order variables: the linear pieces of the gauge-invariant pair, invariant under second-order gauge, $U(1)$ and frame changes, with their equation and its quadratic source, checked on exact second-order solutions to $10^{-100}$ ([§8](#derivations)). Next: the explicit RN sources (t05).
+**RN quadratic QNMs done; Kerr–Newman next (2026-10-15).** The RN second-order sources (t05) and the quadratic QNMs (t07) are done: Schwarzschild limit to $6\times10^{-4}$, the $(2,2)\times(2,2)$ couplings against $Q/M$ for every channel and parity content, the second-order EM waveform, the $\ell=1$ sector, and an estimate of the EM ringdown signal ([F5–F9](#results)). Next: the second-order equations on Kerr–Newman (t09).
 
 ## Tasks
 
@@ -91,13 +91,43 @@ The second-order variables to evolve: the linear pieces $V^{(2)}_L=V^{(1)}[h_2,a
   Covered by the S2 and S3 checks; the coordinate route moves to t05.
 - **S5** Result and notes for t05 · done
 
-### t05 — RN: second-order equations with explicit quadratic sources · next
+### t05 — RN: second-order equations with explicit quadratic sources · done
 
-Sources grav×grav, grav×EM, EM×EM, for the t13 variables, from first-order QNMs in the glued gauge; behaviour at the horizon and at scri.
+Sources grav×grav, grav×EM, EM×EM for the t13 variables, from products of $\ell=2$ QNMs in the glued gauge, $Q/M$ from 0.2 to 0.99.
 
-### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · planned
+- **S1** First-order inputs for the $Q$ scan · done
+  Glued first-order fields for both $\ell=2$ modes at every charge.
+- **S2** The bilinear source operator · done
+  The quadratic source as a bilinear operator on two first-order fields, all fourteen components.
+- **S3** Sources for the QNM products · done
+  Converged in the interior and, after an extended-precision fix of one horizon component, at the horizon. For $Q/M>\sqrt{15}/4$ the master system (in the t04 normalisation) is singular at $r=4Q^2/3M$, outside the horizon: deferred to t12.
+- **S4** Result · done
 
-Schwarzschild quadratic ratios at $Q=0$ as the check.
+### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · active
+
+Second-order strain and EM ratios at scri, and ratios at the horizon, for products of the fundamental modes ([F5–F9](#results)).
+
+- **S1** Schwarzschild references and conventions · done
+  Bourg et al. and Khera–Ma–Yang values, with their mirror-mode content made explicit.
+- **S2** Sources at small charge · done
+  $Q/M=0.02,0.05,0.1$, for the $Q\to0$ limit.
+- **S3** Second-order solver · done
+  Three Chebyshev patches, 30 digits, a complex path near scri that removes the amplification of source round-off.
+- **S4** Schwarzschild limit · done
+  Agrees with the literature to $6\times10^{-4}$ after fixing the source extrapolation at scri.
+- **S5** RN scan of the $(4,4)$ couplings · done
+  All three channels, with exact control of the mirror content ([F5](#results)).
+- **S6** Results · done
+- **S7** Branch-cut channel · done
+  Products of a mode with its own conjugate: one-sided limits exist; their average agrees with Bourg et al. within 20%; the jump is unresolved.
+- **S8** Second-order EM waveform and couplings · done
+  No quadratic correction on shell; GW$\times$EM$\to$EM survives in Schwarzschild ([F7](#results)).
+- **S9** Ratios at the horizon · done
+  Same order as the numerical-relativity values of Khera et al.; parked at this stage.
+- **S10** Parity dependence in 2D · done
+  Maps in the variable of Bourg et al. ([F6](#results)).
+- **S11** Couplings with the $\ell=1$ EM mode · done
+  $XZ$, $YZ$, $ZZ$ ([F8](#results)).
 
 ### t08 — Extremal RN: backreaction of Aretakis-unstable modes · planned
 
@@ -137,9 +167,17 @@ Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1}
 
 Our gauge is fully fixed only for modes with $\omega\neq0$. Static or $\ell\le1$ first-order content (tides, shifts of mass and charge) would need the BMS frame fixed by charges.
 
-### The electromagnetic waveform at second order · open
+### Products of a mode with its own conjugate · open
 
-At scri the linear piece of $\varphi_{-1}$ mixes $\Psi_3$ and $\phi_2$, and its quadratic part is of the same order; the EM waveform needs a quadratic correction from the Bianchi identity at scri, or the reconstructed second-order potential. Identified in t13, not computed.
+Their frequency $2i\,\mathrm{Im}\,\omega$ lies on the branch cut, where regularity does not fix the solution: the amplitude depends on how the response is split between mode and tail. A time-domain treatment would settle it; the same issue returns on Kerr–Newman.
+
+### Electromagnetic ringdown signal · paused
+
+Estimated in [F9](#results): not directly observable. To revisit with spin, and with the excitation of the EM-led mode in charged mergers.
+
+### Horizon ratios with an EM normalisation · open
+
+EM-led parents are normalised by the gravitational $\Psi_0$ at the horizon, which inflates them as $Q^{-2}$; normalising by $\phi_0$ would remove that.
 
 ### Horizon derivatives of $h_{nn}$ · open
 
@@ -176,3 +214,8 @@ Chebyshev collocation in $\sigma\in[0,1]$ from scri to the horizon. Eigenvalues 
 ### Charts
 
 Boyer–Lindquist with the Kinnersley tetrad, and minimal-gauge hyperboloidal slices ($\sigma=r_+/r$ or $M/r$) with a Hartle–Hawking tetrad, regular at the future horizon and at scri.
+
+### Quadratic ratios and mirror content
+
+$R_h=H^{(2)}/(H_1H_2)$ at scri, with $H$ the strain coefficient of ${}_{-2}Y_{\ell m}e^{-i\omega u}$ and $\mathcal A$ that of ${}_{-1}Y_{\ell m}$ in $rA_{\bar m}$. A real first-order mode is a regular mode plus its mirror with ratio $\rho$; we report $R$ as a polynomial in $\rho$, so any parity content can be read off ($\rho=0$ single mode, $\rho=1$ even parity).
+

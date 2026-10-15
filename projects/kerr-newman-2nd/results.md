@@ -1,3 +1,81 @@
+### F9 — Could the electromagnetic ringdown of a charged binary-black-hole remnant be seen? (unverified)
+
+<figure><a href="figs/rn_ringdown_em_signal.png"><img src="figs/rn_ringdown_em_signal.png" alt="Ringdown EM energy and peak flux against Q/M, and ringdown frequency against remnant mass compared with plasma frequencies"></a><figcaption>The EM ringdown carries $\tfrac49(Q/M)^2$ of the GW power, but at frequencies that no galactic plasma lets through.</figcaption></figure>
+
+An order-of-magnitude estimate built on our RN numbers (no spin). The gravitational-led $(2,2,0)$ mode carries its own EM field, a fixed fraction of its strain set by the mode: the power ratio is Motohashi's $(L-1)/(L+1)\to\tfrac49(Q/M)^2$, which our fields reproduce ([F4](#results)). The quadratic $(2,2)\times(2,2)\to(4,4)$ EM response ([F7](#results)) adds $0.10\,(Q/M)^2A_{220}^2$ of the GW power at $2f_{220}$, which is $0.22\,A_{220}^2$ of the linear part. The scale comes from the $(2,2,0)$ amplitude fit of London (arXiv:1801.08208), $\lvert A_{220}\rvert\approx4\eta\approx1$ at the strain peak.
+
+- **(a)** Ringdown EM energy against $Q/M$ for a GW150914-like remnant ($62\,M_\odot$) and a $10^6\,M_\odot$ LISA remnant; solid linear, dashed quadratic; dotted the GW ringdown energy. Bands: Wald charges $Q=2BJ$ (stellar $B=1$–$10^4$ G; supermassive $10^2$–$6\times10^5$ G), the charges proposed for FRB and short-GRB counterparts (Zhang, arXiv:1602.04542), and the ringdown bound $Q/M<0.33$ for GW150914 (Carullo et al., arXiv:2109.13961).
+- **(b)** Peak vacuum flux at 400 Mpc, independent of the mass: $\approx50\,(Q/M)^2$ erg s$^{-1}$ cm$^{-2}$ for the linear part.
+- **(c)** $f_{220}$ and $2f_{220}$ against remnant mass, with the plasma frequency $f_p=8.98\,\mathrm{kHz}\sqrt{n_e/\mathrm{cm^{-3}}}$ of the intergalactic medium, the hot and warm ionised ISM, the solar wind and the ionosphere (typical densities).
+
+**Takeaway.** The EM ringdown is never more than a fraction $(Q/M)^2$ of the GW one, and the quadratic part changes that by at most about 20%. At Wald charges the energy is below $10^{27}$ erg for stellar remnants. Whatever the charge, the frequency is below the plasma frequency of every galactic medium on the way, so the wave does not reach us; only reprocessed emission in the host could, and that needs a model of its own. To revisit with spin, when the Kerr–Newman frequencies are in hand.
+
+**Reproduce.** `brainstorm/tasks/b02-ringdown-em-signal/S1/`: `linear_content.py`, then `money_plot.py` (seconds).
+
+### F8 — Does the $\ell=1$ electromagnetic mode drive quadratic gravitational waves? (unverified)
+
+<figure><a href="figs/rn_qqnm_l1_couplings.png"><img src="figs/rn_qqnm_l1_couplings.png" alt="Magnitude and phase of the quadratic GW couplings involving the l=1 EM-led mode, against Q/M"></a><figcaption>Couplings with the $\ell=1$ EM-led mode $Z$ follow the $\ell=2$ pattern: GW$\times$EM linear in $Q$, EM$\times$EM finite at $Q\to0$ only through mirror content.</figcaption></figure>
+
+The second-order strain ratio $R_h$ against $Q/M$ for products involving the $\ell=1$, $n=0$ EM-led QNM $Z$ (Schwarzschild frequency $0.248263-0.092488i$, matching the literature to $5\times10^{-9}$): green $XZ\to(3,3)$, pink $YZ\to(3,3)$, orange $ZZ\to(2,2)$. Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Top $\lvert R_h\rvert$, bottom $\arg R_h$.
+
+- $XZ$: $R_h\approx0.35\,Q$.
+- $ZZ$: single mode $\propto Q^2$, but the regular$\times$mirror coefficient tends to $-0.096-0.045i$ at $Q\to0$; likewise for $YZ$.
+- Unlike $(4,4)$, the mirror$\times$mirror terms do not vanish here.
+- Controls: parity exactly, angular doubling to $4\times10^{-15}$, the selection rule for odd $\ell_1+\ell_2+L$. Cost: 79 core-hours.
+
+**Takeaway.** Every EM-led mode with mirror content drives quadratic GWs already in Schwarzschild; the charge adds the single-mode part.
+
+**Reproduce.** `tasks/t07-rn-qqnms/S11/`: `submit_all.sh` (sources, ~80 core-h), `analyse.py`, `plot_qscan_l1.py`.
+
+### F7 — How strongly do two QNMs drive a second-order electromagnetic wave? (unverified)
+
+<figure><a href="figs/rn_qqnm_em_couplings.png"><img src="figs/rn_qqnm_em_couplings.png" alt="Magnitude of the second-order EM coupling ratios against Q/M for XX, XY and YY, targets (4,4) and (2,0)"></a><figcaption>GW$\times$GW$\to$EM and EM$\times$EM$\to$EM grow linearly in $Q$; GW$\times$EM$\to$EM survives in Schwarzschild.</figcaption></figure>
+
+The second-order EM amplitude at scri ($rA_{\bar m}$) of the quadratic QNM, divided by the product of first-order amplitudes, against $Q/M$; left $(4,4)$, right $(2,0)$; blue $XX$, orange $XY$, green $YY$.
+
+- On shell the second-order EM waveform at scri needs no quadratic correction: the quadratic terms of the Bianchi identity there vanish at leading order (to $1.5\times10^{-5}$), so it follows from the second-order Weyl readouts by the first-order map. This settles an open point of t13.
+- $XX\to$EM and $YY\to$EM are $\propto Q$; $XY\to$EM tends to $0.197-0.014i$ at $(4,4)$: a gravitational wave scattering an EM wave in Schwarzschild. No literature value to compare with.
+- Mirror$\times$mirror terms vanish; parity covariance to $2\times10^{-9}$.
+
+**Takeaway.** The GW$\times$EM channel converts into EM radiation without any background charge; the purely gravitational channel needs the charge.
+
+**Reproduce.** `tasks/t07-rn-qqnms/S8/`: `analyse_em.py` (728 solves, 1.6 core-h), `plot_em.py`.
+
+### F6 — How does the quadratic ratio depend on the parity content of the mode? (unverified)
+
+<figure><a href="figs/rn_qqnm_parity_Q0p8.png"><img src="figs/rn_qqnm_parity_Q0p8.png" alt="Maps of magnitude and phase of the quadratic ratio over the complex plane of x = C^-/C^+, at Q/M = 0.8"></a><figcaption>At $Q/M=0.8$ the EM$\times$EM$\to$GW ratio changes shape; GW$\times$GW and GW$\times$EM barely move.</figcaption></figure>
+
+$R_h$ over the complex plane of $x=C^-/C^+$, the ratio of odd- to even-parity strain amplitudes, the variable of Bourg et al. (arXiv:2405.10270, Fig. 1); $x=0$ is even parity, $x=i$ a single regular mode, $x=-i$ a pole (pure mirror). Columns: GW$\times$GW $\to(4,4)$, the same $\to(4,0)$, EM$\times$EM$\to$GW, GW$\times$EM; top $\lvert R_h\rvert$, bottom $\arg R_h$. Our mirror ratio is $\rho=(1+ix)/(1-ix)$, and $R_h$ is quadratic in $\rho$ ([F5](#results)), so the map is exact.
+
+<figure><a href="figs/rn_qqnm_parity_Q0p02.png"><img src="figs/rn_qqnm_parity_Q0p02.png" alt="The same maps at Q/M = 0.02"></a><figcaption>The same at $Q/M=0.02$: the Schwarzschild picture.</figcaption></figure>
+
+- GW$\times$GW: $0.137$ at a single mode, $0.153$ at even parity, nearly the same at both charges; at $Q\to0$ the published values sit where their parity content puts them: Khera–Ma–Yang's at a single mode, Bucciotti et al.'s at even parity.
+- EM$\times$EM$\to$GW: at small $Q$ it is $\approx\beta\rho$ and vanishes at a single mode; at $Q/M=0.8$ the zero moves to $x\approx0.9-0.8i$ and the even-parity value is $0.33$.
+- GW$\times$EM: within $\pm4\%$ of $0.43$ at $Q/M=0.8$.
+
+**Takeaway.** The spread of published Schwarzschild ratios is a spread in parity content, and the same map extends it to charged holes.
+
+**Reproduce.** `tasks/t07-rn-qqnms/S10/parity_maps_x.py` (from the F5 coefficients, seconds).
+
+### F5 — How does the quadratic $(2,2)\times(2,2)\to(4,4)$ coupling change with charge? (unverified)
+
+<figure><a href="figs/rn_qqnm_couplings_vs_Q.png"><img src="figs/rn_qqnm_couplings_vs_Q.png" alt="Magnitude and phase of the quadratic GW strain ratio against Q/M for GW x GW, GW x EM and EM x EM -> GW"></a><figcaption>GW$\times$GW barely depends on charge; GW$\times$EM grows linearly; EM$\times$EM$\to$GW is finite at $Q=0$ only with mirror content.</figcaption></figure>
+
+The second-order strain ratio $R_h$ of the $(4,4)$ quadratic QNM driven by two $\ell=2$, $n=0$ modes, against $Q/M\in[0.02,0.8]$: blue GW$\times$GW ($H^{(2)}/H^2$), green GW$\times$EM ($H^{(2)}/H\mathcal A$), orange EM$\times$EM$\to$GW ($H^{(2)}/\mathcal A^2$). Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Black symbols at $Q=0$: the Schwarzschild values of Bourg et al.
+
+How it is computed: the second-order equation of t13 with the t05 sources, solved in the frequency domain on three Chebyshev patches in 30-digit arithmetic, along a complex path near scri. A real first-order mode is a regular mode plus its mirror; adding parity images of each mode gives $R=\alpha+\beta\rho+\gamma\rho^2$ exactly, in the mirror ratio $\rho$. The $m=0$ solve maps to $(4,4)$ by a Clebsch–Gordan ratio.
+
+- **Schwarzschild check.** At $Q/M=0.02$, $\alpha=0.13655-0.01146i$ and $\beta=0.01645+0.00104i$, against Khera–Ma–Yang's $R_{++}=0.13652-0.01146i$, $R_{+-}=0.01648+0.00097i$; with the $(4,0)$ value of Bourg et al. to $6\times10^{-4}$.
+- **GW$\times$GW** falls by 4% by $Q/M=0.8$.
+- **GW$\times$EM** $\approx(0.745-0.218i)\,Q$, $0.44$ at $Q/M=0.8$.
+- **EM$\times$EM$\to$GW**: single mode $\approx(0.650-0.439i)\,Q^2$; the regular$\times$mirror term tends to $0.084$ at $Q=0$.
+- $L=2$ targets too: $\lvert\alpha_{XX}\rvert=0.026$ at $(2,0)$, five times weaker than $(4,0)$.
+- Not computed: products of a mode with its own conjugate, whose frequency $2i\,\mathrm{Im}\,\omega$ lies on the branch cut, where regularity does not fix the solution. The average of the two one-sided limits agrees with Bourg et al.'s value within our 20% error.
+
+**Takeaway.** A charged ringdown has a quadratic GW tone fed by the EM-led mode, linear in $Q$; and an EM-led mode with mirror content feeds it even at $Q=0$.
+
+**Reproduce.** `tasks/t07-rn-qqnms/`: sources `S5/run_sources.py` (SLURM, ~6 core-h per pair of modes), `S5/analyse.py` (364 solves, 10 min), `S5/plot_qscan.py`.
+
 ### F4 — How does the radiation of a charged black hole's ringdown split between gravity and electromagnetism? (unverified)
 
 <figure><a href="figs/rn_composition_ratio.png"><img src="figs/rn_composition_ratio.png" alt="Relative difference between the measured GW/EM power ratio and Motohashi's prediction, against resolution"></a><figcaption>The measured GW/EM power split converges to Motohashi's exact $(L-1)/(L+1)$.</figcaption></figure>

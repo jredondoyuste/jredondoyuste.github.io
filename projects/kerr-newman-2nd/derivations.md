@@ -122,3 +122,25 @@ Each step leaves one free function of $(u,\theta,\tilde\phi)$, the integration c
 The field equations do not remove the algebraically special modes. Regularity at the horizon and at scri does (Wald 1973).
 
 On KN only the family has been identified. The full classification is a 2+1 problem and remains open.
+
+## §8. Second-order variables: the linear pieces of the invariant pair
+
+At second order we use the first-order functionals applied to the second-order fields, $V_L^{(2)}=V^{(1)}[h_2,a_2]$, for the pair $(\varphi_{\pm2},\varphi_{\pm1})$ of [§2](#derivations). This is Spiers–Pound–Moxon's linear piece $\psi^{(2)}_{4L}$, extended to Einstein–Maxwell. With the first-order gauge fixed (t14) it is gauge invariant; it obeys the first-order coupled operator with a quadratic source; and at the horizon its spin-$+2$ part is the full $\Psi_0^{(2)}$ in radiation gauge.
+
+**Normalisation and gauge law.** With $g=g_0+\varepsilon h_1+\varepsilon^2h_2$, $A=A_0+\varepsilon a_1+\varepsilon^2a_2$, the map $x\mapsto x+\varepsilon\xi_1+\varepsilon^2\eta$ and $A\mapsto A+d(\varepsilon\lambda_1+\varepsilon^2\lambda_2)$ act as
+$$h_2\to h_2+\mathcal L_{\xi_1}h_1+\tfrac12\mathcal L^2_{\xi_1}g_0+\mathcal L_{\xi_2}g_0,\qquad a_2\to a_2+\mathcal L_{\xi_1}a_1+\tfrac12\mathcal L^2_{\xi_1}A_0+\mathcal L_{\xi_2}A_0+d\lambda_2,$$
+with $\xi_2=\eta-\tfrac12(\xi_1\cdot\partial)\xi_1$. We checked this exactly against an explicit pull-back.
+
+**Invariance.** For any $(h,a)$, in no particular gauge, $V^{(1)}$ annihilates $\mathcal L_\xi g_0$ and $\mathcal L_\xi A_0+d\lambda$ and does not depend on the first-order tetrad. On type D the shifts of $\Psi_1$ and $\phi_0$ under a null rotation cancel in $\varphi_{+1}$. Hence $V^{(2)}_L$ is invariant under second-order gauge, $U(1)$ and frame changes, and changes under first-order gauge only by
+$$\Delta V^{(2)}_L=V^{(1)}\big[\mathcal L_{\xi_1}h_1+\tfrac12\mathcal L^2_{\xi_1}g_0,\ \mathcal L_{\xi_1}a_1+\tfrac12\mathcal L^2_{\xi_1}A_0\big].$$
+Checked on RN and KN to $10^{-118}$; the full second-order $\varphi^{(2)}$ differs by a quadratic, frame-dependent term.
+
+**The equation.** The off-shell identity of [§3](#derivations), $\mathcal O[V^{(1)}[h,a]]=\sum_Vc_V\,\mathrm{Chain}_V[\text{residuals}^{(1)}[h,a]]$, holds for every $(h,a)$; applied to $(h_2,a_2)$ and combined with the second-order field equations it gives
+$$\mathcal O\big[V^{(2)}_L\big]=-\sum_Vc_V\,\mathrm{Chain}_V\big[\mathcal A_Q[h_1,a_1]\big],$$
+with $\mathcal A_Q$ the quadratic part of the Einstein–Maxwell residuals of the first-order field, in any gauge. We checked it on exact second-order solutions (Kerr–Newman with shifted parameters, pulled back by a generic map): all four equations hold to $10^{-100}$, on RN and KN.
+
+**What the variables give.**
+- Scri: the quadratic parts fall off as $\Psi_{4Q}\sim r^{-3}$, $\phi_{2Q}\sim r^{-2}$, against $r^{-1}$ for the waves. The second-order GW waveform is $V^{(2)}_{L,-2}$. But $\varphi_{-1}$ has linear and quadratic parts of the same order $r^{-4}$, so the EM waveform needs a further quadratic term.
+- Horizon: in the trace-free radiation gauge the quadratic part of $\Psi_0^{(2)}$ vanishes identically, the analogue of Campanelli–Lousto's statement for $\psi_4$. So $\Psi_0^{(2)}=V^{(2)}_{L,+2}$ there and gives the second-order horizon shear; $\phi_0^{(2)}$ keeps a quadratic part.
+
+These statements about scri and the horizon are kinematic: they use the falloff or regularity of the first-order field, not its field equations.

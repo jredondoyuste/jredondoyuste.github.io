@@ -1,5 +1,14 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-07 — what the measured modes are made of, in bits
+
+- New short task during the review (F13–F16), for ET and a GW250114-like source. F9 is not built from prior samples: the model is linear and Gaussian, so the channels and the information do not depend on the true amplitudes.
+- **The count is a bit count:** a channel counts when it carries more than half a bit. The second measured mode from $10\,M$ is mostly the (2,2,1); the third is mostly the (4,4,0).
+- **The 220 tells at most 0.34 bits about the 440** through the prior; at the source the data add 4.9 bits of their own.
+- **Detection is later than measurement:** excluding an amplitude from zero at $3\sigma$ needs a $\rho_{220}$ 2–6× above the mode's entry in the count (the 440 at about 200 in ET).
+- **The prior can bias:** a 221 that departs from its tie to the 220 stays pulled toward the tie even at the source.
+- A planned control did not behave as expected: we expected the prior tie to fake a $3\sigma$ 440 when the true 440 is zero; it raises the significance (median $0.54\sigma \to 0.77\sigma$) but not to a false detection.
+
 ### 2026-10-05 — all tasks closed; paused for review
 
 - The money-plot task is closed: every figure has a result record with its numbers, the command that made it, and its provenance.

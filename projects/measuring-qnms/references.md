@@ -17,6 +17,15 @@
 - **X. Jiménez-Forteza et al.**, final mass and spin fits for non-precessing binaries (UIB2016), [1611.00332](https://arxiv.org/abs/1611.00332).
 - Ringdown observations and forecasts: tests of GR with GWTC-2 ([2010.14529](https://arxiv.org/abs/2010.14529)) and GWTC-3 ([2112.06861](https://arxiv.org/abs/2112.06861)); GW250114 spectroscopy ([2509.08099](https://arxiv.org/abs/2509.08099)); GW190521 (Capano et al. [2105.05238](https://arxiv.org/abs/2105.05238), [2209.00640](https://arxiv.org/abs/2209.00640); Siegel, Isi & Farr [2307.11975](https://arxiv.org/abs/2307.11975)); Berti et al. PRL 117, 101102 ([1605.09286](https://arxiv.org/abs/1605.09286)); Cabero et al. ([1911.01361](https://arxiv.org/abs/1911.01361)); Bhagwat et al. ([2201.00023](https://arxiv.org/abs/2201.00023)).
 
+## Channel laws and the posterior study (2026-10)
+
+- **N. J. Higham**, *Analysis of the Cholesky decomposition of a semi-definite matrix*, in Reliable Numerical Computation (1990). The pivoted-Cholesky property behind the lower bound of the greedy rule ([§8](#derivations)).
+- **J. Demmel et al.**, *Accurate singular value decompositions of structured matrices* (1999). The Cauchy determinant behind the closed-form orthogonal SNR of [§9](#derivations).
+- **H. Widom**, *Asymptotic behavior of the eigenvalues of certain integral equations. II*, [10.1007/BF00282438](https://doi.org/10.1007/BF00282438). Eigenvalue decay of truncated convolution operators, the basis of the far-SNR law of [§10](#derivations).
+- **L. Motl, A. Neitzke**, [hep-th/0301173](https://arxiv.org/abs/hep-th/0301173); **U. Keshet, S. Hod**, [0705.1179](https://arxiv.org/abs/0705.1179); **U. Keshet, A. Neitzke**, [0709.1532](https://arxiv.org/abs/0709.1532). Asymptotic Kerr overtone spacing.
+- **LIGO, Virgo and KAGRA**, GW250114 posterior samples ([10.5281/zenodo.16877102](https://doi.org/10.5281/zenodo.16877102), NRSur7dq4) and GWTC-2.1 GW150914 samples ([10.5281/zenodo.6513631](https://doi.org/10.5281/zenodo.6513631), C01:Mixed). The source draws of [F18](#results).
+- **LALSuite** ([10.7935/GT1W-FZ16](https://doi.org/10.7935/GT1W-FZ16)). Detector sites, antenna patterns and spin-weighted harmonics for [F18](#results).
+
 ## Background (cited from memory: verify before quoting in the paper)
 
 - **Y. Hua, T. K. Sarkar**, matrix pencil method, IEEE Trans. ASSP 38 (1990) 814. Source of the optimal pencil range $L \in [m/3, m/2]$.

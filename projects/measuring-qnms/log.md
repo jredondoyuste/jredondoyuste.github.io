@@ -1,5 +1,38 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-16 — channel laws rewritten; $\ln B > 3$ population counts; page cleaned up
+
+- **Summary of 2026-10-08 to 10-16.** No headline number changed. We tested the count against harder conditions (other sources, real posteriors and sites, a fitted remnant, a stricter threshold), and turned the mathematics into theorems. All of it holds to about one mode.
+- The channel-law note was rewritten for data analysts, with definitions before theorems; the full proofs are in a separate companion. Derivations [§8](#derivations)–[§10](#derivations) summarise it.
+- **Population counts with $\ln B > 3$ per mode** ([F20](#results)): two-mode events per run O4a+b 0.39, A+ 6.7, ET 1756, 4.5–8× below F8's $s_k > 1$ counts. LISA barely changes.
+- Two new tasks planned: t23 (the greedy entry order over $q$, $\chi_f$, $\iota$, $t_0$; running) and t22 (what LISA's multi-mode events are made of).
+- A study problem sheet on the framework (t21).
+- **Page cleanup.** Removed results superseded or repeated elsewhere: F6 (withdrawn GP), F7 (noise-covariance robustness, now one line in [§6](#derivations)), F10 (prior variance removed per mode; F13's bits say the same), F12 (events with $\ge k$ modes; replaced by F20), F15 (440/220 posterior shape). Derivations renumbered: the GP and overtones-vs-non-modal sections (dead ends) are gone; the white-noise $\ln\rho$ argument is replaced by [§10](#derivations).
+
+### 2026-10-15 — measurable modes with $\ln B > 3$
+
+- Reworked the count-vs-SNR plot for a workshop slide ([F19](#results)): a mode counts when its expected $\ln B \ge 3$. GW250114-like from $10\,M$: O4 1 mode, ET 3.
+- The three detectors agree within one mode at every $\rho_{220}$ under the NR-calibrated prior; the flat prior claims 3–10× more.
+- $(\ln\rho_{220})^2$ fits marginally better than $\ln\rho_{220}$ (rms 0.42 against 0.49 modes), as the channel laws expect below $\rho_{220} \sim 10^3$.
+
+### 2026-10-14 — channel laws as theorems; counts over real posteriors
+
+- **Channel laws** (t18): a greedy orthogonal-SNR rule (pivoted Cholesky) names the mode each channel is, with a proved two-sided bracket on every channel strength and a certified count, one mode wide at the median over 216 checks ([§8](#derivations)).
+- Against an ideal white-noise detector the real one loses a computed factor; in the ideal limit each measured mode removes a fixed fraction, its squared overlap, of every other mode's SNR squared. Overtones of one harmonic overlap strongly, distinct harmonics barely ([§9](#derivations)).
+- **$(\ln\rho)^2$, then $\ln\rho$.** The PN amplitudes fall geometrically in $\ell$ and in $\ell - m$, so the harmonics enter on a plane and their number grows as $(\ln\rho_{220})^2$. The full count does so for $10 \le \rho_{220} \le 10^4$ in all 36 cases. It turns linear in $\ln\rho_{220}$ only far beyond, when the overtone ladders take over ([§10](#derivations)).
+- The first draft of that law, linear in $\ln\rho$ from the overtone ladders, missed the realistic range: there the new channels are new harmonics, not overtones.
+- **Over the LVK posteriors** of GW250114 and GW150914, at the real sites ([F18](#results)): O4 keeps 2 modes from $10\,M$; ET drops from 5 to 4 because the sites see these sky positions at about 0.4 of an overhead source's SNR. A Bayes-factor threshold $B^\ast = 20$ costs one mode ([§2](#derivations)). Fitting $(M_f, \chi_f)$ costs at most one mode, and costs it in 30–56% of the draws ([§11](#derivations)).
+
+### 2026-10-12 — unequal mass and high spin
+
+- F9, F13 and F14 redone for $q = 2$ and for $\chi_f = 0.95$ in ET ([F17](#results)). Both measure 8 modes at $\rho_{220} = 321$ from $10\,M$, against 5 for GW250114-like.
+- At $q = 2$ the (3,3,0) is the second measured mode. At $\chi_f = 0.95$ the overtones live longer: the 221 is detected at $3\sigma$ from $\rho_{220} = 16$.
+- Unexplained: the 221 is harder to detect at $q = 2$ (its $3\sigma$ point moves from 29 to 126).
+
+### 2026-10-09 — a specification for a clean rewrite of the code
+
+- Inventoried `mqnm` and wrote one specification of its maths, architecture and module interfaces (t16), checked by 44 tests with 42 must-fail controls. Draft 2 waits on our decisions.
+
 ### 2026-10-07 — what the measured modes are made of, in bits
 
 - New short task during the review (F13–F16), for ET and a GW250114-like source. F9 is not built from prior samples: the model is linear and Gaussian, so the channels and the information do not depend on the true amplitudes.

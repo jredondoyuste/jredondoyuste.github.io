@@ -127,7 +127,7 @@ Second-order strain and EM ratios at scri, and ratios at the horizon, for produc
 - **S10** Parity dependence in 2D · done
   Maps in the variable of Bourg et al. ([F6](#results)).
 - **S11** Couplings with the $\ell=1$ EM mode · done
-  $\mathcal R^{\rm GW}_{{\rm GW\times EM_1}}$, $\mathcal R^{\rm GW}_{{\rm EM\times EM_1}}$, $\mathcal R^{\rm GW}_{{\rm EM_1\times EM_1}}$, with ${\rm EM_1}$ the $\ell=1$ EM-led mode ([F8](#results)).
+  $\mathcal R^{\rm GW}_{ {\rm GW\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1}}$, with ${\rm EM_1}$ the $\ell=1$ EM-led mode ([F8](#results)).
 
 ### t08 — Extremal RN: backreaction of Aretakis-unstable modes · planned
 
@@ -234,7 +234,7 @@ The rotation reading of [F16](#results) assumes the same amplitude normalisation
 
 ### Growth of the $M=0$ difference channel with spin · open
 
-$\lvert\mathcal R^{\rm GW}_{{\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at small $Q$, while the frequency gap changes by 24% ([F16](#results)). Unexplained.
+$\lvert\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at small $Q$, while the frequency gap changes by 24% ([F16](#results)). Unexplained.
 
 ### Near-extremal Kerr–Newman scan · open
 
@@ -298,7 +298,7 @@ The ratio at scri is the second-order amplitude over the product of the parents'
 
 ### Notation for the quadratic ratios (owner, 2026-10-18)
 
-$\mathcal R^{\rm out}_{{\rm parents},\pm\pm}$: the superscript is the output, GW or EM; the subscript names the parents, ${\rm GW\times GW}$, ${\rm GW\times EM}$, ${\rm EM\times EM}$ for the gravitationally and electromagnetically led $(2,2,0)$ modes, and ${\rm GW^*\times EM}$ for the $M=0$ difference channel; the signs say whether each parent enters through its prograde ($+$) or mirror ($-$) part, a bar marking a conjugated amplitude (GW sign first). So $\mathcal R^{\rm GW}_{{\rm GW\times GW}}=\mathcal R_{++}+\mathcal R_{+-}\rho+\mathcal R_{--}\rho^2$, with $\mathcal R_{++}$, $\mathcal R_{+-}$ those of Khera–Ma–Yang, and $\mathcal R_{--}=0$.
+$\mathcal R^{\rm out}_{ {\rm parents},\pm\pm}$: the superscript is the output, GW or EM; the subscript names the parents, ${\rm GW\times GW}$, ${\rm GW\times EM}$, ${\rm EM\times EM}$ for the gravitationally and electromagnetically led $(2,2,0)$ modes, and ${\rm GW^*\times EM}$ for the $M=0$ difference channel; the signs say whether each parent enters through its prograde ($+$) or mirror ($-$) part, a bar marking a conjugated amplitude (GW sign first). So $\mathcal R^{\rm GW}_{ {\rm GW\times GW}}=\mathcal R_{++}+\mathcal R_{+-}\rho+\mathcal R_{--}\rho^2$, with $\mathcal R_{++}$, $\mathcal R_{+-}$ those of Khera–Ma–Yang, and $\mathcal R_{--}=0$.
 
 ### Kerr–Newman route
 

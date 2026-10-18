@@ -4,9 +4,9 @@ Newest first. One entry per working session: what was done, what was learned, an
 
 - The coupling surfaces of [F15](#results) in production plots, and a first reading of where they come from ([F16](#results)). At first order the GW–EM mixing of the two $(2,2,0)$ parents is the RN decoupling rotation by $\theta_2(Q)$, to 6 digits at $a=0$; spin multiplies it by a factor $f(a)$ that is the same at every charge.
 - Most of the GW-to-EM conversion at second order follows the same rotation of the child; the directly quadratic part is at most about 8% of the output.
-- A helicity selection rule: two co-rotating EM modes do not source the GW mode on a vacuum background, so $\mathcal R^{\rm GW}_{{\rm EM\times EM},++}\propto Q^2$. It predicts that the EM-sourced Kerr ratio of Aly and Stojkovic vanishes for two prograde $(2,2,0)$ modes.
-- At the Schwarzschild corner we reproduce the published ratios of Ma et al. and Bucciotti et al. within 0.3%. One channel, $\mathcal R^{\rm GW}_{{\rm GW^*\times EM},\bar+\,+}$, grows fivefold with spin at small charge, and we do not know why.
-- New notation on the page: $\mathcal R^{\rm out}_{{\rm parents},\pm\pm}$ ([Choices and conventions](#status)).
+- A helicity selection rule: two co-rotating EM modes do not source the GW mode on a vacuum background, so $\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}\propto Q^2$. It predicts that the EM-sourced Kerr ratio of Aly and Stojkovic vanishes for two prograde $(2,2,0)$ modes.
+- At the Schwarzschild corner we reproduce the published ratios of Ma et al. and Bucciotti et al. within 0.3%. One channel, $\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}$, grows fivefold with spin at small charge, and we do not know why.
+- New notation on the page: $\mathcal R^{\rm out}_{ {\rm parents},\pm\pm}$ ([Choices and conventions](#status)).
 - What went wrong: the change of notation came after the plots were made, so every Kerr–Newman figure was relabelled; the figures of [F5–F8](#results) still carry the old labels. Our literature notes had the two modes of Pani, Berti and Gualtieri swapped; the analysis caught it, and a control with the swapped labels fails as it should.
 
 ### 2026-10-17 — compiled kernels, and the scan over Kerr–Newman

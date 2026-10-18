@@ -7,16 +7,16 @@ $$\tan\theta_\ell=\frac{\sqrt{9+4Q^2\mu_\ell^2}-3}{2Q\mu_\ell},\qquad \mu_\ell^2
 built from Chandrasekhar's $q_{1,2}=3\pm\sqrt{9+4Q^2\mu^2}$.
 
 - **Left.** $\sqrt8\,\lvert{\rm mix}_{\rm GW}\rvert/\tan\theta_2(Q)$ against $a/M$. Here ${\rm mix}_{\rm GW}$ is the ratio of the EM to the GW amplitude at scri of the GW-led parent, taken from the first-order fields at every scan node. One line per row of constant $Q$ (dark $Q=0.05$ to yellow $Q=0.9$); markers are the 153 nodes. At $a=0$ the value is 1 to $10^{-6}$ at every $Q$. With spin it falls to 0.79 at $a=0.947$, and all rows lie on nearly one curve.
-- **Right.** $\sqrt8\,\lvert\mathcal R^{\rm EM}_{{\rm GW\times GW}}/\mathcal R^{\rm GW}_{{\rm GW\times GW}}\rvert/\tan\theta_4(Q)$ for $\mathcal R_{++}$ (circles, solid) and $\mathcal R_{+-}$ (squares, dashed), $\ell=4$, same colours. The grey line at 1 is a pure rotation of the child into the GW-led decoupled channel. It assumes the normalisation $\sqrt8$ measured at $\ell=2$ also holds at $\ell=4$; that is inferred, not measured.
+- **Right.** $\sqrt8\,\lvert\mathcal R^{\rm EM}_{ {\rm GW\times GW}}/\mathcal R^{\rm GW}_{ {\rm GW\times GW}}\rvert/\tan\theta_4(Q)$ for $\mathcal R_{++}$ (circles, solid) and $\mathcal R_{+-}$ (squares, dashed), $\ell=4$, same colours. The grey line at 1 is a pure rotation of the child into the GW-led decoupled channel. It assumes the normalisation $\sqrt8$ measured at $\ell=2$ also holds at $\ell=4$; that is inferred, not measured.
 
 What we find:
 
 1. **First-order mixing is the RN rotation, exactly.** At $a=0$ the EM content of the GW-led parent and the GW content of the EM-led parent equal $\mp\tan\theta_2$, up to the fixed factor $\sqrt8$, to 6 digits at all 9 charges. One conversion factor maps Pani, Berti and Gualtieri's eq. (A6) [@PaniBertiGualtieri2013KN] onto both parents to $3\times10^{-10}$; a swapped-label control fails. With spin, ${\rm mix}=\tan\theta_2(Q)\,f(a)$, with $f$ the same on every row to 0.7% (GW-led) and 3.5% (EM-led).
-2. **The minority output follows the rotation.** At $a=0$, $\mathcal R^{\rm EM}_{{\rm GW\times GW},+-}/\mathcal R^{\rm GW}_{{\rm GW\times GW},+-}$ is 1.01–1.05 times the rotation value at every $Q$; for $++$ it is 0.70 at $Q=0.05$, rising to 0.98 at $Q=0.9$. Most of the GW-to-EM conversion is linear propagation of the child, not a quadratic vertex: the direct quadratic part is at most about 8% of the output (given $N_4=\sqrt8$).
-3. **A helicity selection rule.** $\mathcal R^{\rm GW}_{{\rm EM\times EM},++}\propto Q^2$, because the Maxwell stress $T_{ab}\propto\phi_{AB}\bar\phi_{A'B'}$ pairs opposite helicities: two co-rotating EM modes do not source the GW mode at $Q=0$ on any vacuum background. The derivation is analytic and not checked independently. The algebraic check gives $\lvert T\rvert\le9\times10^{-16}$ for single-helicity fields, against 4.7–10.3 for generic ones. Along the Kerr edge $\mathcal R/Q^2=0.78$–$0.80$, while $\mathcal R_{+-}$ stays finite. Prediction: the EM-sourced ratio of Aly and Stojkovic [@AlyStojkovic2025GEMKerr] vanishes for two prograde $(2,2,0)$ modes on Kerr.
-4. **Schwarzschild corner.** $\mathcal R^{\rm GW}_{{\rm GW\times GW},++}=0.13707\,e^{-0.0836i}$, against Ma et al.'s $0.137\,e^{-0.083i}$ as quoted by Bourg et al. [@Bourg2024QQNMParity]; $\mathcal R_{++}+\mathcal R_{+-}=0.15348\,e^{-0.0681i}$, against Bucciotti et al.'s $0.154\,e^{-0.068i}$ [@Bucciotti2024QQNM].
-5. **Spin.** Odd powers of $a$ appear in every ratio, at the size expected from the Zeeman splitting of the parents; the $Q=0$ slope equals the Kerr slope of Khera, Ma and Yang [@KheraMaYang2024QQNM] to 0.6%. There is no separate enhancement from the magnetic dipole $Qa$ ($g=2$). The $\ell\ge5$ content grows as $a^{\ell-4}$ with prefactor $\approx0.1^{\ell-4}$; at $(a,Q)=(0.67,0.67)$, $\lvert\mathcal R_5/\mathcal R_4\rvert=1.17$ for $\mathcal R^{\rm EM}_{{\rm EM\times EM},++}$, so at high spin one spherical multipole does not summarise the EM-led channels.
-6. **Unexplained.** $\lvert\mathcal R^{\rm GW}_{{\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at $Q=0.05$ (0.125 to 0.62), while the frequency gap changes by 24%. At $(0.67,0.67)$ it is 1.64 times $\lvert\mathcal R^{\rm GW}_{{\rm GW\times EM},++}\rvert$. Separately, $\mathcal R^{\rm GW}_{{\rm GW\times EM},-+}$ grows sixfold from $a=0$ to $0.8$.
+2. **The minority output follows the rotation.** At $a=0$, $\mathcal R^{\rm EM}_{ {\rm GW\times GW},+-}/\mathcal R^{\rm GW}_{ {\rm GW\times GW},+-}$ is 1.01–1.05 times the rotation value at every $Q$; for $++$ it is 0.70 at $Q=0.05$, rising to 0.98 at $Q=0.9$. Most of the GW-to-EM conversion is linear propagation of the child, not a quadratic vertex: the direct quadratic part is at most about 8% of the output (given $N_4=\sqrt8$).
+3. **A helicity selection rule.** $\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}\propto Q^2$, because the Maxwell stress $T_{ab}\propto\phi_{AB}\bar\phi_{A'B'}$ pairs opposite helicities: two co-rotating EM modes do not source the GW mode at $Q=0$ on any vacuum background. The derivation is analytic and not checked independently. The algebraic check gives $\lvert T\rvert\le9\times10^{-16}$ for single-helicity fields, against 4.7–10.3 for generic ones. Along the Kerr edge $\mathcal R/Q^2=0.78$–$0.80$, while $\mathcal R_{+-}$ stays finite. Prediction: the EM-sourced ratio of Aly and Stojkovic [@AlyStojkovic2025GEMKerr] vanishes for two prograde $(2,2,0)$ modes on Kerr.
+4. **Schwarzschild corner.** $\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}=0.13707\,e^{-0.0836i}$, against Ma et al.'s $0.137\,e^{-0.083i}$ as quoted by Bourg et al. [@Bourg2024QQNMParity]; $\mathcal R_{++}+\mathcal R_{+-}=0.15348\,e^{-0.0681i}$, against Bucciotti et al.'s $0.154\,e^{-0.068i}$ [@Bucciotti2024QQNM].
+5. **Spin.** Odd powers of $a$ appear in every ratio, at the size expected from the Zeeman splitting of the parents; the $Q=0$ slope equals the Kerr slope of Khera, Ma and Yang [@KheraMaYang2024QQNM] to 0.6%. There is no separate enhancement from the magnetic dipole $Qa$ ($g=2$). The $\ell\ge5$ content grows as $a^{\ell-4}$ with prefactor $\approx0.1^{\ell-4}$; at $(a,Q)=(0.67,0.67)$, $\lvert\mathcal R_5/\mathcal R_4\rvert=1.17$ for $\mathcal R^{\rm EM}_{ {\rm EM\times EM},++}$, so at high spin one spherical multipole does not summarise the EM-led channels.
+6. **Unexplained.** $\lvert\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at $Q=0.05$ (0.125 to 0.62), while the frequency gap changes by 24%. At $(0.67,0.67)$ it is 1.64 times $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times EM},++}\rvert$. Separately, $\mathcal R^{\rm GW}_{ {\rm GW\times EM},-+}$ grows sixfold from $a=0$ to $0.8$.
 
 We found no paper with quadratic QNM couplings on RN or KN. The charge parity of every channel agrees with Mark et al. [@Mark2015KN].
 
@@ -30,11 +30,11 @@ We found no paper with quadratic QNM couplings on RN or KN. The charge parity of
 
 The quadratic QNM ratios of the products of the two $(\ell,m,n)=(2,2,0)$ parents, the gravitationally led and the electromagnetically led mode, at 153 nodes over $a^2+Q^2\le0.9$, $Q\ge0.05$ ($M=1$). Outputs GW and EM; ${\rm GW\times GW}$, ${\rm GW\times EM}$, ${\rm EM\times EM}$ at $M=4$, $\ell=4\dots8$; the off-cut difference channel ${\rm GW^*\times EM}$ at $M=0$, $\ell=2\dots8$; every mirror coefficient. Notation in [Choices and conventions](#status).
 
-Six 3D panels. The horizontal axes are $a/M$ and $Q/M$; the height and colour are $\lvert\mathcal R\rvert$, the dimensionless amplitude ratio at scri (GW in ${}_{-2}Y_{\ell M}$, EM in ${}_{-1}Y_{\ell M}$). Panels: $\mathcal R^{\rm GW}_{{\rm GW\times GW},++}$, $\mathcal R^{\rm GW}_{{\rm GW\times EM},++}$, $\mathcal R^{\rm GW}_{{\rm EM\times EM},++}$, $\mathcal R^{\rm GW}_{{\rm EM\times EM},+-}$, $\mathcal R^{\rm EM}_{{\rm EM\times EM},++}$ ($\ell=4$), and $\mathcal R^{\rm GW}_{{\rm GW^*\times EM},\bar+\,+}$ ($\ell=2$). $p$ in a title means $\mathcal R\propto Q^p$ at small $Q$. Black dots: the 153 computed nodes; grey dots: the nodes on the base plane; grey arc: $a^2+Q^2=0.9$. Surfaces: the interpolant.
+Six 3D panels. The horizontal axes are $a/M$ and $Q/M$; the height and colour are $\lvert\mathcal R\rvert$, the dimensionless amplitude ratio at scri (GW in ${}_{-2}Y_{\ell M}$, EM in ${}_{-1}Y_{\ell M}$). Panels: $\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}$, $\mathcal R^{\rm GW}_{ {\rm GW\times EM},++}$, $\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}$, $\mathcal R^{\rm GW}_{ {\rm EM\times EM},+-}$, $\mathcal R^{\rm EM}_{ {\rm EM\times EM},++}$ ($\ell=4$), and $\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}$ ($\ell=2$). $p$ in a title means $\mathcal R\propto Q^p$ at small $Q$. Black dots: the 153 computed nodes; grey dots: the nodes on the base plane; grey arc: $a^2+Q^2=0.9$. Surfaces: the interpolant.
 
-- $\lvert\mathcal R^{\rm GW}_{{\rm GW\times GW},++}\rvert$ falls from 0.137 (Schwarzschild) to 0.104 near the arc at large spin.
-- $\lvert\mathcal R^{\rm GW}_{{\rm GW\times EM},++}\rvert$ goes from 0.022 to 0.45, largest at $(a,Q)=(0,0.9)$; its slope at the Schwarzschild corner is $\mathcal R/Q\to0.745-0.218i$.
-- $\lvert\mathcal R^{\rm GW}_{{\rm EM\times EM},+-}\rvert$ is finite at $Q\to0$ (0.084) and rises to 0.19 near $(0.70,0.64)$.
+- $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}\rvert$ falls from 0.137 (Schwarzschild) to 0.104 near the arc at large spin.
+- $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times EM},++}\rvert$ goes from 0.022 to 0.45, largest at $(a,Q)=(0,0.9)$; its slope at the Schwarzschild corner is $\mathcal R/Q\to0.745-0.218i$.
+- $\lvert\mathcal R^{\rm GW}_{ {\rm EM\times EM},+-}\rvert$ is finite at $Q\to0$ (0.084) and rises to 0.19 near $(0.70,0.64)$.
 - No ridge or kink anywhere: the GW-led and EM-led frequencies never cross (${\rm Re}\,\omega_{\rm EM}-{\rm Re}\,\omega_{\rm GW}\in[0.068,0.216]$).
 
 <figure><a href="figs/kn_qqnm_slices_a.png"><img src="figs/kn_qqnm_slices_a.png" alt="Coupling moduli against a/M along four rows of fixed Q, with Khera-Ma-Yang Kerr points"></a><figcaption>Against spin at fixed charge: the $Q\to0$ curve passes through Khera–Ma–Yang's Kerr values.</figcaption></figure>
@@ -43,17 +43,17 @@ Eight panels, $\lvert\mathcal R\rvert$ against $a/M$. Lines: the interpolant alo
 
 <figure><a href="figs/kn_qqnm_gw_em_ratio.png"><img src="figs/kn_qqnm_gw_em_ratio.png" alt="Maps of log10 of the GW-to-EM output ratio per channel over the quarter disk"></a><figcaption>Which output wins: GW$\times$GW radiates mostly gravitationally everywhere; the channels with an EM-led parent turn electromagnetic at small charge.</figcaption></figure>
 
-Eight panels over $(a/M,Q/M)$; colour $\log_{10}\lvert\mathcal R^{\rm GW}/\mathcal R^{\rm EM}\rvert$ for the same channel and coefficient (red: GW larger, blue: EM larger), black line at ratio 1. The two outputs use different conventions (strain against EM field), so only the variation over the disk is convention-free. The ratios follow charge parity: where one output is odd in $Q$ and the other even, the ratio goes as $Q^{\pm1}$ at small $Q$. $\mathcal R_{{\rm GW\times EM},++}$, $\mathcal R_{{\rm EM\times EM},++}$ and $\mathcal R_{{\rm GW^*\times EM},\bar+\,+}$ cross 1 at $Q\approx0.05$–$0.45$; $\mathcal R_{{\rm GW\times EM},-+}$ is EM-dominated everywhere.
+Eight panels over $(a/M,Q/M)$; colour $\log_{10}\lvert\mathcal R^{\rm GW}/\mathcal R^{\rm EM}\rvert$ for the same channel and coefficient (red: GW larger, blue: EM larger), black line at ratio 1. The two outputs use different conventions (strain against EM field), so only the variation over the disk is convention-free. The ratios follow charge parity: where one output is odd in $Q$ and the other even, the ratio goes as $Q^{\pm1}$ at small $Q$. $\mathcal R_{ {\rm GW\times EM},++}$, $\mathcal R_{ {\rm EM\times EM},++}$ and $\mathcal R_{ {\rm GW^*\times EM},\bar+\,+}$ cross 1 at $Q\approx0.05$–$0.45$; $\mathcal R_{ {\rm GW\times EM},-+}$ is EM-dominated everywhere.
 
 <figure><a href="figs/kn_qqnm_mirror_ratio.png"><img src="figs/kn_qqnm_mirror_ratio.png" alt="Maps of the mirror-to-prograde ratio of each coupling over the quarter disk"></a><figcaption>Mirror against prograde content: 12–21% for GW$\times$GW, dominant for EM$\times$EM$\to$GW at small charge.</figcaption></figure>
 
-Eight panels over $(a/M,Q/M)$, colour $\log_{10}$ of $\lvert\mathcal R_{+-}/\mathcal R_{++}\rvert$ (${\rm GW\times GW}$, ${\rm EM\times EM}$, ${\rm GW\times EM}$) and $\lvert\mathcal R_{-+}/\mathcal R_{++}\rvert$ (${\rm GW\times EM}$); top GW output, bottom EM output. For $\mathcal R^{\rm GW}_{{\rm EM\times EM}}$ the mirror part dominates below $Q=0.38$ ($a=0$) to $0.46$ ($a=0.6$), because $\mathcal R_{++}\propto Q^2$ while $\mathcal R_{+-}$ is finite ([F16](#results), item 3). $\mathcal R^{\rm GW}_{{\rm GW\times EM},-+}/\mathcal R_{++}$ grows about fifteenfold with spin.
+Eight panels over $(a/M,Q/M)$, colour $\log_{10}$ of $\lvert\mathcal R_{+-}/\mathcal R_{++}\rvert$ (${\rm GW\times GW}$, ${\rm EM\times EM}$, ${\rm GW\times EM}$) and $\lvert\mathcal R_{-+}/\mathcal R_{++}\rvert$ (${\rm GW\times EM}$); top GW output, bottom EM output. For $\mathcal R^{\rm GW}_{ {\rm EM\times EM}}$ the mirror part dominates below $Q=0.38$ ($a=0$) to $0.46$ ($a=0.6$), because $\mathcal R_{++}\propto Q^2$ while $\mathcal R_{+-}$ is finite ([F16](#results), item 3). $\mathcal R^{\rm GW}_{ {\rm GW\times EM},-+}/\mathcal R_{++}$ grows about fifteenfold with spin.
 
 <figure><a href="figs/kn_qqnm_accuracy_edges.png"><img src="figs/kn_qqnm_accuracy_edges.png" alt="Per-node relative errors, RN edge differences against t07, Kerr edge differences against Khera-Ma-Yang"></a><figcaption>Accuracy: numerical errors $10^{-7}$–$10^{-4}$ at $M=4$, and both edges agree with independent results.</figcaption></figure>
 
 - **(a)** Per-node relative error, one row per coefficient: blue the numerical uncertainty $u_{\rm tot}/\lvert\mathcal R\rvert$ (largest of fit-degree spread, resolution, source resolution and the rounding floor), orange the leave-one-out interpolation error. Dashed: $5.1\times10^{-4}$, the largest interpolant error at 13 independent off-grid points.
 - **(b)** RN edge: the interpolant at $a=0$ against t07 ([F5](#results), [F7](#results)), relative to the leading coefficient: $\le1.2\times10^{-3}$, mostly below t07's own spread (open markers).
-- **(c)** Kerr edge: $\mathcal R^{\rm GW}_{{\rm GW\times GW},++}$ and $\mathcal R_{+-}$ extrapolated to $Q=0$ against Khera–Ma–Yang, $10^{-4}$ to $3\times10^{-3}$, inside their 1% fit accuracy.
+- **(c)** Kerr edge: $\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}$ and $\mathcal R_{+-}$ extrapolated to $Q=0$ against Khera–Ma–Yang, $10^{-4}$ to $3\times10^{-3}$, inside their 1% fit accuracy.
 
 Cost: 416 core-hours with the compiled kernels of [F14](#results). Not covered: $a^2+Q^2>0.9$ (near-extremality, t12); $Q<0.05$ is an extrapolation in $Q^2$; the EM output normalisation on KN is inferred from RN.
 
@@ -87,15 +87,15 @@ At one point, $M=1$, $a=0.2$, $Q=0.4$, the parents are the GW-led $(2,2,0)$ mode
 
 | channel | output | value |
 |---|---|---|
-| $\mathcal R^{\rm GW}_{{\rm GW\times GW},++}$ | GW | $0.1324460-0.0065817i$ |
-| $\mathcal R^{\rm GW}_{{\rm GW\times GW},+-}$ | GW | $0.0185592-0.0001759i$ |
-| $\mathcal R^{\rm GW}_{{\rm EM\times EM},++}$, $_{+-}$ | GW | $0.0879930-0.0658426i$, $0.1077213+0.0204253i$ |
-| $\mathcal R^{\rm GW}_{{\rm GW\times EM},++}$, $_{+-}$, $_{-+}$ | GW | $0.2698164-0.0775123i$, $0.0016696+0.0098457i$, $-0.0086404-0.0026248i$ |
-| $\mathcal R^{\rm GW}_{{\rm GW^*\times EM},\bar+\,+}$, $_{-\,\bar-}$, $_{-\,+}$ ($\ell=2$) | GW | $-0.040612+0.042416i$, $-0.038059-0.003588i$, $0.000350-0.000236i$ |
-| $\mathcal R^{\rm EM}_{{\rm GW\times GW},++}$, $_{+-}$ | EM | $-0.0168222+0.0008649i$, $-0.0030261+0.0000632i$ |
-| $\mathcal R^{\rm EM}_{{\rm EM\times EM},++}$, $_{+-}$ | EM | $0.0844106-0.0584850i$, $0.0461014+0.0129300i$ |
-| $\mathcal R^{\rm EM}_{{\rm GW\times EM},++}$, $_{+-}$, $_{-+}$ | EM | $0.1930100-0.0074904i$, $-0.0034953-0.0006360i$, $0.0621357+0.0088082i$ |
-| $\mathcal R^{\rm EM}_{{\rm GW^*\times EM},\bar+\,+}$, $_{-\,+}$, $_{-\,\bar-}$ ($\ell=2$) | EM | $-0.000108+0.025910i$, $-0.003650-0.002188i$, $0.000027+0.000456i$ |
+| $\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}$ | GW | $0.1324460-0.0065817i$ |
+| $\mathcal R^{\rm GW}_{ {\rm GW\times GW},+-}$ | GW | $0.0185592-0.0001759i$ |
+| $\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}$, $_{+-}$ | GW | $0.0879930-0.0658426i$, $0.1077213+0.0204253i$ |
+| $\mathcal R^{\rm GW}_{ {\rm GW\times EM},++}$, $_{+-}$, $_{-+}$ | GW | $0.2698164-0.0775123i$, $0.0016696+0.0098457i$, $-0.0086404-0.0026248i$ |
+| $\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}$, $_{-\,\bar-}$, $_{-\,+}$ ($\ell=2$) | GW | $-0.040612+0.042416i$, $-0.038059-0.003588i$, $0.000350-0.000236i$ |
+| $\mathcal R^{\rm EM}_{ {\rm GW\times GW},++}$, $_{+-}$ | EM | $-0.0168222+0.0008649i$, $-0.0030261+0.0000632i$ |
+| $\mathcal R^{\rm EM}_{ {\rm EM\times EM},++}$, $_{+-}$ | EM | $0.0844106-0.0584850i$, $0.0461014+0.0129300i$ |
+| $\mathcal R^{\rm EM}_{ {\rm GW\times EM},++}$, $_{+-}$, $_{-+}$ | EM | $0.1930100-0.0074904i$, $-0.0034953-0.0006360i$, $0.0621357+0.0088082i$ |
+| $\mathcal R^{\rm EM}_{ {\rm GW^*\times EM},\bar+\,+}$, $_{-\,+}$, $_{-\,\bar-}$ ($\ell=2$) | EM | $-0.000108+0.025910i$, $-0.003650-0.002188i$, $0.000027+0.000456i$ |
 
 All at $\ell=4$ unless marked. The spread (fit degree, both resolutions, source resolution) is $\le3.3\times10^{-6}$ of the lead for the $M=4$ channels and $\le3\times10^{-3}$ for $M=0$. The mirror content of the parents is $\rho_{\rm GW}=0.058236+0.241985i$ and $\rho_{\rm EM}=-0.003682-0.018427i$.
 
@@ -115,7 +115,7 @@ All at $\ell=4$ unless marked. The spread (fit degree, both resolutions, source 
 
 The solver: three Chebyshev patches in $\sigma$ (scri to horizon), Gauss nodes in $x=\cos\theta$, a complex path near scri, double precision. Its readout error at scri is $\lesssim8\times10^{-7}$.
 
-- **Left.** $10^3(\lvert\mathcal R_0\rvert/\lvert\mathcal R_{\rm KMY}\rvert-1)$ against $a/M\in\{0.2,0.5,0.7\}$; $\mathcal R_0$ is our $\mathcal R^{\rm GW}_{{\rm GW\times GW}}$ extrapolated to $Q=0$, $\mathcal R_{\rm KMY}$ the 8th-order fit of Khera, Ma and Yang [@KheraMaYang2024QQNM]. Blue $\mathcal R_{++}$, red $\mathcal R_{+-}$; grey band the 1% acceptance bar.
+- **Left.** $10^3(\lvert\mathcal R_0\rvert/\lvert\mathcal R_{\rm KMY}\rvert-1)$ against $a/M\in\{0.2,0.5,0.7\}$; $\mathcal R_0$ is our $\mathcal R^{\rm GW}_{ {\rm GW\times GW}}$ extrapolated to $Q=0$, $\mathcal R_{\rm KMY}$ the 8th-order fit of Khera, Ma and Yang [@KheraMaYang2024QQNM]. Blue $\mathcal R_{++}$, red $\mathcal R_{+-}$; grey band the 1% acceptance bar.
 - **Middle.** The phase difference, in $10^{-3}$ rad.
 - **Right.** The $Q$ dependence behind the extrapolation, at $Q=0.02,0.05,0.1$ and 0: linear in $Q^2$. Marker shape gives the spin.
 
@@ -174,10 +174,10 @@ An order-of-magnitude estimate built on our RN numbers (no spin). The gravitatio
 
 <figure><a href="figs/rn_qqnm_l1_couplings.png"><img src="figs/rn_qqnm_l1_couplings.png" alt="Magnitude and phase of the quadratic GW couplings involving the l=1 EM-led mode, against Q/M"></a><figcaption>Couplings with the $\ell=1$ EM-led mode follow the $\ell=2$ pattern: GW$\times$EM linear in $Q$, EM$\times$EM finite at $Q\to0$ only through mirror content.</figcaption></figure>
 
-The second-order strain ratio against $Q/M$ for products involving the $\ell=1$, $n=0$ EM-led QNM, written ${\rm EM_1}$ (Schwarzschild frequency $0.248263-0.092488i$, matching the literature to $5\times10^{-9}$): green $\mathcal R^{\rm GW}_{{\rm GW\times EM_1}}\to(3,3)$, pink $\mathcal R^{\rm GW}_{{\rm EM\times EM_1}}\to(3,3)$, orange $\mathcal R^{\rm GW}_{{\rm EM_1\times EM_1}}\to(2,2)$. Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Top $\lvert\mathcal R\rvert$, bottom $\arg\mathcal R$. (The figure labels the parents $X$, $Y$, $Z$: GW-led, EM-led, ${\rm EM_1}$.)
+The second-order strain ratio against $Q/M$ for products involving the $\ell=1$, $n=0$ EM-led QNM, written ${\rm EM_1}$ (Schwarzschild frequency $0.248263-0.092488i$, matching the literature to $5\times10^{-9}$): green $\mathcal R^{\rm GW}_{ {\rm GW\times EM_1}}\to(3,3)$, pink $\mathcal R^{\rm GW}_{ {\rm EM\times EM_1}}\to(3,3)$, orange $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1}}\to(2,2)$. Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Top $\lvert\mathcal R\rvert$, bottom $\arg\mathcal R$. (The figure labels the parents $X$, $Y$, $Z$: GW-led, EM-led, ${\rm EM_1}$.)
 
-- $\mathcal R^{\rm GW}_{{\rm GW\times EM_1}}\approx0.35\,Q$.
-- $\mathcal R^{\rm GW}_{{\rm EM_1\times EM_1},++}\propto Q^2$, but $\mathcal R^{\rm GW}_{{\rm EM_1\times EM_1},+-}$ tends to $-0.096-0.045i$ at $Q\to0$; likewise for ${\rm EM\times EM_1}$.
+- $\mathcal R^{\rm GW}_{ {\rm GW\times EM_1}}\approx0.35\,Q$.
+- $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1},++}\propto Q^2$, but $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1},+-}$ tends to $-0.096-0.045i$ at $Q\to0$; likewise for ${\rm EM\times EM_1}$.
 - Unlike $(4,4)$, the $\mathcal R_{--}$ terms do not vanish here.
 - Controls: parity exactly, angular doubling to $4\times10^{-15}$, the selection rule for odd $\ell_1+\ell_2+L$. Cost: 79 core-hours.
 
@@ -189,10 +189,10 @@ The second-order strain ratio against $Q/M$ for products involving the $\ell=1$,
 
 <figure><a href="figs/rn_qqnm_em_couplings.png"><img src="figs/rn_qqnm_em_couplings.png" alt="Magnitude of the second-order EM coupling ratios against Q/M for GW x GW, GW x EM and EM x EM parents, targets (4,4) and (2,0)"></a><figcaption>GW$\times$GW$\to$EM and EM$\times$EM$\to$EM grow linearly in $Q$; GW$\times$EM$\to$EM survives in Schwarzschild.</figcaption></figure>
 
-The second-order EM amplitude at scri ($rA_{\bar m}$) of the quadratic QNM, divided by the product of first-order amplitudes, against $Q/M$; left $(4,4)$, right $(2,0)$; blue $\mathcal R^{\rm EM}_{{\rm GW\times GW}}$, orange $\mathcal R^{\rm EM}_{{\rm GW\times EM}}$, green $\mathcal R^{\rm EM}_{{\rm EM\times EM}}$. (The figure labels the parents $X$, GW-led, and $Y$, EM-led.)
+The second-order EM amplitude at scri ($rA_{\bar m}$) of the quadratic QNM, divided by the product of first-order amplitudes, against $Q/M$; left $(4,4)$, right $(2,0)$; blue $\mathcal R^{\rm EM}_{ {\rm GW\times GW}}$, orange $\mathcal R^{\rm EM}_{ {\rm GW\times EM}}$, green $\mathcal R^{\rm EM}_{ {\rm EM\times EM}}$. (The figure labels the parents $X$, GW-led, and $Y$, EM-led.)
 
 - On shell the second-order EM waveform at scri needs no quadratic correction: the quadratic terms of the Bianchi identity there vanish at leading order (to $1.5\times10^{-5}$), so it follows from the second-order Weyl readouts by the first-order map. This settles an open point of t13.
-- $\mathcal R^{\rm EM}_{{\rm GW\times GW}}$ and $\mathcal R^{\rm EM}_{{\rm EM\times EM}}$ are $\propto Q$; $\mathcal R^{\rm EM}_{{\rm GW\times EM},++}$ tends to $0.197-0.014i$ at $(4,4)$: a gravitational wave scattering an EM wave in Schwarzschild. No literature value to compare with.
+- $\mathcal R^{\rm EM}_{ {\rm GW\times GW}}$ and $\mathcal R^{\rm EM}_{ {\rm EM\times EM}}$ are $\propto Q$; $\mathcal R^{\rm EM}_{ {\rm GW\times EM},++}$ tends to $0.197-0.014i$ at $(4,4)$: a gravitational wave scattering an EM wave in Schwarzschild. No literature value to compare with.
 - The $\mathcal R_{--}$ terms vanish; parity covariance to $2\times10^{-9}$.
 
 **Takeaway.** The GW$\times$EM channel converts into EM radiation without any background charge; the purely gravitational channel needs the charge.
@@ -219,15 +219,15 @@ $\mathcal R^{\rm GW}$ over the complex plane of $x=C^-/C^+$, the ratio of odd- t
 
 <figure><a href="figs/rn_qqnm_couplings_vs_Q.png"><img src="figs/rn_qqnm_couplings_vs_Q.png" alt="Magnitude and phase of the quadratic GW strain ratio against Q/M for GW x GW, GW x EM and EM x EM -> GW"></a><figcaption>GW$\times$GW barely depends on charge; GW$\times$EM grows linearly; EM$\times$EM$\to$GW is finite at $Q=0$ only with mirror content.</figcaption></figure>
 
-The second-order strain ratio of the $(4,4)$ quadratic QNM driven by two $\ell=2$, $n=0$ modes, against $Q/M\in[0.02,0.8]$: blue $\mathcal R^{\rm GW}_{{\rm GW\times GW}}=H^{(2)}/H^2$, green $\mathcal R^{\rm GW}_{{\rm GW\times EM}}=H^{(2)}/H\mathcal A$, orange $\mathcal R^{\rm GW}_{{\rm EM\times EM}}=H^{(2)}/\mathcal A^2$. Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Black symbols at $Q=0$: the Schwarzschild values of Bourg et al.
+The second-order strain ratio of the $(4,4)$ quadratic QNM driven by two $\ell=2$, $n=0$ modes, against $Q/M\in[0.02,0.8]$: blue $\mathcal R^{\rm GW}_{ {\rm GW\times GW}}=H^{(2)}/H^2$, green $\mathcal R^{\rm GW}_{ {\rm GW\times EM}}=H^{(2)}/H\mathcal A$, orange $\mathcal R^{\rm GW}_{ {\rm EM\times EM}}=H^{(2)}/\mathcal A^2$. Solid: single-mode parents ($\rho=0$); dashed: even parity ($\rho=1$). Black symbols at $Q=0$: the Schwarzschild values of Bourg et al.
 
 How it is computed: the second-order equation of t13 with the t05 sources, solved in the frequency domain on three Chebyshev patches in 30-digit arithmetic, along a complex path near scri. A real first-order mode is a regular mode plus its mirror; adding parity images of each mode gives $\mathcal R=\mathcal R_{++}+\mathcal R_{+-}\rho+\mathcal R_{--}\rho^2$ exactly, in the mirror ratio $\rho$. The $m=0$ solve maps to $(4,4)$ by a Clebsch–Gordan ratio.
 
-- **Schwarzschild check.** At $Q/M=0.02$, $\mathcal R^{\rm GW}_{{\rm GW\times GW},++}=0.13655-0.01146i$ and $\mathcal R^{\rm GW}_{{\rm GW\times GW},+-}=0.01645+0.00104i$, against Khera–Ma–Yang's $R_{++}=0.13652-0.01146i$, $R_{+-}=0.01648+0.00097i$; with the $(4,0)$ value of Bourg et al. to $6\times10^{-4}$.
+- **Schwarzschild check.** At $Q/M=0.02$, $\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}=0.13655-0.01146i$ and $\mathcal R^{\rm GW}_{ {\rm GW\times GW},+-}=0.01645+0.00104i$, against Khera–Ma–Yang's $R_{++}=0.13652-0.01146i$, $R_{+-}=0.01648+0.00097i$; with the $(4,0)$ value of Bourg et al. to $6\times10^{-4}$.
 - **GW$\times$GW** falls by 4% by $Q/M=0.8$.
 - **GW$\times$EM** $\approx(0.745-0.218i)\,Q$, $0.44$ at $Q/M=0.8$.
 - **EM$\times$EM$\to$GW**: $\mathcal R_{++}\approx(0.650-0.439i)\,Q^2$; $\mathcal R_{+-}$ tends to $0.084$ at $Q=0$.
-- $L=2$ targets too: $\lvert\mathcal R^{\rm GW}_{{\rm GW\times GW},++}\rvert=0.026$ at $(2,0)$, five times weaker than $(4,0)$.
+- $L=2$ targets too: $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}\rvert=0.026$ at $(2,0)$, five times weaker than $(4,0)$.
 - Not computed: products of a mode with its own conjugate, whose frequency $2i\,\mathrm{Im}\,\omega$ lies on the branch cut, where regularity does not fix the solution. The average of the two one-sided limits agrees with Bourg et al.'s value within our 20% error.
 
 **Takeaway.** A charged ringdown has a quadratic GW tone fed by the EM-led mode, linear in $Q$; and an EM-led mode with mirror content feeds it even at $Q=0$.

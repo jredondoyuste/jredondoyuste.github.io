@@ -1,0 +1,98 @@
+/* The no-hair test (nohair.js): four lines in the (M, chi) plane, one per
+   measured number, each in a soft 68% band, and the IMR remnant where
+   they cross. */
+
+#nohair .nh-plot {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+/* the four colours: the 220's two numbers warm, the 221's two cool */
+#nohair {
+  --b0: var(--accent);        /* f_220 */
+  --b1: var(--star-mid);      /* tau_220 */
+  --b2: #3A6EA5;              /* f_221 */
+  --b3: #3E8E7E;              /* tau_221 */
+}
+:root[data-theme="dark"] #nohair {
+  --b2: #8CA3D0;
+  --b3: #7FC4B0;
+}
+
+.nh-axes rect, .nh-axes line { stroke: var(--hair); stroke-width: 1.5; fill: none; }
+.nh-axes text { fill: var(--muted); font: 26px ETbb, Georgia, serif; }
+
+.nh-band .nh-fill { fill-opacity: 0.1; transition: fill-opacity 0.8s ease 0.7s; }
+.nh-band .nh-lo, .nh-band .nh-hi {
+  fill: none;
+  stroke-width: 1.2;
+  stroke-opacity: 0.55;
+  transition: opacity 0.8s ease 0.7s;
+}
+/* the line itself draws in (pathLength="1": dashoffset 1 hidden, 0 drawn) */
+.nh-band .nh-mid {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.2s ease;
+}
+.nh-band.shown .nh-mid { stroke-dashoffset: 0; }
+.nh-band:not(.shown) .nh-fill { fill-opacity: 0; }
+.nh-band:not(.shown) .nh-lo, .nh-band:not(.shown) .nh-hi { opacity: 0; }
+
+.nh-b0 { fill: var(--b0); stroke: var(--b0); }
+.nh-b1 { fill: var(--b1); stroke: var(--b1); }
+.nh-b2 { fill: var(--b2); stroke: var(--b2); }
+.nh-b3 { fill: var(--b3); stroke: var(--b3); }
+
+/* the bands keep their own opacity: the deck's fade would hide the draw */
+#nohair .nh-band[data-step]:not(.shown) { opacity: 1; }
+
+/* the remnant from the full signal, and a ring that closes on it */
+.nh-imr path { fill: var(--ink); stroke: var(--ink); stroke-width: 2; }
+.nh-ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.nh-imr.shown .nh-ring { animation: nh-close 1.4s ease-out both; }
+@keyframes nh-close {
+  from { transform: scale(4); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* the key, right: one line per band, arriving with it */
+.nh-key {
+  position: absolute;
+  left: 1340px;
+  top: 220px;
+  width: 470px;
+  font-size: 34px;
+  line-height: 1.9;
+}
+.nh-key [data-step] { transition: opacity 0.6s; }
+.nh-key .sw {
+  display: inline-block;
+  width: 40px;
+  height: 6px;
+  margin-right: 16px;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: var(--c);
+}
+.nh-note { font-size: 24px; line-height: 1.4; margin-top: 10px; }
+.nh-verdict {
+  margin-top: 36px;
+  padding-left: 22px;
+  border-left: 4px solid var(--ink);
+  font-size: 34px;
+  line-height: 1.35;
+}
+
+.nh-cite { position: absolute; left: 1340px; bottom: 140px; font-size: 22px; }

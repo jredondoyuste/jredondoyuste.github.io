@@ -1,0 +1,78 @@
+/* Theory, three developments (theory.js): scattering left, cubic and
+   Kerr-Newman right, one per press. */
+
+.th-col { position: absolute; top: 175px; }
+.th-left { left: 140px; width: 860px; }
+.th-right { left: 1060px; width: 720px; }
+
+.th-head {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.th-head .n { color: var(--accent); margin-right: 10px; }
+.th-sub { font-size: 24px; color: var(--muted); margin: -6px 0 10px; }
+
+.th-vid {
+  display: block;
+  width: 860px;
+  height: auto;
+  border-radius: 6px;
+}
+:root[data-theme="dark"] .th-vid-light,
+:root:not([data-theme="dark"]) .th-vid-dark { display: none; }
+.th-q { font-size: 32px; margin: 8px 0 4px; }
+.th-q .muted { font-size: 24px; margin-left: 12px; }
+
+.th-row { display: flex; gap: 30px; align-items: center; margin-top: 4px; }
+.fd { width: 420px; height: 250px; }
+.fd-heavy { stroke: var(--ink); stroke-width: 3; }
+.fd-grav { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.fd-grav.fd-out { stroke: var(--accent); }
+.fd-blob { fill: var(--panel); stroke: var(--accent); stroke-width: 4; }
+.fd-lab { fill: var(--ink); font: 26px ETbb, Georgia, serif; }
+.fd-lab.fd-out { fill: var(--accent); }
+.fd-lab.fd-bh { fill: var(--muted); font-size: 22px; }
+.th-note { font-size: 24px; line-height: 1.35; color: var(--muted); }
+.th-note .cite { font-size: 20px; margin-top: 8px; }
+
+.th-fig { margin: 0; }
+.th-fig img { width: 100%; max-height: none; }
+.th-fig .cite { font-size: 20px; text-align: left; }
+.th-cubic img { width: 560px; }
+.th-kn { margin-top: 14px; position: relative; }
+.th-kn img { width: 330px; position: relative; z-index: 1; }
+.th-kn .fig-placeholder { position: absolute; left: 0; top: 0; width: 330px; height: 250px; font-size: 20px; }
+.th-cubic img { width: 500px; }
+
+/* ----- louder signals ------------------------------------------------- */
+#louder .ld-fig { width: 1300px; margin: 0 auto; }
+#louder .ld-fig img { width: 100%; max-height: none; }
+#louder .ld-fig .cite { font-size: 20px; text-align: left; }
+.ld-points {
+  position: absolute;
+  left: 260px;
+  top: 740px;
+  width: 1400px;
+  font-size: 32px;
+  line-height: 1.35;
+}
+.ld-points > div { margin-bottom: 14px; }
+.ld-points [data-step] { transition: opacity 0.6s; }
+.ld-points .n {
+  display: inline-block;
+  width: 1.4em;
+  color: var(--accent);
+  font-variant-numeric: lining-nums;
+}
+
+/* ----- conclusions ------------------------------------------------------ */
+.cc-list { margin-top: 40px; font-size: 46px; line-height: 1.3; max-width: 980px; }
+.cc-list li { margin-bottom: 36px; transition: opacity 0.6s; }
+.cc-link { position: absolute; left: 140px; top: 900px; font-size: 26px; }
+
+/* the lab questions, back from slide 2 in their verdict (lab.css draws a bubble) */
+.cc-lab { position: absolute; left: 1210px; top: 190px; width: 600px; height: 700px; transition: opacity 0.8s; }
+.cc-lab .bubble { font-size: 25px; padding: 10px 24px 13px; border-radius: 30px; white-space: nowrap; transform: none; }
+.cc-lab .bubble[data-a] { --line: var(--accent); }
+.cc-lab .bubble[data-a="yes"] { --fill: var(--accent-wash); }
+.cc-lab .bubble:not([data-a]) { opacity: 0.3; }

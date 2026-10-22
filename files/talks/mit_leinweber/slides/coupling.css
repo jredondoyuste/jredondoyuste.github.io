@@ -1,0 +1,44 @@
+/* Gravity is nonlinear (coupling.js): the equations left, the complex
+   frequency plane right, quadratic modes as head-to-tail sums. */
+
+#nonlin .cp-svg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.nl-eqs {
+  position: absolute;
+  left: 140px;
+  top: 200px;
+  width: 760px;
+  font-size: 44px;
+}
+.nl-eq { margin-bottom: 28px; }
+.nl-h2 { color: var(--accent); border-bottom: 5px solid var(--accent); padding-bottom: 4px; }
+.nl-text { margin-top: 30px; font-size: 32px; line-height: 1.4; color: var(--muted); }
+.nl-text .nl-eq { margin: 10px 0 18px; font-size: 40px; color: var(--ink); }
+
+.cp-box { fill: none; stroke: var(--hair); stroke-width: 1.5; }
+.cp-tick { fill: var(--muted); font: 24px ETbb, Georgia, serif; }
+.cp-axis { fill: var(--muted); font: 28px ETbb, Georgia, serif; }
+.cp-lin { fill: var(--ink); }
+.cp-lab { fill: var(--ink); font: 24px ETbb, Georgia, serif; }
+
+.cp-sum { transition: opacity 0.6s ease; }
+.cp-arrow { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 9 6; }
+.cp-headpath { fill: var(--accent); }
+.cp-star { fill: var(--accent); }
+.cp-qlab { fill: var(--accent); font: 26px ETbb, Georgia, serif; }
+
+/* third order, in green: h^(3) and its harmonic */
+#nonlin { --g3: #3F8F4A; }
+:root[data-theme="dark"] #nonlin { --g3: #8BC48F; }
+.nl-h3 { transition: color 0.6s, border-color 0.6s; border-bottom: 5px solid transparent; padding-bottom: 4px; }
+#nonlin[data-s="5"] .nl-h3 { color: var(--g3); border-color: var(--g3); }
+.nl-third .nl-eq { color: var(--g3); }
+.cp-third .cp-arrow { stroke: var(--g3); }
+.cp-headpath3 { fill: var(--g3); }
+.cp-third .cp-star { fill: var(--g3); }
+.cp-third .cp-qlab { fill: var(--g3); }

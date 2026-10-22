@@ -1,0 +1,80 @@
+/* The ringdown model (model.js): the signal across the top, the model
+   under it, then GR's frequencies, then the agnostic model in its place. */
+
+#model { padding: 0; }
+
+.mo-wave {
+  position: absolute;
+  left: 140px;
+  top: 50px;
+  width: 1640px;
+  height: 300px;
+}
+
+/* the two models share a place: GR's gives way to the agnostic one */
+.mo-eq {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 390px;
+  font-size: 35px;     /* the whole GR model has to fit across 1920 px */
+  text-align: center;
+}
+
+.mo-eq .katex-display { margin: 0; }
+
+.mo-eq[data-step] { transition: opacity 0.7s ease; }
+#model[data-s="3"] .mo-eq-gr { opacity: 0; }
+.mo-eq-agn { top: 410px; font-size: 56px; }
+
+/* GR's frequencies, typed out */
+.mo-gr {
+  position: absolute;
+  left: 300px;
+  top: 640px;
+  font-size: 40px;
+  transition: opacity 0.7s ease;
+}
+
+.mo-gr-head {
+  margin-bottom: 10px;
+  font-size: 32px;
+  color: var(--muted);
+}
+
+.mo-gr-row {
+  display: grid;
+  grid-template-columns: 230px auto;
+  align-items: baseline;
+  line-height: 1.5;
+}
+
+.mo-w {
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  white-space: pre;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--ink);
+  transition: color 0.6s, opacity 0.6s;
+}
+
+/* step 3: GR's numbers are struck out; the fit decides them now */
+#model[data-s="3"] .mo-w {
+  text-decoration-line: line-through;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.mo-free {
+  position: absolute;
+  left: 1340px;
+  top: 690px;
+  max-width: 440px;
+  padding-left: 28px;
+  border-left: 4px solid var(--accent);
+  font-size: 36px;
+  line-height: 1.35;
+}
+
+.mo-free [data-step] { transition: opacity 0.6s; }

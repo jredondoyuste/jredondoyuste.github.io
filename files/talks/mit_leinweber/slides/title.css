@@ -1,0 +1,112 @@
+/* The title slide: words on the left, the painting on the right.
+   What moves is in title.js; this file only says where things end up,
+   and what they look like before they arrive. */
+
+.slide-title.active { display: grid; }
+
+.slide-title {
+  grid-template-columns: 640px 1fr;
+  gap: 90px;
+  align-items: center;
+  padding: 90px 110px 150px 140px;
+}
+
+.title-talk {
+  font-size: 92px;
+  line-height: 1.05;
+}
+
+/* the ringdown under the title, drawn by title.js */
+.title-ring {
+  display: block;
+  width: 560px;
+  height: 64px;
+  margin: 34px 0 30px -4px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.title-ring path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.title-speaker { font-size: 46px; }
+
+.title-affil {
+  font-size: 32px;
+  color: var(--muted);
+}
+
+.title-event {
+  margin-top: 36px;
+  font-size: 30px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+/* one logo per paper: navy lettering on the latte, cream on the night sky */
+.title-logo {
+  display: block;
+  height: 80px;
+  margin-top: 56px;
+}
+
+:root[data-theme="dark"] .logo-light,
+:root:not([data-theme="dark"]) .logo-dark { display: none; }
+
+.title-art img {
+  width: 100%;
+  max-height: none;
+}
+
+.title-art .cite {
+  text-align: right;
+  font-size: 22px;
+}
+
+/* ----- arrival ------------------------------------------------------
+   The words rise in turn (each carries its own delay, --d, in the HTML).
+   The painting develops like a print in the tray: blurred, flat and pale,
+   then sharp. Coming back to the slide with ← skips all of it. */
+
+.slide-title .t-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease var(--d, 0s), transform 0.9s ease var(--d, 0s);
+}
+
+.slide-title .title-art img {
+  opacity: 0;
+  filter: blur(10px) contrast(0.5) brightness(1.25);
+  transition: opacity 1.2s ease 0.3s, filter 3.2s ease 0.3s;
+}
+
+.slide-title .title-art .cite {
+  opacity: 0;
+  transition: opacity 1s ease 2.6s;
+}
+
+.slide-title.play .t-in,
+.slide-title.play .title-art .cite {
+  opacity: 1;
+  transform: none;
+}
+
+.slide-title.play .title-art img {
+  opacity: 1;
+  filter: none;
+}
+
+.slide-title.instant .t-in,
+.slide-title.instant .title-art img,
+.slide-title.instant .title-art .cite { transition: none; }
+
+@media print {
+  .slide-title .t-in,
+  .slide-title .title-art img,
+  .slide-title .title-art .cite { opacity: 1; transform: none; filter: none; }
+}

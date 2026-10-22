@@ -1,0 +1,58 @@
+/* The quadratic ratio, paper by paper (qhist.js). One colour per paper;
+   ours in the accent. */
+
+#qhist .qh-plot { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+
+.qh-box { fill: none; stroke: var(--hair); stroke-width: 1.5; }
+.qh-tickl { stroke: var(--hair); stroke-width: 1.5; }
+.qh-tick { fill: var(--muted); font: 26px ETbb, Georgia, serif; }
+
+.qh-ds { fill: var(--c); stroke: var(--c); transition: opacity 0.6s ease; }
+.qh-ds circle { stroke: none; }
+.qh-err { stroke-width: 2; }
+.qh-curve { fill: none; stroke-width: 4; stroke-linecap: round; }
+.qh-band { fill-opacity: 0.18; stroke-width: 2; }
+
+.qh-d0 { --c: #7A6A55; }      /* Mitman+ 2022 */
+.qh-d1 { --c: #3A6EA5; }      /* Cheung+ 2022 */
+.qh-d2 { --c: var(--accent); }/* Redondo-Yuste+ 2023 */
+.qh-d3 { --c: #3E8E7E; }      /* Cheung+ 2023 */
+.qh-d4 { --c: var(--star-mid); }  /* Zhu+ 2024 */
+.qh-d7 { --c: #8A5A9E; }      /* Ma & Yang 2024 */
+.qh-d8 { --c: var(--ink); }   /* Bucciotti+ 2024 */
+.qh-d9 { --c: #4F6D7A; }      /* Khera+ 2024: the storm sky, darkened */
+:root[data-theme="dark"] .qh-d9 { --c: #9BB4C0; }
+:root[data-theme="dark"] .qh-d1 { --c: #8CA3D0; }
+:root[data-theme="dark"] .qh-d3 { --c: #7FC4B0; }
+:root[data-theme="dark"] .qh-d7 { --c: #C3A2D6; }
+
+.qh-key {
+  position: absolute;
+  left: 1320px;
+  top: 190px;
+  width: 470px;
+  font-size: 28px;
+  line-height: 1.65;
+}
+.qh-key [data-step] { transition: opacity 0.6s; }
+.qh-key i {
+  display: inline-block;
+  width: 30px;
+  height: 6px;
+  margin-right: 14px;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: var(--c);
+}
+.qh-key .ours { color: var(--accent); }
+.qh-key .arx { font-size: 20px; color: var(--muted); }
+.qh-cite { position: absolute; left: 1320px; top: 860px; font-size: 22px; }
+
+/* ----- detectability: two published figures side by side ------------- */
+#qdetect .qd-fig { position: absolute; top: 200px; }
+#qdetect .qd-fig img { max-height: 620px; width: auto; margin: 0; }
+#qdetect .qd-left { left: 140px; width: 780px; }
+#qdetect .qd-left img { width: 100%; }
+#qdetect .qd-right { left: 1000px; width: 760px; }
+#qdetect .qd-right img { width: 100%; }
+#qdetect .cite { font-size: 22px; text-align: left; }

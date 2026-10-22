@@ -1,0 +1,107 @@
+/* The perturbation scheme: the merger frame in grey, the common horizon
+   and the final black hole marked, and g = g_Kerr + h1 + h2 + … written
+   under it. Two colours carry the whole slide:
+     --bg-ink   the background (Kerr): the final black hole, g^Kerr
+     --dev-ink  the deviations: the common horizon, the waves, the h's */
+
+#scheme {
+  padding: 0;
+  --bg-ink: var(--accent-2);
+  --dev-ink: var(--accent);
+}
+
+#scheme canvas,
+#scheme .sc-marks {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+/* the merger, drained of colour; the coloured copy returns at step 3 */
+#scheme .sc-gray { filter: grayscale(1); opacity: 0.4; }
+#scheme .sc-color.shown { transition: opacity 1.4s ease; }
+
+.sc-marks path,
+.sc-marks circle {
+  fill: none;
+  transition: stroke-width 0.6s, opacity 0.6s, fill 0.6s;
+}
+
+.sc-common { stroke: var(--dev-ink); stroke-width: 4; }
+
+.sc-final {
+  stroke: var(--bg-ink);
+  stroke-width: 4;
+  stroke-dasharray: 14 10;
+}
+
+.sc-label {
+  position: absolute;
+  font-size: 32px;
+  white-space: nowrap;
+  transition: opacity 0.6s;
+}
+
+.sc-label-common { color: var(--dev-ink); }
+.sc-label-final { color: var(--bg-ink); }
+
+/* the equation, on a strip of paper so it reads over the waves */
+.sc-eq {
+  position: absolute;
+  left: 50%;
+  top: 790px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 22px;
+  align-items: baseline;
+  padding: 18px 48px 26px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  font-size: 64px;
+  white-space: nowrap;
+}
+
+.sc-eq [data-step] { transition: opacity 0.5s ease; }
+
+.sc-term {
+  position: relative;
+  transition: color 0.6s;
+}
+
+/* the bar under a term as it lights up */
+.sc-term::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -14px;
+  height: 5px;
+  border-radius: 3px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s ease;
+}
+
+/* ----- step 2: the background --------------------------------------- */
+#scheme[data-s="2"] .sc-bg { color: var(--bg-ink); }
+#scheme[data-s="2"] .sc-bg::after { transform: scaleX(1); }
+#scheme[data-s="2"] .sc-final {
+  stroke-width: 9;
+  stroke-dasharray: none;
+  fill: color-mix(in srgb, var(--bg-ink) 14%, transparent);
+}
+#scheme[data-s="2"] .sc-common,
+#scheme[data-s="2"] .sc-label-common { opacity: 0.25; }
+
+/* ----- step 3: the deviations --------------------------------------- */
+#scheme[data-s="3"] .sc-dev { color: var(--dev-ink); }
+#scheme[data-s="3"] .sc-dev::after { transform: scaleX(1); }
+#scheme[data-s="3"] .sc-common { stroke-width: 9; }
+#scheme[data-s="3"] .sc-final,
+#scheme[data-s="3"] .sc-label-final { opacity: 0.25; }
+
+@media print {
+  #scheme .sc-color { opacity: 0 !important; }
+}

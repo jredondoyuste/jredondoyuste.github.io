@@ -1,0 +1,80 @@
+/* The population slides: every GWTC-5 ringdown in the data (ringdowns.js)
+   and the graveyard with them lit up (graveyard.js). */
+
+#rdall .rd-plot, #grave .gv-plot {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+/* ----- the ringdowns ------------------------------------------------- */
+
+.rd-axes line { stroke: var(--hair); stroke-width: 1.5; }
+.rd-axes .rd-zero { stroke: var(--muted); stroke-dasharray: 8 8; }
+.rd-axes text { fill: var(--muted); font: 26px ETbb, Georgia, serif; }
+
+.rd-row path {
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;                 /* pathLength="1": hidden until drawn */
+}
+.rd-pre { stroke: var(--muted); }
+.rd-post { stroke: var(--accent); }
+.rd-rows.drawn .rd-row path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.9s ease calc(var(--i) * var(--stagger));
+}
+.rd-rows.drawn .rd-post { transition-delay: calc(var(--i) * var(--stagger) + 0.35s); }
+.rd-rows.instant .rd-row path { transition: none; }
+
+.rd-brace { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.rd-cat { fill: var(--ink); font: 26px ETbb, Georgia, serif; }
+.rd-catn { fill: var(--muted); font: 22px ETbb, Georgia, serif; font-variant-numeric: lining-nums; }
+
+.rd-note {
+  position: absolute;
+  left: 140px;
+  top: 965px;
+  font-size: 34px;
+  color: var(--ink);
+}
+
+/* ----- the graveyard -------------------------------------------------- */
+
+.gv-axes text { fill: var(--muted); font: 26px ETbb, Georgia, serif; }
+.gv-grid { stroke: var(--hair); stroke-width: 1; }
+
+.gv-ev line { stroke: var(--muted); stroke-width: 1; stroke-opacity: 0.6; }
+.gv-bh { fill: #3A6EA5; }
+.gv-ns { fill: var(--star-mid); }
+:root[data-theme="dark"] .gv-bh { fill: #8CA3D0; }
+.gv-ev { transition: opacity 0.6s ease; }
+
+/* step 1: the detected ringdowns, everything else fades */
+#grave:not([data-s="0"]) .gv-ev:not(.gv-rd) { opacity: 0.18; }
+#grave:not([data-s="0"]) .gv-rd circle { fill: var(--accent); }
+#grave:not([data-s="0"]) .gv-rd line { stroke: var(--accent); stroke-opacity: 1; stroke-width: 1.6; }
+#grave:not([data-s="0"]) .gv-rd .gv-final { r: 7; }
+
+.gv-key {
+  position: absolute;
+  left: 230px;
+  top: 905px;
+  display: flex;
+  gap: 44px;
+  font-size: 26px;
+  color: var(--muted);
+}
+.gv-key i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  border-radius: 50%;
+  vertical-align: 1px;
+  background: var(--c);
+}
+.gv-key [data-step] { color: var(--accent); }

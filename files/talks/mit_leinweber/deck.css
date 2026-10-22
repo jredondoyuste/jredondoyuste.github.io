@@ -1,0 +1,417 @@
+/* ===================================================================
+   Slide deck — shared format for the talk decks under /files/talks/.
+   Colours, font and the sky come from /style.css; this file only adds
+   the 1920x1080 canvas, the slide layouts and the progress bar.
+
+   Everything is measured in px on the 1920x1080 canvas. deck.js scales
+   the whole canvas to fit the window, so 40px here is 40px on a 1080p
+   projector, whatever the laptop screen is.
+   =================================================================== */
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.is-deck {
+  background: var(--bg);
+}
+
+/* the sky, quieter in the middle of the slide where the text is */
+body.is-deck .sky {
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0,0,0,0.3), #000 100%);
+          mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0,0,0,0.3), #000 100%);
+}
+
+/* no mergers in the sky during a talk: the stars drift, nothing coalesces
+   behind the speaker (starfield.js still schedules them; they never show) */
+body.is-deck .merger { display: none; }
+
+/* the canvas, scaled and centred by deck.js */
+.deck {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  color: var(--ink);
+  font: 400 40px/1.35 var(--serif);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 150px 140px 130px;   /* top leaves room for the title, bottom for the bar */
+  display: none;
+  overflow: hidden;
+}
+
+.slide.active {
+  display: block;
+  animation: slide-in 0.35s ease-out;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ----- type --------------------------------------------------------- */
+
+.slide h1.title {
+  position: absolute;
+  top: 56px;
+  left: 140px;
+  right: 140px;
+  margin: 0;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* the part's name, small, above the title — filled in by deck.js */
+.slide .kicker {
+  position: absolute;
+  top: 26px;
+  left: 140px;
+  font-size: 24px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.slide p { margin: 0 0 0.6em; }
+
+.slide a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.slide em, .slide .hl { color: var(--accent); font-style: normal; }
+.slide .muted { color: var(--muted); }
+
+/* bullets: a muted dash, like the site's lists */
+.slide ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slide ul li {
+  position: relative;
+  padding-left: 1.1em;
+  margin: 0 0 0.45em;
+}
+
+.slide ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
+.slide ul ul {
+  margin-top: 0.3em;
+  font-size: 0.85em;
+}
+
+.slide ul ul li::before { content: "·"; left: 0.25em; }
+
+/* a display equation, centred, large */
+.eq {
+  margin: 0.6em 0;
+  font-size: 48px;
+  text-align: center;
+}
+
+/* ----- figures and credits ------------------------------------------ */
+
+.slide figure {
+  margin: 0;
+  text-align: center;
+}
+
+.slide figure img,
+.slide figure video {
+  display: block;
+  max-width: 100%;
+  max-height: 720px;
+  margin: 0 auto;
+}
+
+/* a figure with a white background (matplotlib default): give it the
+   white border of a photo print, so it sits on the latte on purpose */
+.slide figure.print img {
+  background: var(--print);
+  padding: 18px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* "Cheung+ (2401.12345)" — deck.js links it to the arXiv page */
+.cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+  color: var(--muted);
+}
+
+.cite a { color: inherit; }
+.cite a:hover { color: var(--accent); }
+.cite u { text-decoration-color: var(--accent); text-underline-offset: 4px; }
+
+/* where a figure will go, while drafting */
+.fig-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 560px;
+  border: 2px dashed var(--hair);
+  border-radius: 6px;
+  font-size: 30px;
+  color: var(--muted);
+}
+
+/* a note to self while drafting — delete before the talk */
+.todo {
+  max-width: 1300px;
+  padding-left: 28px;
+  border-left: 3px dashed var(--hair);
+  font-size: 32px;
+  color: var(--muted);
+}
+
+/* "ongoing work", top right */
+.ongoing {
+  position: absolute;
+  top: 40px;
+  right: 140px;
+  padding: 2px 16px 6px;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-size: 30px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+/* ----- layouts ------------------------------------------------------ */
+
+/* two columns: <div class="cols"> <div>…</div> <div>…</div> </div>
+   Add style="--split: 2fr 3fr" to change the proportions. */
+.cols {
+  display: grid;
+  grid-template-columns: var(--split, 1fr 1fr);
+  gap: 80px;
+  align-items: center;
+  height: 100%;
+}
+
+/* everything centred, vertically too */
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* the title slide lives in slides/title.css */
+
+/* a part's opening slide: its number and name, nothing else */
+.slide-section.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 240px;
+}
+
+.slide-section .section-num {
+  font-size: 40px;
+  color: var(--accent);
+}
+
+.slide-section .section-name {
+  font-size: 104px;
+  line-height: 1.05;
+}
+
+/* ----- steps -------------------------------------------------------- */
+/* data-step="n" appears at the n-th press on that slide. It keeps its
+   space while hidden, so nothing jumps when it arrives. */
+.slide [data-step] {
+  transition: opacity 0.3s ease;
+}
+
+.slide [data-step]:not(.shown) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ----- the progress bar ---------------------------------------------
+   One bead per slide, grouped into the talk's parts. Filled beads are
+   behind you, the ring is where you are. Hover to see a slide's title,
+   click or drag to go there. Quiet until the pointer comes near. */
+
+.deck-bar {
+  position: absolute;
+  left: 140px;
+  right: 140px;
+  bottom: 22px;
+  height: 72px;
+  z-index: 10;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding-top: 22px;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+}
+
+.deck-bar:hover,
+.deck-bar.dragging { opacity: 1; }
+
+.deck.bar-hidden .deck-bar,
+.deck.bar-hidden .deck-count,
+.deck.bar-hidden .deck-theme { display: none; }
+
+.bar-part {
+  position: relative;
+  flex: var(--n) 1 0;   /* width ∝ number of slides in the part */
+  min-width: 0;
+}
+
+/* the line under the beads, and the inked part of it */
+.bar-line,
+.bar-fill {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.bar-line { right: 0; background: var(--hair); }
+
+.bar-fill {
+  width: 0;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.bar-beads {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  height: 16px;
+}
+
+.bar-bead {
+  width: 10px;
+  height: 10px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--hair);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.bar-bead.past {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.bar-bead.here {
+  background: var(--bg);
+  border-color: var(--accent);
+  border-width: 3px;
+  transform: scale(1.7);
+}
+
+/* a short part's name may run past its line; the gap between parts absorbs it */
+.bar-label {
+  margin: 6px -40px 0;
+  white-space: nowrap;
+  font-size: 20px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: center;
+}
+
+.bar-part.here .bar-label { color: var(--accent); }
+
+/* [light] / [dark], bottom left, faint — looks like the site's nav toggle,
+   for whichever reads better in the room (deck.js) */
+.deck-theme {
+  position: absolute;
+  left: 40px;
+  bottom: 50px;
+  z-index: 10;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 22px;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.deck-theme:hover { opacity: 1; color: var(--accent); }
+
+/* slide number, bottom right, faint */
+.deck-count {
+  position: absolute;
+  right: 40px;
+  bottom: 52px;
+  z-index: 10;
+  font-size: 22px;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* B blanks the screen (as on a clicker) */
+.deck-blank {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg);
+  display: none;
+}
+
+.deck.blanked .deck-blank { display: block; }
+
+/* ----- print: File > Print > Save as PDF gives a one-slide-per-page
+   PDF, with every step shown, for posting a static copy ---------------- */
+@page { size: 1920px 1080px; margin: 0; }
+
+@media print {
+  html, body { height: auto; overflow: visible; }
+  .deck { position: static; transform: none !important; height: auto; }
+  .slide, .slide-title, .slide-section {
+    display: block !important;
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    break-after: page;
+    animation: none;
+  }
+  .slide-title, .slide-section {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide-title { display: grid !important; }
+  .slide [data-step] { opacity: 1 !important; }
+  .deck-bar, .deck-count, .deck-blank, .deck-theme { display: none !important; }
+}

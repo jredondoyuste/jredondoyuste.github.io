@@ -1,0 +1,86 @@
+/* The binary, its waves and Earth (binary.js). Two canvases over the whole
+   slide: the waves at a quarter resolution, smoothed up (they are smooth
+   anyway), and the holes, Earth and labels at full resolution on top. */
+
+#binary { padding: 0; }
+
+/* one colour per multipole, from the page's own palette */
+#binary, #modes {
+  --m22: var(--accent);       /* crimson by day */
+  --m33: #3A6EA5;             /* a lifted Mary's blue: the mantle itself is too dark to glow */
+  --m44: var(--star-mid);     /* the amber of the light sky's middle stars */
+}
+
+/* Earth's sea and land */
+#binary, #modes {
+  --earth-sea: #4A7FB3;
+  --earth-land: #8FAE6E;
+}
+
+:root[data-theme="dark"] #binary,
+:root[data-theme="dark"] #modes {
+  --earth-sea: #3D6E9E;
+  --earth-land: #86A266;
+  --m22: var(--accent);       /* the gold garment */
+  --m33: #E0566A;             /* the crimson robe, lifted to carry on the night sky */
+  --m44: #8CA3D0;             /* the light sky's far blue stars */
+}
+
+#binary canvas {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+/* which colour is which, top right */
+.bin-legend {
+  position: absolute;
+  top: 48px;
+  right: 140px;
+  z-index: 2;
+  display: flex;
+  gap: 34px;
+  font-size: 28px;
+  color: var(--muted);
+}
+
+.bin-legend > span::before {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 6px;
+  margin-right: 12px;
+  border-radius: 3px;
+  vertical-align: middle;
+  background: var(--c);
+}
+
+/* the rewind sign: two triangles, pulsing, while the clock runs back */
+.bin-rewind {
+  position: absolute;
+  left: 140px;
+  top: 48px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 28px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.bin-rewind svg { width: 64px; height: 40px; fill: var(--accent); }
+
+#binary.rewinding .bin-rewind {
+  opacity: 1;
+  animation: bin-pulse 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes bin-pulse {
+  from { opacity: 1; }
+  to   { opacity: 0.35; }
+}

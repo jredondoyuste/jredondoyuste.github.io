@@ -76,3 +76,30 @@
 .cc-lab .bubble[data-a] { --line: var(--accent); }
 .cc-lab .bubble[data-a="yes"] { --fill: var(--accent-wash); }
 .cc-lab .bubble:not([data-a]) { opacity: 0.3; }
+
+/* ----- higher orders, more charges -------------------------------------- */
+.th-left2 { left: 140px; width: 800px; }
+.th-right2 { left: 1010px; width: 770px; transition: opacity 0.6s; }
+.th-larged img { width: 780px; }
+.th-kn2 img { width: 560px; }
+/* the outage notice, slapped over the Kerr-Newman plot like a sticky note */
+.th-outage {
+  position: absolute;
+  left: 1000px;
+  top: 470px;
+  width: 760px;
+  margin: 0;
+  transform: rotate(-4deg);
+  transform-origin: center;
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 5;
+}
+.th-outage img {
+  width: 100%;
+  max-height: none;
+  border: 3px solid var(--accent);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.th-outage .cite { text-align: right; font-size: 20px; }
+#theory2:not([data-s="2"]) .th-outage { transform: rotate(-4deg) scale(1.4); }

@@ -37,7 +37,7 @@
 .bin-legend {
   position: absolute;
   top: 48px;
-  right: 140px;
+  right: 190px;   /* clear of the deck's icons, top right */
   z-index: 2;
   display: flex;
   gap: 34px;

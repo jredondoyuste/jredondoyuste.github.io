@@ -459,8 +459,8 @@
     </section>
 
     <!-- moves: slides/theory.js
-         (i) scattering, recorded from /quadratic.html (figures/qq-stage-*.mp4); → (ii) cubic QNMs;
-         → (iii) second order in Kerr-Newman -->
+         (i) scattering, recorded from /quadratic.html (figures/qq-stage-*.mp4); → (ii) cubic QNMs.
+         Large D and Kerr-Newman are on the next slide. -->
     <section class="slide" id="theory">
         <h1 class="title">Black holes in the lab, on paper</h1>
         <div class="th-col th-left">
@@ -483,14 +483,33 @@
                     <span class="cite">Khera &amp; Yang (2610.20547), last week</span>
                 </figure>
             </div>
-            <div data-step="2" class="th-kn-block">
-                <div class="th-head"><span class="n">iii.</span>Second order with charge: Kerr–Newman</div>
-                <figure class="th-fig th-kn">
-                    <img src="figures/kn-ratio.png" alt="The quadratic ratio over spin and charge for Kerr-Newman black holes: from about 0.137 at small spin and charge down to about 0.10 near extremality">
-                    <span class="cite">ongoing work: |ℛ| over spin and charge</span>
-                </figure>
-            </div>
+
         </div>
+    </section>
+
+    <!-- (iii) any order at large D; → (iv) Kerr-Newman; → the outage that
+         keeps the near-extremal results out of reach -->
+    <section class="slide" id="theory2">
+        <h1 class="title">Higher orders, more charges</h1>
+        <div class="th-col th-left2">
+            <div class="th-head"><span class="n">iii.</span>Any order, analytically: the large-D limit</div>
+            <div class="th-sub">nonlinear modes improve the ringdown model by orders of magnitude</div>
+            <figure class="th-fig th-larged">
+                <img src="/files/figures/large-d-ringdown.png" alt="Log-scale plot of ringdown mismatch versus collision velocity for linear, quadratic and cubic quasinormal-mode models">
+                <span class="cite">Emparan, Green-Salinas, Pereñiguez &amp; Redondo-Yuste (2606.23804)</span>
+            </figure>
+        </div>
+        <div class="th-col th-right2" data-step="1">
+            <div class="th-head"><span class="n">iv.</span>Second order with charge: Kerr–Newman</div>
+            <figure class="th-fig th-kn2">
+                <img src="figures/kn-ratio.png" alt="The quadratic ratio over spin and charge for Kerr-Newman black holes: from about 0.137 at small spin and charge down to about 0.10 near extremality">
+                <span class="cite">ongoing work: near extremality, computed, and stored safely on Anvil…</span>
+            </figure>
+        </div>
+        <figure class="th-outage" data-step="2">
+            <img src="figures/rcac-outage.png" alt="Purdue RCAC notice, 21 October 2026: emergency power shutdown, all RCAC systems currently unavailable, Anvil among them">
+            <span class="cite">rcac.purdue.edu, yesterday</span>
+        </figure>
     </section>
 
     <section class="slide" id="louder">
@@ -539,7 +558,15 @@
 
 </div>
 
-<button class="deck-theme" aria-label="Switch between light and dark">[dark]</button>
+<div class="deck-tools">
+    <button class="deck-theme" aria-label="Switch between light and dark" title="Light / dark (T)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+    </button>
+    <button class="deck-full" aria-label="Full screen" title="Full screen (F)">
+        <svg class="fs-in" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        <svg class="fs-out" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5"/></svg>
+    </button>
+</div>
 
 </div>
 </body>

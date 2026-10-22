@@ -7,8 +7,8 @@
 //   → space PageDown   next step, then next slide (clickers send these)
 //   ← PageUp           back
 //   Home End           first / last slide
-//   F                  fullscreen
-//   T                  light / dark
+//   F                  full screen (also the corners icon, top right)
+//   T                  light / dark (also the sun, top right)
 //   B  .               blank the screen (press again to come back)
 //   P                  hide / show the progress bar
 //
@@ -208,10 +208,7 @@
     else if (PREV[k]) prev();
     else if (k === 'Home') go(0, 0);
     else if (k === 'End') go(slides.length - 1, 0);
-    else if (k === 'f' || k === 'F') {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else document.documentElement.requestFullscreen();
-    }
+    else if (k === 'f' || k === 'F') deck.querySelector('.deck-full').click();
     else if (k === 't' || k === 'T') deck.querySelector('.deck-theme').click();
     else if (k === 'b' || k === 'B' || k === '.') deck.classList.toggle('blanked');
     else if (k === 'p' || k === 'P') deck.classList.toggle('bar-hidden');
@@ -268,13 +265,24 @@
     // dropped after a click so the next space advances the slide instead.
     var themeBtn = deck.querySelector('.deck-theme');
     function themeLabel() {
-      themeBtn.textContent = document.documentElement.dataset.theme === 'dark' ? '[light]' : '[dark]';
+      themeBtn.setAttribute('aria-label', document.documentElement.dataset.theme === 'dark' ? 'Switch to light' : 'Switch to dark');
     }
     themeBtn.addEventListener('click', function () {
       var root = document.documentElement;
       root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
       try { localStorage.setItem('jry-deck-theme', root.dataset.theme); } catch (err) {}
       themeLabel();
+
+    // full screen, and back; the icon follows the state, however it changed
+    var fullBtn = deck.querySelector('.deck-full');
+    fullBtn.addEventListener('click', function () {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+      fullBtn.blur();
+    });
+    document.addEventListener('fullscreenchange', function () {
+      deck.classList.toggle('is-full', !!document.fullscreenElement);
+    });
       themeBtn.blur();
     });
     themeLabel();

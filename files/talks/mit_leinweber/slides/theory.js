@@ -1,4 +1,4 @@
-// Theory, three developments, one per press:
+// Theory, two developments, one per press (two more on the next slide):
 //   (i)   scattering off a black hole: the stage of the lab page
 //         /quadratic.html (two waves in, one out), recorded as a loop, light and
 //         dark (figures/qq-stage-*.mp4, made by rec/record.js in the scratchpad),
@@ -6,7 +6,6 @@
 //         live page: the page animates without pause and was too heavy to run
 //         inside the deck.
 //   (ii)  cubic QNMs (Khera & Yang, 2610.20547)
-//   (iii) second order in Kerr-Newman (ours, figures/kn-ratio.png)
 (function () {
   'use strict';
 

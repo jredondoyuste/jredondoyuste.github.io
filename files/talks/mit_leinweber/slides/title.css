@@ -48,11 +48,19 @@
   color: var(--muted);
 }
 
+/* collaborators, small, under the meeting */
+.title-with {
+  margin-top: 26px;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 /* one logo per paper: navy lettering on the latte, cream on the night sky */
 .title-logo {
   display: block;
   height: 80px;
-  margin-top: 56px;
+  margin-top: 40px;
 }
 
 :root[data-theme="dark"] .logo-light,

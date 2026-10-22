@@ -1,4 +1,65 @@
-Findings, newest first. Unless stated, every analysis starts at $t_0 = 10\,M_f$ after the peak of $|h_{22}|$, uses all 280 modes ($\ell \le 8$, $n \le 7$) and the PN × QNEF prior with untied-overtone scale $a = 1$ ([§8](#derivations)). **Counts are in modes:** the amplitudes enter as real and imaginary parts, so every mode has two real channels, and we report $n_{\rm meas} = \lfloor n_{\rm ch}/2 \rfloor$, where $n_{\rm ch} = \#\{s_k > 1\}$. A mode counts once both its quadratures are measured. Retired plots and superseded numbers remain in the [log](#log).
+### F20 — With $\ln B > 3$ per mode, how many events per run measure at least $k$ modes? (unverified)
+
+<figure><a href="figs/pop_lnb3.png"><img src="figs/pop_lnb3.png" alt="Expected events per run with at least k measurable modes under the ln B > 3 criterion, for O4a+b, A+ and ET, GWTC-5 population"></a><figcaption>Expected events per run with at least $k$ modes at $\ln B > 3$ per mode, GWTC-5 population, from $t_0 = 10\,M$: O4a+b, A+ and ET.</figcaption></figure>
+
+Horizontal: $k$, the number of measurable modes ($k = 1$ is the 220 alone). Vertical (log): expected events in one run with at least $k$ modes. A mode (a channel pair) counts when its expected log Bayes factor, present against absent, is at least 3 ([§2](#derivations)). Same event pools, weights and pSEOBNR-style selection as [F8](#results) ([§12](#derivations)); only the per-event count changes. Every event has its own masses, spins, remnant, redshift, inclination and sky position, and the prior is evaluated at its own $\eta$ and $\chi_f$. Colours: O4a+b blue (real noise, 0.89 yr), A+ orange (2 yr), ET green (1 yr). Lines: mean over 500 hyperposterior draws; bands: their 90% interval. Dashed with open dots: fewer than 10 pool events carry the count. Open star: GW250114, the one O4 event observed with two modes.
+
+**Takeaway.**
+
+- **The stricter criterion lowers the two-mode counts by 4.5–8×** against F8: O4a+b 0.39 per run (90%: 0.27–0.58), A+ 6.7, ET 1756, CE 40 km 2784 (F8: 2.9, 55, 7900, 8500).
+- **ET a year:** 1756 events with two modes, 132 with three, 19 with four, about 1 with five.
+- **LISA is unchanged at the top**: at least two modes in 7.3 (popIII), 28 (Q3-d) and 330 (Q3-nod) events in 4 yr, and at least five in 5.9, 25 and 184.
+- One observed two-mode event in O4 (GW250114) against 0.39 expected is not unusual: the Poisson chance of at least one is about 0.32 (ESTIMATED from the mean).
+
+**Reproduce.** `python tasks/t20-workshop-figure/S4/pop_recount.py <t07 pool> tasks/t07-population-counts/S7/counts_gwtc5md.json <out npz>`, then `S4/pop_figure.py`.
+
+### F19 — How does the count grow with SNR when "measured" means $\ln B > 3$? (unverified)
+
+<figure><a href="figs/modes_lnb3.png"><img src="figs/modes_lnb3.png" alt="Measurable modes at ln B > 3 against the 220 SNR for O4, ET and LISA, with bands over start time and the flat-prior count for comparison"></a><figcaption>Modes with expected $\ln B \ge 3$ against $\rho_{220}$ for O4, ET and LISA, PN × QNEF prior (bands over $t_0 = 0$–$15\,M$) against a flat prior (dashed).</figcaption></figure>
+
+Horizontal: $\rho_{220}$ (log, 10 to 2000), the expected SNR of the 220 alone from $10\,M$, so one value is the same source at the same distance for every $t_0$. Vertical: modes with expected $\ln B \ge 3$ ([§2](#derivations)). GW250114-like source (LISA at $2\times10^6\,M_\odot$, same shape). Colour: O4 blue, ET orange, LISA green. PN × QNEF prior: pale band, the minimum to maximum over $t_0 = 0, 1, \dots, 15\,M$; thick line, $t_0 = 10\,M$. Flat prior, scaled to the same expected total SNR: faint dashed edges of the same band. Open circles: GW250114 at its distance. Dotted grey: the fit $n = 0.23 + 0.107\,(\ln\rho_{220})^2$.
+
+**Takeaway.**
+
+- **At GW250114's distance from $10\,M$: O4 1 mode, ET 3.** At $\rho_{220} = 10$, 30, 100, 300, 1000, 2000: 1, 1, 3, 3, 5–6, 6–7 modes.
+- **With the NR-calibrated prior the three detectors agree within one mode at every $\rho_{220}$.** The flat prior claims 3–10× more and splits by detector.
+- **$(\ln\rho)^2$ fits marginally better than $\ln\rho$** (rms 0.42 against 0.49 modes; the linear form is 2.4 modes per decade). The difference is below the one-mode step, as [§10](#derivations) expects over this range.
+- The start time moves the count by a factor 2–3, with the maximum at $t_0 = 0$; below about $10\,M$ the extra modes rest on overtones NR does not confirm (F9).
+
+**Reproduce.** `python tasks/t20-workshop-figure/S1/workshop_figure.py plot <strengths npz> <out>`; the $s_k > 1$ count from the same strengths reproduces F3.
+
+### F18 — Does the count hold over the real posteriors of GW250114 and GW150914, and when the remnant is fitted? (unverified)
+
+<figure><a href="figs/posterior_spread.png"><img src="figs/posterior_spread.png" alt="Histograms of measured modes over 500 GW250114 posterior draws, O4 and ET at their real sites, for four start times and two counting rules"></a><figcaption>Measured modes over 500 draws of the GW250114 posterior, O4 (H1, L1) and ET at their real sites, $t_0 = 0, 6, 10, 15\,M$.</figcaption></figure>
+
+Each panel is a histogram over 500 draws of the LVK posterior (NRSur7dq4). Rows: O4 (real H1 and L1 sites, O4 PSD) and ET (E1–E3 sites, ET-D). Columns: $t_0 = 0, 6, 10, 15\,M$. Each draw is a source with its own remnant, mass ratio, spins, sky position, polarization, inclination and distance. Bars: $s_k > 1$ and $B^\ast = 20$ ([§2](#derivations)), each at the draw's own $\rho_{220}$ and rescaled to the fiducial one (O4 30.4, ET 321). Triangles: the fiducial count of F3 (co-located detectors, source overhead).
+
+**Takeaway.**
+
+- **O4: "2 modes from $10\,M$" holds.** Every GW250114 draw gives 2; GW150914 ($\rho_{220} \approx 20$) gives 2 in 62% of draws and 1 otherwise.
+- **ET at the real sites measures one mode fewer**, a median 4 [3, 5] against the fiducial 5, because those sites see these sky positions at about 0.4 of an overhead source's $\rho_{220}$. Rescaled to the fiducial $\rho_{220}$ the median is 5 [4, 6]: the source's shape and orientation spread the count by about one mode.
+- **Fitting $(M_f, \chi_f)$ with the amplitudes costs at most one mode** (a theorem, [§11](#derivations)), and costs it in 30–56% of the draws, although it costs none at the fiducial source. With $B^\ast = 20$ O4 loses nothing: its one counted mode is the 220.
+
+<figure><a href="figs/remnant_fit.png"><img src="figs/remnant_fit.png" alt="Histograms of measured modes with the remnant known and fitted, O4 and ET, GW250114 and GW150914 posterior draws, from 10 M"></a><figcaption>From $10\,M$, at each draw's own $\rho_{220}$: remnant known (blue), fitted under a flat prior (orange), fitted with a Gaussian prior of the LVK widths (green). Rows O4, ET; columns GW250114 and GW150914, each for $s_k > 1$ and $B^\ast = 20$.</figcaption></figure>
+
+**Reproduce.** `python tasks/t19-remnant-spread/S4/analyse.py 2026-10-14`, from the sweeps of `S3/sweep.py` and the linearised fits of `S5/nuisance.py`.
+
+### F17 — Does an unequal-mass or a high-spin source measure more modes at the same loudness? (unverified)
+
+<figure><a href="figs/variant_q2.png"><img src="figs/variant_q2.png" alt="Histograms of the 220 SNR at which each measured mode enters, stacked by prior factor, for a q = 2 source in ET at t0 = 0, 6 and 10 M"></a><figcaption>As F9, for a $q = 2$ non-spinning source in ET at $t_0 = 0, 6, 10\,M$: odd-$m$ harmonics enter early.</figcaption></figure>
+
+Each measured mode is binned by the $\rho_{220}$ at which its second channel passes $s = 1$ and stacked, coloured by the prior factors that make it up, as in [F9](#results). Source: $q = 2$, non-spinning ($\eta = 2/9$, $\chi_f = 0.623$), ET, $\iota = 0.78$, detector noise only. Dashed line: the source ($\rho_{220} = 267$ at GW250114's distance). The high-spin variant ($q = 1$, aligned spins 0.995, $\chi_f = 0.95$) is in the same format:
+
+<figure><a href="figs/variant_chi95.png"><img src="figs/variant_chi95.png" alt="Histograms of the 220 SNR at which each measured mode enters, for a chi_f = 0.95 source in ET at t0 = 0, 6 and 10 M"></a><figcaption>As F9, for $q = 1$ with $\chi_f = 0.95$, ET: the overtones enter earlier.</figcaption></figure>
+
+**Takeaway.**
+
+- **Both measure 8 modes at $\rho_{220} = 321$ from $10\,M$, against 5 for GW250114-like** (14 / 9 / 8 at $t_0 = 0 / 6 / 10\,M$, against 11 / 6 / 5).
+- **At $q = 2$ the second mode is the (3,3,0)**, entering at $\rho_{220} = 7.7$ (15 for the 221 at equal mass). The 330, 210 and 440 make up modes 3 and 4. The 221 becomes harder to detect: its $3\sigma$ point moves from $\rho_{220} = 29$ to 126. That fits the greedy rule of [§9](#derivations), which predicts the 330 overtakes the 221 near $q = 1.35$.
+- **At $\chi_f = 0.95$ the overtones live longer.** The 221 carries 9.4 bits at the source and is detected at $3\sigma$ already at $\rho_{220} = 16$; the 441 at 67 (365 at $\chi_f = 0.69$). The 440 gains nothing.
+- $\chi_f = 0.95$ is at the edge of the calibration catalogue (8 of 500 runs above 0.93).
+
+**Reproduce.** `tasks/t17-source-variants/S1/{anatomy,bits,detect}.py`, then `S2/plot.py`; the GW250114 control reproduces F9, F13 and F14 exactly.
 
 ### F16 — How well is the 221/220 ratio measured, and how much does the prior pull it? (unverified)
 
@@ -20,20 +81,6 @@ Median [16%, 84%] of $|C_{221}/C_{220}|$.
 - **A 221 that departs from its tie stays pulled toward it.** For C the truth is still at the lower edge of the 68% interval at $\rho_{220} = 321$: an analysis with this prior would underreport the departure.
 
 **Reproduce.** `PYTHONPATH=src/mqnm python tasks/t13-channel-anatomy/S3/plot_shape.py <S1 npz> <tag> 221`; the posterior is the exact Gaussian of the linear model.
-
-### F15 — What does the 440/220 posterior look like as the source gets louder? (unverified)
-
-<figure><a href="figs/shape_440.png"><img src="figs/shape_440.png" alt="Posterior regions of the 440/220 amplitude ratio and relative phase for three simulated signals at rho_220 = 30, 100 and 321, ET, from 10 M"></a><figcaption>Posterior of $|C_{440}/C_{220}|$ (x) and of $(\arg C_{440} - 2\arg C_{220} - \phi_{\rm PN})/\pi$ (y), the relative phase minus its PN × QNEF prediction $\phi_{\rm PN} = \pi$, in ET from $t_0 = 10\,M$, at $\rho_{220} = 30$, 100 and 321 (the GW250114-like source). Each colour is one simulated signal, analysed on its own and without added noise: black, A, the PN × QNEF prediction (ratio 0.031); orange, B, and green, C, two amplitude sets drawn from the prior (ratios 0.058 and 0.164; the prior error on the 440 is 1.95 times its PN amplitude). Crosses: the true values. Contours: 50% and 90% posterior regions.</figcaption></figure>
-
-The posterior is Gaussian in the real and imaginary parts of the amplitudes, so its covariance does not depend on the signal; the shape of quoted quantities such as a ratio and a phase does, and needs a true signal.
-
-**Takeaway.**
-
-- **Until the 440 is resolved, its ratio is biased high and skewed.** For A at $\rho_{220} = 30$ the median is 0.046 [0.024, 0.074] against a true 0.031; at the source 0.032 [0.024, 0.040].
-- **At low SNR the phase is set by the prior, not the data.** A's phase is confined to about $\pm 0.3\pi$ at $\rho_{220} = 30$, where the 440 itself carries under 1 bit (F13): the confinement comes from the tie to $A_{220}$.
-- By $\rho_{220} = 100$ the three signals separate; at the source each is pinned near its truth.
-
-**Reproduce.** `PYTHONPATH=src/mqnm python tasks/t13-channel-anatomy/S3/plot_shape.py <S1 npz> <tag>`; data from `tasks/t13-channel-anatomy/S1/anatomy.py`.
 
 ### F14 — When does a mode amplitude exclude zero at $3\sigma$? (unverified)
 
@@ -68,18 +115,6 @@ The model is linear and Gaussian, so the information is exact and does not depen
 
 **Reproduce.** `sbatch tasks/t13-channel-anatomy/S1/run.sh <python>` (decomposition), then `python tasks/t13-channel-anatomy/S2/bits.py <S1 npz> <tag>` and `S2/plot_modes.py`.
 
-### F12 — How many events per run measure at least $k$ modes? (unverified)
-
-<figure><a href="figs/n_ge_k.png"><img src="figs/n_ge_k.png" alt="Expected number of ringdowns per run with at least k measured modes, for O3, O4a+b, O5, ET and CE 40 km (left) and three LISA populations (right)"></a><figcaption>Expected number of events in one run with $n_{\rm meas} \ge k$ measured modes (log), against $k$ (log). The 220 alone gives $k = 1$; the dotted line marks "beyond the 220". Left: ground networks with the GWTC-5 population (Madau–Dickinson redshift history, 500 hyperposterior draws). O3 grey (0.75 yr), O4a+b black (real noise, 0.89 yr), O5 = A+ orange (2 yr), ET green (1 yr), CE 40 km red (1 yr). Lines and dots: mean over draws. Bands: 90% interval of the expected count. Dashed with open dots: fewer than 10 pool events carry the count. Right: LISA with the Klein+16 popIII (solid), Q3-d (dashed) and Q3-nod (dotted) models, 4 yr. Every count uses ringdown events (SNR ≥ 8 in both inspiral and post-inspiral, the LVK pSEOBNR selection). Choices in [§12](#derivations).</figcaption></figure>
-
-**Takeaway.**
-
-- **On the ground, each extra mode costs a factor of 3–8 in rate.** ET: 24 000 events a year with the 220, 7900 with two modes, 1500 with three, 200 with four, 29 with five.
-- **O4a+b expects about 3 two-mode events** (90%: 0–6), consistent with GW250114. A+ expects 55 in 2 yr.
-- **LISA events are few, but each measures tens of modes**: the Q3-nod curve stays flat out to 10 modes.
-
-**Reproduce.** `python tasks/t11-money-plots/S1/m5_figures.py <pools> tasks/t07-population-counts/S7/counts_gwtc5md.json <out> <date>`. It reads the t07 counts and changes no number.
-
 ### F11 — How much does the PN × QNEF prior change the count? (unverified)
 
 <figure><a href="figs/prior_value.png"><img src="figs/prior_value.png" alt="Measured modes versus the 220 SNR for O4, ET, CE 40 km and LISA under a flat prior (dashed) and the PN plus QNEF prior (solid)"></a><figcaption>Measured modes $n_{\rm meas}$ against the 220's expected SNR $\rho_{220}$ (log), GW250114-like source (LISA: $2\times10^6\,M_\odot$ detector frame). Colours: O4 blue, ET green, CE 40 km red, LISA purple. Dashed: flat prior, every mode independent, with its scale set so that its expected total SNR equals the PN × QNEF prior's. Solid: PN × QNEF prior. The flat curves of O4 and CE 40 km coincide, and so do those of ET and LISA.</figcaption></figure>
@@ -92,25 +127,13 @@ The model is linear and Gaussian, so the information is exact and does not depen
 
 **Reproduce.** `python tasks/t11-money-plots/S1/m2.py <date>`, with the `mqnm` package (`mqnm.experiments.measurability.prior_value`).
 
-### F10 — Which mode amplitudes does a GW250114-like ringdown pin down? (unverified)
-
-<figure><a href="figs/measured_modes.png"><img src="figs/measured_modes.png" alt="Fraction of each mode's prior variance removed by the data, for the 16 best-measured modes, O4 and ET, from 10 M and from the peak"></a><figcaption>For each mode $j$, $1 - \Sigma/P$, the fraction of its prior variance the data remove. $\Sigma = \Sigma_{jj}$ is the posterior variance and $P = P_{jj}$ the prior variance of its amplitude, with real and imaginary parts summed; 1 means the amplitude is known exactly and 0 that nothing is learned. The 16 modes shown are the best measured in any of the four cases, ordered by ET. Blue: O4; orange: ET. Filled: $t_0 = 10\,M$; dashed outline: $t_0 = 0$. GW250114-like source at its distance, detector noise only. A bar near 0.21 means that the mode itself is not measured: a fundamental learns that much only because its prior amplitude is tied to $A_{220}$, which the data fix.</figcaption></figure>
-
-**Takeaway.**
-
-- **O4 pins down the 220 and the 221** (99% and 94% of the prior variance removed) and about 60% of the 440 and 441.
-- **ET adds the 222, 320 and 321** (59–73%) **and nearly fixes the 440 and 441** (93–97%).
-- **Starting at the peak adds high overtones**: the 227 (70%), 223 (50%) and 661 (53%) in ET. These are the uncalibrated overtones behind the modes gained at early $t_0$, and they are the ones flagged questionable in F9.
-
-**Reproduce.** `python tasks/t11-money-plots/S2/figures.py <date>`, from the posterior covariances of `tasks/t10-channel-reliability/S1`.
-
 ### F9 — In which order do the modes enter as the source gets louder? (unverified)
 
 <figure><a href="figs/entry_order.png"><img src="figs/entry_order.png" alt="Histograms of the 220 SNR at which each measured mode enters, stacked by what each mode is made of, for O4, A+, ET and CE 40 km, from 10 M (top) and from the peak (bottom)"></a><figcaption>One histogram per detector (columns: O4, A+, ET, CE 40 km) and start time (top: $t_0 = 10\,M$; bottom: $t_0 = 0$). x: the 220 SNR $\rho_{220}$ at which a mode enters, meaning its second channel crosses $s > 1$, binned from 0.1 to 200. y: number of modes entering per bin. Each mode's bar is split by where its two channels point in the prior's independent factors. Black: the 220. Blue: the fundamental harmonics $(\ell, m, 0)$. Green: the calibrated $n = 1$ overtones (221, 211, 321, 331, 441, tied to NR). Yellow: the uncalibrated $n = 1$ overtones. Red: overtones $n \ge 2$. Hatched: modes into which noise-free NR strain from 434 SXS runs puts less than a quarter of the prior-claimed power (tested for O4 and ET). Dashed line: the GW250114-like source; the modes left of it are measured. For ET and CE 40 km the source ($\rho_{220} = 321$, $335$) is beyond the axis.</figcaption></figure>
 
 **Takeaway.**
 
-- **From $10\,M$ the order is the same in every detector.** First the 220 ($\rho_{220} \approx 1.7$). Then a mode made mostly of calibrated $n = 1$ overtones (15–19). Then one made mostly of the fundamental harmonics (35–40). A fourth arrives near 150–215.
+- **From $10\,M$ the order is the same in every detector**, and the greedy rule of [§8](#derivations) names it mode by mode. First the 220 ($\rho_{220} \approx 1.7$). Then a mode made mostly of calibrated $n = 1$ overtones (15–19). Then one made mostly of the fundamental harmonics (35–40). A fourth arrives near 150–215.
 - **GW250114 measures 2 modes in O4, 3 in A+, 5 in ET and 4 in CE 40 km** from $10\,M$; from the peak, 5, 5, 11 and 8.
 - **From the peak every mode carries $n \ge 2$ overtones**, and the earliest ones (two in O4, one in ET) fail the NR power test. The prior over-claims there, which is why we quote counts from $10\,M$.
 
@@ -139,26 +162,11 @@ The model is linear and Gaussian, so the information is exact and does not depen
 
 **Reproduce.** `python tasks/t07-population-counts/S7/counts.py <pools> <GWTC-5 MD hyperposterior> gwtc5md S7 <loud pools>`, then `tasks/t11-money-plots/S1/m5_figures.py <pools> S7/counts_gwtc5md.json <out> <date>`, with the `mqnm` package. The pools come from `S7/submit_s7.sh` and `S7/submit_loud.sh`.
 
-### F7 — Does the count depend on how the noise covariance is built? (unverified)
-
-We changed one choice at a time in the covariance of [§7](#derivations), for the GW250114-like source (O4, CE 40 km, ET) and a $10^6\,M_\odot$ LISA source at $z = 1$. The choices were the time step ($0.05$, $0.1$, $0.2\,M$), the PSD above its table, the frequency resolution of the ACF, the noise below $f_{\rm low}$, and a band limit at 4096 Hz. Rerun with the current prior ($a = 1$).
-
-- **No numerical choice moves the count by more than one real channel**, and none moves it by a mode. This holds at the source and at $\rho_{220} = 100$ and $1000$. At the source the channel spread is O4 4–5, CE 40 km 8–9, ET 10, LISA 21.
-- **The 4096 Hz band limit no longer matters for ET** (10 vs 10 channels). Under the earlier prior it cost ET two channels. It costs O4 and CE 40 km one channel each, which is not a mode. We keep the full Nyquist range of the $0.1\,M$ grid.
-- **The noise below $f_{\rm low}$ has no correct value.** More noise there lowers every channel strength by 1–2% per decade without converging. We hold the PSD flat there, a mildly optimistic default.
-- The covariance passes checks against white noise, direct quadrature and simulated coloured noise; a doubled covariance is rejected at more than 100σ (the control).
-
-**Reproduce.** `python tasks/t11-money-plots/S1/f7_sweep.py <network>` (the noise sweep of `tasks/t08-detector-noise/S2/sweep.py` at the current prior) and `tasks/t08-detector-noise/S1/acf_checks.py`, with the `mqnm` package.
-
-### F6 — How does the count depend on the start time? A non-modal GP
-
-> **Withdrawn (2026-09-25).** This version kept in the signal only the modes NR can extract (about 40), while the goal is the maximum out of the full mode set. It found that with a GP for the non-modal content, $n_{\rm meas}$ stops growing as $t_0$ moves before 10 M. The rebuilt GP (434 SXS runs, [§10](#derivations)) changed the count by at most one channel in O4 and about two in ET, so it was closed as a dead end and is not used in production. F3 and F9 give the start-time dependence without it.
-
 ### F5 — Two-mode toy model: what 0, 1 and 2 measurable channels look like
 
 <figure>
 <a href="figs/toy_two_modes.png"><img src="figs/toy_two_modes.png" alt="Prior and posterior ellipses of two real amplitudes for three SNRs, flat prior on top and correlated prior below"></a>
-<figcaption>Prior (dashed, 1σ and 2σ) and posterior (filled, 1σ and 2σ) of two real amplitudes $(a_1, a_2)$ for per-mode SNR $\rho = 0.2, 2, 8$ (columns). The data overlap is $c = 0.864$, the 220–221 value at $\chi_f = 0.686$. Top: flat prior. Bottom: correlated prior, $r = 0.8$. The star is the true value, and each panel gives the channel strengths $s_\pm$, with $s_\pm^2 = \rho^2 (1 \pm r)(1 \pm c)$ exactly ([derivations §9](#derivations)).</figcaption>
+<figcaption>Prior (dashed, 1σ and 2σ) and posterior (filled, 1σ and 2σ) of two real amplitudes $(a_1, a_2)$ for per-mode SNR $\rho = 0.2, 2, 8$ (columns). The data overlap is $c = 0.864$, the 220–221 value at $\chi_f = 0.686$. Top: flat prior. Bottom: correlated prior, $r = 0.8$. The star is the true value, and each panel gives the channel strengths $s_\pm$, with $s_\pm^2 = \rho^2 (1 \pm r)(1 \pm c)$ exactly ([§3](#derivations)).</figcaption>
 </figure>
 
 **Takeaway.**
@@ -191,8 +199,8 @@ We changed one choice at a time in the covariance of [§7](#derivations), for th
 
 **Takeaway.**
 
-- **GW250114 at its distance, from $10\,M$:** O4 2, A+ 3, CE 20 km 4, CE 40 km 4, ET 5 modes. Starting at $t_0 = 0, 5, 10, 15\,M$: O4 5, 3, 2, 1; ET 11, 7, 5, 3. Below $10\,M$ the gains rest on overtones that NR does not support near the peak (F9, F10).
-- **Growth with SNR is roughly logarithmic:** from $10\,M$, 1 mode at $\rho_{220} = 10$, 2 at 30, 3 at 100, 4–5 at 300, 6–7 at 1000, 8–10 at 3000. At fixed $\rho_{220}$ the detectors agree to within one mode up to $\rho_{220} \approx 100$.
+- **GW250114 at its distance, from $10\,M$:** O4 2, A+ 3, CE 20 km 4, CE 40 km 4, ET 5 modes. Starting at $t_0 = 0, 5, 10, 15\,M$: O4 5, 3, 2, 1; ET 11, 7, 5, 3. Below $10\,M$ the gains rest on overtones that NR does not support near the peak (F9).
+- **Growth with SNR is slow, close to $(\ln\rho_{220})^2$ ([§10](#derivations)):** from $10\,M$, 1 mode at $\rho_{220} = 10$, 2 at 30, 3 at 100, 4–5 at 300, 6–7 at 1000, 8–10 at 3000. At fixed $\rho_{220}$ the detectors agree to within one mode up to $\rho_{220} \approx 100$.
 - **Third-generation detectors keep at least 2 modes out to $z = 5$**; O4 and A+ drop to the 220 alone by $z \approx 0.15$ and $0.3$. **LISA** keeps about 10 modes for a $10^6\,M_\odot$ remnant from $z \approx 1$ to 10.
 
 **Caveats.** Overhead source, co-located detectors. The prior under-covers (3,2) and (4,3) and over-covers (3,3) (F1).
@@ -219,13 +227,13 @@ We changed one choice at a time in the covariance of [§7](#derivations), for th
 
 <figure>
 <a href="figs/prior_vs_nr.png"><img src="figs/prior_vs_nr.png" alt="Prior-predictive amplitude ratios per mode, modulus and phase, for the PN plus QNEF prior and the flat prior, against NR"></a>
-<figcaption>Amplitude ratios $C_j/C_{220}$ at the merger, (a) modulus and (b) phase. For each SXS run the prior is conditioned on that run's own 220 and predicts the ratio; violins pool these predictions over runs. Blue: the PN × QNEF prior (1PN at the run's own $v_{\rm peak}$, four calibrated numbers, [derivations §8](#derivations)). Orange: the flat prior (every mode independent with the 220's scale; its phase is uniform and not shown). Dots: NR (jaxqualin fits).</figcaption>
+<figcaption>Amplitude ratios $C_j/C_{220}$ at the merger, (a) modulus and (b) phase. For each SXS run the prior is conditioned on that run's own 220 and predicts the ratio; violins pool these predictions over runs. Blue: the PN × QNEF prior (1PN at the run's own $v_{\rm peak}$, four calibrated numbers, [§7](#derivations)). Orange: the flat prior (every mode independent with the 220's scale; its phase is uniform and not shown). Dots: NR (jaxqualin fits).</figcaption>
 </figure>
 
 **Takeaway.**
 
 - **The PN × QNEF prior tracks NR mode by mode.** 1σ coverage of $|C_j/C_{220}|$ (target 68%): 221 87%, 440 70%, 550 74%, 660 68%, 211 62%, 210 59%. The flat prior covers 0–2%.
-- **One pooled error $e$ is too wide for (3,3)** (99%) **and too narrow for (3,2) and (4,3)** (41%, 37%). NR's (3,3) sits at 1.9× the 1PN prediction ([§8](#derivations)).
+- **One pooled error $e$ is too wide for (3,3)** (99%) **and too narrow for (3,2) and (4,3)** (41%, 37%). NR's (3,3) sits at 1.9× the 1PN prediction ([§7](#derivations)).
 - **Phases:** the 221 is tight and matches NR. The 210, 211 and 331 sit 0.5–1 rad off the prior's mean; for the 320, 440 and 660, NR splits into two groups the prior does not resolve.
 
 **Reproduce.** `python -m mqnm.experiments.prior_vs_nr`.

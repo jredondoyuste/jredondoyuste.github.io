@@ -1,5 +1,38 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-18 — a first physical reading of the Kerr–Newman couplings
+
+- The coupling surfaces of [F15](#results) in production plots, and a first reading of where they come from ([F16](#results)). At first order the GW–EM mixing of the two $(2,2,0)$ parents is the RN decoupling rotation by $\theta_2(Q)$, to 6 digits at $a=0$; spin multiplies it by a factor $f(a)$ that is the same at every charge.
+- Most of the GW-to-EM conversion at second order follows the same rotation of the child; the directly quadratic part is at most about 8% of the output.
+- A helicity selection rule: two co-rotating EM modes do not source the GW mode on a vacuum background, so $\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}\propto Q^2$. It predicts that the EM-sourced Kerr ratio of Aly and Stojkovic vanishes for two prograde $(2,2,0)$ modes.
+- At the Schwarzschild corner we reproduce the published ratios of Ma et al. and Bucciotti et al. within 0.3%. One channel, $\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}$, grows fivefold with spin at small charge, and we do not know why.
+- New notation on the page: $\mathcal R^{\rm out}_{ {\rm parents},\pm\pm}$ ([Choices and conventions](#status)).
+- What went wrong: the change of notation came after the plots were made, so every Kerr–Newman figure was relabelled; the figures of [F5–F8](#results) still carry the old labels. Our literature notes had the two modes of Pani, Berti and Gualtieri swapped; the analysis caught it, and a control with the swapped labels fails as it should.
+
+### 2026-10-17 — compiled kernels, and the scan over Kerr–Newman
+
+- The quadratic source is now replayed in compiled code from a recording of the Python operator, which stays the definition. One parameter point fell from 30.6 to about 2.4 core-hours; the compiled source equals the Python one to the rounding floor, and the off-shell identity holds to $1.7\times10^{-14}$ ([F14](#results)). t15 finished.
+- A first stage on a coarse design showed no structure, so a second stage filled the quarter disk $a^2+Q^2\le0.9$: 153 points, 416 core-hours, with a per-point uncertainty for every coupling ([F15](#results)).
+- Both edges agree with what we know: RN with t07 to $1.2\times10^{-3}$, Kerr with Khera–Ma–Yang inside their 1% fit accuracy. The surfaces are smooth everywhere: the two parent frequencies never cross.
+- What went wrong: the first off-shell runs of the compiled kernel failed on a recursion in our test harness (fixed and rerun). The agreement bar for the compiled source had to be redefined as noise-limited: the planned $10^{-12}$ was below the rounding floor of the production inputs.
+
+### 2026-10-16 — the Kerr–Newman solver, and the first Kerr–Newman quadratic QNMs
+
+- The glued first-order field on Kerr–Newman: asymptotically flat and regular at the horizon, with the gauge fixed uniquely by the falloff ([F10](#results)). An input resolution study shows the input is converged; the gauge step leaves a floor of a few $10^{-8}$ near scri.
+- Second-order sources on the glued fields, including the products with the mirror modes; at $a=0$ they reproduce the RN sources ([F11](#results)).
+- A 2D solver in $(\sigma,x)$, three Chebyshev patches in double precision, readout error below $8\times10^{-7}$. It passes both acceptance tests: the RN limit within t07's spread, and the Kerr limit against Khera–Ma–Yang within $2.1\times10^{-3}$ ([F12](#results)). t10 finished.
+- The first Kerr–Newman quadratic QNM ratios, at $a=0.2$, $Q=0.4$ ([F13](#results)).
+- What went wrong: we first blamed the $10^{-8}$ floor on aliasing in $x$, but it survived finer grids, so that explanation failed and the mechanism is open. A ruling that only conjugate products were needed was wrong: on Kerr–Newman a mode and its mirror are independent, and the mixed sources had to be added. A $3\times10^{-4}$ gap at $a=0$ came from our old RN reference fields, which were off at the horizon; we recomputed them. An environment bug in the job chain killed two stages of the Kerr runs before we fixed it, and the batch jobs for the free functions of the reconstruction ran out of memory and were stopped.
+
+### 2026-10-15 — Kerr–Newman: route chosen, first-order field, source operator
+
+- t09 started. Hintz's separated form takes a source, but it divides by $Q$, so its Kerr limit is singular; we chose the coupled form, with a side check that the angular projection is sound at complex frequency.
+- The KN QNM data written in our invariant pair (residual $10^{-19}$); the radiation-gauge reconstruction on KN, with an independent check to $3\times10^{-16}$ in extended precision.
+- The residual gauge of that radiation gauge on KN in closed form: three free functions of $x$, with no obstruction to an asymptotically flat field.
+- The quadratic source operator on KN, with the RN and Kerr limits passing and the off-shell identity holding.
+- Acceptance for the KN results set: the RN and Kerr limits, the latter against Khera–Ma–Yang with spin.
+- What went wrong: the symbolic integration of the free functions of the reconstruction stalled at one transport equation, and then lost runs to an interrupted session; that route was later stopped.
+
 ### 2026-10-15 — the EM ringdown signal, and Kerr–Newman next
 
 - An estimate of the EM ringdown of a charged binary-black-hole remnant ([F9](#results)): a fraction $\tfrac49(Q/M)^2$ of the GW power, plus at most about 20% from the quadratic channel, all at frequencies below the plasma frequency of every galactic medium. Not directly observable; parked until spin is added.

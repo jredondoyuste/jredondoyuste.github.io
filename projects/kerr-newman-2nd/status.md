@@ -1,4 +1,4 @@
-**RN quadratic QNMs done; Kerr–Newman next (2026-10-15).** The RN second-order sources (t05) and the quadratic QNMs (t07) are done: Schwarzschild limit to $6\times10^{-4}$, the $(2,2)\times(2,2)$ couplings against $Q/M$ for every channel and parity content, the second-order EM waveform, the $\ell=1$ sector, and an estimate of the EM ringdown signal ([F5–F9](#results)). Next: the second-order equations on Kerr–Newman (t09).
+**Kerr–Newman quadratic couplings mapped (2026-10-18).** The second-order equations, sources and a 2D solver now run on Kerr–Newman (t09, t10); they reproduce both limits, Reissner–Nordström at $a=0$ and Khera–Ma–Yang's Kerr ratios at $Q\to0$. Compiled kernels (t15) cut a parameter point from 30.6 to about 2.4 core-hours, and the scan (t11) maps every quadratic coupling of the two $(2,2,0)$ modes over $a^2+Q^2\le0.9$, with a first physical reading ([F10–F16](#results)). Next: the owner's review of t11, then near-extremality (t08, t12).
 
 ## Tasks
 
@@ -119,7 +119,7 @@ Second-order strain and EM ratios at scri, and ratios at the horizon, for produc
   All three channels, with exact control of the mirror content ([F5](#results)).
 - **S6** Results · done
 - **S7** Branch-cut channel · done
-  Products of a mode with its own conjugate: one-sided limits exist; their average agrees with Bourg et al. within 20%; the jump is unresolved.
+  Products of a mode with its own conjugate: one-sided limits exist; their average agrees with Bourg et al. within 20%; the jump is unresolved. Accepted by the owner as a diagnostic (2026-10-15).
 - **S8** Second-order EM waveform and couplings · done
   No quadratic correction on shell; GW$\times$EM$\to$EM survives in Schwarzschild ([F7](#results)).
 - **S9** Ratios at the horizon · done
@@ -127,23 +127,64 @@ Second-order strain and EM ratios at scri, and ratios at the horizon, for produc
 - **S10** Parity dependence in 2D · done
   Maps in the variable of Bourg et al. ([F6](#results)).
 - **S11** Couplings with the $\ell=1$ EM mode · done
-  $XZ$, $YZ$, $ZZ$ ([F8](#results)).
+  $\mathcal R^{\rm GW}_{ {\rm GW\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1}}$, with ${\rm EM_1}$ the $\ell=1$ EM-led mode ([F8](#results)).
 
 ### t08 — Extremal RN: backreaction of Aretakis-unstable modes · planned
 
 The monopole sector ($\delta M$, $\delta Q$) at second order: towards or away from extremality?
 
-### t09 — KN: second-order equations · planned
+### t09 — KN: second-order equations, formulation and sources · active
 
-$a\to0$ gives t05; $Q\to0$ gives the Kerr second-order Teukolsky equation.
+The coupled DGS/Weller form of t04/t13 carried to Kerr–Newman, with the first-order QNM field in the glued gauge and the quadratic sources ([F10, F11](#results)). All subtasks are done; the task stays open for the classification of the reconstruction's free functions on KN.
 
-### t10 — KN: hyperboloidal spectral code, 2+1 per azimuthal number · planned
+- **S1** Literature on sourced separated KN equations · done
+  No sourced or second-order use of Hintz's separation exists; completeness of the angular functions at complex frequency is unproved.
+- **S2** The sourced equations in both forms, and the projection test · done
+  Hintz's transformations are algebraic, so a source passes through them; projecting on the non-self-adjoint angular functions at complex $\Omega$ converges exponentially.
+- **S3** Decision memo · done
+  Hintz's form stays separable with a source but is singular as $Q\to0$; the coupled form is the main route, the separated one a possible cross-check.
+- **S4** First-order KN field for QNM data in the glued gauge · done
+  QNM data for our pair on $(\sigma,x)$, the radiation-gauge reconstruction checked by an independent operator to $3\times10^{-16}$, and the glued gauge, asymptotically flat at scri and regular at the horizon ([F10](#results)). The KN classification of the free functions was not finished.
+- **S5** KN bilinear source operator · done
+  The quadratic source as a bilinear operator on KN: off-shell identity to $1.7\times10^{-14}$; $a\to0$ gives t05, $Q\to0$ gives Spiers–Pound–Moxon's Kerr source.
+- **S6** Sources on the glued QNM fields · done
+  All products of the two $(2,2,0)$ modes and their mirrors at $a=0.2$, $Q=0.4$; $a=0$ against t05 to $4\times10^{-7}$ ([F11](#results)).
 
-Published KN QNMs, and t06 at $a=0$.
+### t10 — KN: 2D second-order solver in $(\sigma,x)$ and the first KN quadratic QNMs · done
 
-### t11 — KN: quadratic QNMs and GW–EM mixing, extending Kerr · planned
+Hyperboloidal spectral solver of the second-order equation on KN, regular at the horizon and at scri; accepted on both limits ([F12, F13](#results)).
 
-Kerr quadratic-QNM results at $Q=0$.
+- **S1** 2D solver and its checks · done
+  Three Chebyshev patches in $\sigma$, Gauss nodes in $x$, complex path near scri; readout error at scri $\lesssim8\times10^{-7}$.
+- **S2** RN limit · done
+  At $a=0$, $Q=0.4$ every GW and EM coefficient lies within t07's spread.
+- **S3** First KN quadratic QNMs · done
+  All channels of the $(2,2,0)$ products at $a=0.2$, $Q=0.4$, GW and EM output, $\ell\le8$ ([F13](#results)).
+- **S4** Kerr limit · done
+  Extrapolated to $Q\to0$, Khera–Ma–Yang's $\mathcal R_{++}$, $\mathcal R_{+-}$ at $a=0.2,0.5,0.7$ within $2.4\times10^{-3}$, inside their 1% fit accuracy ([F12](#results)).
+- **S5** Results · done
+
+### t15 — Fast compiled kernels for the KN pipeline · done
+
+The bilinear source as compiled C++, generated from the Python operator, which stays the definition ([F14](#results)).
+
+- **S1** Compiled bilinear source · done
+  Equal to the Python reference to rounding; off-shell identity to $1.7\times10^{-14}$; about 50 times faster on one core.
+- **S2** Further savings · done
+  Right-sized job requests, the background built once per point, the expensive gauge check run on validation points only. A symbolic-in-$(a,Q)$ build was not done.
+- **S3** Integration · done
+  The new chain reproduces t10 within its rounding floor; a full point costs about 2.4 core-hours instead of 30.6.
+
+### t11 — KN: cost model and scan of the quadratic couplings over $(a/M,Q/M)$ · active
+
+The measured cost per point, the cheapest scan design, the scan itself, and its physics ([F15, F16](#results)).
+
+- **S1** Cost model and scan design · done
+  Profiling showed the source dominated (now t15); a 12-point probe was smooth with no frequency crossing; the owner chose a design over the quarter disk.
+- **S2** The scan · done
+  153 points over $a^2+Q^2\le0.9$, $Q\ge0.05$, with per-point uncertainties and an interpolant; 416 core-hours ([F15](#results)).
+- **S3** Physics with the scan · active
+  Literature, small-$a$ and small-$Q$ expansions, the decoupling rotation and a helicity selection rule ([F16](#results)); production plots; this page. The owner then decides on closing t11.
 
 ### t12 — Near-extremal KN: sources and backreaction of Aretakis and zero-damped modes · planned
 
@@ -153,7 +194,7 @@ t08 at $a=0$; the strongly charged extremal regime of Fang–Giorgi–Wan.
 
 ### KN classification of the reconstruction's free functions · open
 
-On RN we know exactly what fixes them; on KN only the Kerr–Newman family itself was identified. It is a 2+1 problem, not separable in this gauge.
+On RN we know exactly what fixes them; on KN only the Kerr–Newman family itself was identified. It is a 2+1 problem, not separable in this gauge. An exact attempt in t09 (S4) got through the whole hierarchy with no logarithms and passed its $a=0$ controls, but the KN runs were stopped (owner, 2026-10-16); the quadratic ratios at scri do not need it.
 
 ### Decoupling the RN 2×2 radial system · open
 
@@ -161,7 +202,7 @@ Not needed for t06, which can evolve the coupled form directly.
 
 ### Map from the separated variables to our pair · open
 
-Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1})$. The QNMs agree ([F2](#results)); the map between the variables is left for the KN tasks (t10, t11).
+Hintz's separated equations use other variables than $(\varphi_{+2},\varphi_{+1})$. The QNMs agree ([F2](#results)). t09 chose the coupled form for second order, so the map is now only needed for a separated cross-check.
 
 ### Zero-frequency sector · open
 
@@ -169,7 +210,7 @@ Our gauge is fully fixed only for modes with $\omega\neq0$. Static or $\ell\le1$
 
 ### Products of a mode with its own conjugate · open
 
-Their frequency $2i\,\mathrm{Im}\,\omega$ lies on the branch cut, where regularity does not fix the solution: the amplitude depends on how the response is split between mode and tail. A time-domain treatment would settle it; the same issue returns on Kerr–Newman.
+Their frequency $2i\,\mathrm{Im}\,\omega$ lies on the branch cut, where regularity does not fix the solution: the amplitude depends on how the response is split between mode and tail. A time-domain treatment would settle it. The same issue returns on Kerr–Newman: the scan (t11) computes the only off-cut $M=0$ channel, ${\rm GW^*\times EM}$, and leaves the self-conjugate ones out.
 
 ### Electromagnetic ringdown signal · paused
 
@@ -178,6 +219,30 @@ Estimated in [F9](#results): not directly observable. To revisit with spin, and 
 ### Horizon ratios with an EM normalisation · open
 
 EM-led parents are normalised by the gravitational $\Psi_0$ at the horizon, which inflates them as $Q^{-2}$; normalising by $\phi_0$ would remove that.
+
+### Retrograde $(2,-2)$ mode · open
+
+The independent counter-rotating mode at $\omega_{2,-2,0}$ (not the mirror of $(2,2,0)$) is not computed on KN; products $(2,2)\times(2,-2)$ need it.
+
+### Quadratic horizon fluxes on KN · open
+
+The KN solver reads out at scri only; the horizon side (the plus system) has a near-null mode in double precision near scri and was not used.
+
+### Normalisation of the $\ell=4$ EM output · open
+
+The rotation reading of [F16](#results) assumes the same amplitude normalisation $N_4=\sqrt8$ at $\ell=4$ as measured at $\ell=2$; checking it needs an $\ell=4$ linear run. The EM output normalisation on KN is inferred, not measured (measured on RN).
+
+### Growth of the $M=0$ difference channel with spin · open
+
+$\lvert\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at small $Q$, while the frequency gap changes by 24% ([F16](#results)). Unexplained.
+
+### Near-extremal Kerr–Newman scan · open
+
+The scan stops at $a^2+Q^2=0.9$; near extremality belongs to t12, which also holds the singular point of the master system for $Q/M>\sqrt{15}/4$.
+
+### A clean public rewrite of the fast kernels · open
+
+The compiled kernels were written for speed (owner, 2026-10-17); a readable public version is a later task.
 
 ### Horizon derivatives of $h_{nn}$ · open
 
@@ -192,6 +257,18 @@ Solving all transport equations at once converged only algebraically; marching t
 ### t03 — Linear Teukolsky-type system on KN · superseded
 
 Replaced by t04, which takes the Weller/DGS pair as variables and adds reconstruction; its literature notes are reused.
+
+### Hintz's separated form as the second-order route · dropped
+
+Separable with a source, but it divides by $Q$, so the Kerr limit is singular; the coupled form was chosen (t09 S3, 2026-10-15).
+
+### $x$-aliasing as the cause of the glued-field floor on KN · failed
+
+We first attributed the $10^{-8}$ floor of the glued KN field near scri to aliasing in $x$; at finer input grids the floor stayed, so the explanation failed its control. The floor is made in the gauge step; its mechanism is open, and the sources do not inherit it ([F10](#results)).
+
+### Conjugate products alone for the KN ratios · superseded
+
+On KN the reflection does not map a mode to a multiple of itself, so the mode and its mirror span two dimensions and the ratios $\mathcal R_{++}$, $\mathcal R_{+-}$ need the mixed mode–mirror sources as on RN; the earlier ruling was corrected (2026-10-16).
 
 ## Choices and conventions
 
@@ -217,5 +294,17 @@ Boyer–Lindquist with the Kinnersley tetrad, and minimal-gauge hyperboloidal sl
 
 ### Quadratic ratios and mirror content
 
-$R_h=H^{(2)}/(H_1H_2)$ at scri, with $H$ the strain coefficient of ${}_{-2}Y_{\ell m}e^{-i\omega u}$ and $\mathcal A$ that of ${}_{-1}Y_{\ell m}$ in $rA_{\bar m}$. A real first-order mode is a regular mode plus its mirror with ratio $\rho$; we report $R$ as a polynomial in $\rho$, so any parity content can be read off ($\rho=0$ single mode, $\rho=1$ even parity).
+The ratio at scri is the second-order amplitude over the product of the parents' amplitudes: $H$ is the strain coefficient of ${}_{-2}Y_{\ell m}e^{-i\omega u}$ (GW) and $\mathcal A$ that of ${}_{-1}Y_{\ell m}$ in $rA_{\bar m}$ (EM). A real first-order mode is a prograde mode plus its mirror with ratio $\rho$; we report each ratio as a polynomial in $\rho$, so any parity content can be read off ($\rho=0$ single mode, $\rho=1$ even parity).
+
+### Notation for the quadratic ratios (owner, 2026-10-18)
+
+$\mathcal R^{\rm out}_{ {\rm parents},\pm\pm}$: the superscript is the output, GW or EM; the subscript names the parents, ${\rm GW\times GW}$, ${\rm GW\times EM}$, ${\rm EM\times EM}$ for the gravitationally and electromagnetically led $(2,2,0)$ modes, and ${\rm GW^*\times EM}$ for the $M=0$ difference channel; the signs say whether each parent enters through its prograde ($+$) or mirror ($-$) part, a bar marking a conjugated amplitude (GW sign first). So $\mathcal R^{\rm GW}_{ {\rm GW\times GW}}=\mathcal R_{++}+\mathcal R_{+-}\rho+\mathcal R_{--}\rho^2$, with $\mathcal R_{++}$, $\mathcal R_{+-}$ those of Khera–Ma–Yang, and $\mathcal R_{--}=0$.
+
+### Kerr–Newman route
+
+The coupled DGS/Weller form, the RN procedure and gauge carried over (owner, 2026-10-15). Angles in $x=\cos\theta$ or a spin-weighted harmonic basis, not a $\theta$ grid. Scans in double precision, extended precision only where a check shows it is needed. A KN result is accepted only if it reproduces both the RN limit (t07) and the Kerr limit (Khera–Ma–Yang).
+
+### Scan design and interpolation
+
+17 Chebyshev–Lobatto nodes in $u=a/\sqrt{0.9-Q^2}$ times 9 rows in $Q^2$, covering the quarter disk $a^2+Q^2\le0.9$ (owner, 2026-10-17). Channels that vanish at $Q\to0$ are interpolated as $\mathcal R/Q^p$, with $p$ fixed by charge parity and checked by the small-$Q$ slope.
 

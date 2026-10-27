@@ -1,3 +1,41 @@
+### F7 — What does a gravitational wave do when it scatters off a neutron star, and how do we read off the phase shift? (unverified)
+
+<figure><a href="figs/f7-td-scattering-animation.gif"><img src="figs/f7-td-scattering-animation.gif" alt="Animation of an axial gravitational-wave pulse falling onto a neutron star, passing through it and coming back out, with the signal at 20M and the extracted phase shift"></a><figcaption>An axial ($\ell = 2$) pulse falls onto a $1.4\,M_\odot$ SRO(SLy4) star, passes through it and comes back out, and the phase shift $\delta_2(\omega)$ read from the field at $20M$ matches the frequency-domain code.</figcaption></figure>
+
+This is a time-domain run of the axial master equation $\partial_t^2 Z = \partial_{r_*}^2 Z - V Z$, evolved with the validated setup of [F5](#results). The star has $M = 2.067$ km and $R = 5.67\,M$. The initial pulse is a Gaussian of width $\sigma = 2M$ in $r_*$, moving inwards, so it carries frequencies $\omega M \lesssim 0.5$. Units: $G = c = 1$; lengths and times are in units of $M$.
+
+- **Top panel.** The field $Z(t, r_*)$ (blue), from the star's centre to $r_* = 66\,M$. The yellow band is the star's interior. The grey curve is the potential $V$ in arbitrary units. The violet dashed line is the extraction radius $r_{\rm ext} = 20\,M$. The strip below shows $\log_{10}\lvert Z\rvert$, so that the small trailing waves are visible.
+- **Bottom left.** The signal at $r_{\rm ext}$, in time order: the incoming pulse ($t \approx 30\,M$); then a slow wave, backscattered by the $\ell(\ell+1)/r^2$ tail of the potential; then the outgoing scattered pulse ($t \approx 80$–$90\,M$). The inset shows the strongly damped ringing that follows, consistent with the fundamental axial w-mode ($\tau = 4.2\,M$).
+- **Bottom right.** The phase shift. We Fourier transform the record at $r_{\rm ext}$ (the full run, to $T = 1500\,M$) and split it with Wronskians into $\hat Z = A_{\rm in}u_{\rm in} + A_{\rm out}u_{\rm out}$. This gives $S_2 = A_{\rm out}/A_{\rm in}$ and $e^{2i\delta_2} = -S_2$. Blue dots: the time-domain run. Orange line: the frequency-domain code. Grey dashed line: the exterior-only reference phase $\delta_{\rm ref}$; the arrow marks the star's part $\delta_{\rm star}$. Green dotted line: the w-mode frequency, $\omega M = 0.347$.
+
+**Takeaway.**
+
+- For this star the surface, at $5.67\,M$, lies outside the peak of the Regge–Wheeler barrier ($r \approx 3.3\,M$). The pulse therefore goes into the star, turns around near the centre and comes back out. It is not reflected off a barrier.
+- Almost all of the wave returns: $\lvert S_2\rvert = 1$ to $1.1\times10^{-5}$ in the time-domain extraction. Scattering changes only the phase of each frequency.
+- The two codes agree to $\max\lvert S_{\rm TD} - S_{\rm FD}\rvert = 2.6\times10^{-5}$ over $\omega M \in [0.02, 0.5]$.
+- Below $\omega M \approx 0.2$ the exterior spacetime sets the phase; the star's part is $-1.2\times10^{-8}$ at $\omega M = 0.02$. Above $\omega M \approx 0.25$ the interior dominates: $\delta_{\rm star} = 0.21$ at the w-mode and $1.0$ at $\omega M = 0.5$.
+- This is the axial sector only. The polar sector, which carries the f- and g-mode tides, is not computed yet.
+
+**Reproduce.** `julia --project=src/DynTides.jl tasks/t01-gw-scattering-codes/viz/scripts/td_axial_animation_data.jl <datadir>`, then `python3 tasks/t01-gw-scattering-codes/viz/scripts/td_axial_animation.py <datadir>/2026-10-27_tdanim_ <outstem>`.
+
+### F6 — How large is the star's imprint on the axial phase shift, and how does it depend on the equation of state? (unverified)
+
+<figure><a href="figs/f6-fd-axial-delta2-eos.png"><img src="figs/f6-fd-axial-delta2-eos.png" alt="Axial l=2 phase shift against omega M for four 1.4 solar-mass stars: total, star part on log-log axes, and star part divided by (omega M)^5"></a><figcaption>Axial $\ell = 2$ phase shift for $1.4\,M_\odot$ stars of four EOSs: (a) total $\delta_2$; (b) the star's part $\lvert\delta_{\rm star}\rvert$; (c) $\delta_{\rm star}/(\omega M)^5$ at low frequency.</figcaption></figure>
+
+These are frequency-domain results at 241 log-spaced frequencies, $\omega M \in [10^{-3}, 1.5]$. The convention is $e^{2i\delta_\ell} = (-1)^{\ell+1}S_\ell$, and $\delta_{\rm star} = \delta_2 - \delta_{\rm ref}$ ([§4](#derivations)). The top axes give $f$ in kHz for $M = 1.4\,M_\odot$. Colours: SRO(SLy4), $R = 11.72$ km (blue); SRO(APR), 11.56 km (orange); nucleonic fiducial, 12.00 km (green); nucleonic PREX-II-like, 13.05 km (purple).
+
+- **(a)** The total phase $\delta_2$, unwrapped. The grey dashed line is the exterior-only reference $\delta_{\rm ref}$ for SRO(SLy4). The four stars coincide below $\omega M \approx 0.3$ and separate above it.
+- **(b)** $\lvert\delta_{\rm star}\rvert$ on log-log axes. The dotted line has slope 5, the expected $(\omega M)^{2\ell+1}$. The dips are sign changes of $\delta_{\rm star}$.
+- **(c)** $\delta_{\rm star}/(\omega M)^5$ for $\omega M \le 0.12$. It levels off to an EOS-dependent constant as $\omega \to 0$.
+
+**Takeaway.**
+
+- At $\omega M = 10^{-3}$ the star's part is $\sim 10^{-15}$ rad, against a total of $-1.3\times10^{-2}$ rad. We still compute it to $\le 3.4\times10^{-7}$ relative, with no subtraction of phases.
+- The low-frequency constants are $-3.09$ (APR), $-3.36$ (SLy4), $-3.85$ (fiducial) and $-5.45$ (PREX-II-like). They are ordered by radius. The static tidal response may set this limit, but we have not yet tested the link to $k_2$.
+- The EOS shows up clearly only in the star's part. In the total phase it is visible only above $\omega M \approx 0.3$, beyond the inspiral band.
+
+**Reproduce.** `julia --project=src/DynTides.jl tasks/t01-gw-scattering-codes/viz/scripts/fd_axial_delta_eos.jl <datadir>` (about 6 min per star), then `python3 tasks/t01-gw-scattering-codes/viz/scripts/plot_fd_axial_delta_eos.py <dir>`.
+
 ### F5 — Does the time-domain axial code reproduce the frequency-domain $S_2(\omega)$? (unverified)
 
 <figure><a href="figs/f5-td-vs-fd-axial.png"><img src="figs/f5-td-vs-fd-axial.png" alt="Difference between time-domain and frequency-domain axial S_2 against omega M, for four resolutions, two stars, with a control case"></a><figcaption>$\lvert S_{\rm TD} - S_{\rm FD}\rvert$ for $\ell = 2$ axial against $\omega M$, at several grid resolutions, for the $\Gamma = 2$ polytrope (left) and SRO(SLy4) at $1.4\,M_\odot$ (right).</figcaption></figure>

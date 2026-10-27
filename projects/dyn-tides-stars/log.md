@@ -1,5 +1,10 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-27 — the axial phase shift across equations of state; a scattering animation
+
+- The axial phase shift $\delta_2(\omega)$ for $1.4\,M_\odot$ stars of four equations of state, from $\omega M = 10^{-3}$ to 1.5 ([F6](#results)). The star's part grows as $(\omega M)^5$, and its low-frequency coefficient is ordered by the stars' radii.
+- An animation of a pulse scattering off the SLy4 star, showing how the phase shift is read from the time-domain signal ([F7](#results)). For this star there is no exterior barrier: the wave passes through the star and turns around near its centre.
+
 ### 2026-10-26 — both axial codes validated; buoyant EOS tables in place
 
 - Equations of state with buoyancy: SRO(SLy4) and SRO(APR) from the CompOSE 3D tables, with the frozen-composition sound speed. $M_{\max}$ and $R_{1.4}$ agree with CompOSE to 0.3% ([F2](#results)).

@@ -1,5 +1,54 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-27 — coupling tables for 15 parent pairs; t19 closed
+
+- The general-parent code ran 15 pairs at 20 points of the $(a,Q)$ plane: 28 648 coefficients with calibrated errors and flags, 207 core-hours, no failed pair ([F19](#results)). With gravitational parents the GW coupling hardly changes over the plane; EM parents and EM output grow with charge.
+- We settled the remaining choices: channels with $\lvert{\rm Re}\,W\rvert/\lvert W\rvert<0.15$ are marked unreliable, and the regression against earlier runs is bit-identity on one machine. t19 is done.
+- What went wrong: the scan cost three times the estimate (207 against 73 core-hours), because some jobs took up to four hours for reasons we did not find.
+
+### 2026-10-26 — validating couplings of general parents, and an error budget
+
+- Every check of the general-parent couplings passes: Kerr and Schwarzschild references, the Clebsch–Gordan structure on RN, the swap of the two parents.
+- Where Khera–Ma–Yang's fits of the difference channel disagree with ours, their $a=0$ values also disagree with the full table of Bucciotti et al., which agrees with ours; we take the fits to be in error.
+- An error budget calibrated against runs one step finer in every resolution: the error is below the estimate in 99.1% of 793 rows.
+- First overtones as parents: their QNMs match the Kerr tables to $7.5\times10^{-9}$, and their sum couplings are calibrated. Difference channels close to the branch cut are beyond the code.
+- A cleaner interface: `knpert.couplings(a, Q, P1, P2)`, with the numbers unchanged to the last bit.
+- A literature review on whether the near-horizon AdS$_2$ geometry fixes the near-extremal coupling: one earlier estimate (extremal Kerr), nothing with charge.
+- What went wrong: the calibration exposed a $3\times10^{-8}$ error in every parent amplitude since t10, from a fit at scri that silently truncated. It is fixed; the shift is far below the stated errors of the earlier results.
+
+### 2026-10-23 — near-extremal couplings to $\kappa=10^{-3}$
+
+- On the near-Kerr lines $Q=0.1$ and $Q=0.6$ the $(4,4)$ couplings level off down to $\kappa=10^{-3}$ ([F17](#results)); ${\rm GW\times EM}$ at $Q=0.6$ still rises, close to logarithmically.
+- The difference channel ${\rm GW^*\times EM}\to(2,0)$ grows as $1/\kappa$ in GW output, with slope $-1.003$ to $-1.006$; its EM output is flat ([F18](#results)). It lies near the branch cut, so the result is provisional.
+- We are closing t12 and writing down what worked and what did not; the near-extremal scan moves to a new task on the general code.
+- What went wrong: children that are strongly damped in units of $\kappa$ pick up a forbidden solution at the horizon, whose amplitude grows with resolution. This is why pure RN stops at $\kappa\approx0.014$.
+
+### 2026-10-22 — the general-parent code, and exceptional points
+
+- The package couples any list of parents; their QNMs are followed from RN with spin raised in steps that halve when needed. Without halving, a control lands on a wrong root, as it should.
+- $\kappa=0.002$ converged on the near-Kerr lines by raising the first-order resolution to 384–512 points.
+- A new task on exceptional points of the Kerr–Newman spectrum: a paper of 2026-10-21 finds four, one new, but gives no amplitudes.
+
+### 2026-10-21 — the throat resolved to $\kappa=0.005$
+
+- With near-horizon patches the near-Kerr lines converge at $\kappa=0.005$; $\kappa\le0.002$ failed in the first-order gauge step until the radial resolution was raised.
+
+### 2026-10-20 — one package for the whole pipeline
+
+- `knpert`, run from $(a,Q)$ alone, reproduces every headline number of t06, t07, t10 and t11 within its band, at 0.92 core-hours per point. t17 is done.
+- Near-horizon patches added to the package (t18); the default layout gives the same numbers as before.
+
+### 2026-10-19 — near-extremal RN and the first near-extremal KN lines
+
+- The singular point of the RN master system at $r=4Q^2/3M$ is only apparent; we get ratios at $Q=0.99$ through it.
+- First lines towards extremal KN, with a map of the nearby zero-damped modes.
+- What went wrong: the $m=1$ chain did not converge at $\kappa=0.05$–$0.01$. We traced it to the horizon condition for strongly damped children.
+
+### 2026-10-18 — tasks closed, and a pedagogical note
+
+- t07, t09 and t11 closed; a six-page pedagogical note on the calculation (t16).
+- A plan for near extremality (t12), approved the same day.
+
 ### 2026-10-18 — a first physical reading of the Kerr–Newman couplings
 
 - The coupling surfaces of [F15](#results) in production plots, and a first reading of where they come from ([F16](#results)). At first order the GW–EM mixing of the two $(2,2,0)$ parents is the RN decoupling rotation by $\theta_2(Q)$, to 6 digits at $a=0$; spin multiplies it by a factor $f(a)$ that is the same at every charge.

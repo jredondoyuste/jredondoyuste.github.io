@@ -1,4 +1,4 @@
-**Kerr–Newman quadratic couplings mapped (2026-10-18).** The second-order equations, sources and a 2D solver now run on Kerr–Newman (t09, t10); they reproduce both limits, Reissner–Nordström at $a=0$ and Khera–Ma–Yang's Kerr ratios at $Q\to0$. Compiled kernels (t15) cut a parameter point from 30.6 to about 2.4 core-hours, and the scan (t11) maps every quadratic coupling of the two $(2,2,0)$ modes over $a^2+Q^2\le0.9$, with a first physical reading ([F10–F16](#results)). Next: the owner's review of t11, then near-extremality (t08, t12).
+**General parent pairs, and near extremality (2026-10-27).** The pipeline is now one package, `knpert`, which reproduces every earlier headline number (t17). It couples any two QNMs with $\ell\le4$, $n\le1$, with errors calibrated against finer runs, and the first tables cover 15 parent pairs over the $(a,Q)$ plane (t19, [F19](#results)). Near extremality the $(4,4)$ couplings stay finite to $\kappa=10^{-3}$, and one difference channel grows as $1/\kappa$ (t12, [F17, F18](#results)). Next: a scan of representative pairs over the bulk and near-extremal lines, once the branch-cut channels and the horizon condition for strongly damped children are settled; exceptional points of the spectrum (t20).
 
 ## Tasks
 
@@ -103,7 +103,7 @@ Sources grav×grav, grav×EM, EM×EM for the t13 variables, from products of $\e
   Converged in the interior and, after an extended-precision fix of one horizon component, at the horizon. For $Q/M>\sqrt{15}/4$ the master system (in the t04 normalisation) is singular at $r=4Q^2/3M$, outside the horizon: deferred to t12.
 - **S4** Result · done
 
-### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · active
+### t07 — RN: quadratic QNMs and GW–EM mixing as functions of $Q/M$ · done
 
 Second-order strain and EM ratios at scri, and ratios at the horizon, for products of the fundamental modes ([F5–F9](#results)).
 
@@ -129,13 +129,9 @@ Second-order strain and EM ratios at scri, and ratios at the horizon, for produc
 - **S11** Couplings with the $\ell=1$ EM mode · done
   $\mathcal R^{\rm GW}_{ {\rm GW\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM\times EM_1}}$, $\mathcal R^{\rm GW}_{ {\rm EM_1\times EM_1}}$, with ${\rm EM_1}$ the $\ell=1$ EM-led mode ([F8](#results)).
 
-### t08 — Extremal RN: backreaction of Aretakis-unstable modes · planned
+### t09 — KN: second-order equations, formulation and sources · done
 
-The monopole sector ($\delta M$, $\delta Q$) at second order: towards or away from extremality?
-
-### t09 — KN: second-order equations, formulation and sources · active
-
-The coupled DGS/Weller form of t04/t13 carried to Kerr–Newman, with the first-order QNM field in the glued gauge and the quadratic sources ([F10, F11](#results)). All subtasks are done; the task stays open for the classification of the reconstruction's free functions on KN.
+The coupled DGS/Weller form of t04/t13 carried to Kerr–Newman, with the first-order QNM field in the glued gauge and the quadratic sources ([F10, F11](#results)). The classification of the reconstruction's free functions on KN moved to Simmering.
 
 - **S1** Literature on sourced separated KN equations · done
   No sourced or second-order use of Hintz's separation exists; completeness of the angular functions at complex frequency is unproved.
@@ -175,7 +171,7 @@ The bilinear source as compiled C++, generated from the Python operator, which s
 - **S3** Integration · done
   The new chain reproduces t10 within its rounding floor; a full point costs about 2.4 core-hours instead of 30.6.
 
-### t11 — KN: cost model and scan of the quadratic couplings over $(a/M,Q/M)$ · active
+### t11 — KN: cost model and scan of the quadratic couplings over $(a/M,Q/M)$ · done
 
 The measured cost per point, the cheapest scan design, the scan itself, and its physics ([F15, F16](#results)).
 
@@ -183,12 +179,79 @@ The measured cost per point, the cheapest scan design, the scan itself, and its 
   Profiling showed the source dominated (now t15); a 12-point probe was smooth with no frequency crossing; the owner chose a design over the quarter disk.
 - **S2** The scan · done
   153 points over $a^2+Q^2\le0.9$, $Q\ge0.05$, with per-point uncertainties and an interpolant; 416 core-hours ([F15](#results)).
-- **S3** Physics with the scan · active
-  Literature, small-$a$ and small-$Q$ expansions, the decoupling rotation and a helicity selection rule ([F16](#results)); production plots; this page. The owner then decides on closing t11.
+- **S3** Physics with the scan · done
+  Literature, small-$a$ and small-$Q$ expansions, the decoupling rotation and a helicity selection rule ([F16](#results)); production plots.
 
-### t12 — Near-extremal KN: sources and backreaction of Aretakis and zero-damped modes · planned
+### t16 — Pedagogical note · done
 
-t08 at $a=0$; the strongly charged extremal regime of Fang–Giorgi–Wan.
+A six-page note for graduate students: the method, what is new, and three organising ideas (the mixing angle, charge parity, the helicity rule), with figures from the t11 scan.
+
+### t17 — One package for the whole pipeline · done
+
+`knpert` replaces the task-by-task scripts: symbolic operators, charts, QNMs, glued reconstruction, sources, the 2D solve. Run from $(a,Q)$ alone, it reproduces every headline number of t06, t07, t10 and t11 within its band, at 0.92 core-hours per point.
+
+- **S1–S5** Modules: symbolic and coordinates, QNMs, glued gauge, source, second-order solve · done
+  Each checked against the task code it replaces.
+- **S6** Speed · done
+  0.92 core-hours per point against a target of 0.8; accepted.
+- **S7** Headline reproduction · done
+  RN QNM table, Schwarzschild corner ($7.6\times10^{-6}$), RN $(4,4)$ couplings, the KN point, the Kerr limit, and 1550 of 1560 t11 rows within their errors (the other 10 are zeros at rounding).
+
+### t18 — Near-horizon patches in the package · done
+
+An optional layout of radial patches that resolves the near-horizon throat, for t12. The default layout gives the same numbers as before; a 4-patch layout reproduces the 3-patch one to $8\times10^{-11}$.
+
+### t12 — Near-extremal RN and KN · active
+
+Pass the singular point of the master system, resolve the throat, and follow the quadratic ratios to small surface gravity $\kappa$ ([F17, F18](#results)). Being closed (owner, 2026-10-23); its open problems pass to a later scan task.
+
+- **S1** Diagnose the singular point · done
+  At $r=4Q^2/3M$ it is apparent at first and second order. On KN only an equatorial ring lies outside the horizon, for $Q^2>3/4$ and large spin.
+- **S2** The route on RN · done
+  Ratios at $Q=0.99$ through the singular point; they equal t07 at $Q=0.6$, 0.8.
+- **S3** Near-extremal discretisation · active
+  Throat patches and first-order grids growing as $\kappa$ falls reach $\kappa=10^{-3}$ on the near-Kerr lines. Strongly damped children pick up a forbidden horizon solution; a horizon-factorised solver passes its 1D test but not yet the 2D one.
+- **S4** RN ratios against $\kappa$ · open
+  Pure RN converges only to $\kappa\approx0.014$, for the reason above.
+- **S5** KN lines against $\kappa$ · done
+  $Q=0.1$, $Q=0.6$ ($a\to a_{\rm ext}$) and $a=0.1$ ($Q\to Q_{\rm ext}$) to $\kappa=10^{-3}$; a map of zero-damped modes and their detunings.
+- **S6** Synthesis · active
+  A wrap-up of what worked, what did not, and where to pick up.
+
+### t19 — Quadratic couplings for any pair of parent modes · done
+
+`knpert` takes two QNMs $(\ell,m,n)$, $\ell\le4$, $n\le1$, gravitationally or electromagnetically led, and returns every child coupling with a calibrated error and flags ([F19](#results)).
+
+- **S1** Reference values from the literature · done
+  58 values; Kerr and Schwarzschild only, none with an EM parent.
+- **S2** The generalised code · done
+  Any parent list; QNMs followed from RN at $a=0$ with spin raised slowly.
+- **S3** Validation · done
+  Resolution, Kerr and Schwarzschild references, RN Clebsch–Gordan structure, parent swap: all pass.
+- **S3d** Error budget · done
+  $u_{\rm err}$ calibrated against finer runs (99.1% of 793 rows below it); a $3\times10^{-8}$ error in every parent amplitude found and fixed.
+- **S3e** Overtones, $n=1$ · done
+  QNMs to $7.5\times10^{-9}$ of the Kerr tables; sum and self couplings calibrated; difference channels near the branch cut out of reach.
+- **S3c** Cleanup and pair interface · done
+  `knpert.couplings(a, Q, P1, P2)` and the same on the command line; numbers bit-identical before and after.
+- **S4** Scan · done
+  15 pairs at 20 points, 207 core-hours.
+- **S5** Close · done
+
+### t20 — Exceptional points of the KN spectrum and quadratic couplings near them · active
+
+Where two QNM branches meet at an exceptional point, a parent's response gains a secular $t\,e^{-i\omega t}$ term; we ask what that does to the quadratic modes, and to children near an eigenvalue repulsion.
+
+- **S1** Exceptional points of the linear spectrum · active
+  Literature done: Misas Arcos, Pérez and Sopuerta find four exceptional points at 99.4–99.97% of extremality, one new; no amplitudes or eigenvectors. Reproducing them with `knpert` comes next.
+- **S2** Excitation coefficients through an exceptional point · planned
+- **S3** Couplings with parents near an exceptional point · planned
+- **S4** A child near an $\ell=4$ repulsion · planned
+- **S5** Close · planned
+
+### t08 — Extremal RN: backreaction of Aretakis-unstable modes · planned
+
+The monopole sector ($\delta M$, $\delta Q$) at second order: towards or away from extremality?
 
 ## Simmering
 
@@ -236,13 +299,29 @@ The rotation reading of [F16](#results) assumes the same amplitude normalisation
 
 $\lvert\mathcal R^{\rm GW}_{ {\rm GW^*\times EM},\bar+\,+}/Q\rvert$ grows fivefold along $a$ at small $Q$, while the frequency gap changes by 24% ([F16](#results)). Unexplained.
 
-### Near-extremal Kerr–Newman scan · open
+### Near-extremal Kerr–Newman scan · next
 
-The scan stops at $a^2+Q^2=0.9$; near extremality belongs to t12, which also holds the singular point of the master system for $Q/M>\sqrt{15}/4$.
+A scan task on the t19 code: representative pairs over the bulk of $(a,Q)$, and near-extremal lines for selected pairs. It waits for the two items below.
+
+### Channels on the branch cut · open
+
+Difference channels whose frequency $W$ approaches the negative imaginary axis: the solver skips $\lvert{\rm Re}\,W\rvert<10^{-3}$ and does not validate $\lvert{\rm Re}\,W\rvert/\lvert W\rvert<0.3$. The $1/\kappa$ channel of [F18](#results) lies there. The two one-sided limits measure the ambiguity; a dedicated task should settle it.
+
+### Strongly damped children near extremality · open
+
+When $-{\rm Im}\,(W-M\Omega_H)/\kappa\gtrsim3$ the second-order solve picks up the forbidden horizon solution, whose amplitude grows with resolution. A horizon-factorised solver is started, not finished.
+
+### Near-extremal couplings from the near-horizon geometry · open
+
+Can correlators in the near-horizon AdS$_2$ throat fix the near-extremal coupling? Only one earlier estimate exists, for extremal Kerr. A power-counting argument predicts $\kappa^{-1/2}$ growth on the Kerr side, which our level-off of ${\rm GW\times GW}\to(4,4)$ ([F17](#results)) contradicts unless a prefactor is exponentially small. Unresolved.
+
+### Unexplained ${\rm EM\times EM}$ ratio on the $a=0.1$ line · open
+
+$\lvert\mathcal R^{\rm GW}_{ {\rm EM\times EM},++}\rvert$ near extremality at $a=0.1$ is 1.69 times the RN value at $Q=0.99$. Two codes agree on it. A continuity test in $a$ at $Q=0.99$ would decide.
 
 ### A clean public rewrite of the fast kernels · open
 
-The compiled kernels were written for speed (owner, 2026-10-17); a readable public version is a later task.
+The compiled kernels were written for speed (owner, 2026-10-17). t17 put them into one package; the generated C++ itself is still not written for readers.
 
 ### Horizon derivatives of $h_{nn}$ · open
 
@@ -308,3 +387,10 @@ The coupled DGS/Weller form, the RN procedure and gauge carried over (owner, 202
 
 17 Chebyshev–Lobatto nodes in $u=a/\sqrt{0.9-Q^2}$ times 9 rows in $Q^2$, covering the quarter disk $a^2+Q^2\le0.9$ (owner, 2026-10-17). Channels that vanish at $Q\to0$ are interpolated as $\mathcal R/Q^p$, with $p$ fixed by charge parity and checked by the small-$Q$ slope.
 
+### Parents and channels (t19)
+
+A parent is labelled by family and $(\ell,m)$, with $n$ if not zero: $g22$ is the gravitationally led $(2,2,0)$ mode, $e33$ the electromagnetically led $(3,3,0)$, $g22n1$ the first overtone. For two parents the sum channel has $W=\omega_1+\omega_2$, $M=m_1+m_2$; the difference channel has $W=\omega_1-\bar\omega_2$, with $\omega_1$ the parent of larger ${\rm Re}\,\omega$. Distinct-pair coefficients equal the literature's cross term $A_Q/(A_1A_2)$, with no factor 2.
+
+### Errors and flags (t19, owner 2026-10-27)
+
+Each coefficient carries $u_{\rm err}=u_{\rm fit}+u_{\rm res}+u_{\rm src}$. Flags: `zero` ($\lvert v\rvert\le2u_{\rm err}$), `over` ($u_{\rm err}>10^{-4}$ of the lead, or $\lvert{\rm Re}\,W\rvert/\lvert W\rvert<0.15$), `cut` ($\lvert{\rm Re}\,W\rvert/\lvert W\rvert<0.3$, not validated). The 0.15 lies between a channel where the budget holds (0.28) and one where it fails (0.074); it is an estimate. Regression against earlier runs is bit-identity on one machine: across machines the 2D solve differs at rounding.

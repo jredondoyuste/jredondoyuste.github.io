@@ -1,3 +1,53 @@
+### F19 — How do the quadratic couplings of other parent pairs vary over Kerr–Newman? (unverified)
+
+<figure><a href="figs/kn_parents_g22xg33.png"><img src="figs/kn_parents_g22xg33.png" alt="Four panels of coloured points over the a/M, Q/M quarter disk: lead coupling modulus of g22 x g33, sum and difference channel, GW and EM output"></a><figcaption>For two gravitational parents, $(2,2,0)\times(3,3,0)$, the GW coupling changes by less than 25% over the plane, while the EM output grows by an order of magnitude with charge.</figcaption></figure>
+
+The code now couples any two QNMs $(\ell,m,n)$ with $\ell\le4$ and $n\le1$, each gravitationally led ($g$) or electromagnetically led ($e$). For every pair it returns all child couplings: the sum channel ($\omega_1+\omega_2$, $M=m_1+m_2$) and the difference channel ($\omega_1-\bar\omega_2$), every child $\ell$, with GW and EM output. We ran 15 pairs from $g22,e22,g33,e33,g21,e21,g44,e44$ at 20 points with $a^2+Q^2\le0.9$: 28 648 coefficients, each with an error estimate and flags. The scan cost 207 core-hours.
+
+- **Figure.** Modulus of the lead coefficient of $g22\times g33$ at the 20 points. Top: sum channel into $(\ell,M)=(5,5)$. Bottom: difference channel into $(2,1)$. Left: GW output; right: EM output. Grey arc: extremality; dashed: the scan boundary. A second example with an EM parent, $e22\times g33$, is [here](figs/kn_parents_e22xg33.png).
+- **Sizes.** With two gravitational parents the GW lead varies by less than a factor 2.1 over the plane; for $g22\times g33\to(5,5)$, $\lvert a\rvert$ runs from 0.303 to 0.369. Channels with an EM parent, and the EM output of two gravitational parents, vary by one to two orders of magnitude and grow with $Q$.
+- **Validation.** In the Kerr limit, the sum and self channels agree with Khera, Ma and Yang [@KheraMaYang2024QQNM], Bourg et al. [@Bourg2024QQNMParity] and Bucciotti et al. [@Bucciotti2024QQNM] within 1% (27 of 27). At $a=0$ every coefficient, difference channels included, agrees with the full Schwarzschild table of Bucciotti et al. [@Bucciotti2024Polarizations] (40 of 40 non-zero). On RN the couplings factorise into Clebsch–Gordan coefficients, as spherical symmetry requires, and swapping the two parents changes nothing beyond the error. Where Khera–Ma–Yang's fits of the difference channel at $a>0$ disagree with ours, their $a=0$ values also disagree with Bucciotti's table, which agrees with ours; we take those fits to be in error.
+- **Errors.** Each coefficient carries $u_{\rm err}=u_{\rm fit}+u_{\rm res}+u_{\rm src}$, calibrated against reference runs one step finer in every resolution: the true error is below $u_{\rm err}$ in 99.1% of 793 rows (median ratio 0.42). The calibration found a $3\times10^{-8}$ error in every parent amplitude since t10, from a truncating fit at scri; it is fixed.
+- **Overtones.** $n=1$ parents work too: their frequencies agree with the Kerr tables of Berti et al. to $7.5\times10^{-9}$, and the $(2,2,0)$ frequency agrees with Dias, Godazgar and Santos on Kerr–Newman to $10^{-13}$.
+
+**Limits.** Difference channels near the branch cut, $\lvert{\rm Re}\,W\rvert/\lvert W\rvert<0.3$, are flagged and not validated; below 0.15 they are marked as unreliable. These are the difference channels of $g22\times g21$ and $e22\times e21$ at about half the points. We have no literature reference at $Q>0$ for any of these pairs.
+
+**Takeaway.** The quadratic coupling of any two low-$\ell$ Kerr–Newman QNMs can now be computed with a trustworthy error bar. For gravitational parents the GW coupling hardly depends on the charge; what charge adds is the EM output and the EM-led channels.
+
+**Reproduce.** `python -m knpert couplings A Q 2,2,0,grav 3,3,0,grav` (about 0.7 core-hours per pair and point); the tables and figures are in `tasks/t19-knpert-parents/S4/`, made by `collect.py` and `plot_lead.py`.
+
+### F18 — Which Kerr–Newman coupling diverges near extremality? (unverified)
+
+<figure><a href="figs/kn_near_extremal_Rdiff.png"><img src="figs/kn_near_extremal_Rdiff.png" alt="kappa times the difference-channel ratio against kappa on three lines, GW and EM output"></a><figcaption>The GW output of the difference channel ${\rm GW^*\times EM}\to(2,0)$ grows as $1/\kappa$ on the near-Kerr lines; its EM output stays finite.</figcaption></figure>
+
+$\kappa\lvert\mathcal R^{\rm out}_{ {\rm GW^*\times EM},\bar+\,+}\rvert$ against the surface gravity $\kappa$ ($M=1$), so $1/\kappa$ growth is a flat line. Left: GW output; right: EM output. Blue: $Q=0.1$, $a\to0.995$. Orange: $Q=0.6$, $a\to0.8$. Green: $a=0.1$, $Q\to0.995$. The grey band is the fit window $\kappa\le0.01$.
+
+- On the two near-Kerr lines the slope of $\ln\lvert\mathcal R^{\rm GW}\rvert$ against $\ln\kappa$ is $-1.0061\pm0.0005$ ($Q=0.1$) and $-1.0030\pm0.0003$ ($Q=0.6$); the local slopes approach $-1$. So $\kappa\lvert\mathcal R^{\rm GW}\rvert\to9.5\times10^{-3}$ and $4.9\times10^{-2}$.
+- The EM output is flat (slopes $-0.0015$, $+0.0022$). On the $a=0.1$ line, where the parents remain damped photon-sphere modes, both outputs are flat.
+- A reading (not tested): both parents become zero-damped modes with the same real part, so the child frequency $\omega_{\rm EM}-\bar\omega_{\rm GW}=O(\kappa)$ goes to zero. The GW ratio is in strain, $\Psi_4/(2W^2)$, so a finite curvature response becomes a $1/\kappa$ strain: a memory-like effect.
+
+**Limits.** This channel lies near the branch cut (${\rm Re}\,W=7\times10^{-4}$ at $\kappa=10^{-3}$), where we have not shown that the solve is well defined. The result is provisional until the branch-cut channels are treated properly.
+
+**Takeaway.** Near extremality the one coupling that blows up is a low-frequency difference channel, and its growth is the $1/W^2$ of the strain, not a resonance.
+
+**Reproduce.** `tasks/t12-near-extremal/S3/plot_ratios_s3_2026-10-23.py`, from the throat-grid runs of t12 S3b and S3e.
+
+### F17 — Do the quadratic couplings stay finite as Kerr–Newman approaches extremality? (unverified)
+
+<figure><a href="figs/kn_near_extremal_Rpp.png"><img src="figs/kn_near_extremal_Rpp.png" alt="Moduli of the ++ quadratic ratios against kappa, four channels, GW and EM output, three lines"></a><figcaption>Down to $\kappa=10^{-3}$ the $(4,4)$ couplings of the $(2,2,0)$ modes level off, except ${\rm GW\times EM}$ at $Q=0.6$, which still rises slowly.</figcaption></figure>
+
+$\lvert\mathcal R^{\rm out}_{ {\rm parents},++}\rvert$ against $\kappa$ ($M=1$, extremality to the right). Columns: ${\rm GW\times GW}$, ${\rm GW\times EM}$, ${\rm EM\times EM}$ into $(4,4)$, and the difference channel ${\rm GW^*\times EM}$ into $(2,0)$ ([F18](#results)). Top row GW output, bottom row EM output. Lines as in [F18](#results). Points are drawn only where the error is below 10% at $\kappa=10^{-3}$ and below 1% elsewhere.
+
+- ${\rm GW\times GW}$ and ${\rm EM\times EM}$, both $\mathcal R_{++}$ and $\mathcal R_{+-}$, level off on every line: local log-slopes at most 0.11 in magnitude for $\kappa\le0.01$, shrinking towards small $\kappa$. Example: $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times GW},++}\rvert$ goes from 0.0894 to 0.0885 ($Q=0.1$) between $\kappa=0.01$ and $10^{-3}$.
+- ${\rm GW\times EM}$ on $Q=0.6$ has not levelled off: $\lvert\mathcal R^{\rm GW}_{ {\rm GW\times EM},++}\rvert$ goes 0.150, 0.195, 0.255, 0.294 at $\kappa=0.01$, 0.005, 0.002, 0.001, close to logarithmic growth. We cannot yet tell saturation from a $\ln\kappa$.
+- Among photon-sphere parents (RN and $a=0.1$) no child comes within 0.11 of a QNM at any $\kappa$: no resonances.
+
+**How it was done.** Near extremality the first-order fields need many more radial points ($N_s=640$ at $\kappa=10^{-3}$) and extra patches in the near-horizon throat. The singular point of the master system at $r=4Q^2/3M$ is only apparent; it needs nested solve grids, not interpolation. Pure RN converges only to $\kappa\approx0.014$: there the children are strongly damped in units of $\kappa$, and the solver picks up a forbidden horizon solution. A horizon-factorised solver to fix this is unfinished.
+
+**Takeaway.** Quadratic couplings into the $(4,4)$ mode stay of order 0.1 all the way to $\kappa=10^{-3}$: extremality does not enhance them, with one slowly growing exception.
+
+**Reproduce.** Same script as [F18](#results); the wrap-up of what worked and what did not is `tasks/t12-near-extremal/WRAPUP.md`.
+
 ### F16 — Where do the Kerr–Newman quadratic couplings come from? (unverified)
 
 <figure><a href="figs/kn_qqnm_rotation.png"><img src="figs/kn_qqnm_rotation.png" alt="Left: EM content of the GW-led parent divided by the RN decoupling angle, against a/M. Right: EM-to-GW output ratio of the GW x GW channel divided by the l=4 RN angle, against a/M"></a><figcaption>The GW–EM mixing of the parents is the Reissner–Nordström decoupling rotation times a spin factor, and the EM output of GW$\times$GW mostly follows the same rotation at $\ell=4$.</figcaption></figure>

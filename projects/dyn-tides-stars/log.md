@@ -1,5 +1,15 @@
 Newest first. One entry per working session: what was done, what was learned, and what went wrong.
 
+### 2026-10-26 — both axial codes validated; buoyant EOS tables in place
+
+- Equations of state with buoyancy: SRO(SLy4) and SRO(APR) from the CompOSE 3D tables, with the frozen-composition sound speed. $M_{\max}$ and $R_{1.4}$ agree with CompOSE to 0.3% ([F2](#results)).
+- We fixed what the dataset stores: $\delta_\ell$ in double-double precision, plus the surface coefficient $q$ and the star-dependent phase $\delta_{\rm star}$, computed in closed form ([F3](#results), [§4](#derivations)). Other phase conventions are converted by the user of the data.
+- Frequency-domain axial code done. It reproduces eight published axial modes to $1.5\times10^{-5}$ ([F4](#results)). The published table's $2M/R = 0.885$ is a rounding of $R/M = 2.26$; with the rounded value every mode is 0.56% off.
+- Time-domain axial code done. It agrees with the frequency-domain code to $3\times10^{-7}$ over $\omega M \in [0.02, 0.3]$ ([F5](#results)). Its interior error converges more slowly than the scheme's order; the cause is open.
+- The nucleonic models stay as they are, 4% below the paper's maximum mass; our heaviest nucleonic star is $1.8\,M_\odot$.
+- Everything now also runs on the cluster.
+- Next: the polar frequency-domain code.
+
 ### 2026-09-27 — new plan: a dataset for the amplitudes community
 
 - The goal is now explicit: a public dataset of phase shifts $\delta_\ell(\omega)$ and reflectivities $S_\ell(\omega)$ that post-Newtonian and scattering-amplitude calculations can match against, for $\ell = 2$–$4$, both parities and several stars.

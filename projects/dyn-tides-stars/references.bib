@@ -1,0 +1,117 @@
+% Works and software this project actually uses. Documents cite them as [@key].
+% Software entries give the version and, where there is one, the DOI.
+% Give each entry what the project site needs to link it: `doi` (or `url`), and for an arXiv
+% paper `eprint`, `archivePrefix = {arXiv}` and `primaryClass`; `collaboration` for a
+% collaboration paper. A `usage` field (ignored by BibTeX styles) says in a few words how the
+% project uses the work, for example `usage = {The detector noise model of every injection.}`;
+% the site shows it in its citations table.
+
+@article{GittinsAndersson2024seismology,
+  author        = {Gittins, Fabian and Andersson, Nils},
+  title         = {Neutron-star seismology with realistic, finite-temperature nuclear matter},
+  year          = {2024},
+  eprint        = {2406.05177},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  usage         = {Oracle for gate G6g: SRO(APR) background star (M_b = 1.4 M_sun, T = 0.02 MeV, R = 11.6 km, Fig. 1 profiles) and its g-mode table.}
+}
+
+@misc{CompOSEManual2022,
+  author        = {{CompOSE Core Team} and Typel, S. and Oertel, M. and Kl{\"a}hn, T. and others},
+  title         = {{CompOSE} Reference Manual},
+  year          = {2022},
+  eprint        = {2203.03209},
+  archivePrefix = {arXiv},
+  primaryClass  = {astro-ph.HE},
+  usage         = {Units and meaning of the tabulated quantities Q_1..Q_7; beta equilibrium from mu_l = 0.}
+}
+
+@misc{CompOSE141SROSLy4,
+  author        = {{CompOSE Core Team}},
+  title         = {Data table for EoS SRO(SLy4) SNA version nparam=3 (CompOSE eos/141)},
+  year          = {2025},
+  doi           = {10.5281/zenodo.14811397},
+  note          = {EOS by Schneider, Roberts and Ott, Phys. Rev. C 96, 065802 (2017)},
+  usage         = {The project's SLy4 EOS (cold beta-equilibrium line and frozen c_ad^2, task t01 P2b).}
+}
+
+@misc{CompOSE149SROAPR,
+  author        = {{CompOSE Core Team}},
+  title         = {Data table for EoS SRO(APR) SNA version nparam=3 (CompOSE eos/149)},
+  year          = {2025},
+  doi           = {10.5281/zenodo.14811618},
+  note          = {EOS by Schneider, Constantinou, Muccioli and Prakash, Phys. Rev. C 100, 025803 (2019)},
+  usage         = {The APR EOS of the g-mode gate G6g (task t01 P2b).}
+}
+
+@article{BlazquezSalcedo2013axial,
+  author        = {Bl{\'a}zquez-Salcedo, Jose Luis and Gonz{\'a}lez-Romero, Luis Manuel and Navarro-L{\'e}rida, Francisco},
+  title         = {Phenomenological relations for axial quasinormal modes of neutron stars with realistic equations of state},
+  journal       = {Phys. Rev. D},
+  volume        = {87},
+  pages         = {104042},
+  year          = {2013},
+  eprint        = {1207.4651},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  usage         = {Oracle for gate G6 axial: Table I, axial l = 2 modes of a uniform-density star with R/M = 2.26; SLy 1.4 M_sun w-mode as a secondary check.}
+}
+
+@article{BenharBertiFerrari1999,
+  author        = {Benhar, Omar and Berti, Emanuele and Ferrari, Valeria},
+  title         = {The imprint of the equation of state on the axial w-modes of oscillating neutron stars},
+  journal       = {Mon. Not. R. Astron. Soc.},
+  volume        = {310},
+  pages         = {797},
+  year          = {1999},
+  eprint        = {gr-qc/9901037},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  usage         = {The axial master equation and interior potential coded in FDAxial.jl (formalism D3).}
+}
+
+@article{StrattonDolan2019,
+  author        = {Stratton, Thomas and Dolan, Sam R.},
+  title         = {Rainbow scattering of gravitational plane waves by a compact body},
+  journal       = {Phys. Rev. D},
+  volume        = {100},
+  pages         = {024007},
+  year          = {2019},
+  eprint        = {1903.00025},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  usage         = {Definition of the partial-wave phase shift, e^{2i delta} = (-1)^{l+1} A_out/A_in (formalism D2).}
+}
+
+@article{SilvaTambalo2023plunge,
+  author        = {Silva, Hector O. and Tambalo, Giovanni and Glampedakis, Kostas and Yagi, Kent},
+  title         = {Gravitational radiation from a particle plunging into a Schwarzschild black hole: frequency-domain and semirelativistic analyses},
+  eprint        = {2308.14823},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  year          = {2023},
+  usage         = {Regge-Wheeler far-field series (recursion corrected and re-derived in Exterior.jl; formalism D5).}
+}
+
+@article{MattssonNordstrom2004,
+  author  = {Mattsson, Ken and Nordstr{\"o}m, Jan},
+  title   = {Summation by parts operators for finite difference approximations of second derivatives},
+  journal = {Journal of Computational Physics},
+  volume  = {199},
+  pages   = {503--540},
+  year    = {2004},
+  doi     = {10.1016/j.jcp.2004.03.001},
+  usage   = {Fourth-order SBP first-derivative operator used by the TD axial code (TDGrid.jl, TDAxial.jl; P5).}
+}
+
+@software{Ranocha2021SBP,
+  author  = {Ranocha, Hendrik},
+  title   = {SummationByPartsOperators.jl: A Julia library of provably stable discretization techniques with mimetic properties},
+  journal = {Journal of Open Source Software},
+  volume  = {6},
+  number  = {64},
+  pages   = {3454},
+  year    = {2021},
+  doi     = {10.21105/joss.03454},
+  usage   = {Julia package providing the SBP derivative and dissipation operators of the TD codes (P5).}
+}

@@ -1,0 +1,71 @@
+/* Kerr-Newman QNMs (qnms.js): the (a, Q) quarter disk left, the complex
+   frequency plane right. Gravitationally-led modes in the accent,
+   electromagnetically-led in the second ink. */
+
+#qnms .qn-svg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.qn-hit { fill: transparent; cursor: crosshair; touch-action: none; }
+.qn-axis-line { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.qn-extremal { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.qn-edge { fill: none; stroke: var(--hair); stroke-width: 1.5; stroke-dasharray: 6 6; }
+.qn-node { fill: var(--hair); }
+.qn-handle { fill: var(--bg); stroke: var(--ink); stroke-width: 4; pointer-events: none; }
+
+.qn-box { fill: none; stroke: var(--hair); stroke-width: 1.5; }
+.qn-tick { fill: var(--muted); font: 24px var(--serif); font-variant-numeric: lining-nums tabular-nums; }
+.qn-axis { fill: var(--muted); font: 28px var(--serif); }
+.qn-note { fill: var(--muted); font: 22px var(--serif); font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+
+.qn-gw { --c: var(--accent); }
+.qn-em { --c: var(--accent-2); }
+.qn-mesh { fill: none; stroke: var(--c); stroke-width: 1.2; opacity: 0.18; }
+.qn-sweep { fill: none; stroke: var(--c); stroke-width: 3; opacity: 0.7; }
+.qn-dot { fill: var(--c); stroke: var(--bg); stroke-width: 3; }
+.qn-over.qn-dot { fill: var(--bg); stroke: var(--c); stroke-width: 4; }
+.qn-lab { fill: var(--c); font: 28px var(--serif); font-variant-caps: all-small-caps; letter-spacing: 0.06em; }
+
+/* the numbers, under the plane */
+.qn-read {
+  position: absolute;
+  left: 1000px;
+  top: 910px;
+  font-size: 28px;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.qn-read { white-space: pre; }
+.qn-read .qn-kgw { color: var(--accent); }
+.qn-read .qn-kem { color: var(--accent-2); }
+
+/* the stage's caption, under the title (where the scan slides state
+   their channel, same size and colour) */
+.qn-key {
+  position: absolute;
+  left: 140px;
+  top: 150px;
+  font-size: 36px;
+  color: var(--muted);
+}
+/* one caption per stage, in the same place: the old one fades out as the
+   new one fades in (the [data-step] fade-in is in deck.css) */
+.qn-k { position: absolute; left: 0; white-space: nowrap; transition: opacity 0.45s ease; }
+#qnms[data-s="2"] .qn-k01, #qnms[data-s="3"] .qn-k01, #qnms[data-s="3"] .qn-k2 { opacity: 0; }
+
+/* the scripted stages: the ray to extremality, the loop around the EP, the EP itself */
+.qn-ray { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 4 6; opacity: 0.6; }
+.qn-loop { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 6; }
+.qn-ep { fill: none; stroke: var(--ink); stroke-width: 3; }
+.qn-ps.qn-dot { fill: var(--bg); stroke: var(--c); stroke-width: 4; }
+.qn-ps.qn-sweep { stroke-dasharray: 8 6; }
+.qn-b2.qn-sweep { opacity: 0.45; }
+.qn-pts { stroke: var(--c); stroke-width: 10; stroke-linecap: round; opacity: 0.55; }
+.qn-pts.qn-b2 { opacity: 0.25; }
+.qn-mom { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 7; }
+.qn-track { stroke-width: 4; stroke-linecap: round; }
+.qn-grid { stroke: var(--hair); stroke-width: 1; stroke-dasharray: 2 6; }
+.qn-cbmark { stroke: var(--ink); stroke-width: 3; }

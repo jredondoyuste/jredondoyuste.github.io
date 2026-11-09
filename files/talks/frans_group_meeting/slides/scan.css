@@ -1,0 +1,63 @@
+/* Second order across Kerr-Newman (scan.js): the (a, Q) quarter disk left,
+   R in two complex planes right (gravitational-wave output on top,
+   electromagnetic below). Shared by every .sc2-slide. */
+
+.sc2-slide .sc2-svg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.sc2-hit { fill: transparent; cursor: crosshair; touch-action: none; }
+.sc2-axis-line { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.sc2-extremal { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.sc2-node { fill: var(--hair); }
+.sc2-handle { fill: var(--bg); stroke: var(--ink); stroke-width: 4; pointer-events: none; }
+.sc2-box { fill: none; stroke: var(--hair); stroke-width: 1.5; }
+.sc2-zero { stroke: var(--hair); stroke-width: 1.2; stroke-dasharray: 4 6; }
+.sc2-tick { fill: var(--muted); font: 24px var(--serif); font-variant-numeric: lining-nums tabular-nums; }
+.sc2-axis { fill: var(--muted); font: 28px var(--serif); }
+
+.sc2-gw { --c: var(--accent); }
+.sc2-em { --c: var(--accent-2); }
+.sc2-cloud { fill: var(--c); opacity: 0.16; }
+.sc2-trail { fill: none; stroke: var(--c); stroke-width: 3; opacity: 0.55; }
+.sc2-dot { fill: var(--c); stroke: var(--bg); stroke-width: 3; }
+
+/* the channel, under the title */
+.sc2-chan {
+  position: absolute;
+  left: 140px;
+  top: 150px;
+  font-size: 36px;
+  color: var(--muted);
+}
+
+/* which plane is which, at their top left inside */
+.sc2-lab {
+  position: absolute;
+  left: 1080px;
+  font-size: 34px;
+}
+.sc2-lab-gw { top: 210px; color: var(--accent); }
+.sc2-lab-em { top: 610px; color: var(--accent-2); }
+
+.sc2-read {
+  position: absolute;
+  left: 170px;
+  top: 950px;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--muted);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.sc2-read span { margin-right: 32px; }
+.sc2-read .sc2-read-gw { color: var(--accent); }
+.sc2-read .sc2-read-em { color: var(--accent-2); }
+
+/* lines of constant Q: faint every 0.1, bold at the current charge */
+.sc2-qline { stroke: var(--hair); stroke-width: 1.5; }
+.sc2-qnow { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 6 6; }
+.sc2-curve { fill: none; stroke: var(--c); stroke-width: 1.6; opacity: 0.28; }
+.sc2-curnow { fill: none; stroke: var(--c); stroke-width: 3.5; opacity: 0.85; }

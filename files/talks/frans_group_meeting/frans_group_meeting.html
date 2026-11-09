@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Second-order perturbations of Kerr–Newman — Jaime Redondo-Yuste</title>
+    <meta name="description" content="Slides: Second-order perturbations of Kerr–Newman black holes. Group meeting, November 2026.">
+    <link rel="icon" href="/files/favicon.png">
+    <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="deck.css">
+    <link rel="stylesheet" href="slides/title.css">
+    <link rel="stylesheet" href="slides/qnms.css">
+    <link rel="stylesheet" href="slides/recon.css">
+    <link rel="stylesheet" href="slides/scan.css">
+    <link rel="stylesheet" href="slides/takeaways.css">
+    <script src="/js/theme.js"></script>
+    <script>
+        // The deck opens light, whatever the site was last set to: projectors
+        // wash out a dark slide. The [dark] button remembers its own choice,
+        // under its own key, so it never changes the site's.
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('jry-deck-theme'); } catch (e) {}
+            document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light';
+        })();
+    </script>
+    <script src="/js/starfield.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+    <script src="deck.js" defer></script>
+    <script src="slides/title.js" defer></script>
+    <script src="slides/qnms.js" defer></script>
+    <script src="slides/recon.js" defer></script>
+    <script src="slides/scan.js" defer></script>
+</head>
+
+<!--
+    HOW THIS FILE WORKS
+
+    The same deck format as ../mit_leinweber (deck.css, deck.js copied here,
+    with one fix in deck.js: the full-screen button is wired at start).
+    Each <section class="slide"> is one slide, on a 1920x1080 canvas.
+    Slide-specific style and motion live in slides/<name>.css and .js;
+    precomputed data for the interactive slides in data/.
+
+    Six slides: title; Kerr–Newman QNMs (interactive); metric
+    reconstruction (animated surfaces); the second-order scan (two
+    channels); take-aways.
+-->
+
+<body class="is-deck">
+<div class="deck">
+
+<!-- moves: slides/title.js -->
+<section class="slide slide-title" id="title">
+    <div class="title-talk t-in" style="--d: 0.1s">Second-order perturbations of Kerr–Newman black holes</div>
+    <!-- the two l = m = 2 ringdowns of one KN hole; click to ring again -->
+    <svg class="title-ring" viewBox="0 0 900 90" aria-hidden="true"></svg>
+    <div class="title-speaker t-in" style="--d: 1.2s">Jaime Redondo-Yuste</div>
+    <div class="title-affil t-in" style="--d: 1.4s">Princeton University</div>
+    <!-- venue: to be set -->
+    <div class="title-event t-in" style="--d: 1.7s">Group meeting &nbsp;·&nbsp; 9 November 2026</div>
+</section>
+
+<!-- moves: slides/qnms.js
+     Drag the point in the quarter disk (it wanders until touched).
+       1  the first overtones join
+       2  towards extremality on Q/M = 0.6: zero-damped ladder vs light ring
+       3  the exceptional point EP0: approach, then a loop that swaps the modes -->
+<section class="slide" id="qnms">
+    <h1 class="title">Quasinormal modes</h1>
+    <svg class="qn-svg" viewBox="0 0 1920 1080"></svg>
+    <div class="qn-read"></div>
+    <div class="qn-key">
+        <span class="qn-k qn-k01">$\ell = m = 2$, $n = 0$<span data-step="1">, $n = 1$</span></span>
+        <span class="qn-k qn-k2" data-step="2">$\ell = m = 2$, $Q/M = 0.6$: towards extremality, zero-damped modes</span>
+        <span class="qn-k qn-k3" data-step="3">$\ell = m = 2$, $n = 0, 1$: an exceptional point</span>
+    </div>
+</section>
+
+<!-- moves: slides/recon.js
+     The gravitational-led mode of the title slide, every component of h_ab
+     and A_a, each normalised to its own maximum, ringing.
+       0  all components in the ingoing radiation gauge (IRG)
+       1  h_nn alone: the slice in three, the cut f
+       2  the gauge vector through the cut: IRG -> glued
+       3  all components, glued -->
+<section class="slide" id="recon">
+    <h1 class="title">Metric Reconstruction</h1>
+    <canvas class="rc-canvas"></canvas>
+    <div class="rc-mode">$a = 0.557,\ Q = 0.502$, &nbsp;$\ell = m = 2$, $n = 0$
+        <div class="rc-stage rc-s0">ingoing radiation gauge</div>
+        <div class="rc-stage rc-s3" data-step="3">glued: AF-IRG near $\mathscr I^+$, IRG near $\mathcal H^+$</div>
+    </div>
+    <div class="rc-lab">$h_{\ell\ell}$</div><div class="rc-lab">$h_{\ell n}$</div><div class="rc-lab">$h_{\ell m}$</div><div class="rc-lab">$h_{\ell\bar m}$</div><div class="rc-lab">$h_{nn}$</div>
+    <div class="rc-lab">$h_{nm}$</div><div class="rc-lab">$h_{n\bar m}$</div><div class="rc-lab">$h_{mm}$</div><div class="rc-lab">$h_{\bar m\bar m}$</div><div class="rc-lab">$h_{m\bar m}$</div>
+    <div class="rc-lab">$A_\ell$</div><div class="rc-lab">$A_n$</div><div class="rc-lab">$A_m$</div><div class="rc-lab">$A_{\bar m}$</div>
+    <div class="rc-side" data-step="1">
+        <div class="rc-big">$h_{nn}$</div>
+        <div class="rc-bands"><span class="rc-b0">AF-IRG</span> &nbsp;·&nbsp; <span class="rc-b1">cut $f$</span> &nbsp;·&nbsp; <span class="rc-b2">IRG</span></div>
+        <div class="rc-gauge" data-step="2">
+            $$h \;\to\; h + \mathcal{L}_{f\xi}\, g$$
+            <div>at $\mathscr I^+$: &nbsp;$h_{nn} = O(1/r)$</div>
+        </div>
+    </div>
+</section>
+
+<!-- moves: slides/scan.js (both slides; the channel is data-channel)
+     Drag the point in the quarter disk (it wanders until touched); R for
+     the gravitational and electromagnetic outputs moves on the right. -->
+<section class="slide sc2-slide" id="scan" data-channel="g22g22">
+    <h1 class="title">Quadratic QNMs</h1>
+    <div class="sc2-chan">$(2,2,0)_{\rm G} \times (2,2,0)_{\rm G} \to (4,4)$: &nbsp;$h^{(2)}_{44} = R\, \big(h^{(1)}_{22}\big)^2$</div>
+    <svg class="sc2-svg" viewBox="0 0 1920 1080"></svg>
+    <div class="sc2-lab sc2-lab-gw">$R_{\rm GW}$</div>
+    <div class="sc2-lab sc2-lab-em">$R_{\rm EM}$</div>
+    <div class="sc2-read"><span class="sc2-read-aq"></span><span class="sc2-read-gw"></span><span class="sc2-read-em"></span></div>
+</section>
+
+<section class="slide sc2-slide" id="scan-em" data-channel="e22e22">
+    <h1 class="title">Quadratic QNMs</h1>
+    <div class="sc2-chan">$(2,2,0)_{\rm EM} \times (2,2,0)_{\rm EM} \to (4,4)$: &nbsp;$h^{(2)}_{44} = R\, \big(h^{(1)}_{22}\big)^2$</div>
+    <svg class="sc2-svg" viewBox="0 0 1920 1080"></svg>
+    <div class="sc2-lab sc2-lab-gw">$R_{\rm GW}$</div>
+    <div class="sc2-lab sc2-lab-em">$R_{\rm EM}$</div>
+    <div class="sc2-read"><span class="sc2-read-aq"></span><span class="sc2-read-gw"></span><span class="sc2-read-em"></span></div>
+</section>
+
+<!-- DRAFT for the owner to revise: the take-aways, in the owner's words
+     (given 2026-11-09), in three equal columns; each column arrives at a step.
+       0  Done
+       1  In progress
+       2  Should do? -->
+<section class="slide" id="takeaways">
+    <h1 class="title">Take-aways</h1>
+    <div class="tk-cols">
+        <div class="tk-col tk-done">
+            <h2 class="tk-head">Done</h2>
+            <ul>
+                <li>QNMs</li>
+                <li>Reconstruction in the glued gauge</li>
+                <li>QQNM scan</li>
+            </ul>
+        </div>
+        <div class="tk-col tk-now" data-step="1">
+            <h2 class="tk-head">In Progress</h2>
+            <ul>
+                <li>Near-extremality</li>
+                <li>Kerr/CFT</li>
+                <li>QQNMs at EPs</li>
+            </ul>
+        </div>
+        <div class="tk-col tk-next" data-step="2">
+            <h2 class="tk-head">Should Do?</h2>
+            <ul>
+                <li>QQNMs at the horizon &amp; Aretakis</li>
+                <li>Memory modes</li>
+                <li>KN–(A)dS</li>
+                <li>Other stuff?</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="deck-tools">
+    <button class="deck-theme" aria-label="Switch between light and dark" title="Light / dark (T)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+    </button>
+    <button class="deck-full" aria-label="Full screen" title="Full screen (F)">
+        <svg class="fs-in" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        <svg class="fs-out" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5"/></svg>
+    </button>
+</div>
+
+</div>
+</body>
+</html>

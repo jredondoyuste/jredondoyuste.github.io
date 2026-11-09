@@ -1,0 +1,27 @@
+/* Take-aways: three equal columns (Done, In Progress, Should Do?), each
+   a heading over a short list. No script: the columns arrive by
+   [data-step] (deck.css). */
+
+#takeaways .tk-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 80px;
+  margin-top: 90px;
+}
+
+#takeaways .tk-head {
+  margin: 0 0 36px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--hair);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* the heading's colour says where the work stands */
+#takeaways .tk-done .tk-head { color: var(--accent); border-bottom-color: var(--accent); }
+#takeaways .tk-now  .tk-head { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+#takeaways .tk-next .tk-head { color: var(--muted); }
+
+#takeaways .tk-col ul { font-size: 40px; line-height: 1.3; }
+#takeaways .tk-col li { margin-bottom: 26px; }

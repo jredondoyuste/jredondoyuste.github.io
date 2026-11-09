@@ -1,0 +1,89 @@
+/* The title slide: the words, and under the title the two ringdowns of
+   one Kerr-Newman black hole. What moves is in title.js; this file only
+   says where things end up, and what they look like before they arrive. */
+
+.slide-title.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-title {
+  padding: 90px 240px 160px;
+}
+
+.title-talk {
+  font-size: 96px;
+  line-height: 1.05;
+  max-width: 1300px;
+}
+
+/* the two ringdowns under the title, drawn by title.js */
+.title-ring {
+  display: block;
+  width: 900px;
+  height: 90px;
+  margin: 46px 0 40px -4px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.title-ring path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.title-ring .ring-gw { stroke: var(--accent); }
+.title-ring .ring-em { stroke: var(--accent-2); opacity: 0.85; }
+
+
+.title-speaker { font-size: 46px; }
+
+.title-affil {
+  font-size: 32px;
+  color: var(--muted);
+}
+
+.title-event {
+  margin-top: 36px;
+  font-size: 30px;
+  color: var(--muted);
+}
+
+/* ----- arrival ------------------------------------------------------
+   The words rise in turn (each carries its own delay, --d, in the HTML).
+   Coming back to the slide with ← skips it. */
+
+.slide-title .t-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease var(--d, 0s), transform 0.9s ease var(--d, 0s);
+}
+
+.slide-title .title-ring text {
+  opacity: 0;
+  transition: opacity 0.8s ease 2.4s;
+}
+
+.slide-title.play .t-in,
+.slide-title.play .title-ring text {
+  opacity: 1;
+  transform: none;
+}
+
+.slide-title.instant .t-in,
+.slide-title.instant .title-ring text { transition: none; }
+
+@media print {
+  .slide-title .t-in,
+  .slide-title .title-ring text { opacity: 1; transform: none; }
+}
+
+/* fading out after the slide is left (deck.css, .leaving): keep the layout */
+.slide-title.leaving {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

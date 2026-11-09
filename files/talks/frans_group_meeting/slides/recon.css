@@ -1,0 +1,68 @@
+/* Metric reconstruction (recon.js): 14 small surfaces on one canvas,
+   their labels in HTML so KaTeX sets them. */
+
+#recon .rc-canvas {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+#recon .rc-lab {
+  position: absolute;
+  font-size: 34px;
+  line-height: 1;
+}
+
+/* the one component the gauge sets to zero */
+#recon .rc-zero { color: var(--muted); }
+
+/* which mode, and what the axes are, top right */
+#recon .rc-mode {
+  position: absolute;
+  right: 140px;
+  top: 70px;
+  text-align: right;
+  font-size: 30px;
+  color: var(--muted);
+}
+#recon .rc-mode b { font-weight: 400; transition: color 0.4s; }
+#recon .rc-mode .rc-gw { color: var(--accent); }
+#recon .rc-mode .rc-em { color: var(--accent-2); }
+#recon[data-s="1"] .rc-mode .rc-gw { color: var(--muted); }
+
+#recon .rc-axes {
+  position: absolute;
+  left: 140px;
+  bottom: 96px;
+  font-size: 26px;
+  color: var(--muted);
+}
+
+/* round 2: the stages (recon.js) */
+#recon .rc-zero::after { content: " = 0"; font-variant-numeric: lining-nums; }
+#recon .rc-stage { font-size: 26px; margin-top: 4px; transition: opacity 0.45s ease; }
+#recon .rc-s3 { color: var(--accent); }
+/* the two stage captions share one place: IRG fades out at step 2, glued fades in at 3 */
+#recon[data-s="2"] .rc-s0, #recon[data-s="3"] .rc-s0 { opacity: 0; }
+#recon .rc-s3 { position: absolute; right: 0; bottom: 0; white-space: nowrap; }
+
+/* the zoom: the component, the three parts of the slice, the gauge vector */
+#recon .rc-side {
+  position: absolute;
+  left: 1470px;
+  top: 300px;
+  width: 400px;
+  font-size: 32px;
+  color: var(--muted);
+}
+#recon[data-s="3"] .rc-side { opacity: 0; }
+/* the gauge lines arrive with the morph, after the zoom has settled */
+#recon .rc-gauge.shown { transition-delay: 0.3s; }
+#recon .rc-big { font-size: 64px; color: var(--ink); margin-bottom: 20px; }
+#recon .rc-bands { font-size: 28px; margin-bottom: 40px; }
+#recon .rc-b0 { color: var(--accent); }
+#recon .rc-b2 { color: var(--accent-2); }
+#recon .rc-gauge { font-size: 30px; }
+#recon .rc-gauge .katex-display { margin: 0 0 16px; text-align: left; }
+#recon .rc-gauge .katex-display > .katex { text-align: left; font-size: 1.3em; }

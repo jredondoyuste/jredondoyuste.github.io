@@ -1,0 +1,72 @@
+/* The mode ladder (ladder.js): one cell per QNM, lit when detected. */
+
+.ld-svg {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.ld-cell {
+  fill: none;
+  stroke: var(--hair);
+  stroke-width: 2;
+  transition: fill 0.25s ease;
+}
+.ld-cell.ld-off {                     /* forbidden by symmetry */
+  fill: var(--hair);
+  fill-opacity: 0.45;
+  stroke: none;
+}
+.ld-cell.ld-on {
+  fill: var(--accent);
+  fill-opacity: var(--a, 1);
+  stroke: var(--accent);
+}
+
+.ld-lab {
+  font: 22px ETbb, Georgia, serif;
+  font-variant-numeric: lining-nums;
+  text-anchor: middle;
+  fill: transparent;
+}
+.ld-lab-on { fill: var(--bg); }
+
+.ld-head  { font: 34px ETbb, Georgia, serif; font-style: italic; fill: var(--ink); text-anchor: middle; }
+.ld-tick  { font: 26px ETbb, Georgia, serif; font-variant-numeric: lining-nums; fill: var(--muted); text-anchor: middle; }
+.ld-it    { font-style: italic; font-size: 30px; }
+.ld-left  { text-anchor: start; }
+
+.ld-axis line { stroke: var(--muted); stroke-width: 2; }
+.ld-fill { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; }
+.ld-dot  { fill: var(--accent); }
+.ld-event line { stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 6 6; }
+.ld-evlab { font: 24px ETbb, Georgia, serif; fill: var(--ink); text-anchor: middle; }
+
+.ld-side {
+  position: absolute;
+  left: 1560px;
+  top: 230px;
+  width: 300px;
+}
+.ld-src { font-size: 31px; white-space: nowrap; }
+.ld-sub { font-size: 24px; color: var(--muted); margin-bottom: 40px; }
+.ld-k   { font-size: 26px; color: var(--muted); }
+.ld-rho, .ld-count {
+  font-size: 84px;
+  line-height: 1.05;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.ld-count { color: var(--ink); }
+.ld-cite { position: absolute; left: 190px; bottom: 120px; font-size: 22px; }
+.ld-steps { display: none; }
+
+/* modes that enter beyond GW250114 seen by ET / CE: blue, not crimson */
+#ladder { --ld-far: #3A6EA5; }
+:root[data-theme="dark"] #ladder { --ld-far: #8CA3D0; }
+.ld-cell.ld-on.ld-beyond { fill: var(--ld-far); stroke: var(--ld-far); }
+.ld-fill2 { stroke: var(--ld-far); }
+.ld-dot.ld-dot2 { fill: var(--ld-far); }
+.ld-rho.ld-far { color: var(--ld-far); }

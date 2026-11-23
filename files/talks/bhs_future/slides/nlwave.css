@@ -1,0 +1,32 @@
+/* Gravity is nonlinear (nlwave.js): the field left, the equations right. */
+
+#nl-wave { --nw1: var(--accent); --nw2: #3A6EA5; }
+:root[data-theme="dark"] #nl-wave { --nw2: #8CA3D0; }
+
+.nw-field { position: absolute; }
+.nw-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.nw-hole { fill: var(--ink); }
+.nw-src { fill: none; stroke: var(--nw2); stroke-width: 2.5; stroke-dasharray: 8 8; opacity: 0; transition: opacity 0.6s; }
+.nw-srclab { fill: var(--nw2); font: italic 28px ETbb, Georgia, serif; opacity: 0; transition: opacity 0.6s; }
+#nl-wave.nw-on1 .nw-src, #nl-wave.nw-on1 .nw-srclab { opacity: 1; }
+#nl-wave.nw-on2 .nw-src { opacity: 0.35; }
+#nl-wave.nw-on2 .nw-srclab { opacity: 0; }
+
+.nw-side { position: absolute; left: 1010px; top: 210px; width: 860px; }
+.nw-eq { font-size: 46px; margin-bottom: 46px; }
+.nw-h1 { color: var(--nw1); }
+.nw-h2 { color: var(--nw2); }
+.nw-eq .nw-h2 { opacity: 0.35; transition: opacity 0.6s; }
+#nl-wave.nw-on1 .nw-eq .nw-h2 { opacity: 1; }
+
+.nw-row { font-size: 38px; margin-bottom: 40px; opacity: 0; transform: translateY(10px); transition: opacity 0.6s, transform 0.6s; }
+.nw-row.nw-s0 { opacity: 1; transform: none; }
+#nl-wave.nw-on1 .nw-s1, #nl-wave.nw-on2 .nw-s2, #nl-wave.nw-on3 .nw-s3 { opacity: 1; transform: none; }
+.nw-k { display: block; font-size: 28px; color: var(--muted); margin-top: 6px; }
+.nw-rules { font-size: 35px; margin-top: 10px; color: var(--ink); }
+
+.nw-meter { position: absolute; left: 110px; top: 860px; font-size: 34px; opacity: 0; transition: opacity 0.6s; }
+#nl-wave.nw-on3 .nw-meter { opacity: 1; }
+.nw-mrow { margin-bottom: 6px; font-variant-numeric: lining-nums tabular-nums; }
+.nw-mrow b { font-weight: normal; display: inline-block; min-width: 90px; margin-left: 14px; }
+#nl-wave .nw-row.nw-s2 { margin-bottom: 4px; }

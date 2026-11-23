@@ -1,0 +1,44 @@
+/* A GW250114-like signal in ET (et.js): two traces, then the ringdown
+   against the two noise floors on a log scale. */
+
+#et .et-plot {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.et-data { fill: none; stroke: var(--muted); stroke-width: 1.6; stroke-linejoin: round; }
+.et-sig  { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0.8; }
+.et-row  { fill: var(--ink); font: 30px ETbb, Georgia, serif; }
+
+.et-traces, .et-log { transition: opacity 0.8s ease; }
+#et:not([data-s="0"]) .et-traces { opacity: 0; }
+
+.et-box { fill: none; stroke: var(--hair); stroke-width: 1.5; }
+.et-tick { fill: var(--muted); font: 26px ETbb, Georgia, serif; }
+
+.et-floor-ligo, .et-floor-et { stroke-width: 2.5; stroke-dasharray: 10 8; }
+.et-floor-ligo { stroke: var(--muted); }
+.et-floor-et   { stroke: var(--ink); }
+.et-floor-ligo-band { fill: var(--muted); fill-opacity: 0.1; }
+.et-floor-et-band   { fill: var(--ink); fill-opacity: 0.06; }
+.et-floor-ligo-label { fill: var(--muted); font: 28px ETbb, Georgia, serif; }
+.et-floor-et-label   { fill: var(--ink); font: 28px ETbb, Georgia, serif; }
+
+.et-m220, .et-m221 { stroke-width: 5; stroke-linecap: round; }
+.et-m220 { stroke: var(--accent); }
+.et-m221 { stroke: #3A6EA5; }
+:root[data-theme="dark"] .et-m221 { stroke: #8CA3D0; }
+.et-m220-dot { fill: var(--accent); }
+.et-m221-dot { fill: #3A6EA5; }
+.et-m220-label { fill: var(--accent); font: 32px ETbb, Georgia, serif; }
+.et-m221-label { fill: #3A6EA5; font: 32px ETbb, Georgia, serif; }
+
+.et-note {
+  position: absolute;
+  left: 140px;
+  top: 975px;
+  font-size: 22px;
+  color: var(--muted);
+}

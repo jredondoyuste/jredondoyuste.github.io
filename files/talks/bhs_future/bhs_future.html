@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Future of Black Hole Spectroscopy — Jaime Redondo-Yuste</title>
+    <meta name="description" content="Slides: The Future of Black Hole Spectroscopy. XXXVIII International Workshop on High Energy Physics and Field Theory, IHEP Protvino, 24 November 2026.">
+    <link rel="icon" href="/files/favicon.png">
+    <link rel="preload" href="/files/fonts/ETbb-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="deck.css?v=202611240040">
+    <link rel="stylesheet" href="slides/title.css?v=202611240040">
+    <link rel="stylesheet" href="slides/lab.css?v=202611240040">
+    <link rel="stylesheet" href="slides/binary.css?v=202611240040">
+    <link rel="stylesheet" href="slides/scheme.css?v=202611240040">
+    <link rel="stylesheet" href="slides/modes.css?v=202611240040">
+    <link rel="stylesheet" href="slides/model.css?v=202611240040">
+    <link rel="stylesheet" href="slides/status.css?v=202611240040">
+    <link rel="stylesheet" href="slides/nohair.css?v=202611240040">
+    <link rel="stylesheet" href="slides/population.css?v=202611240040">
+    <link rel="stylesheet" href="slides/qhist.css?v=202611240040">
+    <link rel="stylesheet" href="slides/theory.css?v=202611240040">
+    <link rel="stylesheet" href="slides/nlwave.css?v=202611240040">
+    <link rel="stylesheet" href="slides/kn.css?v=202611240040">
+    <link rel="stylesheet" href="slides/scatter.css?v=202611240040">
+    <link rel="stylesheet" href="slides/future.css?v=202611240040">
+    <link rel="stylesheet" href="slides/ladder.css?v=202611240040">
+    <link rel="stylesheet" href="slides/lgm.css?v=202611240040">
+    <script src="/js/theme.js"></script>
+    <script>
+        // The deck opens light, whatever the site was last set to: projectors
+        // wash out a dark slide. The [dark] button remembers its own choice,
+        // under its own key, so it never changes the site's.
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('jry-deck-theme'); } catch (e) {}
+            document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light';
+        })();
+    </script>
+    <script src="/js/starfield.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+    <script src="deck.js?v=202611240040" defer></script>
+    <script src="slides/title.js?v=202611240040" defer></script>
+    <script src="slides/lab.js?v=202611240040" defer></script>
+    <script src="/js/kerr-qnm.js" defer></script>
+    <script src="slides/earth-land.js?v=202611240040" defer></script>
+    <script src="slides/binary.js?v=202611240040" defer></script>
+    <script src="slides/scheme.js?v=202611240040" defer></script>
+    <script src="slides/modes.js?v=202611240040" defer></script>
+    <script src="slides/model.js?v=202611240040" defer></script>
+    <script src="slides/gw150914.js?v=202611240040" defer></script>
+    <script src="slides/walk.js?v=202611240040" defer></script>
+    <script src="slides/messy.js?v=202611240040" defer></script>
+    <script src="slides/side250.js?v=202611240040" defer></script>
+    <script src="slides/nohair.js?v=202611240040" defer></script>
+    <script src="slides/ringdowns.js?v=202611240040" defer></script>
+    <script src="slides/graveyard.js?v=202611240040" defer></script>
+    <script src="slides/qhist.js?v=202611240040" defer></script>
+    <script src="slides/nlwave.js?v=202611240040" defer></script>
+    <script src="slides/kn.js?v=202611240040" defer></script>
+    <script src="slides/scatter.js?v=202611240040" defer></script>
+    <script src="slides/ladder.js?v=202611240040" defer></script>
+    <script src="slides/lgm.js?v=202611240040" defer></script>
+    <script src="slides/prior.js?v=202611240040" defer></script>
+    <script src="slides/counts.js?v=202611240040" defer></script>
+</head>
+
+<!--
+    HOW THIS FILE WORKS
+
+    Each <section class="slide"> is one slide, on a 1920x1080 canvas.
+    Slides are grouped into parts: <div class="part" data-name="Ringdown">.
+    The part's name goes on the progress bar and above each slide title.
+
+    Building blocks:
+      <h1 class="title">…</h1>             slide title, top left
+      <div class="cols">…</div>             two columns (style="--split: 2fr 3fr")
+      <div class="center">…</div>           everything centred
+      <figure class="print"><img …>          a figure; "print" frames white-bg plots
+        <span class="cite">Name+ (2401.12345)</span></figure>   credit, auto-linked
+      <div class="eq">$$ … $$</div>          display maths (KaTeX); $…$ inline
+      <em>…</em>                             the accent ink
+      <div class="ongoing">ongoing work</div>
+      data-step="1", "2", …                  appears on the 1st, 2nd … press
+      <p class="todo">…</p>                  a note to self while drafting
+
+    Figures go in ./figures/ next to this file.
+
+    Timing: 60' talk. 42 slides in six parts, four of them with an opener:
+    I. introduction ~5', II. ringdown and data ~15', III. the future of
+    spectroscopy ~13', IV. nonlinearities ~10', V. testing GR ~10',
+    VI. conclusions and questions ~5'.
+-->
+
+<body class="is-deck">
+<div class="deck">
+
+<!-- ===== I. introduction ============================================= -->
+
+<div class="part" data-name="Introduction">
+
+    <!-- moves: slides/title.js -->
+    <section class="slide slide-title" id="title">
+        <div>
+            <div class="title-talk t-in" style="--d: 0.1s">The Future of<br>Black Hole Spectroscopy</div>
+            <!-- the ringdown under the title; click it to ring it again -->
+            <svg class="title-ring" viewBox="0 0 560 64" aria-hidden="true"><path/></svg>
+            <div class="title-speaker t-in" style="--d: 1.2s">Jaime Redondo-Yuste</div>
+            <div class="title-affil t-in" style="--d: 1.4s">Princeton University</div>
+            <div class="title-event t-in" style="--d: 1.7s">XXXVIII Workshop on HET &nbsp;·&nbsp; 24 November 2026</div>
+            <img class="title-logo logo-light t-in" style="--d: 2.0s" src="figures/lftp-logo.png" alt="Princeton University, Leinweber Forum for Theoretical Physics">
+            <img class="title-logo logo-dark t-in" style="--d: 2.0s" src="figures/lftp-logo-dark.png" alt="Princeton University, Leinweber Forum for Theoretical Physics">
+        </div>
+        <figure class="print title-art">
+            <img src="figures/painting.jpg" alt="Kaari Upson, Event Horizon (2017): two mirrored figures in a field, the words EVENT HORIZON and FRAME DRAGGING lettered across it">
+            <span class="cite"><a href="https://thecreativeindependent.com/people/kaari-upson-on-maintaining-a-sense-of-urgency/" target="_blank">Kaari Upson, Event Horizon, 2017</a> &nbsp;·&nbsp; graphite, ink and gesso on paper</span>
+        </figure>
+    </section>
+
+    <!-- moves: slides/lab.js
+         The questions pop up one by one around the comic, then the ones that
+         ringdown can answer light up: data-a="yes" fully, "partly" in part,
+         no data-a not at all. Positions are the left/top of each bubble on
+         the 1920x1080 canvas; the tails find the comic by themselves.
+         Pressing → during the popping skips to the end. -->
+    <section class="slide" id="lab">
+        <figure class="print lab-comic">
+            <img src="figures/xkcd-black-hole-2x.png" alt="xkcd 1680, Black Hole">
+            <span class="cite"><a href="https://xkcd.com/1680/" target="_blank">xkcd 1680</a></span>
+        </figure>
+
+        <div class="bubble"                  style="left:140px;  top:70px">How do black holes evaporate?</div>
+        <div class="bubble" data-a="yes"     style="left:1270px; top:110px">Is the geometry really Kerr?</div>
+        <div class="bubble" data-a="partly"  style="left:250px;  top:265px">Do horizons exist?</div>
+        <div class="bubble" data-a="yes"     style="left:1300px; top:300px">How does it ring<br>when you strike it?</div>
+        <div class="bubble"                  style="left:90px;   top:445px">Does gravity destroy<br>information?</div>
+        <div class="bubble" data-a="yes"     style="left:1340px; top:500px">Are black holes stable?</div>
+        <div class="bubble" data-a="partly"  style="left:120px;  top:650px">Can it be overspun,<br>or overcharged?</div>
+        <div class="bubble"                  style="left:1290px; top:680px">What is inside?</div>
+        <div class="bubble" data-a="yes"     style="left:230px;  top:845px">Does it have hair?</div>
+        <div class="bubble" data-a="yes"     style="left:1240px; top:845px">Do gravitational waves<br>scatter off each other?</div>
+    </section>
+
+    <!-- moves: slides/graveyard.js
+         Every confident event; → lights up those with a detected ringdown -->
+    <section class="slide" id="grave">
+        <h1 class="title">Stellar Graveyard</h1>
+        <svg class="gv-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <g class="gv-axes"></g>
+            <g class="gv-events"></g>
+        </svg>
+        <div class="gv-key">
+            <span><i style="--c: #3A6EA5"></i>black holes</span>
+            <span><i style="--c: var(--star-mid)"></i>neutron stars</span>
+            <span><span class="gv-n"></span> events, GWTC-1 to GWTC-5</span>
+            <span data-step="1"><i style="--c: var(--accent)"></i><span class="gv-nrd"></span> with a ringdown analysis (LVK tests of GR)</span>
+        </div>
+    </section>
+
+    <!-- moves: slides/binary.js
+         Plays by itself: inspiral, the view opens onto Earth, merger, ringdown.
+         → at the end rewinds to the merger and zooms in; → again moves on.
+         The knobs (mass ratio, speeds, cameras, Earth's distance) are named
+         at the top of binary.js. -->
+    <section class="slide" id="binary">
+        <canvas class="bin-field"></canvas>
+        <canvas class="bin-front"></canvas>
+        <div class="bin-legend">
+            <span style="--c: var(--m22)">$\ell = m = 2$</span>
+            <span style="--c: var(--m33)">$3$</span>
+            <span style="--c: var(--m44)">$4$</span>
+        </div>
+        <div class="bin-rewind"><svg viewBox="0 0 64 40" aria-hidden="true"><path d="M30 2 L2 20 L30 38 Z M62 2 L34 20 L62 38 Z"/></svg>rewind</div>
+    </section>
+
+</div>
+
+<!-- ===== II. ringdown ================================================ -->
+
+<div class="part" data-name="Ringdown">
+
+    <section class="slide slide-section">
+        <div class="section-num">ii.</div>
+        <div class="section-name">Black hole<br>spectroscopy</div>
+    </section>
+
+    <!-- moves: slides/scheme.js
+         The merger frame the rewind landed on, in grey, with the common horizon
+         and the final black hole marked. Then, press by press:
+           1  the equation is written
+           2  the background lights up (with the final black hole)
+           3  the deviations light up (with the common horizon, and the waves
+              get their colour back) -->
+    <section class="slide" id="scheme">
+        <canvas class="sc-gray"></canvas>
+        <canvas class="sc-color" data-step="3"></canvas>
+        <svg class="sc-marks" viewBox="0 0 1920 1080" aria-hidden="true">
+            <path class="sc-common"/>
+            <circle class="sc-final"/>
+        </svg>
+        <div class="sc-label sc-label-common">common horizon</div>
+        <div class="sc-label sc-label-final">final black hole</div>
+        <div class="sc-eq" data-step="1">
+            <span data-step="1">$g_{ab}$</span>
+            <span data-step="1" style="transition-delay: 0.25s">$=$</span>
+            <span class="sc-term sc-bg" data-step="1" style="transition-delay: 0.5s">$g^{\rm Kerr}_{ab}$</span>
+            <span data-step="1" style="transition-delay: 0.8s">$+$</span>
+            <span class="sc-term sc-dev" data-step="1" style="transition-delay: 1.05s">$h^{(1)}_{ab} + h^{(2)}_{ab} + \dots$</span>
+        </div>
+    </section>
+
+    <!-- moves: slides/modes.js
+         h^(1) around the remnant (left) and the signal (right), looping from t_mg.
+           1  split into harmonics l = m = 2, 3, 4, each with its share of the signal
+           2  each harmonic split into overtones n = 0, 1, 2, … -->
+    <section class="slide" id="modes">
+        <canvas class="md-field"></canvas>
+        <canvas class="md-front"></canvas>
+        <div class="md-eq">
+            <div>$h^{(1)}_{ab}$<span data-step="1">$\;=\; \sum_{\ell m} h_{\ell m}(t)\; {}_{-2}Y_{\ell m}(\theta, \phi)$</span></div>
+            <div data-step="2">$h_{\ell m} \;=\; \sum_{n} A_{\ell m n}\, e^{-i \omega_{\ell m n} (t - t_{\rm mg})}$</div>
+        </div>
+    </section>
+
+    <!-- moves: slides/model.js
+         The signal alone; then
+           1  the GR ringdown model (spheroidal harmonics, mirror modes)
+           2  GR's frequencies, typed out to 14 decimals, solved live
+           3  the agnostic model: GR's numbers struck out, everything free -->
+    <section class="slide" id="model">
+        <canvas class="mo-wave"></canvas>
+
+        <div class="mo-eq mo-eq-gr" data-step="1">
+            $$h_+ - i h_\times = \sum_{\ell m n} \Big[\, A_{\ell m n}\, e^{-i\omega_{\ell m n}(t - t_{\rm mg})}\, \underbrace{{}_{-2}S_{\ell m n}(\theta, \phi)}_{\text{spheroidal harmonics}} \;+\; \underbrace{A'_{\ell m n}\, e^{\,i\omega^*_{\ell m n}(t - t_{\rm mg})}\, {}_{-2}S^*_{\ell m n}(\pi - \theta, \phi)}_{\text{mirror modes}} \,\Big]$$
+        </div>
+        <div class="mo-eq mo-eq-agn" data-step="3">
+            $$h(t) = \sum_{k} A_k\, e^{-i\omega_k (t - t_{\rm mg})}$$
+        </div>
+
+        <div class="mo-gr" data-step="2">
+            <div class="mo-gr-head">GR, spin $a/M = $ <span class="mo-spin"></span></div>
+            <div class="mo-gr-row"><span>$M\omega_{220} =$</span><span class="mo-w" data-mode="220"></span></div>
+            <div class="mo-gr-row"><span>$M\omega_{440} =$</span><span class="mo-w" data-mode="440"></span></div>
+            <div class="mo-gr-row"><span>$M\omega_{221} =$</span><span class="mo-w" data-mode="221"></span></div>
+        </div>
+
+        <div class="mo-free" data-step="3">
+            $A_k,\ \omega_k \in \mathbb{C}$ free.<br>
+            Does the data support GR?
+        </div>
+    </section>
+
+    <!-- moves: slides/gw150914.js
+         H1 data, then the NR waveform over it, then the crop to the
+         ringdown: the cut sweeps to t_mg while the SNR left is counted -->
+    <section class="slide" id="gw150914">
+        <h1 class="title">GW150914</h1>
+        <svg class="g1-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <g class="g1-axes"></g>
+            <path class="g1-data-off"/>
+            <path class="g1-data"/>
+            <path class="g1-nr"/>
+            <line class="g1-cut"/>
+            <g class="g1-snr">
+                <path class="g1-snr-curve"/>
+                <circle class="g1-snr-dot" r="7"/>
+            </g>
+        </svg>
+        <div class="g1-legend">
+            <span class="g1-k-data">H1 data</span>
+            <span class="g1-k-nr" data-step="1">numerical relativity</span>
+        </div>
+        <div class="g1-readout" data-step="2">
+            <div class="g1-rho-label">SNR left after the cut</div>
+            <div class="g1-rho">20.0</div>
+            <div class="g1-rho-note">H1, normalised to the full 20; drop for white noise in band</div>
+        </div>
+        <span class="cite g1-cite">GWOSC; LVK, PRL 116 061102 (1602.03837)</span>
+    </section>
+
+    <section class="slide" id="lvk150914">
+        <h1 class="title">GW150914: one damped sinusoid</h1>
+        <figure class="print lvk-fig">
+            <img src="figures/lvk-gw150914-ringdown.png" alt="LVK: GW150914 single-mode ringdown posteriors in frequency and decay time for start times 1, 3, 5 and 6.5 ms after the merger, against the IMR prediction of the 220 mode">
+            <span class="cite">LVK, PRL 116 221101 (1602.03841)</span>
+        </figure>
+    </section>
+
+    <!-- moves: slides/messy.js
+         One damped sinusoid fitted from t_start = 0 to 10 M after the peak:
+         the posterior walks, with the GR 220 and 221 under it.
+         → while it plays jumps to the end; click the plot to replay. -->
+    <section class="slide" id="messy">
+        <h1 class="title">Data is messy</h1>
+        <svg class="ms-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <defs><clipPath id="ms-clip"><rect class="ms-box"/></clipPath></defs>
+            <g class="ms-axes"></g>
+            <g class="ms-runs" clip-path="url(#ms-clip)"></g>
+            <g class="ms-gr" clip-path="url(#ms-clip)"></g>
+        </svg>
+        <div class="ms-side">
+            <div class="ms-t">$t_0 = $ <span class="ms-tval">0</span> $M$</div>
+            <div class="ms-beads"></div>
+            <div class="ms-key">
+                <div><span class="ms-sw ms-sw-post"></span>one damped sinusoid, 50% / 90%</div>
+                <div><span class="ms-sw ms-sw-gr"></span>GR 220 and 221, from the full signal</div>
+            </div>
+        </div>
+        <span class="cite ms-cite">Cheung &amp; JRY (to appear)</span>
+    </section>
+
+    <section class="slide" id="loud">
+        <h1 class="title">Ten years later</h1>
+        <figure class="loud-fig">
+            <img src="figures/ligo-150914-250114.jpg" alt="Hanford data and waveform for GW150914 (September 2015) and GW250114 (January 2025): the second is far louder above the noise">
+            <span class="cite">LIGO / J. Tissino (GSSI) / R. Hurt (Caltech-IPAC)</span>
+        </figure>
+    </section>
+
+    <!-- moves: slides/side250.js
+         LVK's figure (left) and silencio at t0 = 9 M on the same axes (right):
+         one mode; then (→) two modes, the second unconstrained -->
+    <section class="slide" id="side250">
+        <h1 class="title">GW250114: two analyses</h1>
+        <figure class="sd-lvk">
+            <div class="sd-head">LVK</div>
+            <img src="figures/lvk-gw250114-freq-tau.png" alt="LVK: 90% regions of the 220 and 221 frequencies and damping times of GW250114 for several models and start times, against the IMR predictions">
+            <span class="cite">LVK (2509.08099)</span>
+        </figure>
+        <div class="sd-head sd-head-ours">silencio,
+            <span class="sd-n1">one mode</span><span class="sd-n2">two modes</span>,
+            $t_0 =$ <span class="sd-tval">0</span> $M$</div>
+        <svg class="sd-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <defs><clipPath id="sd-clip"><rect class="sd-box"/></clipPath></defs>
+            <g class="sd-axes"></g>
+            <g class="sd-one" clip-path="url(#sd-clip)"></g>
+            <g class="sd-two" clip-path="url(#sd-clip)" data-step="1"></g>
+            <g class="sd-gr"></g>
+        </svg>
+        <span class="cite sd-cite">Cheung &amp; JRY (to appear)</span>
+    </section>
+
+    <!-- moves: slides/nohair.js
+         One press per measured number: its band of Kerr black holes (M, chi)
+         draws itself in. Last press: the remnant from the full signal, where
+         the four cross. -->
+    <section class="slide" id="nohair">
+        <h1 class="title">The no-hair test</h1>
+        <svg class="nh-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <defs><clipPath id="nh-clip"><rect class="nh-box"/></clipPath></defs>
+            <g class="nh-axes"></g>
+            <g clip-path="url(#nh-clip)">
+                <g class="nh-band nh-b0" data-step="1"><path class="nh-fill"/><path class="nh-lo"/><path class="nh-hi"/><path class="nh-mid" pathLength="1"/></g>
+                <g class="nh-band nh-b1" data-step="2"><path class="nh-fill"/><path class="nh-lo"/><path class="nh-hi"/><path class="nh-mid" pathLength="1"/></g>
+                <g class="nh-band nh-b2" data-step="3"><path class="nh-fill"/><path class="nh-lo"/><path class="nh-hi"/><path class="nh-mid" pathLength="1"/></g>
+                <g class="nh-band nh-b3" data-step="4"><path class="nh-fill"/><path class="nh-lo"/><path class="nh-hi"/><path class="nh-mid" pathLength="1"/></g>
+                <g class="nh-imr" data-step="5"><path/><circle class="nh-ring" r="34"/></g>
+            </g>
+        </svg>
+        <div class="nh-key">
+            <div data-step="1"><span class="sw" style="--c: var(--b0)"></span>$f_{220}$</div>
+            <div data-step="2"><span class="sw" style="--c: var(--b1)"></span>$\tau_{220}$</div>
+            <div data-step="3"><span class="sw" style="--c: var(--b2)"></span>$f_{221}$</div>
+            <div data-step="4"><span class="sw" style="--c: var(--b3)"></span>$\tau_{221}$</div>
+            <div class="nh-note muted" data-step="1">line: posterior median · band: 68%</div>
+            <div class="nh-verdict" data-step="5">Four measurements,<br>one Kerr black hole.<br><span class="muted">In black: the full signal (IMR).</span></div>
+        </div>
+        <span class="cite nh-cite">bands: silencio, two modes at $t_0 = 6\,M$ (Cheung &amp; JRY, to appear)<br>IMR: LVK data release (2509.08099)</span>
+    </section>
+
+    <!-- moves: slides/ringdowns.js
+         Every GWTC-5 ringdown above SNR 8, whitened, aligned at the peak;
+         the rows draw themselves in on arrival -->
+    <section class="slide" id="rdall">
+        <h1 class="title">Ten years of ringdowns</h1>
+        <svg class="rd-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <g class="rd-axes"></g>
+            <g class="rd-head"></g>
+            <g class="rd-rows"></g>
+        </svg>
+        <div class="rd-note"><span class="rd-count"></span> events</div>
+    </section>
+
+    <section class="slide" id="sens">
+        <h1 class="title">How loud will ringdowns be?</h1>
+        <figure class="print fw">
+            <img src="figures/imr-sensitivity.png" style="width:1420px" alt="Characteristic strain of a GW250114-like binary, inspiral to ringdown, against O4, Einstein Telescope and Cosmic Explorer noise; and of a million-solar-mass binary at redshift 1 against LISA">
+            <span class="cite">IMR: IMRPhenomXPHM (Pratten+ 2004.06503) · noise: gwfast (2207.02771) / Robson, Cornish &amp; Liu (1803.01944)</span>
+        </figure>
+        <div class="pts row">
+            <div data-step="1"><span class="n">1</span>Ringdown SNR in O4: <em>22</em></div>
+            <div data-step="2"><span class="n">2</span>In ET: <em>187</em> · in CE: <em>326</em></div>
+            <div data-step="3"><span class="n">3</span>In LISA: <em>~2800</em></div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ===== III. spectroscopy in the future ============================= -->
+
+<div class="part" data-name="The future">
+
+    <section class="slide slide-section">
+        <div class="section-num">iii.</div>
+        <div class="section-name">How many modes<br>can we measure?</div>
+    </section>
+
+    <section class="slide" id="mq-question">
+        <div class="center">
+            <div class="big-q">Numerical relativity fits a ringdown with <em>a dozen</em> modes.<br>The data has seen <em>two</em>.</div>
+            <div class="big-q-sub" data-step="1">How many quasinormal modes does a ringdown <em>actually</em> measure,<br>and how does that number grow with the next generation?</div>
+        </div>
+        <span class="cite" style="position:absolute; left:140px; bottom:120px; font-size:24px">Giesler+ (1903.08284); Cheung+ (2310.04489); LVK (2509.08099)</span>
+        <div class="ongoing">with S. Yi, E. Berti</div>
+    </section>
+
+    <!-- moves: slides/lgm.js. Two complex modes, each in its own plane.
+         arrive: the planes and their (independent) priors
+         1  the amplitudes wander through their priors; each mode's ringdown and the sum
+         2  noise from the PSD: the data
+         3  one observation: the priors contract to the posteriors (formula)
+         4  four times louder -->
+    <section class="slide" id="mq-lgm">
+        <h1 class="title">A linear, Gaussian model</h1>
+        <div class="lg-eq">$h_+ - i h_\times = \sum_j A_j\, e^{-i\omega_j t} + n(t)$
+            <div class="lg-sub">$A_j \sim \mathcal{CN}(0, \sigma_j^2)$, independent &nbsp;·&nbsp; $n \sim \mathcal{CN}(0, \Sigma_n)$ &nbsp;·&nbsp; frequencies fixed</div></div>
+        <svg class="lg-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="lg-formula">
+            <div class="lg-k">linear and Gaussian: the posterior is exact</div>
+            $A \mid d \sim \mathcal{CN}(\mu, \Sigma)$<br>
+            $\Sigma^{-1} = \Sigma_A^{-1} + Z^\dagger \Sigma_n^{-1} Z$<br>
+            $\mu = \Sigma\, Z^\dagger \Sigma_n^{-1} d$
+        </div>
+        <div class="lg-louder">four times louder</div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span></div>
+    </section>
+
+    <!-- the four readings of "measured", one per press; the schematics are
+         hand-drawn SVG (viewBox 400 x 270) -->
+    <section class="slide" id="mq-crit">
+        <h1 class="title">When is a mode measured?</h1>
+        <div class="crit">
+            <div class="cz" data-step="1">
+                <svg viewBox="0 0 400 270">
+                    <circle class="pri" cx="200" cy="135" r="110"/>
+                    <ellipse class="pos" cx="232" cy="112" rx="46" ry="22" transform="rotate(-25 232 112)"/>
+                    <text x="62" y="36">prior</text>
+                    <text class="a" x="250" y="178">posterior</text>
+                </svg>
+                <div class="tx">
+                    <div class="h">i. Information</div>
+                    <div class="q">How much did the data teach us about $A_j$?</div>
+                    <div class="f">$I = \tfrac12 \log_2 \dfrac{\det P_{jj}}{\det \Sigma_{jj}} \ge 2$ bits</div>
+                </div>
+            </div>
+            <div class="cz" data-step="2">
+                <svg viewBox="0 0 400 270">
+                    <line class="ax" x1="20" y1="230" x2="380" y2="230"/>
+                    <line class="ax0" x1="130" y1="40" x2="130" y2="230"/>
+                    <path class="pri" d="M20 212.5L32 207.5L44 201.8L56 195.7L68 189.5L80 183.5L92 178.2L104 174L116 171.2L125 170.2L131 170L140 170.6L152 172.9L164 176.7L176 181.7L188 187.4L200 193.6L212 199.8L224 205.6L236 210.9L248 215.5L260 219.3L272 222.3L284 224.7L296 226.4L308 227.6L320 228.5L332 229.1L350 229.6L380 229.9"/>
+                    <path class="pos" d="M20 230L176 230L188 229.8L197 229.2L203 228.2L209 225.9L215 221.7L221 214.1L227 201.9L233 183.8L239 159.6L245 130.4L251 99.1L257 70.4L263 49.4L269 40.2L275 44.8L281 62.3L287 89L293 120L299 150.3L305 176.4L311 196.5L317 210.6L323 219.6L329 224.8L338 228.4L350 229.7L380 230"/>
+                    <circle class="dotp" cx="130" cy="170" r="7"/>
+                    <circle class="dota" cx="130" cy="230" r="7"/>
+                    <text x="40" y="160">p(0)</text>
+                    <text class="k" x="98" y="262">A = 0</text>
+                </svg>
+                <div class="tx">
+                    <div class="h">ii. Bayes factor</div>
+                    <div class="q">Do the data prefer the model with the mode?</div>
+                    <div class="f">$\ln B = \ln \dfrac{p(A_j{=}0)}{p(A_j{=}0 \mid d)} \ge 3$</div>
+                </div>
+            </div>
+            <div class="cz" data-step="3">
+                <svg viewBox="0 0 400 270">
+                    <line class="ax0" x1="20" y1="190" x2="380" y2="190"/>
+                    <line class="ax0" x1="130" y1="20" x2="130" y2="255"/>
+                    <ellipse class="pos3" cx="270" cy="95" rx="138" ry="69" transform="rotate(-30 270 95)"/>
+                    <ellipse class="pos" cx="270" cy="95" rx="40" ry="20" transform="rotate(-30 270 95)"/>
+                    <circle class="dot0" cx="130" cy="190" r="8"/>
+                    <text class="k" x="62" y="226">A = 0</text>
+                    <text class="a" x="300" y="200">3σ</text>
+                </svg>
+                <div class="tx">
+                    <div class="h">iii. Exclusion of zero</div>
+                    <div class="q">Is $A_j = 0$ ruled out?</div>
+                    <div class="f">$\mu_j^\dagger \Sigma_{jj}^{-1} \mu_j > 11.8$</div>
+                </div>
+            </div>
+            <div class="cz" data-step="4">
+                <svg viewBox="0 0 400 270">
+                    <defs>
+                        <marker id="cr-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path class="hd" d="M0 0L10 5L0 10Z"/></marker>
+                        <marker id="cr-head0" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path class="hd0" d="M0 0L10 5L0 10Z"/></marker>
+                    </defs>
+                    <circle class="pri" cx="200" cy="135" r="110"/>
+                    <ellipse class="pos" cx="200" cy="135" rx="95" ry="33" transform="rotate(-35 200 135)"/>
+                    <line class="arw0" x1="200" y1="135" x2="278" y2="80"/>
+                    <line class="arw" x1="200" y1="135" x2="219" y2="162"/>
+                    <text class="a" x="226" y="204">s₁ &gt; 1</text>
+                    <text x="284" y="62">s₂ &lt; 1</text>
+                </svg>
+                <div class="tx">
+                    <div class="h">iv. SVD channels</div>
+                    <div class="q">Which combinations of modes are measured?</div>
+                    <div class="f">$\Sigma_n^{-1/2} Z\, \Sigma_A^{1/2} = U\, \mathrm{diag}(s_k)\, W^\dagger$</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- moves: slides/prior.js. Left: the binary and its multipoles; right:
+         the prior on each harmonic's amplitude.
+         arrive q = 1 (odd harmonics silent); → q to 3; → the overtones; → NR -->
+    <section class="slide" id="mq-prior">
+        <h1 class="title">Amplitude prior</h1>
+        <canvas class="pr-field"></canvas>
+        <svg class="pr-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="pr-qbox">$q =$ <span class="pr-q">1.0</span></div>
+        <div class="pr-key">
+            <div><i></i>fundamental, $n = 0$</div>
+            <div><i class="pr-ki"></i>overtone, $n = 1$</div>
+        </div>
+        <figure class="print pr-fig">
+            <img src="figures/mq-p3-prior.png" alt="Prior predictive distributions of QNM amplitudes against jaxqualin fits to SXS simulations at q of 1 and 3">
+            <span class="cite">violins: our prior · dots: jaxqualin fits to SXS (Cheung+ 2310.04489)</span>
+        </figure>
+        <div class="pr-line">Prior built from PN theory covers NR extracted amplitudes</div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span></div>
+    </section>
+
+    <!-- moves: slides/ladder.js. Arrive: q = 1 sweeps to GW250114 in ET;
+         → to 10^4; → the q = 2, chi_f = 0.95 source; → to 10^4 -->
+    <section class="slide" id="ladder">
+        <h1 class="title">The ladder of modes</h1>
+        <svg class="ld-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="ld-side">
+            <div class="ld-src"></div>
+            <div class="ld-sub"></div>
+            <div class="ld-k">$\rho_{220}$</div>
+            <div class="ld-rho">1</div>
+            <div class="ld-k">modes detected</div>
+            <div class="ld-count">0</div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span></div>
+        <span class="cite ld-cite">Einstein Telescope, $t_0 = 10\,M$ · grey: forbidden by symmetry · Redondo-Yuste, Yi &amp; Berti (to appear)</span>
+    </section>
+
+    <!-- moves: slides/counts.js. Arrive: rho_220 sweeps 1 -> 5000, t0 = 10 M,
+         both staircases climb (→ mid-sweep jumps to the end);
+         → the logarithmic law; → a band over start times 5 M to 20 M -->
+    <section class="slide" id="mq-counts">
+        <h1 class="title">How many modes, how loud</h1>
+        <svg class="ct-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="ct-side">
+            <div class="ct-k">$\rho_{220}$</div>
+            <div class="ct-rho">1</div>
+            <div class="ct-row ct-a"><i></i>$q = 1$, $\chi_f = 0.69$ <b class="ct-n1">0</b></div>
+            <div class="ct-row ct-b"><i></i>$q = 3$, $\chi_f = 0.95$ <b class="ct-n3">0</b></div>
+            <div class="ct-note ct-s1">red: $N \propto \ln \rho_{220}$</div>
+            <div class="ct-note ct-s2">band: start time from $5\,M$ to $20\,M$</div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span></div>
+        <span class="cite ct-cite">Einstein Telescope, from $10\,M$ after the peak · Redondo-Yuste, Yi &amp; Berti (to appear)</span>
+    </section>
+
+    <section class="slide" id="mq-events">
+        <h1 class="title">Forecast: ringdowns per year</h1>
+        <figure class="print fw">
+            <img src="figures/mq-p2-events.png" style="width:1480px; margin-top:30px" alt="Events per year for A+, ET, CE 40 km and three LISA populations: detections, ringdown events, and events with at least 2, 3, 4, 5 and 10 detected modes">
+            <span class="cite">ground: GWTC-5 population · LISA: Klein+ (1511.05581) · Redondo-Yuste, Yi &amp; Berti (to appear)</span>
+        </figure>
+    </section>
+
+</div>
+
+<!-- ===== IV. nonlinearities ========================================== -->
+
+<div class="part" data-name="Nonlinearities A">
+
+    <section class="slide slide-section">
+        <div class="section-num">iv.a</div>
+        <div class="section-name">Gravity is nonlinear</div>
+    </section>
+
+    <!-- moves: slides/nlwave.js. The 22 rings around the black hole (red);
+         → the second-order equation, and its source glows near the hole;
+         → the 44 it drives leaves at twice the frequency (blue);
+         → double the 22: the 44 grows four times -->
+    <section class="slide" id="nl-wave">
+        <h1 class="title">Gravity is nonlinear</h1>
+        <canvas class="nw-field"></canvas>
+        <svg class="nw-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="nw-side">
+            <div class="nw-eq">$g = g^{\rm Kerr} + \epsilon\,$<span class="nw-h1">$h^{(1)}$</span>$ + \epsilon^2\,$<span class="nw-h2">$h^{(2)}$</span>$ + \dots$</div>
+            <div class="nw-row nw-s0"><span class="nw-h1">Linear: 22 mode, frequency $\omega$</span>
+                <div class="nw-rules">$\mathcal{T}\big[h^{(1)}\big] = 0$</div></div>
+            <div class="nw-row nw-s1">The PDE operator remains the same
+                <div class="nw-rules">$\mathcal{T}\big[h^{(2)}\big] = \mathcal{S}\big[h^{(1)}, h^{(1)}\big]$</div></div>
+            <div class="nw-row nw-s2"><span class="nw-h2">Drives a higher harmonic with frequency $2\omega$,</span></div>
+            <div class="nw-row nw-s3"><span class="nw-h2">and amplitude fixed by GR</span>
+                <div class="nw-rules">$A^{(2)}_{44} = \mathcal{R}\, \big(A^{(1)}_{22}\big)^2$</div></div>
+        </div>
+        <div class="nw-meter">
+            <div class="nw-mrow nw-h1">22 <b class="nw-a1">×1</b></div>
+            <div class="nw-mrow nw-h2">44 <b class="nw-a2">×1</b></div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span></div>
+    </section>
+
+    <!-- moves: slides/qhist.js
+         |R| for 220x220 -> 44 against spin, one paper per press, in order -->
+    <section class="slide" id="qhist">
+        <h1 class="title">A new number to measure</h1>
+        <svg class="qh-plot" viewBox="0 0 1920 1080" aria-hidden="true">
+            <defs><clipPath id="qh-clip"><rect x="230" y="190" width="1000" height="660"/></clipPath></defs>
+            <g class="qh-axes"></g>
+            <g clip-path="url(#qh-clip)">
+            <g class="qh-ds qh-d0" data-ds="0" data-step="1"></g>
+            <g class="qh-ds qh-d1" data-ds="1" data-step="2"></g>
+            <g class="qh-ds qh-d2" data-ds="2" data-step="3"></g>
+            <g class="qh-ds qh-d3" data-ds="3" data-step="4"></g>
+            <g class="qh-ds qh-d4" data-ds="4,5,6" data-step="5"></g>
+            <g class="qh-ds qh-d8" data-ds="8" data-step="6"></g>
+            <g class="qh-ds qh-d9" data-ds="9" data-step="7"></g>
+            </g>
+        </svg>
+        <div class="qh-key">
+            <div data-step="1"><i class="qh-d0"></i>Mitman+ 2022 <span class="arx">2208.07380</span></div>
+            <div data-step="2"><i class="qh-d1"></i>Cheung+ 2022 <span class="arx">2208.07374</span></div>
+            <div data-step="3" class="ours"><i class="qh-d2"></i>Redondo-Yuste+ 2023 <span class="arx">2308.14796</span></div>
+            <div data-step="4"><i class="qh-d3"></i>Cheung+ 2023 <span class="arx">2310.04489</span></div>
+            <div data-step="5"><i class="qh-d4"></i>Zhu+ 2024 <span class="arx">2401.00805</span></div>
+            <div data-step="6"><i class="qh-d8"></i>Bucciotti+ 2024 <span class="arx">2405.06012</span></div>
+            <div data-step="7"><i class="qh-d9"></i>Khera, Ma &amp; Yang 2024 <span class="arx">2410.14529</span></div>
+        </div>
+        <span class="cite qh-cite">Berti, Cardoso, Carullo+ (incl. JRY) (2505.23895)</span>
+    </section>
+
+    <section class="slide" id="qdetect">
+        <h1 class="title">Within reach of the next generation</h1>
+        <figure class="print qd-fig qd-left">
+            <img src="figures/qqnm-detect-lagos.png" alt="Characteristic strain of the 220, 330, 440 and quadratic 44Q modes of a GW150914-like event against the ET and CE noise: the 44Q lies above both noise curves and above the linear 440">
+            <span class="cite">Lagos, Andrade, Rafecas-Ventosa &amp; Hui (2411.02264): a GW150914-like event</span>
+        </figure>
+        <figure class="print qd-fig qd-right">
+            <img src="figures/qqnm-detect-yi-lisa.png" alt="Number of massive black hole mergers in 4 years of LISA with a detectable quadratic mode, against its SNR, for several population models: hundreds above SNR 8 in the heavy-seed model, some above 100">
+            <span class="cite">Yi+ (2403.09767): LISA, 4 years, events with a detectable 22×22 mode</span>
+        </figure>
+    </section>
+
+    <!-- moves: slides/scatter.js (sc-setup). Real Regge-Wheeler scattering
+         state, l = 2, M omega = 0.3 (figures/sc-states.json), against the
+         potential; → the second-order wave at 2 omega (illustrative source);
+         → the definition of Q -->
+    <section class="slide" id="sc-setup">
+        <h1 class="title">Scattering waves off a black hole</h1>
+        <div class="sc-lead">Nonlinear experiment: send in monochromatic waves $\psi^{(1)}$ with frequency $\omega$</div>
+        <svg class="sc-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="sc-def">
+            $\mathcal{Q} = \dfrac{M\,\mathcal{A}^{(2)}_{\rm out}(\omega_1+\omega_2)}{\mathcal{A}^{(1)}_{\rm in}(\omega_1)\,\mathcal{A}^{(1)}_{\rm in}(\omega_2)}$
+            <div class="sc-defk">A new no-hair property</div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span></div>
+        <span class="cite sc-cite">Bucciotti, Redondo-Yuste, Zhong, Kuntz &amp; Cardoso (2609.20934)</span>
+    </section>
+
+    <!-- moves: slides/scatter.js (sc-method). Three steps, one per press;
+         the third accumulates the Green's-function integral as a spiral -->
+    <section class="slide" id="sc-method">
+        <h1 class="title">Computing 𝒬</h1>
+        <div class="sm-card sm-c1">
+            <div class="sm-n">1</div>
+            <div class="sm-h">Linear scattering states</div>
+            <div class="sm-eq">$\big(\partial_{r_*}^2 + \omega^2 - V\big)\,\psi^{(1)} = 0$</div>
+            <svg class="sm-svg sm-v1" viewBox="0 0 520 260"></svg>
+        </div>
+        <div class="sm-card sm-c2" data-step="1">
+            <div class="sm-n">2</div>
+            <div class="sm-h">Source Regularization</div>
+            <div class="sm-eq">$\big(\partial_{r_*}^2 + \omega'^2 - V\big)\,\psi^{(2)} = S\big[\psi^{(1)}, \psi^{(1)}\big]$</div>
+            <svg class="sm-svg sm-s2" viewBox="0 0 520 250"></svg>
+            <div class="sm-eq sm-reg">$\Psi^{(2)} = \psi^{(2)} + \Upsilon\big[\psi^{(1)}, \psi^{(1)}\big]$</div>
+        </div>
+        <div class="sm-card sm-c3" data-step="2">
+            <div class="sm-n">3</div>
+            <div class="sm-h">Integral Convergence</div>
+            <div class="sm-eq">$\mathcal{A}^{(2)}_{\rm out} \propto \displaystyle\int^{R} dr_*\, \psi^{\rm in}_{\omega'}\, \mathfrak{S}$</div>
+            <svg class="sm-svg sm-sp" viewBox="0 0 520 300"></svg>
+        </div>
+        <div class="sm-foot" data-step="3">Open source: <em>BlackHoleNonlinearities.jl</em> · an independent time-domain code agrees to $\sim 10^{-7}$</div>
+        <span class="cite sm-cite">Bucciotti, Redondo-Yuste, Zhong, Kuntz &amp; Cardoso (2609.20934)</span>
+    </section>
+
+    <!-- moves: slides/scatter.js (sc-res). Self-coupling (l,l) x (l,l) -> (2l,2l),
+         l = 2..6, against M omega' (the paper's Fig. 4): the curves draw in, peaking at
+         Re omega_{2l,0}; → time-domain points; → rescale by Re omega: they collapse -->
+    <section class="slide" id="sc-res">
+        <h1 class="title">Resonance at the quasinormal frequency</h1>
+        <svg class="sr-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="sr-side">
+            <div class="sr-p sr-p0">$(\ell,\ell) \times (\ell,\ell) \to (2\ell, 2\ell)$<div class="sr-k">peaks where $\omega_1 + \omega_2 \approx {\rm Re}\,\omega_{\ell' 0}$ (dashed)</div></div>
+            <div class="sr-p sr-p1"><span class="sr-td"></span>Time-domain code</div>
+            <div class="sr-p sr-p2">Universal scaling with $\ell$?</div>
+            <div class="sr-p sr-p3">nonlinear tidal response $\sim$ 5-point Compton
+                <svg class="fd" viewBox="0 0 420 250" aria-hidden="true"></svg>
+                <span class="cite">Bjerrum-Bohr, Chen &amp; Skowronek (2302.00498)</span>
+            </div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span></div>
+        <span class="cite sr-cite">Bucciotti, Redondo-Yuste, Zhong, Kuntz &amp; Cardoso (2609.20934)</span>
+    </section>
+
+    <!-- moves: slides/scatter.js (sc-map). |Q| over the two driving frequencies
+         for (2,2) x (l,l) -> (l+2,l+2), l = 2, 3, 4, even (the paper's Fig. 7),
+         one channel per press; → the code -->
+    <section class="slide" id="sc-map">
+        <h1 class="title">Many channels, one code</h1>
+        <canvas class="sm2-map sm2-m0"></canvas><canvas class="sm2-map sm2-m1"></canvas><canvas class="sm2-map sm2-m2"></canvas>
+        <svg class="sm2-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="sm2-code">
+            <div class="sm2-name"><a href="https://github.com/jredondoyuste/BlackHoleNonlinearities.jl" target="_blank">BlackHoleNonlinearities.jl</a></div>
+            <div class="sm2-k">open source: any $\ell$, $m$, parity and pair of frequencies · explore the table at <a href="/quadratic.html" target="_blank">jredondoyuste.github.io/quadratic.html</a></div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span></div>
+        <span class="cite sm2-cite">Bucciotti, Redondo-Yuste, Zhong, Kuntz &amp; Cardoso (2609.20934) · dashed: $\omega_1 + \omega_2 = {\rm Re}\,\omega_{\ell' 0}$</span>
+    </section>
+
+</div>
+
+<div class="part" data-name="Nonlinearities B">
+
+    <section class="slide slide-section">
+        <div class="section-num">iv.b</div>
+        <div class="section-name">Nonlinearities<br>beyond vacuum GR</div>
+    </section>
+
+    <section class="slide" id="kn-why">
+        <h1 class="title">Nonlinearities probe GR too</h1>
+        <div class="dev-why">Solve Einstein–Maxwell to second order in perturbation theory</div>
+        <div class="dev-grid">
+            <div data-step="1"><div class="h">i. Shifted QNMs</div>
+                <div class="eq">$\omega = \omega^{\rm GR} + \mathcal{O}(Q^2)$</div>
+                <span class="muted">no-hair tests!</span></div>
+            <div data-step="2"><div class="h">ii. New modes</div>
+                EM-driven modes:
+                <div class="eq">$\omega^{\rm EM}_{\ell m n} \neq \omega^{\rm GR}_{\ell m n}$</div></div>
+            <div data-step="3"><div class="h">iii. New quadratic modes, different quadratic coupling</div>
+                <div class="eq">$\mathcal{R} = \mathcal{R}(\chi, Q)$</div>
+                <div class="eq" style="font-size:32px; white-space:nowrap">GR × GR, &nbsp;GR × EM, &nbsp;EM × EM</div></div>
+        </div>
+        <div class="ongoing">with D. Pereñiguez</div>
+    </section>
+
+    <!-- moves: slides/kn.js (kn-algo). The pipeline, one stage per press, on one
+         Kerr-Newman QNM (a = 0.557, Q = 0.502, l = m = 2, n = 0, gravitational-led):
+         figures/kn-recon.json -->
+    <section class="slide" id="kn-algo">
+        <h1 class="title">Second order around Kerr–Newman</h1>
+        <canvas class="ka-cv"></canvas>
+        <svg class="ka-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="ka-mode">one mode: $a/M = 0.557$, $Q/M = 0.502$, gravity-led 220</div>
+        <div class="ka-num"><span>$M\omega = 0.5167 - 0.0828\,i$</span><span>$\lambda = -3.194 - 0.064\,i$</span></div>
+        <div class="ka-gform">$h \;\to\; h + \mathcal{L}_{f\xi}\, g$<div class="ka-gk">IRG is regular at $\mathcal{H}^+$ but not flat at $\mathscr{I}^+$; glue it to an asymptotically flat gauge through the cut $f$</div></div>
+        <ol class="ka-steps">
+            <li class="ka-k0"><b>Separated equations</b> for $\Psi_0,\ \Psi_1,\ \kappa,\ \sigma$: $\omega$ and $\lambda$</li>
+            <li class="ka-k1"><b>Transport equations</b>, from $\mathscr{I}^+$ to the horizon: $h^{(1)}_{ab},\ A^{(1)}_a$</li>
+            <li class="ka-k2"><b>A good gauge</b>: flat at $\mathscr{I}^+$, regular at the horizon</li>
+            <li class="ka-k3"><b>The source</b>, quadratic: $\mathcal{S}\big[h^{(1)}, A^{(1)}\big]$</li>
+            <li class="ka-k4"><b>A 2D problem</b> in $(\sigma, \cos\theta)$, read out at $\mathscr{I}^+$: $\mathcal{R}$</li>
+        </ol>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span></div>
+        <span class="cite ka-cite">Redondo-Yuste &amp; Pereñiguez (in prep.) · separation: Hintz (2609.33661) · QNMs: Dias, Godazgar &amp; Santos (1501.04625)</span>
+    </section>
+
+    <!-- moves: slides/kn.js (kn-qnms). The l = m = 2, n = 0 modes over the
+         Kerr-Newman family (figures/kn-qnm.json): Kerr; → the charge on; → the
+         electromagnetic-led family -->
+    <section class="slide" id="kn-qnms">
+        <h1 class="title">Kerr–Newman quasinormal modes</h1>
+        <svg class="kq-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="kq-side">
+            <div class="kq-p kq-p0">Gravity-led 220</div>
+            <div class="kq-p kq-p1">Charge shifts it at $\mathcal{O}(Q^2)$</div>
+            <div class="kq-p kq-p2"><span class="kq-em">EM-led 220</span></div>
+        </div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span></div>
+        <span class="cite kq-cite">$\ell = m = 2$, $n = 0$, up to $a^2 + Q^2 = 0.9\,M^2$ · Redondo-Yuste &amp; Pereñiguez (in prep.)</span>
+    </section>
+
+    <!-- moves: slides/kn.js (kn-qqnm). |R| into (4,4) over (a, Q) (t21 scan,
+         figures/kn-qqnm.json), the maps filling in as the charge grows:
+         GW x GW; → GW x EM, a new tone -->
+    <section class="slide" id="kn-qqnm">
+        <h1 class="title">Quadratic modes of Kerr–Newman</h1>
+        <canvas class="kr-map kr-m0"></canvas><canvas class="kr-map kr-m1"></canvas>
+        <svg class="kr-svg" viewBox="0 0 1920 1080" aria-hidden="true"></svg>
+        <div class="kr-cap kr-c0">GW × GW → GW</div>
+        <div class="kr-cap kr-c1">GW × EM → GW <span class="kr-new">(new mode!)</span></div>
+        <div class="ld-steps"><span data-step="1"></span><span data-step="2"></span></div>
+        <span class="cite kr-cite">$|\mathcal{R}|$ into $(4,4)$ · preliminary · Kerr: Khera, Ma &amp; Yang (2410.14529) · Redondo-Yuste &amp; Pereñiguez (in prep.)</span>
+    </section>
+
+
+</div>
+
+<!-- ===== VI. conclusions ============================================= -->
+
+<div class="part" data-name="Conclusions">
+
+    <section class="slide">
+        <h1 class="title">Conclusions</h1>
+        <ul class="cc-list">
+            <li data-step="1">BH spectroscopy works (GW250114)</li>
+            <li data-step="2">3G &amp; LISA: a new method to forecast which modes are detectable. We will need improved pipelines!</li>
+            <li data-step="3">Ringdown is nonlinear: QQNMs in vacuum and beyond, and nonlinear scattering</li>
+            <li data-step="4">The unknown always lies in the next decimal place</li>
+        </ul>
+        <div class="cc-lab" data-step="1">
+            <div class="bubble on" data-a="yes" style="left:0px; top:0px">Is the geometry really Kerr?</div>
+            <div class="bubble on" data-a="yes" style="left:70px; top:68px">How does it ring when you strike it?</div>
+            <div class="bubble on" data-a="yes" style="left:20px; top:136px">Are black holes stable?</div>
+            <div class="bubble on" data-a="yes" style="left:90px; top:204px">Does it have hair?</div>
+            <div class="bubble on" data-a="yes" style="left:10px; top:272px">Do gravitational waves scatter off each other?</div>
+            <div class="bubble on" data-a="partly" style="left:60px; top:340px">Do horizons exist?</div>
+            <div class="bubble on" data-a="partly" style="left:0px; top:408px">Can it be overspun, or overcharged?</div>
+            <div class="bubble on" style="left:80px; top:476px">How do black holes evaporate?</div>
+            <div class="bubble on" style="left:30px; top:544px">Does gravity destroy information?</div>
+            <div class="bubble on" style="left:100px; top:612px">What is inside?</div>
+        </div>
+        <p class="muted cc-link">slides: <a href="https://jredondoyuste.github.io/files/talks/bhs_future/bhs_future.html" target="_blank">jredondoyuste.github.io/files/talks/bhs_future</a></p>
+    </section>
+
+</div>
+
+<div class="deck-tools">
+    <button class="deck-theme" aria-label="Switch between light and dark" title="Light / dark (T)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+    </button>
+    <button class="deck-full" aria-label="Full screen" title="Full screen (F)">
+        <svg class="fs-in" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        <svg class="fs-out" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5"/></svg>
+    </button>
+</div>
+
+</div>
+</body>
+</html>

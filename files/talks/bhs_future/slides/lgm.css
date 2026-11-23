@@ -1,0 +1,206 @@
+/* The linear, Gaussian model (lgm.js): two complex modes, staged by press.
+   lg-s<n> is set on the slide from press n on; lg-now1 only at press 1. */
+
+#mq-lgm { --lg-c0: var(--accent); --lg-c1: #3A6EA5; }
+:root[data-theme="dark"] #mq-lgm { --lg-c1: #8CA3D0; }
+
+.lg-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.lg-svg * { transition: opacity 0.6s ease; }
+
+.lg-eq {
+  position: absolute;
+  left: 140px;
+  right: 140px;
+  top: 150px;
+  text-align: center;
+  font-size: 50px;
+}
+.lg-eq .lg-sub { font-size: 30px; color: var(--muted); margin-top: 6px; }
+
+.lg-axis { stroke: var(--hair); stroke-width: 2; }
+.lg-dash { stroke-dasharray: 6 6; }
+.lg-ax-lab { font: italic 26px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; }
+.lg-left { text-anchor: start; }
+.lg-end { text-anchor: end; }
+.lg-name { font: italic 40px ETbb, Georgia, serif; text-anchor: middle; }
+.lg-m0 .lg-name { fill: var(--lg-c0); }
+.lg-m1 .lg-name { fill: var(--lg-c1); }
+.lg-note { font: 26px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; }
+
+/* the planes: prior shaded; the amplitude walks; the trail samples the prior */
+.lg-prior { transition: opacity 0.8s ease; }
+.lg-s3 .lg-prior { opacity: 0.45; }
+.lg-dot { opacity: 0; }
+.lg-m0 .lg-dot { fill: var(--lg-c0); }
+.lg-m1 .lg-dot { fill: var(--lg-c1); }
+.lg-s1 .lg-dot { opacity: 1; }
+.lg-s3 .lg-dot { opacity: 0; }
+.lg-trail circle { fill: var(--muted); }
+.lg-trail { opacity: 0; }
+.lg-s1 .lg-trail { opacity: 0.8; }
+.lg-s3 .lg-trail { opacity: 0.25; }
+.lg-true { stroke: var(--ink); stroke-width: 3.5; opacity: 0; }
+.lg-s3 .lg-true { opacity: 1; }
+.lg-post { fill: none; stroke-width: 3; opacity: 0; }
+.lg-m0 .lg-post { stroke: var(--lg-c0); fill: var(--lg-c0); fill-opacity: 0.25; }
+.lg-m1 .lg-post { stroke: var(--lg-c1); fill: var(--lg-c1); fill-opacity: 0.25; }
+.lg-post2 { stroke-dasharray: 6 6; fill-opacity: 0.08 !important; }
+.lg-s3 .lg-post { opacity: 1; }
+
+/* the waveform: modes, then their sum, then the data */
+.lg-wave { opacity: 0; }
+.lg-s1 .lg-wave { opacity: 1; }
+.lg-comp { fill: none; stroke-width: 2.5; opacity: 0; }
+.lg-c0 { stroke: var(--lg-c0); }
+.lg-c1 { stroke: var(--lg-c1); }
+.lg-now1 .lg-comp { opacity: 0.9; }
+.lg-sig { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+.lg-data { fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-linejoin: round; opacity: 0; }
+.lg-s2 .lg-data { opacity: 1; }
+.lg-s3 .lg-sig { stroke-dasharray: 10 8; }
+.lg-key { stroke-width: 4; }
+.lg-sigk { stroke: var(--ink); }
+.lg-datak { stroke: var(--muted); }
+.lg-c0-t { fill: var(--lg-c0); } .lg-c1-t { fill: var(--lg-c1); }
+.lg-legend .lg-c0, .lg-legend .lg-c1, .lg-legend .lg-c0-t, .lg-legend .lg-c1-t { opacity: 0; }
+.lg-now1 .lg-legend .lg-c0, .lg-now1 .lg-legend .lg-c1, .lg-now1 .lg-legend .lg-c0-t, .lg-now1 .lg-legend .lg-c1-t { opacity: 1; }
+.lg-legend .lg-datak, .lg-legend .lg-datak-t { opacity: 0; }
+.lg-s2 .lg-legend .lg-datak, .lg-s2 .lg-legend .lg-datak-t { opacity: 1; }
+
+/* the PSD comes with the noise and leaves with the observation */
+.lg-psdp { opacity: 0; }
+.lg-s2 .lg-psdp { opacity: 1; }
+.lg-s3 .lg-psdp { opacity: 0; }
+.lg-psd { fill: none; stroke: var(--ink); stroke-width: 3; }
+
+.lg-formula {
+  position: absolute;
+  left: 1060px;
+  top: 700px;
+  width: 720px;
+  font-size: 36px;
+  line-height: 1.45;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.lg-formula .lg-k { font-size: 26px; color: var(--muted); }
+.lg-s3 .lg-formula { opacity: 1; }
+.lg-louder {
+  position: absolute;
+  left: 140px;
+  top: 860px;
+  font-size: 30px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.lg-s4 .lg-louder { opacity: 1; }
+
+/* ----- what "measured" means ------------------------------------------- */
+
+.crit { position: absolute; inset: 0; }
+/* zig-zag: left, right, left, right, each a picture and its words */
+.crit .cz {
+  position: absolute;
+  width: 820px;
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 34px;
+  align-items: center;
+}
+.crit .cz:nth-child(1) { left: 130px;  top: 160px; }
+.crit .cz:nth-child(2) { left: 970px;  top: 330px; }
+.crit .cz:nth-child(3) { left: 130px;  top: 500px; }
+.crit .cz:nth-child(4) { left: 970px;  top: 670px; }
+.crit .h { font-size: 40px; color: var(--accent); margin-bottom: 2px; }
+.crit .q { font-size: 28px; color: var(--muted); line-height: 1.25; margin-bottom: 14px; }
+.crit svg { display: block; width: 330px; height: 223px; }
+.crit .f { font-size: 32px; }
+
+.crit svg .ax   { stroke: var(--ink); stroke-width: 2; fill: none; }
+.crit svg .ax0  { stroke: var(--hair); stroke-width: 1.5; }
+.crit svg .pri  { fill: none; stroke: var(--muted); stroke-width: 2.5; stroke-dasharray: 8 7; }
+.crit svg .pos  { fill: var(--accent); fill-opacity: 0.3; stroke: var(--accent); stroke-width: 2.5; }
+.crit svg .pos3 { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 5; }
+.crit svg .dot0 { fill: var(--ink); }
+.crit svg .dotp { fill: var(--muted); }
+.crit svg .dota { fill: var(--accent); }
+.crit svg .arw  { stroke: var(--accent); stroke-width: 4; marker-end: url(#cr-head); }
+.crit svg .arw0 { stroke: var(--muted); stroke-width: 3; stroke-dasharray: 6 5; marker-end: url(#cr-head0); }
+.crit svg .hd   { fill: var(--accent); }
+.crit svg .hd0  { fill: var(--muted); }
+.crit svg text  { font: 32px ETbb, Georgia, serif; fill: var(--muted); }
+.crit svg { overflow: visible; }
+.crit svg text.a { fill: var(--accent); }
+.crit svg text.k { fill: var(--ink); }
+
+
+
+/* ----- the amplitude prior (prior.js) ------------------------------------ */
+#mq-prior { --m22: var(--accent); --m33: #3A6EA5; --m44: var(--star-mid); --m55: #1E7B3C; --m66: #8A5A9E; }
+:root[data-theme="dark"] #mq-prior { --m33: #E0566A; --m44: #8CA3D0; --m55: #7FBF8A; --m66: #C49BD6; }
+.pr-field { position: absolute; transition: opacity 0.6s ease; }
+.pr-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.pr-svg > *, .pr-qbox, .pr-key { transition: opacity 0.6s ease; }
+#mq-prior[data-s="3"] .pr-field, #mq-prior[data-s="3"] .pr-svg, #mq-prior[data-s="3"] .pr-qbox, #mq-prior[data-s="3"] .pr-key { opacity: 0; }
+.pr-hole { fill: var(--ink); }
+:root[data-theme="dark"] .pr-hole { fill: rgb(13, 9, 8); stroke: var(--ink); stroke-width: 1.5; }
+.pr-axis { stroke: var(--ink); stroke-width: 2; }
+.pr-tick { font: 26px ETbb, Georgia, serif; fill: var(--muted); text-anchor: end; font-variant-numeric: lining-nums; }
+.pr-ylab { font: italic 30px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; }
+.pr-mode { font: 34px ETbb, Georgia, serif; text-anchor: middle; font-variant-numeric: lining-nums; }
+.pr-c2 { fill: var(--m22); stroke: var(--m22); } .pr-c3 { fill: var(--m33); stroke: var(--m33); }
+.pr-c4 { fill: var(--m44); stroke: var(--m44); } .pr-c5 { fill: var(--m55); stroke: var(--m55); }
+.pr-c6 { fill: var(--m66); stroke: var(--m66); }
+.pr-mode { stroke: none; }
+.pr-bar { fill-opacity: 0.45; stroke: none; }
+.pr-bar.pr-ot { fill-opacity: 0.16; stroke: inherit; stroke-width: 2.5; stroke-dasharray: 6 5; }
+.pr-med { stroke-width: 4; }
+.pr-qbox { position: absolute; left: 140px; top: 200px; font-size: 44px; }
+.pr-q { color: var(--accent); font-variant-numeric: lining-nums tabular-nums; }
+.pr-key { position: absolute; left: 1150px; top: 170px; font-size: 26px; color: var(--muted); display: flex; gap: 40px; }
+.pr-key i { display: inline-block; width: 30px; height: 16px; border-radius: 8px; margin-right: 10px; vertical-align: middle; background: var(--muted); opacity: 0.6; }
+.pr-key i.pr-ki { opacity: 0.25; border: 2px dashed var(--muted); box-sizing: border-box; }
+.pr-key div:last-child { opacity: 0; transition: opacity 0.6s ease; }
+#mq-prior[data-s="2"] .pr-key div:last-child { opacity: 1; }
+.pr-fig { position: absolute; left: 0; right: 0; top: 160px; opacity: 0; transition: opacity 0.6s ease; }
+#mq-prior[data-s="3"] .pr-fig { opacity: 1; }
+.pr-fig img { height: 650px; width: auto; max-height: none !important; }
+.pr-fig .cite { font-size: 22px; }
+.pr-line { position: absolute; left: 140px; right: 140px; bottom: 120px; text-align: center; font-size: 38px; }
+
+/* ----- how many modes, how loud (counts.js) ------------------------------- */
+#mq-counts { --ct-a: var(--ink); --ct-b: #3A6EA5; }
+:root[data-theme="dark"] #mq-counts { --ct-b: #8CA3D0; }
+.ct-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+.ct-axes line { stroke: var(--ink); stroke-width: 2; }
+.ct-tick { font: 26px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; font-variant-numeric: lining-nums; }
+.ct-end { text-anchor: end; }
+.ct-lab { font: italic 32px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; }
+.ct-event line { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 7 7; }
+.ct-evlab { font: 24px ETbb, Georgia, serif; fill: var(--muted); text-anchor: middle; }
+.ct-line { fill: none; stroke-width: 4.5; stroke-linejoin: round; }
+.ct-line.ct-a { stroke: var(--ct-a); }
+.ct-line.ct-b { stroke: var(--ct-b); }
+.ct-cursor { stroke: var(--accent); stroke-width: 2; opacity: 0.5; }
+.ct-names text { font: 22px ETbb, Georgia, serif; fill: var(--muted); font-variant-numeric: lining-nums; }
+.ct-fit path { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.ct-fit, .ct-ghost, .ct-note { opacity: 0; transition: opacity 0.6s ease; }
+.ct-band { stroke: none; fill-opacity: 0.18; }
+.ct-band.ct-a { fill: var(--ct-a); }
+.ct-band.ct-b { fill: var(--ct-b); }
+#mq-counts:not([data-s="0"]) .ct-fit, #mq-counts:not([data-s="0"]) .ct-s1 { opacity: 1; }
+#mq-counts[data-s="2"] .ct-ghost, #mq-counts[data-s="2"] .ct-s2 { opacity: 1; }
+#mq-counts[data-s="2"] .ct-names { opacity: 0; }
+.ct-names { transition: opacity 0.6s ease; }
+.ct-side { position: absolute; left: 1560px; top: 240px; width: 340px; }
+.ct-k { font-size: 26px; color: var(--muted); }
+.ct-rho { font-size: 80px; line-height: 1.05; color: var(--accent); font-variant-numeric: lining-nums tabular-nums; margin-bottom: 30px; }
+.ct-row { font-size: 26px; margin-bottom: 14px; white-space: nowrap; }
+.ct-row i { display: inline-block; width: 32px; height: 5px; margin-right: 10px; vertical-align: middle; }
+.ct-row.ct-a i { background: var(--ct-a); }
+.ct-row.ct-b i { background: var(--ct-b); }
+.ct-row b { font-weight: 400; font-size: 40px; margin-left: 8px; font-variant-numeric: lining-nums tabular-nums; }
+.ct-row.ct-b b { color: var(--ct-b); }
+.ct-note { font-size: 24px; color: var(--muted); margin-top: 18px; }
+.ct-cite { position: absolute; left: 300px; bottom: 112px; font-size: 22px; }

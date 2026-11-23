@@ -1,0 +1,119 @@
+/* Part iv.b, Kerr-Newman (kn.js), in the jry-plots style: closed frames, inward
+   ticks on all sides, inkwell colours (black, #1F4E99, #B2352B, ...). */
+
+#kn-algo, #kn-qnms, #kn-qqnm { --jb: #1F4E99; --jr: #B2352B; }
+:root[data-theme="dark"] #kn-algo, :root[data-theme="dark"] #kn-qnms, :root[data-theme="dark"] #kn-qqnm { --jb: #8CA3D0; --jr: #E07A6E; }
+
+.ka-svg, .kq-svg, .kr-svg { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+.ka-cv, .kr-map { position: absolute; }
+
+.jf-box { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.jf-tk { stroke: var(--ink); stroke-width: 2; }
+.jf-num { fill: var(--ink); font: 26px ETbb, Georgia, serif; font-variant-numeric: lining-nums; text-anchor: middle; }
+.jf-end { text-anchor: end; }
+.jf-start { text-anchor: start; }
+.jf-lab { fill: var(--ink); font: italic 32px ETbb, Georgia, serif; text-anchor: middle; }
+.jf-sm { font-size: 26px; }
+
+/* ---- kn-algo ---- */
+.ka-g { transition: opacity 0.5s; }
+.ka-lab { fill: var(--ink); font: italic 28px ETbb, Georgia, serif; }
+.ka-note { fill: var(--muted); font: 24px ETbb, Georgia, serif; }
+.ka-it { fill: none; stroke: var(--jb); stroke-width: 3; }
+.ka-itl { stroke: var(--jb); stroke-width: 2; stroke-dasharray: 6 6; }
+.ka-root { fill: var(--accent); }
+.ka-sweep { stroke: var(--ink); stroke-width: 3; }
+.ka-band { fill: var(--muted); font: italic 24px ETbb, Georgia, serif; text-anchor: middle; }
+.ka-gl { stroke: var(--ink); stroke-width: 1; opacity: 0.45; }
+.ka-gl2 { stroke-width: 2.5; opacity: 0.9; }
+.ka-grid, .ka-read { transition: opacity 0.4s; }
+.ka-readl { stroke: var(--accent); stroke-width: 8; }
+.ka-readt { fill: var(--accent); font: italic 30px ETbb, Georgia, serif; }
+.ka-steps { position: absolute; left: 1250px; top: 210px; width: 600px; margin: 0; padding-left: 40px; font-size: 28px; line-height: 1.35; }
+.ka-steps li { margin-bottom: 30px; color: var(--muted); opacity: 0.45; transition: opacity 0.4s, color 0.4s; }
+.ka-steps li b { font-weight: normal; color: var(--ink); }
+#kn-algo .ka-k0, #kn-algo.s-on1 .ka-k1, #kn-algo.s-on2 .ka-k2, #kn-algo.s-on3 .ka-k3, #kn-algo.s-on4 .ka-k4 { opacity: 1; }
+#kn-algo:not(.s-on1) .ka-k0, #kn-algo.s-on1:not(.s-on2) .ka-k1, #kn-algo.s-on2:not(.s-on3) .ka-k2,
+#kn-algo.s-on3:not(.s-on4) .ka-k3, #kn-algo.s-on4 .ka-k4 { color: var(--ink); }
+#kn-algo:not(.s-on1) .ka-k0 b, #kn-algo.s-on1:not(.s-on2) .ka-k1 b, #kn-algo.s-on2:not(.s-on3) .ka-k2 b,
+#kn-algo.s-on3:not(.s-on4) .ka-k3 b, #kn-algo.s-on4 .ka-k4 b { color: var(--accent); }
+.ka-cite { position: absolute; left: 190px; bottom: 92px; font-size: 22px; }
+
+/* ---- kn-qnms ---- */
+.kq-line { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.kq-kerr { stroke: var(--ink); stroke-width: 5; }
+.kq-g { stroke: var(--jb); opacity: calc(1 - 0.55 * var(--k)); }
+.kq-e { stroke: var(--jr); stroke-dasharray: 12 8; opacity: calc(1 - 0.55 * var(--k)); }
+.kq-in { stroke-width: 2.5; }
+.kq-kerr.kq-in { stroke-width: 3.5; }
+.kq-dot { fill: var(--ink); }
+.kq-dot.kq-dote { fill: var(--jr); }
+.kq-arc { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.kq-ext { fill: none; stroke: var(--ink); stroke-width: 2; }
+.kq-read { fill: var(--muted); font: 24px ETbb, Georgia, serif; font-variant-numeric: lining-nums tabular-nums; }
+.kq-lab { fill: var(--ink); font: italic 28px ETbb, Georgia, serif; }
+.kq-end { text-anchor: end; }
+.kq-elab { fill: var(--jr); }
+.kq-side { position: absolute; left: 1290px; top: 210px; width: 560px; }
+.kq-p { font-size: 32px; margin-bottom: 26px; line-height: 1.3; }
+.kq-p1, .kq-p2 { opacity: 0; transform: translateY(10px); transition: opacity 0.6s, transform 0.6s; }
+#kn-qnms.s-on1 .kq-p1, #kn-qnms.s-on2 .kq-p2 { opacity: 1; transform: none; }
+.kq-p1 { color: var(--jb); }
+.kq-em { color: var(--jr); }
+.kq-cite { position: absolute; left: 230px; bottom: 92px; font-size: 22px; }
+
+/* ---- kn-algo, additions ---- */
+.ka-mode { position: absolute; left: 190px; top: 168px; font-size: 26px; color: var(--muted); }
+.ka-num { position: absolute; left: 720px; top: 650px; width: 480px; white-space: nowrap; display: flex; flex-direction: column; gap: 26px; font-size: 38px; opacity: 0; transition: opacity 0.5s; }
+#kn-algo.ka-solved:not(.s-on1) .ka-num { opacity: 1; }
+#kn-algo.s-on1 .ka-num { opacity: 0; }
+.ka-gform { position: absolute; left: 820px; top: 650px; width: 330px; font-size: 34px; opacity: 0; transition: opacity 0.5s; }
+.ka-gk { font-size: 22px; color: var(--muted); margin-top: 10px; line-height: 1.35; }
+#kn-algo.ka-show-g .ka-gform { opacity: 1; }
+.ka-end { fill: var(--muted); font: italic 26px ETbb, Georgia, serif; text-anchor: middle; }
+.ka-env { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 8 6; }
+.ka-curve { fill: none; stroke-width: 3.5; stroke-linejoin: round; }
+.ka-cb { stroke: var(--jb); } .ka-cr { stroke: var(--jr); } .ka-ck { stroke: var(--ink); }
+.ka-dash { stroke-dasharray: 12 8; } .ka-dot { stroke-dasharray: 3 6; stroke-width: 3; }
+.ka-key { fill: var(--ink); font: italic 24px ETbb, Georgia, serif; text-anchor: end; }
+.ka-key.ka-start { text-anchor: start; }
+.ka-kb { fill: var(--jb); } .ka-kr { fill: var(--jr); }
+.ka-sm { font-size: 22px; }
+.ka-halo { paint-order: stroke; stroke: var(--bg); stroke-width: 6px; }
+.ka-reg { stroke: none; }
+.ka-reg0 { fill: var(--jb); opacity: 0.18; } .ka-reg1 { fill: var(--muted); opacity: 0.15; } .ka-reg2 { fill: var(--jr); opacity: 0.18; }
+.ka-regt { fill: var(--ink); font: italic 24px ETbb, Georgia, serif; text-anchor: middle; }
+.ka-regl { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.ka-patch { opacity: 0; }
+.ka-pfill { stroke: none; opacity: 0.10; }
+.ka-pf0 { fill: var(--jb); } .ka-pf1 { fill: var(--jr); } .ka-pf2 { fill: #1E7B3C; }
+.ka-node { fill: var(--ink); opacity: 0.7; }
+.ka-pedge { stroke: var(--ink); stroke-width: 3; }
+.ka-rbox { fill: var(--bg); stroke: var(--accent); stroke-width: 3; }
+.ka-rval { fill: var(--accent); font: 40px ETbb, Georgia, serif; text-anchor: middle; }
+
+/* ---- kn-qqnm ---- */
+.kr-kerr { fill: var(--ink); font: italic 24px ETbb, Georgia, serif; }
+.kr-g1, .kr-m1 { opacity: 0; transition: opacity 0.6s; }
+#kn-qqnm.s-on1 .kr-g1, #kn-qqnm.s-on1 .kr-m1 { opacity: 1; }
+.kr-cap { position: absolute; top: 168px; width: 480px; text-align: center; font-size: 32px; transition: opacity 0.6s; }
+.kr-c0 { left: 230px; }
+.kr-c1 { left: 1020px; opacity: 0; }
+#kn-qqnm.s-on1 .kr-c1 { opacity: 1; }
+.kr-new { color: var(--accent); }
+.kr-g0, .kr-m0 { transition: opacity 0.6s; }
+#kn-qqnm.s-on2 .kr-g0, #kn-qqnm.s-on2 .kr-m0, #kn-qqnm.s-on2 .kr-g1, #kn-qqnm.s-on2 .kr-m1, #kn-qqnm.s-on2 .kr-cap { opacity: 0; }
+.kr-lp { opacity: 0; transition: opacity 0.6s 0.3s; }
+#kn-qqnm.s-on2 .kr-lp { opacity: 1; }
+.kr-line { fill: none; stroke-width: 3.5; }
+.kr-s0 { stroke: var(--ink); } .kr-s1 { stroke: #1F4E99; stroke-dasharray: 14 8; } .kr-s2 { stroke: #B2352B; stroke-dasharray: 4 6; }
+.kr-s3 { stroke: #1E7B3C; stroke-dasharray: 16 6 4 6; } .kr-s4 { stroke: #A04A7A; stroke-dasharray: 2 5; stroke-width: 4; }
+:root[data-theme="dark"] .kr-s1 { stroke: #8CA3D0; } :root[data-theme="dark"] .kr-s2 { stroke: #E07A6E; }
+:root[data-theme="dark"] .kr-s3 { stroke: #7FBF8A; } :root[data-theme="dark"] .kr-s4 { stroke: #C49BD6; }
+.kr-llab { fill: var(--ink); font: 24px ETbb, Georgia, serif; }
+.kr-t1 { fill: #1F4E99; } .kr-t2 { fill: #B2352B; } .kr-t3 { fill: #1E7B3C; } .kr-t4 { fill: #A04A7A; }
+.kr-kmy { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.kr-cite { position: absolute; left: 230px; bottom: 92px; font-size: 22px; }
+
+.ka-rt { text-anchor: end; }
+.kr-end { text-anchor: end; }

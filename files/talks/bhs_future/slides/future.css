@@ -1,0 +1,119 @@
+/* Slides new to this talk: the mode counting (measuring QNMs) and the
+   charged black holes. Mostly a figure plus a few numbered points. */
+
+/* a figure across the slide, points under it */
+.fw {
+  position: absolute;
+  left: 140px;
+  right: 140px;
+  top: 165px;
+}
+.fw img { width: 1640px; max-height: none !important; }
+.fw.short img { width: 1500px; }
+
+/* a figure on the left, points on the right */
+.fl {
+  position: absolute;
+  left: 120px;
+  top: 160px;
+}
+.fr {
+  position: absolute;
+  top: 200px;
+  right: 120px;
+  font-size: 36px;
+  line-height: 1.3;
+}
+
+/* numbered points, as on the "louder" slide */
+.pts > div {
+  position: relative;
+  padding-left: 62px;
+  margin-bottom: 30px;
+}
+.pts .n {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-size: 26px;
+  line-height: 38px;
+  text-align: center;
+  font-variant-numeric: lining-nums;
+}
+.pts.row {
+  position: absolute;
+  left: 140px;
+  right: 140px;
+  bottom: 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+/* the linear model, built term by term */
+#mq-model .mm-eq { font-size: 64px; text-align: center; margin-top: 40px; }
+#mq-model .mm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  margin-top: 80px;
+  font-size: 34px;
+  line-height: 1.3;
+}
+#mq-model .mm-grid h3 {
+  margin: 0 0 14px;
+  font-weight: 400;
+  font-size: 40px;
+  color: var(--accent);
+}
+#mq-model .mm-q {
+  position: absolute;
+  left: 140px;
+  right: 140px;
+  bottom: 130px;
+  text-align: center;
+  font-size: 44px;
+}
+
+/* the question slide: fits vs data */
+.big-q {
+  font-size: 76px;
+  line-height: 1.15;
+  max-width: 1500px;
+}
+.big-q-sub { margin-top: 50px; font-size: 38px; color: var(--muted); max-width: 1400px; }
+
+/* charged black holes: the three ways a deviation shows */
+.dev-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  margin-top: 70px;
+  font-size: 34px;
+  line-height: 1.3;
+}
+.dev-grid .h {
+  font-size: 42px;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.dev-grid .eq { font-size: 40px; margin: 18px 0; }
+.dev-why { margin-top: 10px; font-size: 40px; max-width: 1640px; }
+
+/* the takeaway box at the end of a part */
+.take {
+  font-size: 44px;
+  line-height: 1.3;
+  max-width: 1580px;
+  margin-top: 30px;
+}
+.take li { margin-bottom: 0.7em !important; }
+
+.fw .cite { font-size: 22px; margin-top: 6px; }

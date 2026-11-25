@@ -1,0 +1,146 @@
+% Works and software this project actually uses. Documents cite them as [@key].
+% Software entries give the version and, where there is one, the DOI.
+% Give each entry what the project site needs to link it: `doi` (or `url`), and for an arXiv
+% paper `eprint`, `archivePrefix = {arXiv}` and `primaryClass`; `collaboration` for a
+% collaboration paper. A `usage` field (ignored by BibTeX styles) says in a few words how the
+% project uses the work, for example `usage = {The detector noise model of every injection.}`;
+% the site shows it in its citations table.
+
+@article{buonanno2008bkl,
+  author        = {Buonanno, Alessandra and Kidder, Lawrence E. and Lehner, Luis},
+  title         = {Estimating the final spin of a binary black hole coalescence},
+  journal       = {Phys. Rev. D},
+  volume        = {77},
+  pages         = {026004},
+  year          = {2008},
+  doi           = {10.1103/PhysRevD.77.026004},
+  eprint        = {0709.3839},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  usage         = {NR-free estimate of the remnant spin (and mass) used by the model.}
+}
+
+@article{kankani2025bob,
+  author        = {Kankani, Anuj and McWilliams, Sean T.},
+  title         = {{BOB the (Waveform) Builder: Analyzing Analytical Black-Hole Binary Merger Waveforms with the Backwards One Body Formalism}},
+  year          = {2025},
+  eprint        = {2510.25012},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  note          = {v2, 7 Oct 2026},
+  usage         = {The backwards-one-body picture behind matching the inspiral to the remnant; candidate NR-free closure conditions (QNM amplitude to news peak, Eq. 27; news-frequency law, Eqs. 2, 10).}
+}
+
+@article{rosato2025gbfamp,
+  author        = {Rosato, Romeo Felice and Yi, Sophia and Berti, Emanuele and Pani, Paolo},
+  title         = {Modeling the frequency-domain ringdown amplitude of comparable-mass mergers with greybody factors},
+  year          = {2025},
+  eprint        = {2512.15877},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  note          = {v2, 13 May 2026},
+  usage         = {The greybody-factor ringdown amplitude model that the project matches to the PN inspiral.}
+}
+
+@article{rosato2026greyring,
+  author        = {Rosato, Romeo Felice and Crescimbeni, Francesco and Yi, Sophia and Berti, Emanuele and Pani, Paolo},
+  title         = {Novel Ringdown Tests of General Relativity with Black Hole Graybody Factors},
+  year          = {2026},
+  eprint        = {2604.11895},
+  archivePrefix = {arXiv},
+  primaryClass  = {gr-qc},
+  note          = {v3},
+  usage         = {GreyRing phase model, the starting point for the phase in t02; amplitude model cross-check; reflection-amplitude normalisation (App. A, Eqs. A5-A7).}
+}
+
+@article{khan2016phenomd,
+  author = {Khan, Sebastian and Husa, Sascha and Hannam, Mark and Ohme, Frank and P{\"u}rrer, Michael and Jim{\'e}nez Forteza, Xisco and Boh{\'e}, Alejandro},
+  title = {Frequency-domain gravitational waves from non-precessing black-hole binaries. {II}. {A} phenomenological model for the advanced detector era},
+  journal = {Phys. Rev. D}, volume = {93}, pages = {044007}, year = {2016},
+  doi = {10.1103/PhysRevD.93.044007},
+  eprint = {1508.07253}, archivePrefix = {arXiv}, primaryClass = {gr-qc},
+  usage = {Analytic PN amplitude coefficients of the (2,2) inspiral (no pseudo-PN terms).}
+}
+
+@article{teukolsky1973,
+  author = {Teukolsky, Saul A.}, title = {Perturbations of a rotating black hole. {I}. {F}undamental equations for gravitational, electromagnetic, and neutrino-field perturbations},
+  journal = {Astrophys. J.}, volume = {185}, pages = {635}, year = {1973}, doi = {10.1086/152444},
+  usage = {The radial Teukolsky equation solved for the reflectivity.}
+}
+
+@article{teukolsky1974press,
+  author = {Teukolsky, Saul A. and Press, William H.}, title = {Perturbations of a rotating black hole. {III}. {I}nteraction of the hole with gravitational and electromagnetic radiation},
+  journal = {Astrophys. J.}, volume = {193}, pages = {443}, year = {1974}, doi = {10.1086/153180},
+  usage = {Energy-flux normalisation |C|^2 of the s=-2 reflectivity (checked numerically via the Teukolsky-Starobinsky identity).}
+}
+
+@article{leaver1985,
+  author = {Leaver, Edward W.}, title = {An analytic representation for the quasi-normal modes of {K}err black holes},
+  journal = {Proc. R. Soc. Lond. A}, volume = {402}, pages = {285}, year = {1985}, doi = {10.1098/rspa.1985.0119},
+  usage = {Continued-fraction check of the spheroidal separation constant.}
+}
+
+@article{stein2019qnm,
+  author = {Stein, Leo C.}, title = {qnm: {A} {P}ython package for calculating {K}err quasinormal modes, separation constants, and spherical-spheroidal mixing coefficients},
+  journal = {J. Open Source Softw.}, volume = {4}, number = {42}, pages = {1683}, year = {2019}, doi = {10.21105/joss.01683},
+  eprint = {1908.10377}, archivePrefix = {arXiv}, primaryClass = {gr-qc},
+  usage = {Spin-weighted spheroidal separation constant (qnm 0.4.4).}
+}
+
+@misc{pybhpt,
+  author = {{Black Hole Perturbation Toolkit}}, title = {pybhpt}, year = {2026}, note = {version 0.9.11},
+  url = {https://github.com/BlackHolePerturbationToolkit/pybhpt},
+  usage = {Independent cross-check of the Teukolsky amplitudes (not used by the model).}
+}
+
+@misc{lalsuite,
+  author = {{LIGO Scientific Collaboration}}, title = {{LIGO} {A}lgorithm {L}ibrary - {LALSuite}}, year = {2018},
+  doi = {10.7935/GT1W-FZ16}, note = {lalsuite 7.7.0 (conda-forge)},
+  usage = {IMRPhenomXAS, TaylorF2 check of the PN amplitude, aLIGO PSD, NR-fit remnant (comparison only).}
+}
+
+@article{pratten2020xas,
+  author = {Pratten, Geraint and Husa, Sascha and Garc{\'i}a-Quir{\'o}s, Cecilio and Colleoni, Marta and Ramos-Buades, Antoni and Estell{\'e}s, H{\'e}ctor and Jaume, Rafel},
+  title = {Setting the cornerstone for a family of models for gravitational waves from compact binaries: {T}he dominant harmonic for nonprecessing quasicircular black holes},
+  journal = {Phys. Rev. D}, volume = {102}, pages = {064001}, year = {2020}, doi = {10.1103/PhysRevD.102.064001},
+  eprint = {2001.11412}, archivePrefix = {arXiv}, primaryClass = {gr-qc},
+  usage = {IMRPhenomXAS, the baseline the model must match (Phenom-level mismatch).}
+}
+
+@article{jimenezforteza2017remnant,
+  author = {Jim{\'e}nez-Forteza, Xisco and Keitel, David and Husa, Sascha and Hannam, Mark and Khan, Sebastian and P{\"u}rrer, Michael},
+  title = {Hierarchical data-driven approach to fitting numerical relativity data for nonprecessing binary black holes with an application to final spin and radiated energy},
+  journal = {Phys. Rev. D}, volume = {95}, pages = {064024}, year = {2017}, doi = {10.1103/PhysRevD.95.064024},
+  eprint = {1611.00332}, archivePrefix = {arXiv}, primaryClass = {gr-qc},
+  usage = {NR-calibrated remnant mass and spin, used only as a labelled comparison variant.}
+}
+
+@misc{sxscatalog,
+  author = {{SXS Collaboration}}, title = {{SXS} {G}ravitational {W}aveform {D}atabase}, year = {2025}, note = {catalog tag v3.0.0, accessed with the sxs package 2025.0.24},
+  url = {https://data.black-holes.org},
+  usage = {The 60 NR test waveforms (testing only, never calibration).}
+}
+
+@article{blanchet2014lrr,
+  author = {Blanchet, Luc}, title = {Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries},
+  journal = {Living Rev. Rel.}, volume = {17}, pages = {2}, year = {2014}, eprint = {1310.1528}, archivePrefix = {arXiv},
+  usage = {t02: nonspinning E(x) Eq. (377), flux Eq. (483), H22 Eqs. (490)-(491); SO/SS energy and flux Eqs. (592), (612), (617)-(618) (updated revision in lit_cache).}}
+
+@article{buonanno2013spinmodes,
+  author = {Buonanno, Alessandra and Faye, Guillaume and Hinderer, Tanja}, title = {Spin effects on gravitational waves from inspiraling compact binaries at second post-Newtonian order},
+  journal = {Phys. Rev. D}, volume = {87}, pages = {044009}, year = {2013}, eprint = {1209.6349}, archivePrefix = {arXiv},
+  usage = {t02: 2PN spin-spin term in h22 (cross-check of HMK).}}
+
+@article{henry2022spinmodes,
+  author = {Henry, Quentin and Marsat, Sylvain and Khalil, Mohammed}, title = {Spin contributions to the gravitational-waveform modes for spin-aligned binaries at the 3.5PN order},
+  year = {2022}, eprint = {2209.00374}, archivePrefix = {arXiv},
+  usage = {t02: spin part of the (2,2) mode amplitude through 3.5PN, Eq. (4.4a) (code/h22_spin.py).}}
+
+@misc{lalsuite_pncoeffs_v725,
+  author = {{LIGO Scientific Collaboration}}, title = {LALSuite: LALSimInspiralPNCoefficients.c, tag lalsuite-v7.25},
+  howpublished = {\url{https://git.ligo.org/lscsoft/lalsuite}}, year = {2024},
+  usage = {t02: cross-check of PN energy, flux and TaylorT4 spin coefficients.}}
+
+@article{mcwilliams2019bob,
+  author = {McWilliams, Sean T.}, title = {Analytical black-hole binary merger waveforms}, journal = {Phys. Rev. Lett.}, volume = {122}, pages = {191102}, year = {2019}, eprint = {1810.00040}, archivePrefix = {arXiv},
+  usage = {t02: constant dJ/dOmega through merger (news-frequency link), motivating p = 1/2 in the matched GBF.}}
